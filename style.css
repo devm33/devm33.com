@@ -66,25 +66,28 @@ body { /*
     background-repeat: no-repeat;
 }
 #card .linkedin {
-  background-position: -10px -10px;
+    background-position: -10px -10px;
 }
 #card .gmail {
-  background-position: -10px -46px;
+    background-position: -10px -46px;
 }
 #card .github {
-  background-position: -10px -82px;
+    background-position: -10px -82px;
 }
 #card .googlecode {
-  background-position: -10px -118px;
+    background-position: -10px -118px;
 }
 #card .jsfiddle {
-  background-position: -10px -154px;
+    background-position: -10px -154px;
 }
 #card .twitter {
-  background-position: -10px -190px;
+    background-position: -10px -190px;
 }
 #card .flickr {
-  background-position: -10px -226px;
+    background-position: -10px -226px;
+}
+#card .lynn {
+    padding: 0; /* no favico here */
 }
 .clear {
     clear: both;
