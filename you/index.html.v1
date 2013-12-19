@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>you</title>
+<meta name="author" content="devm33">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet'>
+<style>
+* { 
+  margin: 0; 
+  padding: 0; 
+}
+body { 
+  font-family: 'Open Sans', sans-serif;
+}
+div.footnote {
+  position: fixed;
+  bottom: 3px;
+  right: 15px;
+  font-size: 10px;
+  color: #3c3c3c;
+}
+.red { color: #f00; }
+
+.textfill { margin: 15px; }
+</style>
+<script 
+src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://jquery-textfill.github.io/jquery-textfill/jquery.textfill.min.js"></script>
+</head>
+<body>
+<div class="textfill">
+<span>you are beautiful.</span>
+</div>
+<script>
+$(document).ready(function(){
+  $('.textfill').css({"width": ($(document).width()-30)+'px', "height": ($(document).height()-30)+'px'});
+  $('.textfill').textfill({ maxFontPixels: 0 });
+});
+</script>
+
+<div class="footnote"><span class="red">&lt;3</span>dev</div>
+</body>
+</html>

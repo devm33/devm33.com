@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>you</title>
+<meta name="author" content="devm33">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet'>
+<style>
+* { 
+  margin: 0; 
+  padding: 0; 
+}
+body { 
+  font-family: 'Open Sans', sans-serif;
+}
+div.footnote {
+  position: fixed;
+  bottom: 3px;
+  right: 15px;
+  font-size: 10px;
+  color: #3c3c3c;
+}
+.red { color: #f00; }
+#note { margin-left: 5%; }
+span { font-size: 11vw; }
+</style>
+<script 
+src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body>
+<span id="note">you are beautiful.</span>
+<div class="footnote"><span class="red">&lt;3</span>dev</div>
+<script>
+$(document).ready(function(){
+	$(window).resize(function() {
+		$('span').css("z-index", 1);
+	});
+	$('.red').mouseenter(function(){ $('.red').css('font-weight','900'); });
+	$('.red').mouseleave(function(){ $('.red').css('font-weight','100'); });
+});
+</script>
+</body>
+</html>
