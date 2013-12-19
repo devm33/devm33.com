@@ -4,7 +4,7 @@
 
 # vars
 CSSFILE='style.css';
-HTMFILE='index.template.html';
+HTMFILE='template.index.html';
 JSFILE='inline.js';
 YUIC='java -jar /home/devraj/Code/yuicompressor/yuicompressor.jar';
 OUTFILE='index.html';
