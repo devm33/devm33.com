@@ -5,13 +5,13 @@ Header unset ETag
 FileETag None
 
 <FilesMatch "\.(ico|gif|jpg|jpeg|png)$">
-Header unset Last-Modified
-ExpiresDefault A29030400
-Header append Cache-Control "public"
+    Header unset Last-Modified
+    ExpiresDefault "access plus 1 year"
+    Header append Cache-Control "public"
 </FilesMatch>
 
 <ifModule mod_deflate.c>
-<FilesMatch "\.(html|js|css)$">
-SetOutputFilter DEFLATE
-</FilesMatch>
+    <FilesMatch "\.(html|js|css)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
 </ifModule>

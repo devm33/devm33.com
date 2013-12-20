@@ -7,10 +7,14 @@
 #
 # relies on ./to_devm33, ./gen_index.sh, and git
 
+
+# compile and minify html
 ./gen_index.sh;
 
-./to_devm33 index.html style.css inline.js;
+# send modified files
+git status --porcelain | cut -d ' ' -s -f 3 | ./to_devm33;
 
+# autocommit [with note]
 git add -A;
 
 NOTE="";
