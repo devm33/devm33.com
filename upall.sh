@@ -2,7 +2,8 @@
 
 # hit the update all button:
 # generates index.html and sends it and related to devm33:
-# also autocommits to git repo
+# also autocommits to git repo with all arguments supplied
+# as the note on the commit.
 #
 # relies on ./to_devm33, ./gen_index.sh, and git
 
@@ -12,5 +13,11 @@
 
 git add -A;
 
-git commit -m "website changes pushed live $(date)";
+NOTE="";
+if [ $# -gt 0 ]
+    then
+    NOTE="note: $@";
+fi
+
+git commit -m "website changes pushed live $(date) ${NOTE}";
 
