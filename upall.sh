@@ -21,3 +21,5 @@ fi
 
 git commit -m "website changes pushed live $(date) ${NOTE}";
 
+git push;
+
