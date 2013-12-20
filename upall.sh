@@ -16,10 +16,10 @@ git add -A;
 NOTE="";
 if [ $# -gt 0 ]
     then
-    NOTE="note: $@";
+    NOTE="$@ -- ";
 fi
 
-git commit -m "website changes pushed live $(date) ${NOTE}";
+git commit -m "${NOTE}website changes pushed live $(date)";
 
 git push;
 
