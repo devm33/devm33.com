@@ -62,7 +62,6 @@ body { /*
     margin: 0.3em;
     padding-left: 20px;
     background-image: url(favico_sprite.png);
-    background-position: 0px 10px;
     background-repeat: no-repeat;
 }
 #card .linkedin {
@@ -88,6 +87,7 @@ body { /*
 }
 #card .lynn {
     padding: 0; /* no favico here */
+    background-image: none;
 }
 .clear {
     clear: both;
