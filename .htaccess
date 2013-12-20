@@ -1,19 +1,15 @@
 ErrorDocument 404 /
 
-ExpiresActive On
-ExpiresDefault A0
+AddDefaultCharset UTF-8
 
+ExpiresActive On
 Header unset ETag
 FileETag None
 
 <FilesMatch "\.(ico|gif|jpg|jpeg|png)$">
+    Header set Expires "Tue, 20 Jan 2037 04:20:42 GMT"
+    Header unset Cache-Control
+    Header append Cache-Control "public, max-age=29030400"
     Header unset Last-Modified
-    ExpiresDefault "access plus 1 year"
-    Header append Cache-Control "public"
 </FilesMatch>
 
-<ifModule mod_deflate.c>
-    <FilesMatch "\.(html|js|css)$">
-        SetOutputFilter DEFLATE
-    </FilesMatch>
-</ifModule>
