@@ -13,6 +13,11 @@
 
 # send modified files
 FILES=$(git status --porcelain | cut -d ' ' -s -f 3);
+if [ -z ${FILES} ];
+    then
+    echo "no changes. exiting...";
+    exit 0;
+fi
 echo "sending ${FILES}";
 ./to_devm33 ${FILES};
 
