@@ -12,7 +12,7 @@
 ./gen_index.sh;
 
 # send modified files
-git status --porcelain | cut -d ' ' -s -f 3 | ./to_devm33;
+./to_devm33 $(git status --porcelain | cut -d ' ' -s -f 3);
 
 # autocommit [with note]
 git add -A;
