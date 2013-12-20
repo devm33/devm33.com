@@ -1,6 +1,7 @@
 ErrorDocument 404 /
 
 AddDefaultCharset UTF-8
+AddType 'text/html; charset=UTF-8' html
 
 ExpiresActive On
 Header unset ETag
@@ -10,6 +11,5 @@ FileETag None
     Header set Expires "Tue, 20 Jan 2037 04:20:42 GMT"
     Header unset Cache-Control
     Header append Cache-Control "public, max-age=29030400"
-    Header unset Last-Modified
 </FilesMatch>
 
