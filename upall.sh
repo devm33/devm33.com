@@ -13,7 +13,7 @@
 
 # send modified files
 FILES=$(git status --porcelain | cut -d ' ' -s -f 3);
-if [ -z ${FILES} ];
+if [ -z "${FILES}" ];
     then
     echo "no changes. exiting...";
     exit 0;
