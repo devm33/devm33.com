@@ -12,7 +12,9 @@
 ./gen_index.sh;
 
 # send modified files
-./to_devm33 $(git status --porcelain | cut -d ' ' -s -f 3);
+FILES=$(git status --porcelain | cut -d ' ' -s -f 3);
+echo "sending ${FILES}";
+./to_devm33 ${FILES};
 
 # autocommit [with note]
 git add -A;
