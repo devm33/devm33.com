@@ -13,3 +13,11 @@ FileETag None
     Header append Cache-Control "public, max-age=29030400"
 </FilesMatch>
 
+
+Header add Vary accept-encoding
+RewriteEngine on
+RewriteCond %{HTTP:accept-encoding} gzip
+RewriteCond %{REQUEST_FILENAME} !\.gz$
+RewriteCond %{REQUEST_FILENAME}.gz -f
+RewriteRule (.*) $1.gz [L]
+
