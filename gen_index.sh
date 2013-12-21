@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# script to generate index.html
+# script to generate index.html and index.html.gz
 
 # vars
 CSSFILE='style.css';

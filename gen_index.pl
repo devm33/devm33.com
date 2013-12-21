@@ -1,6 +1,9 @@
 #!/usr/bin/env perl
 
-# script to generate index.html
+# script to generate index.html and index.html.gz
+
+use strict;
+use warnings;
 
 # vars
 my $cssfile = 'style.css';
@@ -8,15 +11,22 @@ my $htmlfile = 'template.index.html';
 my $jsfile = 'inline.js';
 my $yuic = 'java -jar /home/devraj/Code/yuicompressor/yuicompressor.jar';
 my $outfile = 'index.html';
+my %map = ();
+my ($in, $out, $html);
 
 # minify
-my $css = system( $yuic $cssfile );
-my $js = system( $yuic $jsfile );
+$map{"CSS"} = `$yuic $cssfile`;
+$map{"JS"} = `$yuic $jsfile`;
 
 # compile
-my $html =~ s/\$\{(\w+)\}/(exists $ENV{$1}?$ENV{$1}:"missing variable $1")/eg;
-open(my $out, '>', $outfile);
-print($out, $html);
-close($out);
+open $in, '<', $htmlfile or die "error opening $htmlfile: $!";
+$html = do { local $/; <$in> };
+close $in or die $!;
+$html =~ s/\$\{(\w+)\}/(exists $map{$1}?$map{$1}:"missing variable $1")/eg;
 
-# compress TODO
+open $out, '>', $outfile or die "error opening $outfile: $!";
+print $out $html;
+close $out or die $!;
+
+# compress
+system("gzip -c --best --force $outfile > ${outfile}.gz");
