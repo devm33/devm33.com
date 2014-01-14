@@ -16,8 +16,11 @@ FileETag None
 
 Header add Vary accept-encoding
 RewriteEngine on
+# resume:
+RewriteRule resume$ http://devm33.com/devraj_mehta_resume.pdf [L]
+
+# gzip:
 RewriteCond %{HTTP:accept-encoding} gzip
 RewriteCond %{REQUEST_FILENAME} !\.gz$
 RewriteCond %{REQUEST_FILENAME}.gz -f
-RewriteRule (.*) $1.gz [L]
-
+RewriteRule (.*) $1.gz [L] 
