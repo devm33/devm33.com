@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>22</title>
+<meta name="author" content="devm33">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet'>
+<style>
+* { 
+  margin: 0; 
+  padding: 0; 
+}
+body { 
+  font-family: 'Open Sans', sans-serif;
+}
+div.footnote {
+  position: fixed;
+  bottom: 3px;
+  right: 5px;
+  font-size: 35px;
+  color: #3c3c3c;
+}
+div.footnote span {
+    font-size: 35px;
+}
+.red { color: #f00; }
+h1#happy { 
+    margin-left: 5%;
+    font-size: 150px;
+    font-weight: normal;
+ }
+ h1#happy span {
+    -webkit-transition: all 0.2s ease-out;
+    display:inline-block;
+    position:relative;
+    padding: 5px;
+ }
+ h1#happy span.active {
+    text-shadow:13px 14px 4px #C89;
+    font-size: 160px;
+    margin: -10px;
+ }
+ h1#happy span span:hover{
+    top: 3px;
+    
+ }
+ .word1 .char1 { color: #743; }
+ .word1 .char2 { color: #843; }
+ .word1 .char3 { color: #a43; }
+ .word1 .char4 { color: #c43; }
+ .word1 .char5 { color: #e43; }
+ .word2 .char1 { color: #347; }
+ .word2 .char2 { color: #348; }
+ .word2 .char3 { color: #349; }
+ .word2 .char4 { color: #34a; }
+ .word2 .char5 { color: #34b; }
+ .word2 .char6 { color: #34c; }
+ .word2 .char7 { color: #34d; }
+ .word2 .char8 { color: #34e; }
+ .word4 span { color: #fff; }
+.white { color: #fff; }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="jquery.lettering-0.6.1.min.js"></script>
+</head>
+<body>
+<h1 id="happy" >happy birthday priya 22!</h1>
+<div class="footnote"><span class="red">&lt;3</span>dev</div>
+<script>
+$(document).ready(function(){
+	$(window).resize(function() {
+		$('span').css("z-index", 1);
+	});
+	$('.red').mouseenter(function(){ $('.red').css('font-weight','900'); });
+	$('.red').mouseleave(function(){ $('.red').css('font-weight','100'); });
+	$('#happy').lettering('words').children('span').lettering();
+	color(1, 0);
+});
+
+function color(w,c){
+    var cur = $('#happy .word'+w+' .char'+c);
+    if(cur.length) {
+        cur.toggleClass('active');
+    }
+    c = c + 1;
+    cur = $('#happy .word'+w+' .char'+c);
+    if(!cur.length) {
+        w = w + 1;
+        c = 1;
+        cur = $('#happy .word'+w+' .char'+c);
+        if(!cur.length) {
+            w = 1;
+            cur = $('#happy .word'+w+' .char'+c);
+        }
+    }
+    
+    cur.toggleClass('active');
+    
+    setTimeout(function(){ color(w,c); }, 200);
+}
+</script>
+</body>
+</html>
