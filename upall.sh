@@ -19,6 +19,11 @@ if [ -z "${FILES}" ];
     echo "no changes. exiting...";
     exit 0;
 fi
+
+#TODO if a file is deleted it will be caught in this list
+# 1: need to not send it
+# 2: would be neat to delete it on remote
+
 echo "sending ${FILES}";
 bash to_devm33 ${FILES};
 
