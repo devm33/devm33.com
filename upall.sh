@@ -10,6 +10,11 @@
 
 # compile and minify html
 perl gen_index.pl;
+if [ $? -ne 0 ];
+    then
+    echo "error in gen_index, stopping";
+    exit 1;
+fi
 
 # send modified files
 git add -A;
@@ -26,6 +31,11 @@ fi
 
 echo "sending ${FILES}";
 bash to_devm33 ${FILES};
+if [ $? -ne 0 ];
+    then
+    echo "error in to_devm33, stopping";
+    exit 1;
+fi
 
 # autocommit [with note]
 NOTE="";
