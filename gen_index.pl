@@ -9,7 +9,7 @@ use warnings;
 my $cssfile = 'style.css';
 my $htmlfile = 'template.index.html';
 my $jsfile = 'inline.js';
-my $yuic = 'java -jar /home/devraj/Code/yuicompressor/yuicompressor.jar';
+my $yuic = 'java -jar ./util/yuicompressor.jar';
 my $outfile = 'index.html';
 my %map = ();
 my ($in, $out, $html);
