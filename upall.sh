@@ -5,7 +5,7 @@
 # also autocommits to git repo with all arguments supplied
 # as the note on the commit.
 #
-# relies on ./to_devm33, ./gen_index.pl, and git
+# relies on ./gen_index.pl, and git (being on the master branch)
 
 function die {
     echo "error in $1 stopping" >&2;
@@ -15,26 +15,23 @@ function die {
 # compile and minify html
 perl gen_index.pl || die "gen_index.pl";
 
-# send modified files
+# use git to do our remote file managment
+
+# requires us to be on master branch
+if [ 'master' != "$(git branch | sed -n '/^\* /s///p')" ];
+    then
+    echo "error, you need to be on the master branch to deploy, stopping" >&2;
+fi
+
+# autocommit any pending changes
 git add -A;
 if [ -z "$(git status --porcelain)" ];
     then
-    echo "no changes. exiting...";
+    echo "no changes, stopping" >&2;
     exit 0;
 fi
 
-#TODO if a file is deleted it will be caught in this list
-# 1: need to not send it
-# 2: would be neat to delete it on remote
-
-# TODO migrating this to git -- no need to reinvent the wheel
-
-
-
-echo "sending ${FILES}";
-bash to_devm33 ${FILES} || die "to_devm33";
-
-# autocommit [with note]
+# take prepend any params to this script to commit message
 NOTE="";
 if [ $# -gt 0 ]
     then
@@ -43,5 +40,8 @@ fi
 
 git commit -m "${NOTE}website changes pushed live $(date)" || die "git commit";
 
-git push;
+# first deploy to website then github
+git push nfs master || die "git push nsf";
+
+git push hub master || die "git push hub";
 
