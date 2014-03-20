@@ -17,14 +17,18 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
-body { /*
+/* body {
     background-image: url(/bg.jpg);
     background-position: top left;
     background-size: 100% auto;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
-    background-color: #3d476a;*/
+    background-color: #3d476a;
+    *
+    *  putting the font fam in a specific class for parsing purposes
+    * */
+.webfont {
     font-family: "Anaheim", Arial, sans-serif;
 }
 #card {

@@ -7,19 +7,17 @@
 #
 # relies on ./to_devm33, ./gen_index.pl, and git
 
+function die {
+    echo "error in $1 stopping" >&2;
+    exit 1;
+}
 
 # compile and minify html
-perl gen_index.pl;
-if [ $? -ne 0 ];
-    then
-    echo "error in gen_index, stopping";
-    exit 1;
-fi
+perl gen_index.pl || die "gen_index.pl";
 
 # send modified files
 git add -A;
-FILES=$(git status --porcelain | cut -d ' ' -s -f 3);
-if [ -z "${FILES}" ];
+if [ -z "$(git status --porcelain)" ];
     then
     echo "no changes. exiting...";
     exit 0;
@@ -29,13 +27,12 @@ fi
 # 1: need to not send it
 # 2: would be neat to delete it on remote
 
+# TODO migrating this to git -- no need to reinvent the wheel
+
+
+
 echo "sending ${FILES}";
-bash to_devm33 ${FILES};
-if [ $? -ne 0 ];
-    then
-    echo "error in to_devm33, stopping";
-    exit 1;
-fi
+bash to_devm33 ${FILES} || die "to_devm33";
 
 # autocommit [with note]
 NOTE="";
@@ -44,7 +41,7 @@ if [ $# -gt 0 ]
     NOTE="$@ -- ";
 fi
 
-git commit -m "${NOTE}website changes pushed live $(date)";
+git commit -m "${NOTE}website changes pushed live $(date)" || die "git commit";
 
 git push;
 

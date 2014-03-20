@@ -1,4 +1,4 @@
-// Small script to count unique characters from an input text
+// Small script to return unique characters from an input text
 #include<stdio.h>
 #include<string.h>
 int main(int argc, char* argv[])
@@ -18,6 +18,6 @@ int main(int argc, char* argv[])
             }
         }
     }
-    printf("deduped: %s\n", str);
+    printf("%s\n", str);
     return 0;
 }
