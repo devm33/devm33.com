@@ -1,6 +1,6 @@
   window.onload = function(){
     var bgimg = new Image();
-    bgimg.src = "/bg.jpg";
+    bgimg.src = "${S3}/bg.jpg";
     bgimg.onload = function(){
         document.body.parentNode.style.backgroundImage = "url("+bgimg.src+")";
     };

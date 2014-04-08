@@ -18,12 +18,13 @@ my ($in, $out, $html);
 $map{"CSS"} = `$yuic $cssfile`;
 $map{"JS"} = `$yuic $jsfile`;
 $map{"WEBFONTCHARS"} = grabchars();
+$map{"S3"} = 'https://s3.amazonaws.com/devm33';
 
 # compile
 open $in, '<', $htmlfile or die "error opening $htmlfile: $!";
 $html = do { local $/; <$in> };
 close $in or die $!;
-$html =~ s/\$\{(\w+)\}/(exists $map{$1}?$map{$1}:"missing variable $1")/eg;
+1 while($html =~ s/\$\{(\w+)\}/(exists $map{$1}?$map{$1}:"missing variable $1")/eg);
 
 open $out, '>', $outfile or die "error opening $outfile: $!";
 print $out $html;
