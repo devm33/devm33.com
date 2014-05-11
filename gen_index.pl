@@ -46,7 +46,7 @@ sub grabchars {
     # grab the text of all subnodes of tags with the class
     my $text = '';
     for my $node ($tree->findnodes('//*[@class="' . $fontclass . '"]')) {
-        $text .= $node->findvalue('./*');
+        $text .= $node->findvalue('.');
     }
 
     # done with html, clean up
