@@ -68,26 +68,29 @@ html {
     background-image: url(${S3}/favico_sprite.png);
     background-repeat: no-repeat;
 }
-#card .linkedin {
+#card .codepen {
     background-position: -10px -10px;
 }
-#card .gmail {
+#card .flickr {
     background-position: -10px -46px;
 }
 #card .github {
     background-position: -10px -82px;
 }
-#card .googlecode {
+#card .gmail {
     background-position: -10px -118px;
 }
-#card .jsfiddle {
+#card .googlecode {
     background-position: -10px -154px;
 }
-#card .twitter {
+#card .jsfiddle {
     background-position: -10px -190px;
 }
-#card .flickr {
+#card .linkedin {
     background-position: -10px -226px;
+}
+#card .twitter {
+    background-position: -10px -262px;
 }
 #card .lynn {
     padding: 0; /* no favico here */
