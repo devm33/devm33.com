@@ -9,4 +9,8 @@ twitter_username: devm33
 github_username:  devm33
 
 # Build settings
+safe: true # no sym links or custom plugins, github pages uses this
 markdown: kramdown
+sass:
+    style: :compressed
+permalink: /:year-:month-:day/
