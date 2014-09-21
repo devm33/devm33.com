@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# post-update git hook to be run from bare repo on server
+#
+# requires the following remote set up in the git repo in /home/public/
+#
+#  nfs    /home/private/devm33.git
+#
+# or wherever the path to the bare repo is
+
+echo "--- Pulling changes into public directory"
+echo
+
+cd /home/public || exit
+unset GIT_DIR
+git pull nfs master
+
+exec git update-server-info
