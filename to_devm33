@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# simple shortcut for scp * devm33: (copying things into devm33:/home/public/)
-
-scp $@ devm33:
-
-
