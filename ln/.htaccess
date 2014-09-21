@@ -19,6 +19,9 @@ Header add Vary accept-encoding
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    # favicon
+    RewriteRule ^favicon.ico$ http://devm33.s3.amazonaws.com/favicon.ico [P]
+
     # resume:
     RewriteRule ^resume.* /devraj_mehta_resume.pdf [L,R]
 </IfModule>
