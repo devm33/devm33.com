@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# post-receive git hook to be run from bare repo on server
+#
+#
+
+echo "-------------------------------------------------------------------------"
+echo "Executing post-update hook"
+
+REPO='/home/private/devm33.git'
+SRC='ln'
+TMP='/tmp/devm33'
+PUB='/home/public'
+
+echo 'Building $SRC from $REPO to $PUB'
+
+rm -rf $TMP
+
+git clone $REPO $TMP
+
+jekyll $TMP/$SRC $PUB
+
+rm -rf $TMP
