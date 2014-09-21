@@ -2,17 +2,18 @@
 
 # post-update git hook to be run from bare repo on server
 #
-# requires the following remote set up in the git repo in /home/public/
+# requires this repo is set up as a remote named src in the $PUB repo, e.g.
 #
-#  nfs    /home/private/devm33.git
+#  src    /home/private/devm33.git
 #
-# or wherever the path to the bare repo is
 
-echo "--- Pulling changes into public directory"
-echo
+echo "-------------------------------------------------------------------------"
+echo "Executing post-update hook"
 
-cd /home/public || exit
+PUB='/home/public'
+
+cd $PUB || exit
 unset GIT_DIR
-git pull nfs master
+git pull src master
 
 exec git update-server-info
