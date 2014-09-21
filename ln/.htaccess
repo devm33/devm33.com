@@ -1,4 +1,4 @@
-ErrorDocument 404 404.html
+ErrorDocument 404 /404.html
 
 AddDefaultCharset UTF-8
 AddType 'text/html; charset=UTF-8' html
