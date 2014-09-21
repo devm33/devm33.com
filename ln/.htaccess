@@ -23,7 +23,8 @@ Header add Vary accept-encoding
     RewriteRule ^favicon.ico$ http://devm33.s3.amazonaws.com/favicon.ico [P]
 
     # resume:
-    RewriteRule ^resume.* /devraj_mehta_resume.pdf [L,R]
+    RewriteRule ^resume.* http://devm33.s3.amazonaws.com/devraj_mehta_resume.pdf [L,R]
+    RewriteRule ^devraj_mehta_resume.* http://devm33.s3.amazonaws.com/devraj_mehta_resume.pdf [L,R]
 </IfModule>
 
 # gzip:
