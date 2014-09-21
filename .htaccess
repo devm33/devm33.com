@@ -21,7 +21,7 @@ RewriteEngine on
 RewriteRule ^resume.* /devraj_mehta_resume.pdf [L,R]
 
 # log:
-RewriteRule ^log/(.*) log/_site/$1 [L]
+RewriteRule ^log/(.*) ln/_site/$1 [L]
 
 # gzip:
 <IfModule mod_deflate.c>
