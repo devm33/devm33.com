@@ -1,23 +1,21 @@
 #!/bin/sh
 
-# post-receive git hook to be run from bare repo on server
+# post-receive git hook to deploy via jekyll
 #
-#
+# assumes run in bare repo addressable by $GIT_DIR
 
-echo "-------------------------------------------------------------------------"
-echo "Executing post-update hook"
+echo "Executing post-receive hook"
 
-REPO='/home/private/devm33.git'
 SRC='ln'
 TMP='/tmp/devm33'
-PUB='/home/public'
+OUT='/var/www/html'
 
-echo 'Building $SRC from $REPO to $PUB'
+echo "Building $SRC from $GIT_DIR to $OUT"
 
 rm -rf $TMP
 
-git clone $REPO $TMP
+git clone $GIT_DIR $TMP
 
-jekyll $TMP/$SRC $PUB
+jekyll build -s $TMP/$SRC -d $OUT
 
 rm -rf $TMP

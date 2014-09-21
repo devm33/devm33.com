@@ -1,19 +1,7 @@
 #!/bin/sh
 
-# post-update git hook to be run from bare repo on server
+# post-update git hook to be run in bare repo on server
 #
-# requires this repo is set up as a remote named src in the $PUB repo, e.g.
-#
-#  src    /home/private/devm33.git
-#
-
-echo "-------------------------------------------------------------------------"
-echo "Executing post-update hook"
-
-PUB='/home/public'
-
-cd $PUB || exit
-unset GIT_DIR
-git pull src master
+# just updates server refs for http
 
 exec git update-server-info
