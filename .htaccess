@@ -16,14 +16,25 @@ FileETag None
 
 Header add Vary accept-encoding
 RewriteEngine on
+
 # resume:
 RewriteRule ^resume.* /devraj_mehta_resume.pdf [L,R]
 
+# log:
+RewriteRule ^log/(.*) log/_site/$1 [L]
+
 # gzip:
-RewriteCond %{HTTP:accept-encoding} gzip
-RewriteCond %{REQUEST_FILENAME} !\.gz$
-RewriteCond %{REQUEST_FILENAME}.gz -f
-RewriteRule (.*) $1.gz [L] 
+<IfModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/css application/x-javascript text/x-component text/html text/richtext image/svg+xml text/plain text/xsd text/xsl text/xml image/x-icon application/javascript
+ <IfModule mod_setenvif.c>
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+ </IfModule>
+ <IfModule mod_headers.c>
+  Header append Vary User-Agent env=!dont-vary
+ </IfModule>
+</IfModule>
 
 # minimize bandwidth, sourced from github.com/bluedragonz/bad-bot-blocker
 Options All -Indexes
