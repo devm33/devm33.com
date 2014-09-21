@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dev&#39;s Log</title>
-    <description>Developer of Software, Scientist of Computers, Builder of Websites.
+    <description>Developer of Software, Scientist of Computers, Destroyer of Websites.
 </description>
-    <link>http://devm33.com/log//</link>
-    <atom:link href="http://devm33.com/log//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 21 Sep 2014 03:19:58 -0400</pubDate>
-    <lastBuildDate>Sun, 21 Sep 2014 03:19:58 -0400</lastBuildDate>
+    <link>http://devm33.com/log/</link>
+    <atom:link href="http://devm33.com/log/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 21 Sep 2014 03:23:29 -0400</pubDate>
+    <lastBuildDate>Sun, 21 Sep 2014 03:23:29 -0400</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -28,8 +28,8 @@
 
 </description>
         <pubDate>Sat, 20 Sep 2014 23:11:32 -0400</pubDate>
-        <link>http://devm33.com/log//jekyll/update/2014/09/20/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://devm33.com/log//jekyll/update/2014/09/20/welcome-to-jekyll.html</guid>
+        <link>http://devm33.com/log/jekyll/update/2014/09/20/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://devm33.com/log/jekyll/update/2014/09/20/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>

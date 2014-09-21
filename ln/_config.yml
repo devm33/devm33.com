@@ -3,7 +3,7 @@ title: Dev's Log
 email: devm33@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     Developer of Software, Scientist of Computers, Destroyer of Websites.
-baseurl: "/log/" # the subpath of your site, e.g. /blog/
+baseurl: "/log" # the subpath of your site, e.g. /blog/
 url: "http://devm33.com" # the base hostname & protocol for your site
 twitter_username: devm33
 github_username:  devm33
