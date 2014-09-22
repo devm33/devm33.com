@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # post-update git hook to be run in bare repo on server
 #

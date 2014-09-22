@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # post-receive git hook to deploy via jekyll
 #
@@ -13,8 +13,6 @@ OUT='/home/public'
 echo "Building $SRC from $GIT_DIR to $OUT"
 
 rm -rf $TMP
-
-rm -rf $OUT/*
 
 git clone $GIT_DIR $TMP
 
