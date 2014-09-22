@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="landing">
+
+  {% include head.html %}
+
+  <body>
+
+    {% include card.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </div>
+
+    <script>
+    window.onload = function(){
+        var bgimg = new Image();
+        bgimg.src = "{{ site.s3url }}/bg.jpg";
+        bgimg.onload = function(){
+            document.body.parentNode.style.backgroundImage = "url("+bgimg.src+")";
+        };
+    };
+    </script>
+
+    {% include tracking.html %}
+
+  </body>
+
+</html>

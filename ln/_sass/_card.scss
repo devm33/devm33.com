@@ -1,0 +1,79 @@
+html.landing { /* TODO this class doesnt belong in this partial */
+    background: url(#{$assets-url}/vsm_bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    body {
+        background-color: transparent;
+    }
+}
+
+.card {
+    background-image: none;
+    background-color: #55E;
+    background-color: rgba(255,255,255,0.6);
+    padding: 1% 2%;
+    margin: 3%;
+    width: 35%;
+    max-width: 550px;
+    @extend %clearfix;
+
+    .title {
+        clear: both;
+        text-align: center;
+        .site-title {
+            float: none;
+        }
+    }
+
+    /* container for headshot image */
+    .prof {
+        float: left;
+        margin-right: 0.5em;
+        margin-top: 0.5em;
+    }
+
+    /* sectional groupings on card */
+    .section {
+        font-size: 0.9em;
+        text-indent: 0.5em;
+        margin-top: 0.2em;
+    }
+
+    .btn {
+        margin: 0.3em;
+        padding-left: 20px;
+        background-image: url(#{$assets-url}/favico_sprite.png);
+        background-repeat: no-repeat;
+    }
+    .codepen {
+        background-position: -10px -10px;
+    }
+    .flickr {
+        background-position: -10px -46px;
+    }
+    .github {
+        background-position: -10px -82px;
+    }
+    .gmail {
+        background-position: -10px -118px;
+    }
+    .googlecode {
+        background-position: -10px -154px;
+    }
+    .jsfiddle {
+        background-position: -10px -190px;
+    }
+    .linkedin {
+        background-position: -10px -226px;
+    }
+    .twitter {
+        background-position: -10px -262px;
+    }
+    .lynn {
+        padding: 0; /* no favico here */
+        background-image: none;
+    }
+}
