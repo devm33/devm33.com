@@ -8,11 +8,13 @@ echo "Executing post-receive hook"
 
 SRC='ln'
 TMP='/tmp/devm33'
-OUT='/var/www/html'
+OUT='/home/public'
 
 echo "Building $SRC from $GIT_DIR to $OUT"
 
 rm -rf $TMP
+
+rm -rf $OUT/*
 
 git clone $GIT_DIR $TMP
 
