@@ -1,8 +1,10 @@
 ---
 layout: post
-title: notes on what was needed to run Jekyll on NearlyFreeSpeech servers
+title: Jekyll on NearlyFreeSpeech
 categories: jekyll nearlyfreespeech.net rubygems
 ---
+
+This turned out to be a bit of an adventure...
 
 ### Gem install setup
 
@@ -81,14 +83,32 @@ right version of kramdown
 
     gem install kramdown --user-install -v 1.0.2
 
-TODO
+This went fine and I could tell I had progressed since I was now getting a new
+error from `jekyll --version` complaining about a different gem. This was no
+longer a path I wanted to go down.
 
-blackhole
+### New Approach
 
-upgrade freebsd
+Putting it down and walking away for a bit allowed me to think about the
+problem I was facing with all these old versions of gems and of jekyll: why
+don't I just get on the bleeding edge right? Then it occurred to me that
+NearlyFreeSpeech very kindly provides a smooth system for swapping out the
+version of FreeBSD you're running. It's quick and easy!
+
+I upgraded twice from green (Stable/Default) to blue (Stable/Upcoming), and
+then to white (Beta/Current) in which jekyll ran by default without any of
+my messing tampering and it was great!
 
 
+### Conclusion
 
+I am deploying this with git on NearlyFreeSpeech.net. All my files are
+available on github <https://github.com/devm33/devm33> including the git hooks
+I use in a bare repo on the server (in the util folder). You can find a good
+post on setting that up here:
+<http://majorursa.net/content/using-jekyll-nearlyfreespeechnet>
+
+Cheers!
 
 [jekyll-execjs]: http://jekyllrb.com/docs/troubleshooting/#could-not-find-a-javascript-runtime-execjsruntimeunavailable
 [limitless-channels]: http://www.limitlesschannels.com/code/2013/07/10/installing-custom-gems-on-your-hosted-jekyll-site.html
