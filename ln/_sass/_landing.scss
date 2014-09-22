@@ -1,0 +1,13 @@
+/**
+ * Landing page specific styles
+ */
+
+body.landing {
+    background: url(#{$assets-url}/vsm_bg.jpg) no-repeat center center fixed transparent;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+

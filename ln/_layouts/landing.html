@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html class="landing">
+<html>
 
   {% include head.html %}
 
-  <body>
+  <body class="landing">
 
     {% include card.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
+    <div class="card-container">
+      <div class="card">
         {{ content }}
       </div>
     </div>
@@ -18,7 +18,7 @@
         var bgimg = new Image();
         bgimg.src = "{{ site.s3url }}/bg.jpg";
         bgimg.onload = function(){
-            document.body.parentNode.style.backgroundImage = "url("+bgimg.src+")";
+            document.body.style.backgroundImage = "url("+bgimg.src+")";
         };
     };
     </script>

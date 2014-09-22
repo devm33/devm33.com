@@ -1,35 +1,39 @@
-<div class="card">
+<div class="card-container">
+    <div class="card">
 
-    <div class="title">
-        <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        <div class="center">
+            {% include site-title.html %}
+        </div>
+
+        <img class="prof" src="{{ site.s3url }}/prof_thumb_opt.jpg"
+        width="100" height="129" alt="image of Devraj Mehta" />
+
+        <p class="tagline">
+        I am a software developer at Georgia Tech Research Institute where I
+        help build web applications to facilitate systems engineering. I
+        graduated from Georgia Tech with a B.Sc. in Computer Science focused
+        in artificial intelligence and theory. Ask me about performant
+        javascript, functional programming, and functional
+        <a href="http://www.flickr.com/photos/devm33/tags/pottery/">
+            pottery
+        </a>.
+        </p>
+
+        <div class="section">Connect</div>
+        <a class="btn linkedin" href="http://linkedin.com/in/devrajmehta">LinkedIn</a>
+        <a class="btn gmail" href="mailto:devm33@gmail.com">Email</a>
+
+        <div class="section">Code</div>
+        <a class="btn github" href="https://github.com/devm33">GitHub</a>
+        (<a href="https://gist.github.com/devm33">Gists</a>)
+        <a class="btn googlecode" href="https://code.google.com/u/devm33/">Google Code</a>
+        <a class="btn jsfiddle" href="http://jsfiddle.net/user/devm33/fiddles/">JSFiddle</a>
+        <a class="btn codepen" href="http://codepen.io/devm33/public-list/">CodePen</a>
+
+        <div class="section">Other</div>
+        <a class="btn twitter" href="http://twitter.com/devm33">Twitter</a>
+        <a class="btn flickr" href="http://www.flickr.com/photos/devm33/">Flickr</a>
+        <a class="btn lynn" href="http://lynnmehta.com">Lynn Mehta</a>
+
     </div>
-
-    <img class="prof" src="{{ site.s3url }}/prof_thumb_opt.jpg"
-    width="100" height="129" alt="image of Devraj Mehta" />
-
-    <p class="tagline">
-    I am a software developer at Georgia Tech Research Institute where I help
-    build web applications to facilitate systems engineering. I graduated from
-    Georgia Tech with a B.Sc. in Computer Science focused in artificial
-    intelligence and theory. Ask me about performant javascript, functional
-    programming, and functional
-    <a href="http://www.flickr.com/photos/devm33/tags/pottery/">pottery</a>.
-    </p>
-
-    <div class="section">Connect</div>
-    <a class="btn linkedin" href="http://linkedin.com/in/devrajmehta">LinkedIn</a>
-    <a class="btn gmail" href="mailto:devm33@gmail.com">Email</a>
-
-    <div class="section">Code</div>
-    <a class="btn github" href="https://github.com/devm33">GitHub</a>
-    (<a href="https://gist.github.com/devm33">Gists</a>)
-    <a class="btn googlecode" href="https://code.google.com/u/devm33/">Google Code</a>
-    <a class="btn jsfiddle" href="http://jsfiddle.net/user/devm33/fiddles/">JSFiddle</a>
-    <a class="btn codepen" href="http://codepen.io/devm33/public-list/">CodePen</a>
-
-    <div class="section">Other</div>
-    <a class="btn twitter" href="http://twitter.com/devm33">Twitter</a>
-    <a class="btn flickr" href="http://www.flickr.com/photos/devm33/">Flickr</a>
-    <a class="btn lynn" href="http://lynnmehta.com">Lynn Mehta</a>
-
 </div>

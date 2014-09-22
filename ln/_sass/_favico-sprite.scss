@@ -1,0 +1,44 @@
+/**
+ * Styles for the favico-sprite image
+ */
+
+$start:     -10px;
+$increment: 36px;
+
+@mixin pos-from-start($times) {
+    background-position: -10px ($start - $increment * $times);
+}
+
+.btn {
+    padding-left: 20px;
+    background-image: url(#{$assets-url}/favico_sprite.png);
+    background-repeat: no-repeat;
+}
+.codepen {
+    @include pos-from-start(0);
+}
+.flickr {
+    @include pos-from-start(1);
+}
+.github {
+    @include pos-from-start(2);
+}
+.gmail {
+    @include pos-from-start(3);
+}
+.googlecode {
+    @include pos-from-start(4);
+}
+.jsfiddle {
+    @include pos-from-start(5);
+}
+.linkedin {
+    @include pos-from-start(6);
+}
+.twitter {
+    @include pos-from-start(7);
+}
+.lynn {
+    padding: 0; /* no favico here */
+    background-image: none;
+}

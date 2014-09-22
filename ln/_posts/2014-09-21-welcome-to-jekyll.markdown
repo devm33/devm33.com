@@ -4,22 +4,41 @@ title:  "Welcome to Jekyll!"
 date:   2014-09-21 03:11:32
 categories: jekyll update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve --watch`, which launches a web server and auto-regenerates your site when a file is updated.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+### Hello,
 
-Jekyll also offers powerful support for code snippets:
+I know this looks like the default jekyll generated post and it might seem a 
+bit unkempt to leave the title unchanged, but it was a very warm and welcoming
+starter post so I'm sticking with it. Overall setting up jekyll was pretty
+warm and welcoming. So far at least... the next post planned will be about
+getting up on the server, so hopefully that one will be short and sweet as
+well. I'm excited to have finally convinced myself to start putting some
+content on this site. I look forward to making more internet.
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+### Setup
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
+This wasn't bad at all. So far I have stayed very vanilla. No plugins and I
+intend to keep it that way in case I decide to switch hosting over to
+github pages at some point. I had relatively little content to migrate:
 
-[jekyll]:      http://jekyllrb.com
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-help]: https://github.com/jekyll/jekyll-help
+- A couple static pages which were quick to convert to liquid templates and
+partials. In fact they refactored quite positively, dropping a lot of 
+boilerplate.
+
+- And some custom styling that plopped right into the starter sass project.
+There's some work left to do in integrating that and customizing the default
+rules, but with perhaps a little extra a bloat it all works quite nicely as is.
+
+- I did end up moving the rest of my asset files over to AWS s3 without
+fallbacks, just because I mostly done it already out of concern for latency
+and because it seemed like a good thing to work into the templating while I
+was configuring things.
+
+Note on the configuring: I chose to place the s3 url as a site-wide variable,
+by placing it in the `_config.yml` file. But I have noticed already that this
+file seems like it may be prone to bloat. I'll be looking out for mitigation
+strategies around that.
+
+### Next Steps
+
+Release the git hooks and ship it!
