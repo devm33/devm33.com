@@ -1,9 +1,8 @@
-- left align site-title on card and make larger
+- take recent posts out again nvm, maybe idk
 
-- name box in middle
+- add back in picture as block element above tagline
+    - maybe centered
 
-- ^ or maybe put title back
-
-- shade lighter on the background
+- shorten tagline
 
 
