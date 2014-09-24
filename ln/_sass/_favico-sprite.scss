@@ -9,7 +9,7 @@ $increment: 36px;
     background-position: -10px ($start - $increment * $times);
 }
 
-.btn {
+.site {
     padding-left: 20px;
     background-image: url(#{$assets-url}/favico_sprite.png);
     background-repeat: no-repeat;

@@ -22,7 +22,7 @@
 }
 
 .card {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
 
     .site-title, .title {
         letter-spacing: -1px;
@@ -31,22 +31,25 @@
     .site-title {
         float: none;
         font-size: 2rem;
-        line-height: 4rem;
+        line-height: 3rem;
         color: #000;
     }
 
     .title {
         font-size: 1.5rem;
-        line-height: 3rem;
         color: $grey-color-dark;
     }
 
+    .tagline {
+        color: $grey-color;
+        @extend %clearfix;
+    }
 
     /* container for headshot image */
     .prof {
         float: left;
         margin-right: 0.5rem;
-        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
     }
 
     /* sectional groupings on card */
@@ -54,9 +57,10 @@
         font-size: 0.9rem;
         text-indent: 0.5rem;
         margin-top: 0.2rem;
+        color: $grey-color-dark;
     }
 
-    .btn {
+    .site {
         margin: 0.3rem;
     }
 }
