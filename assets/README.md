@@ -1,4 +1,4 @@
-Folder to organize creation and alteration of assets for this website.
+## Folder to organize creation and alteration of assets for this website.
 
 - `favico_sprite` contains the originals to create the `favico_sprite.png` image
 and documents the process of doing so.
