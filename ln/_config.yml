@@ -17,6 +17,14 @@ sass:
     style: :compressed
 permalink: /:year-:month-:day/
 
+# yaml front matter defaults
+defaults:
+    -
+        scope:
+            path: "" # defaults for all pages
+        values:
+            layout: "post"
+
 # Plugin settings
 safe: true # true for no sym links or custom plugins (github pages uses safe)
 

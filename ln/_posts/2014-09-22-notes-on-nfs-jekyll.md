@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Jekyll on NearlyFreeSpeech
 categories: jekyll nearlyfreespeech.net rubygems
 ---
