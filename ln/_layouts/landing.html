@@ -1,42 +1,33 @@
-<!DOCTYPE html>
-<!--
-Hello,
+---
+layout: html
+---
 
-Thank you for your interest! This website is kept open source on github https://github.com/devm33/devm33
+{% include head.html %}
 
-Cheers,
-Devraj
--->
-<html>
+<body class="landing">
 
-  {% include head.html %}
-
-  <body class="landing">
-
-    <div class="card-container">
-      <div class="card">
-          {% include card.html %}
-      </div>
+<div class="card-container">
+    <div class="card">
+        {% include card.html %}
     </div>
+</div>
 
-    <div class="card-container">
-      <div class="card">
-        {{ content }}
-      </div>
+<div class="card-container">
+    <div class="card">
+    {{ content }}
     </div>
+</div>
 
-    <script>
-    window.onload = function(){
-        var bgimg = new Image();
-        bgimg.src = "{{ site.s3url }}/bg.jpg";
-        bgimg.onload = function(){
-            document.body.style.backgroundImage = "url("+bgimg.src+")";
-        };
+<script>
+window.onload = function(){
+    var bgimg = new Image();
+    bgimg.src = "{{ site.s3url }}/bg.jpg";
+    bgimg.onload = function(){
+        document.body.style.backgroundImage = "url("+bgimg.src+")";
     };
-    </script>
+};
+</script>
 
-    {% include tracking.html %}
+{% include tracking.html %}
 
-  </body>
-
-</html>
+</body>

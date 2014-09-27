@@ -1,33 +1,18 @@
-<!DOCTYPE html>
-<!--
-Hello,
+---
+layout: html
+---
 
-Thank you for your interest! This website is kept open source on github:
+{% include head.html %}
 
-https://github.com/devm33/devm33
+<body>
 
-Cheers,
-Devraj
--->
-<html lang="en">
-
-  {% include head.html %}
-
-  <body>
-
-{% comment %}
-    {% include header.html %}
-{% endcomment %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
+<div class="page-content">
+    <div class="wrapper">
+    {{ content }}
     </div>
+</div>
 
-    {% include footer.html %}
-    {% include tracking.html %}
+{% include footer.html %}
+{% include tracking.html %}
 
-  </body>
-
-</html>
+</body>
