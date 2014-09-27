@@ -11,6 +11,7 @@ related files:
     - then converted to datauri using the same tool:
 
         svgo -i opt-link.svg -o - --datauri=unenc
+- `stolen-link.svg` original file I worked from, lifted from iconic
 
 ### `prof.jpg`
 
