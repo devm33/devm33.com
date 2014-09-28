@@ -21,6 +21,9 @@ body {
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
+
+    // no horizontal scroll please
+    word-wrap: break-word;
 }
 
 
@@ -139,7 +142,7 @@ code {
 
 pre {
     padding: 8px 12px;
-    overflow-x: scroll;
+    // overflow-x: scroll;
 
     > code {
         border: 0;
