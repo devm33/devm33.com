@@ -17,6 +17,7 @@ highlighter: pygments
 sass:
     style: :compressed
 permalink: /:year-:month-:day/
+include: [".htaccess"]
 
 # yaml front matter defaults
 defaults:
