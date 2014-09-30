@@ -7,15 +7,14 @@
 echo "Executing post-receive hook"
 
 SRC='ln'
-TMP='/tmp/devm33'
+TMP=`mktemp -d`
 OUT='/home/public'
 
 echo "Building $SRC from $GIT_DIR to $OUT"
-
-rm -rf $TMP
 
 git clone $GIT_DIR $TMP
 
 jekyll build -s $TMP/$SRC -d $OUT
 
-rm -rf $TMP
+# gzip html
+find $OUT/ -iname '*.html' -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \;

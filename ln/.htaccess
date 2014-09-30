@@ -75,6 +75,10 @@ Header add Vary accept-encoding
 
     AddEncoding x-gzip .gz
 
+    <FilesMatch .*\.html.gz>
+        ForceType text/html
+    </FilesMatch>
+
     <FilesMatch .*\.css.gz>
         ForceType text/css
     </FilesMatch>
