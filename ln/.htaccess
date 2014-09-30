@@ -3,16 +3,21 @@ ErrorDocument 404 /404.html
 AddDefaultCharset UTF-8
 AddType 'text/html; charset=UTF-8' html
 
-Header unset ETag
 FileETag None
+
+<IfModule mod_headers.c>
+Header unset ETag
+Header set Connection keep-alive
+
+Header add Vary accept-encoding
 
 <FilesMatch "\.(ico|gif|jpg|jpeg|png)$">
     Header set Expires "Tue, 20 Jan 2037 04:20:42 GMT"
     Header unset Cache-Control
     Header append Cache-Control "public, max-age=29030400"
 </FilesMatch>
+</IfModule>
 
-Header add Vary accept-encoding
 
 <IfModule mod_expires.c>
     ExpiresActive on
