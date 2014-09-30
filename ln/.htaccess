@@ -37,8 +37,11 @@ Header add Vary accept-encoding
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    # remove cache busts
+    RewriteRule (.*)\.bust-[^\.]*\.(.*) $1.$2
+
     # favicon
-    RewriteRule ^favicon.ico$ http://devm33.s3.amazonaws.com/favicon.ico [P]
+    RewriteRule ^favicon\.ico$ http://devm33.s3.amazonaws.com/favicon.ico [P]
 
     # resume:
     RewriteRule ^resume.* http://devm33.s3.amazonaws.com/devraj_mehta_resume.pdf [L,R]
