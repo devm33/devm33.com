@@ -17,4 +17,4 @@ git clone $GIT_DIR $TMP
 jekyll build -s $TMP/$SRC -d $OUT
 
 # gzip html
-find $OUT/ -iname '*.html' -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \;
+find $OUT/ \( -iname '*.html' -o -iname '*.js' -o -iname '*.css' \) -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \;
