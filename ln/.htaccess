@@ -32,7 +32,7 @@ FileETag None
     RewriteEngine on
 
     # favicon
-    RewriteRule ^favicon\.ico$ http://devm33.s3.amazonaws.com/favicon.ico [P]
+    RewriteRule ^favicon\.ico$ http://devm33.s3.amazonaws.com/favicon.ico
 
     # resume:
     RewriteRule ^resume.* http://devm33.s3.amazonaws.com/devraj_mehta_resume.pdf [L,R]
