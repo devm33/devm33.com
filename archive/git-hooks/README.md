@@ -1,8 +1,4 @@
-## utility files
-
-### Deployment moved
-
-I am now using the shell script `ln/_deploy` to build and deploy over rsync
+## git hooks
 
 ### `post-receive` and `post-update`
 
