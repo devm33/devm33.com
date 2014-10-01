@@ -18,5 +18,5 @@ export JEKYLL_ENV="production"
 
 jekyll build -s $TMP/$SRC -d $OUT
 
-# gzip html
+# gzip
 find $OUT/ \( -iname '*.html' -o -iname '*.js' -o -iname '*.css' \) -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \;

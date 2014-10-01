@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Script to deploy to production server using jekyll and rsync
+#
+# Note: currently also adds a step to gzip all html content, because
+# I havent found/written plugin to do that yet.
+
+die() {
+   echo 'ERROR exiting...'
+   exit 1;
+}
+
+DEST='devm33_devm33@ssh.phx.nearlyfreespeech.net:/home/public'
+
+SITE='_site/'
+
+
+jekyll build || die
+
+find $SITE -iname '*.html' -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \; || die
+
+echo "Deploying $SITE to $DEST"
+
+rsync -avh --delete $SITE $DEST
