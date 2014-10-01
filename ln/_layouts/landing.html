@@ -7,24 +7,22 @@ layout: html
 <body class="landing">
 
 <div class="card-container">
-    <div class="card">
-        {% include card.html %}
-    </div>
+<div class="card">
+{% include card.html %}
+</div>
 </div>
 
 <div class="card-container">
-    <div class="card">
-    {{ content }}
-    </div>
+<div class="card">
+{% include post-list.html %}
+</div>
 </div>
 
 <script>
 window.onload = function(){
-    var bgimg = new Image();
-    bgimg.src = "{{ site.s3url }}/bg.jpg";
-    bgimg.onload = function(){
-        document.body.style.backgroundImage = "url("+bgimg.src+")";
-    };
+var bg = new Image();
+bg.src = "{{ site.s3url }}/bg.jpg";
+bg.onload = function(){ document.body.style.backgroundImage = "url("+bg.src+")" };
 };
 </script>
 
