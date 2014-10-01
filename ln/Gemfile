@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gem 'yui-compressor'
+gem 'jekyll-assets'

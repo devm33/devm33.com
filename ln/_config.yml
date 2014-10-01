@@ -19,6 +19,7 @@ sass:
     style: :compressed
 permalink: /:year-:month-:day/
 include: [".htaccess"]
+exclude: [ Gemfile, Gemfile.lock ]
 
 # yaml front matter defaults
 defaults:
@@ -29,5 +30,17 @@ defaults:
             layout: "post"
 
 # Plugin settings
-safe: true # true for no sym links or custom plugins (github pages uses safe)
+safe: false # true for no sym links or custom plugins (github pages uses safe)
+gems: [jekyll-assets]
 
+assets:
+    dirname: assets
+    baseurl: /assets/
+    sources:
+        - _assets/js
+        - _assets/css
+    js_compressor: "yui"
+    css_compressor: "sass"
+    cachebust: hard
+    gzip: [ text/css, application/javascript ]
+    version: 1
