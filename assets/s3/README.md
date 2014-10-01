@@ -6,6 +6,5 @@ Verify with
 
 Add a new file (and make it public) with
 
-    s3cmd put filename.ext s3://devm33 -P
-
+    s3cmd put filename.ext s3://devm33 -P --add-header='Cache-Control:max-age=31536000'
 
