@@ -44,11 +44,17 @@ source for headshot image
 
 related files:
 
-- `prof_thumb.jpg` cropped and shrunk
+- `prof_thumb.jpg` resized and compressed
+
+   convert prof.jpg -resize 110x -strip -quality 85% prof_thumb.jpg
 
 ### `sm_bg.jpg`
 
 experimenting with degrading quality and size of `bg.jpg` for initial load
+
+similar convert settings as with prof just more aggresive and adding
+
+    -gaussian-blur 0.2
 
 related filed:
 
