@@ -6,4 +6,4 @@
 
 SITE='_site/'
 
-find $SITE -iname '*.html' -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \;
+find $SITE -iname '*.html' -exec bash -c 'gzip -v -n -c --best "{}" > "{}".gz' \;
