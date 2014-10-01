@@ -10,6 +10,7 @@ s3url: "http://devm33.s3.amazonaws.com"
 
 twitter_username: devm33
 github_username:  devm33
+rss_url: "http://feeds.feedburner.com/devm33"
 
 # Build settings
 markdown: kramdown
