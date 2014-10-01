@@ -1,6 +1,31 @@
 working asset files
 ====
 
+### `rss.svg`
+
+standard image for rss feeds, free from
+[icomoon](https://icomoon.io/app/#/select)
+
+no real need to optimize
+
+### `email.svg`
+
+found on icomoon as well from a third party
+
+```json
+{
+   "metadata": {
+      "name": "Entypo",
+      "url": "http://www.entypo.com/",
+      "designer": "Daniel Bruce",
+      "designerURL": "http://danielbruce.se/",
+      "license": "CC BY-SA 3.0",
+      "licenseURL": "http://creativecommons.org/licenses/by-sa/3.0/us/",
+      "iconsHash": -993250148
+   }
+}
+```
+
 ### `link.svg`
 
 icon for anchor links etc
