@@ -6,8 +6,6 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://devm33.com" # the base hostname & protocol for your site
 
-s3url: "https://devm33.s3.amazonaws.com"
-
 twitter_username: devm33
 github_username:  devm33
 rss_url: "http://feeds.feedburner.com/devm33"
@@ -39,6 +37,7 @@ assets:
     sources:
         - _assets/js
         - _assets/css
+        - _assets/images
     js_compressor: "yui"
     css_compressor: "sass"
     cachebust: hard
