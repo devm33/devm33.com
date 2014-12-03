@@ -11,7 +11,7 @@ $increment: 36px;
 
 .site {
     padding-left: 20px;
-    background-image: url(#{$assets-url}/favico_sprite.png);
+    background-image: url(asset_path("favico_sprite.png"));
     background-repeat: no-repeat;
 }
 .codepen {
