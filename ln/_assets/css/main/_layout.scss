@@ -254,3 +254,15 @@
         }
     }
 }
+
+/**
+ * Post footnotes
+ */
+
+.post-content {
+    .footnotes {
+        border-top: 1px solid $grey-color-light;
+        padding-top: 1rem;
+        margin-top: 1rem;
+    }
+}
