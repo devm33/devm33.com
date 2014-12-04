@@ -17,7 +17,13 @@ FileETag None
     ExpiresActive on
 
     # cache busted
-    ExpiresDefault "access plus 1 years"
+    ExpiresDefault "access plus 2 years"
+
+    # have to override image types
+    ExpiresByType image/gif "access plus 2 years"
+    ExpiresByType image/png "access plus 2 years"
+    ExpiresByType image/jpg "access plus 2 years"
+    ExpiresByType image/jpeg "access plus 2 years"
 
     # dont cache html
     ExpiresByType text/html "access plus 1 minutes"
