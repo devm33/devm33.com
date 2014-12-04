@@ -15,7 +15,7 @@ DEST='devm33_devm33@ssh.phx.nearlyfreespeech.net:/home/public'
 SITE='_site/'
 
 
-jekyll build || die
+bundle exec jekyll build || die
 
 find $SITE -iname '*.html' -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \; || die
 
