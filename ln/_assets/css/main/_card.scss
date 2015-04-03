@@ -39,15 +39,18 @@
         color: $grey-color-dark;
     }
 
+    .card-title {
+        @extend %clearfix;
+    }
+
     .tagline {
         color: $grey-color;
-        @extend %clearfix;
     }
 
     /* container for headshot image */
     .prof {
-        float: left;
-        margin-right: 0.5rem;
+        float: right;
+        margin-left: 0.5rem;
         margin-bottom: 0.5rem;
     }
 
