@@ -17,9 +17,9 @@ SITE='_site/'
 
 bundle exec jekyll build || die
 
-chmod -R a+r .
-
 find $SITE -iname '*.html' -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \; || die
+
+chmod -R a+r *
 
 echo "Deploying $SITE to $DEST"
 
