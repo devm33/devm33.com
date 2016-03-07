@@ -19,7 +19,7 @@ bundle exec jekyll build || die
 
 find $SITE -iname '*.html' -exec bash -c 'gzip -n -c --best "{}" > "{}".gz' \; || die
 
-chmod -R a+r *
+chmod -R a+rX *
 
 echo "Deploying $SITE to $DEST"
 
