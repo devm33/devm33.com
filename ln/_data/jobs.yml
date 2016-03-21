@@ -41,12 +41,11 @@
   start: Summer 2013
   finish: ""
   description: >
-    Contributed to developing common components and using them to enhance
-    Yahoo’s popular Media sites (News, Sports, etc.).These components were
-    reusable across a full range of browsers and devices, as well as being
-    internationalized and accessible. Supported existing components. Worked
-    independently and collaborated in small teams on novel projects dealing
-    with media content and monetization.
+    Developed common components for Yahoo’s popular media sites. These
+    components were reusable across a full range of browsers and devices, as
+    well as being internationalized and accessible.  Also, built and alpha-beta
+    tested a native ad format for Yahoo News, now part of the
+    Gemini product.
 
 - uri: digitalassent.com
   name: Digital Assent LLC
@@ -55,12 +54,11 @@
   start: 2012
   finish: 2013
   description: >
-    Digital Assent is a technology start-up providing PatientPad: a
-    comprehensive tablet solution for health care practices. Contributed to the
-    core product: a single-page mobile web application targeting primarily the
-    iPad. Worked directly with the CTO/co-founder on a three to eight person
-    team. Completed projects that were self-driven with loose requirements
-    across the full stack and, by necessity, on a fast-paced cycle.
+    Worked on a comprehensive tablet solution for health care practices.
+    Contributed to the core product: a single-page mobile-web application.
+    Worked directly with the CTO/co-founder on a small team. Completed projects
+    that were self-driven, across the full stack, and by necessity on a
+    fast-paced cycle.
 
 - uri: riesenhuberlab.neuro.georgetown.edu
   name: MaxLab
@@ -81,5 +79,5 @@
   finish: ""
   description: >
     Implemented a multi-agent modeling simulation using general purpose GPU
-    computing. Correlated performance with agent complexity as more basic agents
-    lend themselves to the massively parallel format.
+    computing. Correlated performance with agent complexity as more basic
+    agents fit the massively parallel paradigm.
