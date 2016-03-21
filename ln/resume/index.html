@@ -47,9 +47,6 @@ htmlattrs: moznomarginboxes
   tr.indent-row > td:first-child {
     padding-left: 40px;
   }
-  td.cell-right {
-    text-align: right;
-  }
 </style>
 </head>
 <body>
@@ -70,7 +67,7 @@ htmlattrs: moznomarginboxes
       <td>
         {{job.start}}
         {% if job.finish != ""  %}
-        &ndash;{{job.finish}}
+        &ndash; {{job.finish}}
         {% endif %}
       </td>
     </tr>
