@@ -4,5 +4,17 @@ layout: default
 
 <div class="home">
     <h1>404 Not Found</h1>
-    <p>Apologies, this error has been noted and will be addressed.</p>
+    <p>
+        Sorry about this. If I led you here by mistake
+        <a href="#" id="mail">click here to let me know about it.</a>
+        Thanks!
+    </p>
 </div>
+
+<script>
+    document.getElementById('mail').href = 'mailto:devm33+404@gmail.com?' +
+    'subject=' + encodeURIComponent('404 on devm33') +
+    '&body=' + encodeURIComponent('referrer: ' + document.referrer + '\n' +
+        'uri: ' + window.location.href + '\n\n' +
+        'Feel free to add any additional comments.');
+</script>
