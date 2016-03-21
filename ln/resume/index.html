@@ -15,7 +15,13 @@ htmlattrs: moznomarginboxes
 <style>
   body {
     max-width: 512pt;
-    margin: auto;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  @media print {
+    body {
+      margin-bottom: 0;
+    }
   }
   h1 {
     margin: 0;
