@@ -29,18 +29,16 @@ defaults:
 
 # Plugin settings
 safe: false # true for no sym links or custom plugins (github pages uses safe)
-gems: [jekyll-assets]
+gems:
+    - jekyll-assets
+    - octopress-minify-html
+
+minify_html: true
 
 assets:
-    dirname: assets
-    baseurl: /assets/
+    digest: true
+    prefix: /assets
     sources:
         - _assets/js
         - _assets/css
         - _assets/images
-    js_compressor: "yui"
-    css_compressor: "sass"
-    autosize: true
-    cachebust: hard
-    gzip: [ text/css, application/javascript ]
-    version: 1

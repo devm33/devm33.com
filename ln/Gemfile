@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'yui-compressor'
 gem 'jekyll-assets'
+gem 'octopress-minify-html'
+gem 'pygments.rb'
