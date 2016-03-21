@@ -40,11 +40,6 @@ FileETag None
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
 
-
-    # resume:
-    RewriteRule ^resume.* http://devm33.s3.amazonaws.com/devraj_mehta_resume.pdf [L,R]
-    RewriteRule ^devraj_mehta_resume.* http://devm33.s3.amazonaws.com/devraj_mehta_resume.pdf [L,R]
-
     # gzip:
     RewriteCond %{HTTP:accept-encoding} gzip
     RewriteCond %{REQUEST_FILENAME} !\.gz$
