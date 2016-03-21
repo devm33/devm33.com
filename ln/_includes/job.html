@@ -1,0 +1,14 @@
+<div class="flex">
+  <span><a href="http://{{joburi}}">{{employer}}</a></span>
+  <span>{{jobtitle}}</span>
+  <span><i>{{joblocation}}</i></span>
+  <span>
+    {{jobstart}}
+    {% if jobfinish != ""  %}
+    &ndash;{{jobfinish}}
+    {% endif %}
+  </span>
+</div>
+<div><p>{{jobdescription}}</p></div>
+
+

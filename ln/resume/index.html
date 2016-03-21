@@ -2,6 +2,7 @@
 layout: html
 title: resume
 email: devrajm@google.com
+htmlattrs: moznomarginboxes
 ---
 
 <head>
@@ -12,6 +13,10 @@ email: devrajm@google.com
 <title>Devraj Mehta Resume</title>
 <link rel="shortcut icon" type="image/png" href="https://devm33.s3.amazonaws.com/favicon.ico"/>
 <style>
+  body {
+    max-width: 512pt;
+    margin: auto;
+  }
   .flex {
     display: flex;
     align-items: flex-end;
@@ -31,22 +36,100 @@ email: devrajm@google.com
   <div>
     <h4>Work Experience</h4>
   </div>
-  <div class="flex">
-    <span><a href="gtri.gatech.edu">Georgia Tech Research Insitute</a></span>
-    <span>Research Scientist</span>
-    <span>Georgia Tech</span>
-    <span>2015&ndash;2016</span>
-  </div>
-  <div>
-    <p>
-      Researched collaborative engineering of systems. Developed web
-      applications that delivered research efforts to real world usage. Worked
-      across the stack and was led development of client-side Angular
-      application architecture.
-    </p>
-  </div>
 
+  {% capture joburi %}gtri.gatech.edu{% endcapture %}
+  {% capture employer %}
+  Georgia Tech Research Insitute
+  {% endcapture %}
+  {% capture jobtitle %}
+  Research Scientist
+  {% endcapture %}
+  {% capture joblocation %}
+  Georgia Tech
+  {% endcapture %}
+  {% capture jobstart %}
+  2014
+  {% endcapture %}
+  {% capture jobfinish %}
+  2015
+  {% endcapture %}
+  {% capture jobdescription %}
+  Researched collaborative engineering of systems. Developed web applications
+  that delivered research efforts to real world usage. Worked across the stack
+  and led development of client-side Angular application architecture.
+  {% endcapture %}
+  {% include job.html %}
 
+  {% capture joburi %}cc.gatech.edu{% endcapture %}
+  {% capture employer %}
+  College of Computing
+  {% endcapture %}
+  {% capture jobtitle %}
+  Teaching Assistant
+  {% endcapture %}
+  {% capture joblocation %}
+  Georgia Tech
+  {% endcapture %}
+  {% capture jobstart %}
+  Spring 2014
+  {% endcapture %}
+  {% capture jobfinish %}{% endcapture %}
+  {% capture jobdescription %}
+  Course: CS 3510 Design and Analysis of Algorithms. Professor: Maria-Florina
+  Balcan, Ph.D. Responsibilities included holding office hours for questions
+  and supplementary teaching, and grading homework and tests.
+  {% endcapture %}
+  {% include job.html %}
+
+  {% capture joburi %}yahoo.com{% endcapture %}
+  {% capture employer %}
+  Yahoo!
+  {% endcapture %}
+  {% capture jobtitle %}
+  Software Engineering Intern
+  {% endcapture %}
+  {% capture joblocation %}
+  Sunnyvale, CA
+  {% endcapture %}
+  {% capture jobstart %}
+  Summer 2013
+  {% endcapture %}
+  {% capture jobfinish %}{% endcapture %}
+  {% capture jobdescription %}
+  Contributed to developing common components and using them to enhance Yahoo’s
+  popular Media sites (News, Sports, etc.).These components were reusable
+  across a full range of browsers and devices, as well as being
+  internationalized and accessible. Supported existing components. Worked
+  independently and collaborated in small teams on novel projects dealing with
+  media content and monetization.
+  {% endcapture %}
+  {% include job.html %}
+
+  {% capture joburi %}
+  digitalassent.com
+  {% endcapture %}
+  {% capture employer %}
+  Yahoo!
+  {% endcapture %}
+  {% capture jobtitle %}
+  Software Engineering Intern
+  {% endcapture %}
+  {% capture joblocation %}
+  Sunnyvale, CA
+  {% endcapture %}
+  {% capture jobstart %}
+  Summer 2013
+  {% endcapture %}
+  {% capture jobfinish %}{% endcapture %}
+  {% capture jobdescription %}
+  Contributed to developing common components and using them to enhance Yahoo’s
+  popular Media sites (News, Sports, etc.).These components were reusable
+  across a full range of browsers and devices, as well as being
+  internationalized and accessible. Supported existing components. Worked
+  independently and collaborated in small teams on novel projects dealing with
+  media content and monetization.
+  {% endcapture %}
+  {% include job.html %}
 
 
 
