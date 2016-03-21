@@ -31,7 +31,6 @@ defaults:
 safe: false # true for no sym links or custom plugins (github pages uses safe)
 gems:
     - jekyll-assets
-    - octopress-minify-html
 
 minify_html: true
 
