@@ -32,13 +32,14 @@ FileETag None
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    # favicon
+    RewriteRule ^favicon\.ico$ https://devm33.s3.amazonaws.com/favicon.ico [L,R]
+
     # https (except localhost)
     RewriteCond %{HTTP_HOST} !=localhost
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
 
-    # favicon
-    RewriteRule ^favicon\.ico$ https://devm33.s3.amazonaws.com/favicon.ico [L,R]
 
     # resume:
     RewriteRule ^resume.* http://devm33.s3.amazonaws.com/devraj_mehta_resume.pdf [L,R]
