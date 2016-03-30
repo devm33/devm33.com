@@ -55,11 +55,14 @@
     }
 
     /* sectional groupings on card */
-    .section {
+    .section-title {
         font-size: 0.9rem;
         text-indent: 0.5rem;
         margin-top: 0.2rem;
         color: $grey-color-dark;
+    }
+    .section {
+      line-height: 2.0em;
     }
 
     .site {
