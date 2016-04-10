@@ -2,7 +2,7 @@
 title: Devraj Mehta
 email: devm33@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-    Developer of Software, Scientist of Computers, Builder of Websites.
+    Automate everything.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://devm33.com" # the base hostname & protocol for your site
 
