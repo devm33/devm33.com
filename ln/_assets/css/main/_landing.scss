@@ -10,4 +10,8 @@ body.landing {
     background-size: cover;
 }
 
-
+@include media-query($on-laptop) {
+    body.landing > .card-container:last-of-type {
+        padding-bottom:500px
+    }
+}
