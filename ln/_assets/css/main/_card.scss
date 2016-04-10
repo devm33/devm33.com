@@ -5,7 +5,7 @@
 
 .card-container {
     background-image: none;
-    background-color: $background-color;
+    background-color: transparent;
 
     width: 400px;
     max-width: 400px;
@@ -45,7 +45,7 @@
     }
 
     .tagline {
-        color: $grey-color;
+        color: $grey-color-dark;
     }
 
     /* container for headshot image */
