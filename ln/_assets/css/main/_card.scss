@@ -24,19 +24,18 @@
 
     .site-title, .title {
         letter-spacing: -1px;
+        color: $text-color;
     }
 
     .site-title {
         float: none;
         font-size: 2rem;
         line-height: 3rem;
-        color: #000;
         white-space: nowrap;
     }
 
     .title {
         font-size: 1.5rem;
-        color: $grey-color-dark;
     }
 
     .card-title {
@@ -44,7 +43,7 @@
     }
 
     .tagline {
-        color: $grey-color-dark;
+        color: $text-color;
     }
 
     /* sectional groupings on card */
@@ -52,7 +51,7 @@
         font-size: 0.9rem;
         text-indent: 0.5rem;
         margin-top: 0.2rem;
-        color: $grey-color-dark;
+        color: $text-color;
     }
     .section {
       line-height: 2.0em;
