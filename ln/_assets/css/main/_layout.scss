@@ -10,12 +10,10 @@
 }
 
 .site-title {
-    font-size: 26px;
-    line-height: 56px;
+    font-size: 2rem;
     letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
-    color: $grey-color-dark;
+    line-height: 3rem;
+    white-space: nowrap;
 }
 
 .site-nav {
