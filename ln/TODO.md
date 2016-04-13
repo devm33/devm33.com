@@ -1,9 +1,19 @@
 # TODO
 
-## Index Page
+- fix issue with jekyll-asset plugin missing files from css
+- add jekyll plugin to pjax things up
 
-### Card
-- remove google code from sprite
-- maybe remove sprite and replace with svg
-- consolidate all the code links -> Just leave github and gist
-- drop twitter, flickr, email, jsfiddle, codepen
+
+## Resume
+
+- better line spacing (less content indigestion)
+    - maybe change to actual bullets
+    - used the squint check
+- clean up skills section
+    - one or two lines, e.g Skills: Javascript for progressive enhacement and
+      client-side webapps, Python, Scala, Java, Clojure, SQL databases as well
+      as mongo. See more at linkedin.com/in/devrajmehta and github.com/devm33
+
+
+- writing: focus more on results rather than duties/tasks
+- 
