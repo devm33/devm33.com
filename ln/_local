@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # remove ignored files
-git clean -dX
+git clean -dfX
 
 # serve with dev env
 JEKYLL_ENV='development'

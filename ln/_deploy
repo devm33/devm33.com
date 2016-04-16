@@ -15,7 +15,7 @@ DEST='devm33_devm33@ssh.phx.nearlyfreespeech.net:/home/public'
 SITE='_site/'
 
 # remove ignored files
-git clean -dX
+git clean -dfX
 
 JEKYLL_ENV='production'
 bundle exec jekyll build || die
