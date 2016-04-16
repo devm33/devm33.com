@@ -14,8 +14,10 @@ DEST='devm33_devm33@ssh.phx.nearlyfreespeech.net:/home/public'
 
 SITE='_site/'
 
-rm -rf $SITE
+# remove ignored files
+git clean -dX
 
+JEKYLL_ENV='production'
 bundle exec jekyll build || die
 
 GZIP='gzip -n -c --best "{}" > "{}".gz'

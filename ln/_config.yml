@@ -33,11 +33,3 @@ gems:
     - jekyll-assets
 
 minify_html: true
-
-assets:
-    digest: true
-    prefix: /assets
-    sources:
-        - _assets/js
-        - _assets/css
-        - _assets/images
