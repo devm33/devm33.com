@@ -13,11 +13,7 @@ for(var i = 0; i < tags.length; i++) {
 
             a.href = '#' + header.id;
 
-            a.innerHTML = 'permalink';
-
-            a.title = 'permalink';
-
-            a.className = 'permalink';
+            a.innerHTML = a.title = a.className = 'permalink';
 
             header.appendChild(a);
         }
