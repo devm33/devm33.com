@@ -4,5 +4,5 @@
 git clean -dfX
 
 # serve with dev env
-JEKYLL_ENV='development'
+export JEKYLL_ENV='development'
 bundle exec jekyll serve --incremental
