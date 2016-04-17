@@ -17,6 +17,8 @@ for(var i = 0; i < tags.length; i++) {
 
             a.title = 'permalink';
 
+            a.className = 'permalink';
+
             header.appendChild(a);
         }
     }
