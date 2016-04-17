@@ -1,6 +1,6 @@
 ---
 title: "Motivation Chrome Extension"
-categories: chrome extension
+categories: chrome-extension
 ---
 
 The latest project I have been working on is a fork of a chrome extension. I saw
