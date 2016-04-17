@@ -31,5 +31,3 @@ defaults:
 safe: false # true for no sym links or custom plugins (github pages uses safe)
 gems:
     - jekyll-assets
-
-minify_html: true
