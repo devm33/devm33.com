@@ -1,7 +1,7 @@
 ---
 title:  "Welcome to Jekyll!"
 date:   2014-09-21 03:11:32
-categories: jekyll update
+categories: jekyll
 ---
 
 ### Hello,
