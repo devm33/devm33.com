@@ -261,3 +261,21 @@
         font-size: 0.9rem;
     }
 }
+
+/**
+ * Categories
+ */
+.category-list {
+    list-style: none;
+    margin: 0;
+    margin-right: 30px;
+}
+
+/**
+ * Column flex layout
+ */
+.flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
