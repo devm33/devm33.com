@@ -17,7 +17,7 @@ SITE='_site/'
 # remove ignored files
 git clean -dfX
 
-JEKYLL_ENV='production'
+export JEKYLL_ENV='production'
 bundle exec jekyll build || die
 
 GZIP='gzip -n -c --best "{}" > "{}".gz'
