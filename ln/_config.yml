@@ -29,4 +29,4 @@ defaults:
 
 # Plugin settings
 safe: false # true for no sym links or custom plugins (github pages uses safe)
-category_title_prefix: ""
+category_title_prefix: "Posts tagged "
