@@ -1,6 +1,7 @@
 # TODO
 
 - [WIP] add a little progressive enhancement pjax :)
+- remove instances of tracking.html (replace with tracking.js)
 - find jekyll plugin to minify html faster?
 - find jekyll plugin to gzip everything (html,css,js)
 
