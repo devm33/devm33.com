@@ -4,6 +4,7 @@
 - find jekyll plugin to gzip everything (html,css,js)
 - add csp from here https://github.com/h5bp/server-configs-apache/
 - remove text next to logos in footer, single file logos, make them larger
+- add travis tests! http://garthdb.com/writings/i-am-a-jekyll-god/
 
 ## Resume
 
