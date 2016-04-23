@@ -1,7 +1,6 @@
 # TODO
 
 - [WIP] add a little progressive enhancement pjax :)
-- find jekyll plugin to minify html faster?
 - find jekyll plugin to gzip everything (html,css,js)
 
 ## Resume
