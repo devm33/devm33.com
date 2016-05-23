@@ -13,6 +13,10 @@ htmlattrs: moznomarginboxes
 <title>Devraj Mehta Resume</title>
 <link rel="shortcut icon" type="image/png" href="https://devm33.s3.amazonaws.com/favicon.ico"/>
 <style>
+  html, body, h1, h2, h4, ul, li {
+    margin: 0;
+    padding: 0;
+  }
   body {
     max-width: 512pt;
     margin: 0 auto;
@@ -24,7 +28,6 @@ htmlattrs: moznomarginboxes
     }
   }
   h1 {
-    margin: 0;
     font-size: 1.2em;
   }
   h4 {
@@ -43,6 +46,10 @@ htmlattrs: moznomarginboxes
   }
   tr.description > td {
     padding-bottom: 10px;
+  }
+  tr.description > td > ul {
+    list-style-type: none;
+    line-height: 1.3rem;
   }
   tr.indent-row > td:first-child {
     padding-left: 40px;
@@ -72,7 +79,13 @@ htmlattrs: moznomarginboxes
       </td>
     </tr>
     <tr class="description">
-      <td colspan="4">{{job.description}}</td>
+        <td colspan="4">
+            <ul>
+            {% for desc in job.description %}
+                <li>-&nbsp;&nbsp;{{desc}}</li>
+            {% endfor %}
+            </ul>
+        </td>
     </tr>
     {% endfor %}
 
