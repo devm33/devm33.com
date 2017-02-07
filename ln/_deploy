@@ -17,6 +17,11 @@ SITE='_site/'
 # remove ignored files
 git clean -dfX
 
+# output version
+git rev-parse HEAD > version.txt
+git add version.txt
+git commit -m "deploy $(cat version.txt)"
+
 export JEKYLL_ENV='production'
 bundle exec jekyll build || die
 
