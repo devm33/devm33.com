@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# post-update git hook to be run in bare repo on server
-#
-# just updates server refs for http
-
-exec git update-server-info
