@@ -1,4 +1,4 @@
-<devm33.com>
+[devm33.com](https://devm33.com)
 ======
 
 ### personal website and weblog
