@@ -8,6 +8,7 @@
   - is there a way to do this with sass?
 - consolidate layout files
 - add service worker, pass lighthouse audit
+  - load content pjax
 - make header anchor link look nicer
   - i think script is not needed with kramdown
 - remove text next to logos in footer, single file logos, make them larger
