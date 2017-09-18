@@ -2,18 +2,24 @@
 ---
 # TODO
 
-- move domain to google
-- move site to netlify
-- enable netlify ssl lock
+- fade out background image, change font colors, see https://imgur.com/6KoDldW
 - use media queries to load appropiate size landing image
 - break up css by media queries
   - is there a way to do this with sass?
 - consolidate layout files
-- add guard for livereload
 - add service worker, pass lighthouse audit
-- make header anchor link look nicer (i think script is not needed anymore)
+- make header anchor link look nicer
+  - i think script is not needed with kramdown
 - remove text next to logos in footer, single file logos, make them larger
 - add travis tests! http://garthdb.com/writings/i-am-a-jekyll-god/
+
+## Posts to Write
+
+- site migration
+  - move domain to google
+  - move site to netlify
+  - enable netlify ssl lock
+
 
 ## Resume
 
