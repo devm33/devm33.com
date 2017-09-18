@@ -48,9 +48,8 @@
     /* sectional groupings on card */
     .section {
       line-height: 2.0em;
-    }
-
-    .site {
+      & > a {
         margin-right: 0.5rem;
+      }
     }
 }
