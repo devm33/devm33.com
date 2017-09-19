@@ -2,8 +2,6 @@
 ---
 # TODO
 
-- fade out background image, change font colors, see https://imgur.com/6KoDldW
-- use media queries to load appropiate size landing image
 - break up css by media queries
   - is there a way to do this with sass?
 - consolidate layout files
