@@ -4,11 +4,14 @@
 
 body.landing {
     background: url(/images/landing/full.jpg) no-repeat center center / cover fixed #777;
+    @include media-query(600px) {
+      background-image: url(/images/landing/600.jpg);
+    }
     @include media-query(800px) {
       background-image: url(/images/landing/800.jpg);
     }
-    @include media-query(600px) {
-      background-image: url(/images/landing/600.jpg);
+    @include media-query(1200px) {
+      background-image: url(/images/landing/1200.jpg);
     }
 }
 
