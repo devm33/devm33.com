@@ -4,7 +4,6 @@
 
 - break up css by media queries
   - is there a way to do this with sass?
-- consolidate layout files
 - add service worker, pass lighthouse audit
   - load content pjax
 - make header anchor link look nicer

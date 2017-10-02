@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 ---
 
 <div class="flex">
@@ -18,7 +18,10 @@ layout: page
   <ul class="category-list">
     <li><h4>All Categories</h4></li>
     {% for category in site.categories %}
-      <li>{{category[0] | category_link}} {{category[1].size}}</li>
+      <li>
+        {{category[1].size}}
+        {{category[0] | category_link}}
+      </li>
     {% endfor %}
   </ul>
 </div>

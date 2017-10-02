@@ -171,7 +171,7 @@ module Jekyll
   end
 
 
-  module Filters
+  module CategoryFilters
 
     def category_link(category)
       base_dir = @context.registers[:site].config['category_dir']
@@ -184,3 +184,5 @@ module Jekyll
     end
   end
 end
+
+Liquid::Template.register_filter(Jekyll::CategoryFilters)
