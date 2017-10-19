@@ -76,13 +76,7 @@ email: devrajm@google.com
       </td>
     </tr>
     <tr class="description">
-        <td colspan="4">
-            <ul>
-            {% for desc in job.description %}
-                <li>-&nbsp;&nbsp;{{desc}}</li>
-            {% endfor %}
-            </ul>
-        </td>
+      <td colspan="4">{{job.description}}</td>
     </tr>
     {% endfor %}
 

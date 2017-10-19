@@ -1,87 +1,77 @@
 - uri: google.com
   name: Google
-  title: Solutions Engineer
+  title: Solutions Consultant
   location: New York, NY
   start: 2015
   finish: present
-  description:
-      - Manage relationships with Google's largest television broadcaster and
-        distributor partners.
-      - Grow the business of server-side ad insertion into streaming video.
-      - Monitor live and on-demand streams, and support implementations on
-        Android, iOS, and OTT devices.
-
+  description: >
+    Manage relationships with Google's largest partners in the television
+    broadcaster and distributor space. Grow and maintain the business of
+    server-side ad insertion into streaming video. Support live and linear
+    streams, VOD streaming, and client implementations on Android, iOS, and OTT
+    devices.
 - uri: gtri.gatech.edu
   name: Georgia Tech Research Insitute
   title: Research Scientist
   location: Georgia Tech
   start: 2014
   finish: 2015
-  description:
-      - Researched and developed tools for collaborative systems engineering.
-      - Led rewrite and expansion of major product 
-      - Worked across the stack and led development of client-side Angular
-        application architecture.
-
+  description: >
+    Researched tools for collaborative systems engineering. Developed web
+    applications that delivered research efforts to real world usage. Worked
+    across the stack and led development of client-side Angular application
+    architecture.
 - uri: cc.gatech.edu
   name: College of Computing
   title: Teaching Assistant
   location: Georgia Tech
   start: Spring 2014
   finish: ""
-  description:
-      - For course CS 3510 Design and Analysis of Algorithms with Professor
-        Maria-Florina Balcan, Ph.D.
-      - Held office hours for questions and supplementary teaching, and
-        graded homework and tests.
-
+  description: >
+    For course CS 3510 Design and Analysis of Algorithms with Professor
+    Maria-Florina Balcan, Ph.D. Held office hours for questions and
+    supplementary teaching, and graded homework and tests.
 - uri: yahoo.com
   name: Yahoo!
   title: Software Engineering Intern
   location: Sunnyvale, CA
   start: Summer 2013
   finish: ""
-  description:
-      - Developed common components for Yahoo’s popular media sites.
-      - These components were reusable across a full range of browsers and
-        devices, as well as being internationalized and accessible.
-      - Built and alpha-beta tested a native ad format for Yahoo News, launched
-        as part of the Gemini product.
-
+  description: >
+    Developed common components for Yahoo’s popular media sites. These
+    components were reusable across a full range of browsers and devices, as
+    well as being internationalized and accessible.  Also, built and alpha-beta
+    tested a native ad format for Yahoo News, now part of the
+    Gemini product.
 - uri: digitalassent.com
   name: Digital Assent LLC
   title: Software Developer
   location: Atlanta, GA
   start: 2012
   finish: 2013
-  description:
-      - Worked on a comprehensive tablet solution for health care practices.
-      - >
-        Contributed to the core product: a single-page mobile-web application
-        on a small team with the CTO.
-      - Completed projects that were self-driven, across the full stack, and
-        by necessity on a fast-paced cycle.
-
+  description: >
+    Worked on a comprehensive tablet solution for health care practices.
+    Contributed to the core product: a single-page mobile-web application.
+    Worked directly with the CTO/co-founder on a small team. Completed projects
+    that were self-driven, across the full stack, and by necessity on a
+    fast-paced cycle.
 - uri: riesenhuberlab.neuro.georgetown.edu
   name: MaxLab
   title: CS Mentorship
   location: Georgetown University
   start: 2009
   finish: 2010
-  description:
-      - Optimized computer vision model using massively parallel programming
-        on graphics processing units (GPU) to implement key operations.
-      - Built integrations to the existing model in MATLAB. Achieved a speed
-        up of 12.5x.
-
+  description: >
+    Optimized computer vision model using massively parallel programming on
+    graphics processing units (GPU) to implement key operations. Built
+    integrations to the existing model in MATLAB. Achieved a speed up of 12.5x.
 - uri: socialcomplexity.gmu.edu
   name: Center for Social Complexity
   title: Software Developer Intern
   location: George Mason University
   start: Summer 2009
   finish: ""
-  description:
-      - Implemented a multi-agent modeling simulation using general purpose GPU
-        computing.
-      - Correlated performance with agent complexity as more basic agents
-        fit the massively parallel paradigm.
+  description: >
+    Implemented a multi-agent modeling simulation using general purpose GPU
+    computing. Correlated performance with agent complexity as more basic
+    agents fit the massively parallel paradigm.
