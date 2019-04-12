@@ -49,13 +49,13 @@ email: devrajm@google.com
     list-style-type: none;
     line-height: 1.3rem;
   }
-  tr.indent-row > td:first-child {
-    padding-left: 40px;
+  .justify {
+    text-align-last: justify;
   }
 </style>
 <body>
   <div class="flex">
-    <h1><a href="http://www.linkedin.com/in/devrajmehta">Devraj Mehta</a></h1>
+    <h1><a href="https://www.linkedin.com/in/devrajmehta">Devraj Mehta</a></h1>
     <h4><a href="mailto:{{page.email}}">{{page.email}}</a></h4>
   </div>
 
@@ -65,7 +65,7 @@ email: devrajm@google.com
 
     {% for job in site.data.jobs %}
     <tr class="meta">
-      <td><a href="http://{{job.uri}}">{{job.name}}</a></td>
+      <td><a href="https://{{job.uri}}">{{job.name}}</a></td>
       <td>{{job.title}}</td>
       <td><i>{{job.location}}</i></td>
       <td>
@@ -82,43 +82,47 @@ email: devrajm@google.com
 
     <tr><td colspan=4><h4>Education</h4></td></tr>
     <tr class="meta">
-      <td><a href="http://gatech.edu">Georgia Institute of Technology</a></td>
-      <td><i>College of Computing</i></td>
-      <td></td>
+      <td><a href="https://gatech.edu">Georgia Institute of Technology</a></td>
+      <td colspan=2><i>B.S. Computer Science, Highest Honors</i></td>
       <td>2010 &ndash; 2014</td>
     </tr>
-    <tr class="meta indent-row">
-      <td>BS Computer Science</td>
-      <td><i>Intelligence & Theory</i></td>
-      <td>Highest Honors</td>
-    </tr>
     <tr class="meta">
-      <td colspan=2>
-        <a href="http://tjhsst.edu">
+      <td colspan=3>
+        <a href="https://tjhsst.edu">
           Thomas Jefferson High School for Science and Technology
         </a>
       </td>
-      <td><i>Alexandria, VA</i></td>
       <td>2006 &ndash; 2010</td>
     </tr>
+  </table>
 
+  <table>
     <tr><td colspan=4><h4>Skills</h4></td></tr>
     <tr title="Ordered by proficiency, strongest first.">
-      <td><i>Programming Languages</i></td>
-      <td colspan=3>
-        Javascript, Python, Bash, CSS, SASS, Scala, Java, Clojure, MATLAB
+      <td><i>Languages</i></td>
+      <td class="justify">
+        Javascript, Dart, CSS, SCSS, SQL, Java, Python, Bash, Scala, Go,
+        Clojure, MATLAB
       </td>
     </tr>
     <tr>
-      <td><i>Frameworks and Libraries</i></td>
-      <td colspan=3>
-        Angular, jQuery, FFmpeg, Apache, Django, Mongo, Mysql, Lodash
+      <td><i>Frameworks</i></td>
+      <td class="justify">
+        Angular, Material Design, React, jQuery, Apache, Django, Mongo, Mysql,
+        Lodash
       </td>
     </tr>
     <tr>
-      <td><i>Applications and Tools</i></td>
-      <td colspan=3>
-        Git, p4, SVN, Vagrant, Gulp, Node, Jira, Trac, Travis, JMeter
+      <td><i>Platforms</i></td>
+      <td class="justify">
+        Web, mWeb, Chrome Extension, Chromecast, iOS, tvOS, Android, Android
+        TV, Roku
+      </td>
+    <tr>
+      <td><i>Tools</i></td>
+      <td class="justify">
+        Git, Perforce, SVN, FFmpeg, AppEngine, Vagrant, Gulp, Jira, Trac,
+        Travis, JMeter
       </td>
     </tr>
   </table>
