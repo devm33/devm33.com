@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
     description: `Devraj Mehta personal website.`,
+    siteUrl: `https://devm.dev`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,6 +15,10 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
