@@ -14,7 +14,7 @@ npm install
 Run locally:
 
 ```sh
-npm run dev
+npm start
 ```
 
 ## 🎓 Learning Gatsby
