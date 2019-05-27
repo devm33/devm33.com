@@ -1,16 +1,28 @@
 /**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
+ * Layout component to serve as the base for all pages.
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
+import { createGlobalStyle } from "styled-components";
 
-import Header from "./header"
-import Meta from "./meta"
+import Header from "./header";
+import Meta from "./meta";
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 const Layout = ({ children, title, description }) => {
   const { site } = useStaticQuery(
@@ -24,36 +36,30 @@ const Layout = ({ children, title, description }) => {
         }
       }
     `
-  )
+  );
 
   return (
     <>
-    <Header siteTitle={site.siteMetadata.title} />
-    <Meta title={title || site.siteMetadata.title}
-      description={description || site.siteMetadata.description} />
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `0px 1.0875rem 1.45rem`,
-        paddingTop: 0,
-      }}
-    >
+      <GlobalStyle />
+      <Meta
+        title={title || site.siteMetadata.title}
+        description={description || site.siteMetadata.description}
+      />
+      <Header siteTitle={site.siteMetadata.title} />
       <main>{children}</main>
-    </div>
     </>
-  )
-}
+  );
+};
 
 Layout.defaultProps = {
   title: ``,
-  description: ``,
-}
+  description: ``
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
-  description: PropTypes.string,
-}
+  description: PropTypes.string
+};
 
-export default Layout
+export default Layout;
