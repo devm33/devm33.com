@@ -8,25 +8,26 @@ import { useStaticQuery, graphql } from "gatsby";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { lighten } from "polished";
 
+import "./layout.css";
 import Header from "./header";
 import Meta from "./meta";
 
 const theme = {
   bg: "white",
   fg: "black",
-  accent: `${lighten(0.25, "red")}`
+  accent: `${lighten(0.15, "red")}`
 };
 
 const GlobalStyle = createGlobalStyle`
   html {
-    box-sizing: border-box;
-    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 16px;
+    color: ${theme.fg};
+    background-color: ${theme.bg};
   }
-  *, *::before, *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+  a, a:visited {
+    color: "deepskyblue",
+  }
+  a:hover {
+    color: ${lighten(0.15, "deepskyblue")};
   }
 `;
 
