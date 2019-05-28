@@ -2,58 +2,58 @@
  * Meta component that sets page metadata such as social sharing info.
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 
 const Meta = ({ description, lang, title }) => (
   <Helmet
     htmlAttributes={{
-      lang,
+      lang
     }}
     title={title}
     meta={[
       {
         name: `description`,
-        content: description,
+        content: description
       },
       {
         property: `og:title`,
-        content: title,
+        content: title
       },
       {
         property: `og:description`,
-        content: description,
+        content: description
       },
       {
         property: `og:type`,
-        content: `website`,
+        content: `website`
       },
       {
         name: `twitter:card`,
-        content: `summary`,
+        content: `summary`
       },
       {
         name: `twitter:title`,
-        content: title,
+        content: title
       },
       {
         name: `twitter:description`,
-        content: description,
-      },
+        content: description
+      }
     ]}
   />
-)
+);
 
 Meta.defaultProps = {
   lang: `en`,
-  description: ``,
-}
+  description: ``
+};
 
 Meta.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  title: PropTypes.string.isRequired,
-}
+  title: PropTypes.string.isRequired
+};
 
-export default Meta
+export default Meta;

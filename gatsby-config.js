@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
-    description: `Devraj Mehta personal website.`,
-    siteUrl: `https://devm.dev`,
+    description: `Devraj Mehta's website.`,
+    siteUrl: `https://devm.dev`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -10,8 +10,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -28,8 +28,8 @@ module.exports = {
         background_color: `#000`,
         theme_color: `#000`,
         display: `minimal-ui`,
-        icon: `src/images/favicon-512.png`,
-      },
-    },
-  ],
-}
+        icon: `src/images/favicon-512.png`
+      }
+    }
+  ]
+};

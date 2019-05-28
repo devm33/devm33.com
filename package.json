@@ -40,9 +40,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "format": "prettier \"**/*.{js,jsx,css,md,mdx} \" --write",
-    "lint:md": "write-good $(glob 'src/**/*.md)",
-    "format:md": "remark src/",
+    "format": "prettier \"**/*.{md,js,jsx,json,css}\" --write --ignore-path .gitignore",
+    "lint:md": "write-good $(glob 'content/**/*.md)",
+    "format:md": "remark content/",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   }
 }
