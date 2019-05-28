@@ -5,7 +5,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { lighten } from "polished";
 
 import "./layout.css";
@@ -18,13 +18,12 @@ const theme = {
   accent: `${lighten(0.15, "red")}`
 };
 
-const GlobalStyle = createGlobalStyle`
-  html {
-    color: ${theme.fg};
-    background-color: ${theme.bg};
-  }
-  a, a:visited {
-    color: "deepskyblue",
+const Wrapper = styled.div`
+  color: ${theme.fg};
+  background-color: ${theme.bg};
+  a,
+  a:visited {
+    color: "deepskyblue";
   }
   a:hover {
     color: ${lighten(0.15, "deepskyblue")};
@@ -47,15 +46,14 @@ const Layout = ({ children, title, description }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
+      <Wrapper>
         <Meta
           title={title || site.siteMetadata.title}
           description={description || site.siteMetadata.description}
         />
         <Header siteTitle={site.siteMetadata.title} />
         <main>{children}</main>
-      </>
+      </Wrapper>
     </ThemeProvider>
   );
 };
