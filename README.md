@@ -15,3 +15,15 @@ Run locally:
 ```sh
 npm start
 ```
+
+## TODO
+
+Add projects:
+
+- [ ] https://github.com/devm33/sugarscape-cuda
+- [ ] https://github.com/devm33/words/
+- [ ] https://github.com/devm33/single_monitor
+- [ ] https://github.com/devm33/4clojure_problems
+- [ ] All of the minichat apps?
+- [ ] This site when done :)
+
