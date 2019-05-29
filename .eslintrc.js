@@ -7,6 +7,9 @@ module.exports = {
       version: "detect"
     }
   },
+  rules: {
+    "react/prop-types": [2, { ignore: ["data"] }]
+  },
   env: {
     browser: true
   }

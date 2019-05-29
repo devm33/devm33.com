@@ -9,17 +9,6 @@ const Wrapper = styled.header`
   align-items: center;
   padding: 1rem;
   font-size: 1.12rem;
-  a,
-  a.visited {
-    color: ${props => props.theme.fg};
-    transition: color 0.3s ease-in-out;
-    text-decoration: none;
-    &:hover,
-    &:focus {
-      color: ${props => props.theme.accent};
-      text-decoration: none;
-    }
-  }
 `;
 
 const Nav = styled.nav`

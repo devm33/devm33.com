@@ -6,7 +6,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import styled, { ThemeProvider } from "styled-components";
-import { lighten } from "polished";
+import { lighten, darken } from "polished";
 
 import "./layout.css";
 import Header from "./header";
@@ -23,10 +23,10 @@ const Wrapper = styled.div`
   background-color: ${theme.bg};
   a,
   a:visited {
-    color: "deepskyblue";
+    color: ${darken(0.2, "cornflowerblue")};
   }
   a:hover {
-    color: ${lighten(0.15, "deepskyblue")};
+    color: cornflowerblue;
   }
 `;
 

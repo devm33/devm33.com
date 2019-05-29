@@ -11,7 +11,8 @@
     "gatsby-plugin-sharp": "^2.0.37",
     "gatsby-plugin-sitemap": "^2.1.0",
     "gatsby-plugin-styled-components": "^3.0.7",
-    "gatsby-source-filesystem": "^2.0.36",
+    "gatsby-source-filesystem": "^2.0.37",
+    "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
     "polished": "^3.4.0",
     "prop-types": "^15.7.2",
@@ -31,6 +32,8 @@
     "eslint-plugin-react": "^7.13.0",
     "prettier": "^1.17.1",
     "remark-cli": "^6.0.1",
+    "remark-lint-no-dead-urls": "^0.4.1",
+    "remark-preset-lint-recommended": "^3.0.2",
     "write-good": "^1.0.1"
   },
   "license": "MIT",
@@ -44,5 +47,11 @@
     "lint:md": "write-good $(glob 'content/**/*.md)",
     "format:md": "remark content/",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended",
+      "remark-lint-no-dead-urls"
+    ]
   }
 }
