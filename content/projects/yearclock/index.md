@@ -4,4 +4,4 @@ updated: "2019-05-28"
 image: "yearclock.png"
 ---
 
-TODO
+TODO describe yearclock new tab page.
