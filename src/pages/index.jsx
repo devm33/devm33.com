@@ -42,17 +42,31 @@ const Overlay = styled.div`
   background: linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0) 40%
   );
+  transition: background 0.3s ease-in-out;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
 `;
 
-const Title = styled.span`
-  font-size: 2rem;
+const Title = styled.div`
+  font-size: 1.3rem;
   padding: 1rem 0;
   text-align: center;
+`;
+
+const Subtitle = styled.div`
+  flex: 0;
+  transition: flex 0.5s ease-in-out;
+  overflow: hidden;
+  color: ${props => props.theme.secondary};
+  font-style: italic;
+  font-size: 0.9rem;
 `;
 
 const Content = styled.div`
@@ -62,9 +76,10 @@ const Content = styled.div`
   top: 0;
   width: 100%;
 
-  a:hover {
-    ${Overlay} {
-      background: rgba(255, 255, 255, 0.7);
+  &:hover {
+    ${Subtitle} {
+      flex: 0 1 auto;
+      padding-bottom: 1rem;
     }
   }
 `;
@@ -79,12 +94,13 @@ const IndexPage = ({
       {nodes.map(node => (
         <Card key={node.fields.path}>
           <Content>
+            <ImageWrapper>
+              <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
+            </ImageWrapper>
             <Link to={node.fields.path}>
-              <ImageWrapper>
-                <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
-              </ImageWrapper>
               <Overlay>
                 <Title>{node.frontmatter.title}</Title>
+                <Subtitle>Last updated: {node.frontmatter.updated}</Subtitle>
               </Overlay>
             </Link>
           </Content>
@@ -107,6 +123,7 @@ export const query = graphql`
         frontmatter {
           title
           updated
+          tagline
           image {
             childImageSharp {
               fluid(maxWidth: 500, maxHeight: 500) {

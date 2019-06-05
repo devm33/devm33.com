@@ -25,7 +25,6 @@ const Name = styled.div`
   display: flex;
   justify-content: center;
   font-size: 1.5rem;
-  font-weight: 700;
 `;
 
 const IconLinks = styled.div`

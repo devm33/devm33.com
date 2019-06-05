@@ -17,5 +17,9 @@ h1 {
 
 a {
   text-decoration: none;
+  /* Can't decide about this
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  */
   transition: color 0.3s ease-in-out;
 }

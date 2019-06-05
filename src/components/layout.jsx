@@ -14,8 +14,10 @@ import Meta from "./meta";
 
 const theme = {
   bg: "white",
-  fg: "black",
-  accent: `${lighten(0.15, "red")}`
+  color: "black",
+  secondary: lighten(0.3, "black"),
+  accent: "#d6006c",
+  link: darken(0.2, "cornflowerblue")
 };
 
 const Wrapper = styled.div`
@@ -23,10 +25,10 @@ const Wrapper = styled.div`
   background-color: ${theme.bg};
   a,
   a:visited {
-    color: ${darken(0.2, "cornflowerblue")};
+    color: ${theme.link};
   }
   a:hover {
-    color: cornflowerblue;
+    color: ${theme.accent};
   }
 `;
 
