@@ -45,10 +45,13 @@ const Header = ({ siteTitle }) => (
       <Link to="/">{siteTitle}</Link>
     </Name>
     <IconLinks>
-      <a href="https://githhub.com/devm33">
+      <a href="https://github.com/devm33" aria-label="GitHub profile">
         <FaGithub />
       </a>
-      <a href="https://www.linkedin.com/in/devrajmehta/">
+      <a
+        href="https://www.linkedin.com/in/devrajmehta/"
+        aria-label="LinkedIn profile"
+      >
         <FaLinkedin />
       </a>
     </IconLinks>
