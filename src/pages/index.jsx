@@ -28,19 +28,6 @@ const Content = styled.div`
   width: 100%;
 `;
 
-const ImageWrapper = styled.div`
-  > div {
-    height: 100%;
-    left: 0;
-    position: absolute !important;
-    top: 0;
-    width: 100%;
-    > div {
-      position: static !important;
-    }
-  }
-`;
-
 const Title = styled.div`
   color: ${props => props.theme.link};
   &:hover {
@@ -111,9 +98,7 @@ const IndexPage = ({
       {nodes.map(node => (
         <Card key={node.fields.path}>
           <Content>
-            <ImageWrapper>
-              <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
-            </ImageWrapper>
+            <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
             <Link to={node.fields.path}>
               <Overlay>
                 <Title>{node.frontmatter.title}</Title>
