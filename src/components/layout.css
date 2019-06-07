@@ -21,5 +21,6 @@ a {
   text-decoration: underline;
   text-decoration-skip-ink: auto;
   */
-  transition: color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; /* all prop is overridden below */
+  transition-property: color, background-color, border-color;
 }
