@@ -17,10 +17,6 @@ h1 {
 
 a {
   text-decoration: none;
-  /* Can't decide about this
-  text-decoration: underline;
-  text-decoration-skip-ink: auto;
-  */
   transition: all 0.3s ease-in-out; /* all prop is overridden below */
   transition-property: color, background-color, border-color;
 }
