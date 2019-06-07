@@ -50,6 +50,7 @@ const Subtitle = styled.div`
   overflow: hidden;
   font-size: 0.9rem;
   z-index: 1;
+  pointer-events: none;
   div {
     padding: 0.5rem 1rem;
   }
@@ -60,6 +61,7 @@ const Updated = styled.div`
 `;
 
 const Tags = styled.div`
+  pointer-events: auto; /* override parent Subtitle */
   a:not(:first-child) {
     margin-left: 0.5rem;
   }
@@ -77,6 +79,7 @@ const Tag = styled(Link)`
 `;
 
 const Links = styled.div`
+  pointer-events: auto; /* override parent Subtitle */
   font-size: 1.12rem;
   a:not(:first-child) {
     margin-left: 1rem;
