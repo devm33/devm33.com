@@ -8,9 +8,9 @@ import { useStaticQuery, graphql } from "gatsby";
 import styled, { ThemeProvider } from "styled-components";
 import { lighten, darken } from "polished";
 
-import "./layout.css";
-import Header from "./header";
-import Meta from "./meta";
+import "./Layout.css";
+import Header from "./Header";
+import Meta from "./Meta";
 
 const theme = {
   bg: "white",

@@ -26,7 +26,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
   const project = path.resolve(`src/templates/project.jsx`);
-  const result = await graphql(`
+  const tag = path.resolve(`src/templates/tag.jsx`);
+  const tags = new Set();
+  const projects = await graphql(`
     {
       allMarkdownRemark {
         nodes {
@@ -34,21 +36,31 @@ exports.createPages = async ({ actions, graphql }) => {
             path
             type
           }
+          frontmatter {
+            tags
+          }
         }
       }
     }
   `);
 
-  if (result.errors) {
-    console.error(result.errors);
-    throw result.errors;
+  if (projects.errors) {
+    console.error(projects.errors);
+    throw projects.errors;
   }
 
-  result.data.allMarkdownRemark.nodes.forEach(node => {
+  projects.data.allMarkdownRemark.nodes.forEach(node => {
     if (node.fields.type == "projects") {
       createPage({ path: node.fields.path, component: project });
+      if (node.frontmatter.tags) {
+        node.frontmatter.tags.forEach(tag => tags.add(tag));
+      }
     } else {
       throw new Error("Unknown markdown page type");
     }
   });
+
+  tags.forEach(t =>
+    createPage({ path: `/tag/${t}`, component: tag, context: { tag: t } })
+  );
 };
