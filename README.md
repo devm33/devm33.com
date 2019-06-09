@@ -18,6 +18,10 @@ npm start
 
 ## TODO
 
+Collapse top nav on mobile.
+
+Migrate to devm33.com and fix links.
+
 Add projects:
 
 - [ ] https://github.com/devm33/sugarscape-cuda
@@ -25,5 +29,5 @@ Add projects:
 - [ ] https://github.com/devm33/single_monitor
 - [ ] https://github.com/devm33/4clojure_problems
 - [ ] All of the minichat apps?
+- [ ] Previous site
 - [ ] This site when done :)
-

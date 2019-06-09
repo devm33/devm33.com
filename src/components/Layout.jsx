@@ -17,7 +17,10 @@ const theme = {
   color: "black",
   secondary: lighten(0.3, "black"),
   accent: "#d6006c",
-  link: darken(0.2, "cornflowerblue")
+  link: darken(0.2, "cornflowerblue"),
+  break: {
+    s: "(max-width: 500px)"
+  }
 };
 
 const Wrapper = styled.div`

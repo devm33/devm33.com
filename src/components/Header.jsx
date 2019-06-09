@@ -9,6 +9,9 @@ const Wrapper = styled.header`
   align-items: center;
   padding: 1rem;
   font-size: 1.12rem;
+  @media ${props => props.theme.break.s} {
+    font-size: 1rem;
+  }
 `;
 
 const Nav = styled.nav`
@@ -25,6 +28,9 @@ const Name = styled.div`
   display: flex;
   justify-content: center;
   font-size: 1.5rem;
+  @media ${props => props.theme.break.s} {
+    font-size: 1.2rem;
+  }
 `;
 
 const IconLinks = styled.div`
