@@ -78,6 +78,7 @@ export const Tag = styled(Link)`
   border-radius: 0.5em;
   border: 1px solid ${props => props.theme.link};
   padding: 0.2em 0.5em;
+  &.active,
   &:hover {
     border-color: ${props => props.theme.accent};
     background-color: ${props => props.theme.accent};
@@ -155,7 +156,7 @@ const ProjectGrid = ({ nodes }) => (
               <div>{node.frontmatter.tagline}</div>
               <Tags>
                 {node.frontmatter.tags.map(tag => (
-                  <Tag key={tag} to={`/tag/${tag}`}>
+                  <Tag key={tag} to={`/tag/${tag}`} activeClassName="active">
                     {tag}
                   </Tag>
                 ))}

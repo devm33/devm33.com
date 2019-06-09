@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 
-const Template = ({
+const ProjectTemplate = ({
   data: {
     markdownRemark: { frontmatter, html }
   }
@@ -30,4 +30,4 @@ export const query = graphql`
   }
 `;
 
-export default Template;
+export default ProjectTemplate;

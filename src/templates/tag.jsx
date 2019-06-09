@@ -18,7 +18,7 @@ const Tag = styled.span`
   padding: 0.2em 0.5em;
 `;
 
-const Template = ({
+const TagTemplate = ({
   pageContext: { tag },
   data: {
     allMarkdownRemark: { nodes }
@@ -32,7 +32,7 @@ const Template = ({
   </Layout>
 );
 
-Template.propTypes = {
+TagTemplate.propTypes = {
   pageContext: PropTypes.shape({
     tag: PropTypes.string.isRequired
   })
@@ -54,4 +54,4 @@ export const query = graphql`
   }
 `;
 
-export default Template;
+export default TagTemplate;

@@ -25,8 +25,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
-  const project = path.resolve(`src/templates/project.jsx`);
-  const tag = path.resolve(`src/templates/tag.jsx`);
+  const ProjectTemplate = path.resolve(`src/templates/Project.jsx`);
+  const TagTemplate = path.resolve(`src/templates/Tag.jsx`);
   const tags = new Set();
   const projects = await graphql(`
     {
@@ -51,7 +51,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   projects.data.allMarkdownRemark.nodes.forEach(node => {
     if (node.fields.type == "projects") {
-      createPage({ path: node.fields.path, component: project });
+      createPage({ path: node.fields.path, component: ProjectTemplate });
       if (node.frontmatter.tags) {
         node.frontmatter.tags.forEach(tag => tags.add(tag));
       }
@@ -60,7 +60,11 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   });
 
-  tags.forEach(t =>
-    createPage({ path: `/tag/${t}`, component: tag, context: { tag: t } })
+  tags.forEach(tag =>
+    createPage({
+      path: `/tag/${tag}`,
+      component: TagTemplate,
+      context: { tag }
+    })
   );
 };
