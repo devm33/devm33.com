@@ -22,7 +22,10 @@ module.exports = {
             options: {
               maxWidth: 700
             }
-          }
+          },
+          `gatsby-remark-smartypants`,
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`
         ]
       }
     },
