@@ -2,11 +2,14 @@
 title: Minimal Universal Exponent
 updated: 2019-05-19
 image: screenshot.png
-tagline: TODO describe minimal universal exponent project
-tags: [number theory, jquery]
+tagline: >
+  Computes the minimal universal exponent, Carmichael function, of an integer in
+  javascript.
+tags: [number theory, javascript]
 link: http://devm33.github.io/minimal-universal-exponent/
 repo: https://github.com/devm33/minimal-universal-exponent
 ---
 
-TODO describe minimal universal exponent project:
-http://devm33.github.io/minimal-universal-exponent/
+TODO describe minimal universal exponent project.
+
+https://en.wikipedia.org/wiki/Carmichael_function
