@@ -54,7 +54,7 @@ const Subtitle = styled.div`
   flex: 0;
   transition: flex 0.5s ease-in-out;
   overflow: hidden;
-  font-size: 0.9rem;
+  font-size: ${props => props.theme.font.small};
   width: 100%;
   z-index: 1;
   pointer-events: none;
@@ -88,7 +88,7 @@ export const Tag = styled(Link)`
 
 const Links = styled.span`
   pointer-events: auto; /* override parent Subtitle */
-  font-size: 1.12rem;
+  font-size: ${props => props.theme.font.icon};
   a {
     margin-left: 1rem;
     /* Sad hack for alignment with text: */
