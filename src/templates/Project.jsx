@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
@@ -14,20 +14,37 @@ const Article = styled.article`
 `;
 
 const Subtitle = styled.div`
-  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
   font-size: ${props => props.theme.font.small};
+  margin: -0.25rem -0.25rem;
+`;
+
+const Project = styled.div`
+  margin-top: 0.5rem;
 `;
 
 const Updated = styled.span`
   font-style: italic;
+  margin: 0.25rem;
 `;
 
 const Links = styled.span`
+  display: flex;
+  margin: 0.25rem;
+  a:not(:last-child) {
+    margin-right: 0.5rem;
+  }
   a {
-    margin-left: 1rem;
+    display: flex;
+    align-items: center;
     border-radius: 0.5em;
     border: 1px solid ${props => props.theme.link};
     padding: 0.2em 0.5em;
+    &:active,
     &:hover {
       border-color: ${props => props.theme.accent};
       background-color: ${props => props.theme.accent};
@@ -37,14 +54,7 @@ const Links = styled.span`
   a > svg {
     margin-left: 0.5rem;
     font-size: ${props => props.theme.font.icon};
-    /* Sad hack for alignment with text: */
-    position: relative;
-    top: 4px;
   }
-`;
-
-const Project = styled.div`
-  margin-top: 1rem;
 `;
 
 const ProjectTemplate = ({
@@ -64,9 +74,16 @@ const ProjectTemplate = ({
               <FaGithub />
             </a>
             <a href={frontmatter.link}>
-              Link to project
+              Demo
               <FaExternalLinkAlt />
             </a>
+          </Links>
+          <Links>
+            {frontmatter.tags.map(tag => (
+              <Link key={tag} to={`/tag/${tag}`}>
+                {tag}
+              </Link>
+            ))}
           </Links>
         </Subtitle>
       </header>
