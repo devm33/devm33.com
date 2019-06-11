@@ -3,6 +3,8 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
+import "katex/dist/katex.min.css";
+
 import Layout from "../components/Layout";
 
 const Article = styled.article`
@@ -58,7 +60,7 @@ const ProjectTemplate = ({
           <Updated>Last updated {frontmatter.updated}</Updated>
           <Links>
             <a href={frontmatter.repo}>
-              Repo
+              Source
               <FaGithub />
             </a>
             <a href={frontmatter.link}>

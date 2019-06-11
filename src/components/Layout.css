@@ -21,3 +21,8 @@ a {
   transition: all 0.3s ease-in-out; /* all prop is overridden below */
   transition-property: color, background-color, border-color;
 }
+
+p {
+  margin-bottom: 1.65rem;
+  line-height: 1.65em;
+}
