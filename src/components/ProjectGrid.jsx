@@ -186,7 +186,7 @@ ProjectGrid.propTypes = {
   nodes: PropTypes.arrayOf(
     PropTypes.shape({
       fields: PropTypes.shape({
-        path: PropTypes.string
+        path: PropTypes.string,
       }),
       frontmatter: PropTypes.shape({
         title: PropTypes.string,
@@ -195,10 +195,10 @@ ProjectGrid.propTypes = {
         tags: PropTypes.arrayOf(PropTypes.string),
         link: PropTypes.string,
         repo: PropTypes.string,
-        image: PropTypes.object
-      })
+        image: PropTypes.object,
+      }),
     })
-  )
+  ),
 };
 
 export default ProjectGrid;

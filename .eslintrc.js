@@ -4,13 +4,13 @@ module.exports = {
   parser: "babel-eslint",
   settings: {
     react: {
-      version: "detect"
-    }
+      version: "detect",
+    },
   },
   rules: {
-    "react/prop-types": [2, { ignore: ["data"] }]
+    "react/prop-types": [2, { ignore: ["data"] }],
   },
   env: {
-    browser: true
-  }
+    browser: true,
+  },
 };

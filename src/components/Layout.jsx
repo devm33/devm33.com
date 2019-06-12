@@ -19,12 +19,12 @@ const theme = {
   accent: "#d6006c",
   link: darken(0.2, "cornflowerblue"),
   break: {
-    s: "(max-width: 500px)"
+    s: "(max-width: 500px)",
   },
   font: {
     small: "0.9rem",
-    icon: "1.12rem"
-  }
+    icon: "1.12rem",
+  },
 };
 
 const Wrapper = styled.div`
@@ -69,13 +69,13 @@ const Layout = ({ children, title, description }) => {
 
 Layout.defaultProps = {
   title: ``,
-  description: ``
+  description: ``,
 };
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
 };
 
 export default Layout;

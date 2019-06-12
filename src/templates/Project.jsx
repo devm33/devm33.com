@@ -60,8 +60,8 @@ const Links = styled.span`
 
 const ProjectTemplate = ({
   data: {
-    markdownRemark: { frontmatter, html }
-  }
+    markdownRemark: { frontmatter, html },
+  },
 }) => (
   <Layout title={frontmatter.title}>
     <Article>

@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
     description: `Devraj Mehta's website.`,
-    siteUrl: `https://devm.dev`
+    siteUrl: `https://devm.dev`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -10,8 +10,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
-        path: `${__dirname}/content`
-      }
+        path: `${__dirname}/content`,
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -20,15 +20,15 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 700
-            }
+              maxWidth: 700,
+            },
           },
           `gatsby-remark-smartypants`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-katex`
-        ]
-      }
+          `gatsby-remark-katex`,
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -45,8 +45,8 @@ module.exports = {
         background_color: `#000`,
         theme_color: `#000`,
         display: `minimal-ui`,
-        icon: `src/images/favicon-512.png`
-      }
-    }
-  ]
+        icon: `src/images/favicon-512.png`,
+      },
+    },
+  ],
 };

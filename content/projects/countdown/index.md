@@ -10,31 +10,32 @@ link: https://devm33.github.io/countdown/
 repo: https://github.com/devm33/countdown
 ---
 
-[_Countdown_] is a long running game show on the BBC. It consists of three
-types of rounds: letters rounds, numbers rounds, and a final anagram round.
-The letters round consists of trying to make the longest word out of a pool
-of nine random letters. Similarily, the final round consists of all
-contestants trying to figure out a single nine-letter anagram. The numbers
-round is the one I focused on for this project.
+[_Countdown_] is a long running game show on the BBC. It consists of three types
+of rounds: letters rounds, numbers rounds, and a final anagram round. The
+letters round consists of trying to make the longest word out of a pool of nine
+random letters. Similarily, the final round consists of all contestants trying
+to figure out a single nine-letter anagram. The numbers round is the one I
+focused on for this project.
 
-As an aside, I discovered _Countdown_ via a crossover with [_8 out of 10
-Cats_] a
-British panel show. It's great combination of comedy banter and game show,
-definitely recommend.
+As an aside, I discovered _Countdown_ via a crossover with [_8 out of 10 Cats_]
+a British panel show. It's great combination of comedy banter and game show, I
+recommend it.
 
 [_countdown_]: https://en.wikipedia.org/wiki/Countdown_(game_show)
-[_8 out of 10 cats_]: https://en.wikipedia.org/wiki/8_Out_of_10_Cats_Does_Countdown
+[_8 out of 10 cats_]:
+  https://en.wikipedia.org/wiki/8_Out_of_10_Cats_Does_Countdown
 
 ![Cats does Countdown title card](./cats_does_countdown.jpg)
 
 The numbers round starts with a contestant choosing six numbers from two
-categories: small 1 through 9 and large 25, 50, 75, and 100. At most four
-from the large category can be chosen, in which case one of each 25, 50, 75,
-and 100 will be chosen. Then a three digit number is chosen at random between
-100 and 999. The goal of the round is to create the three digit number from any
-subset of the six smaller numbers using addition, subtraction, multiplication,
-and division. Contestants are given 30 seconds and the winner is whoever gets
-closest within ten: ten points for getting the number, one for nine away.
+categories: small 1 through 9 and large 25, 50, 75, and 100. They can choose at
+most four from the large category, in which case they numbers will include one
+of each 25, 50, 75, and 100. Then a three digit number is randomly generated
+between 100 and 999. The goal of the round is to create the three digit number
+from any subset of the six smaller numbers using addition, subtraction,
+multiplication, and division. Contestants are given 30 seconds and the winner is
+whoever gets closest within ten: ten points for getting the number, one for nine
+away.
 
 ![Numbers round example](./numbers_round.png)
 
@@ -42,9 +43,9 @@ So for this example the contestant chose all small numbers. And an example
 solution to get 609 is $(5 + 2) * ((10 + 4) * 6 + 3)$, or simplifying $7*87$,
 quite a tough one to get!
 
-I wanted to make a version of the numbers round that could be used for
-playing and practicing. This consisted of two efforts: first creating the game
-and then writing a solver.
+I wanted to make a version of the numbers round that could be used for playing
+and practicing. This consisted of two efforts: first creating the game and then
+writing a solver.
 
 ## Creating the Numbers Round
 
@@ -71,11 +72,12 @@ made from abusing a border.
 }
 ```
 
-This creates a triangle by way of adding a visible border on only one side of
-a rectangle with zero width, see https://css-tricks.com/books/volume-i/how-to-make-a-triangle/
+This creates a triangle by way of adding a visible border on only one side of a
+rectangle with zero width, see
+https://css-tricks.com/books/volume-i/how-to-make-a-triangle/
 
-The transition was used to smooth motion of the hand like the one used on
-the show -- rather than a ticking motion.
+The transition was used to smooth motion of the hand like the one used on the
+show -- rather than a ticking motion.
 
 ## Solving the Numbers Round
 
@@ -125,20 +127,20 @@ Messages are passed with data via a `postMessage` call.
 ```js
 this.worker.postMessage({
   numbers: this.props.numbers,
-  goal: this.props.goal
+  goal: this.props.goal,
 });
 ```
 
 The web worker search function itself is a standard breadth-first search
 implementation to exhaust the solution graph. Visiting is tracked by
 intermediate states to reduce some duplicate paths. The neighbors function is
-also defined to avoid states that are duplicates due to associative
-operations or trivial operations (multiplying by one or adding zero).
+also defined to avoid states that are duplicates due to associative operations
+or trivial operations (multiplying by one or adding zero).
 
 I also added a performance measure to the search function to track what was
 happening on the worker thread. Of course then I became obsessed with optimizing
-the BFS for every nanosecond. I reduced the search time to under 0.1s, but
-I'm sure there's more I could do to go even faster!
+the BFS for every nanosecond. I reduced the search time to under 0.1s, but I'm
+sure there's more I could do to go even faster!
 
 <!-- prettier-ignore -->
 ```js
@@ -173,9 +175,9 @@ function search(a, g) {
 
 ## Drawing Solutions with D3
 
-Each solution to a numbers problem is a DAG and can be seen as sort of a trie.
-For example for the solution to the previous problem: $(5 + 2) * ((10 + 4) * 6 +
-3)$, we can draw the graph for this solution as:
+Each solution to a numbers problem is a DAG. For example for the solution to the
+previous problem: $(5 + 2) * ((10 + 4) * 6 + 3)$, we can draw the graph for this
+solution as:
 
 ```
        [509]
@@ -190,8 +192,8 @@ For example for the solution to the previous problem: $(5 + 2) * ((10 + 4) * 6 +
 ```
 
 Here I've drawn the operators outside of the graph for aesthetics, but to see
-this a trie the value of each of the intermediate nodes is really the operator
-and the intermediate number is just a consequence of that operator on the two
+this a trie the value of each of the intermediate nodes is instead the operator
+and the intermediate number is a consequence of that operator on the two
 children.
 
 ```
@@ -200,7 +202,7 @@ children.
 7     87
 ```
 
-I chose to use the [d3 dendrogram] to render this graph, rotated to have the
+I chose to use the [d3 dendrogram][] to render this graph, rotated to have the
 starting numbers at the top collascing down to the goal number.
 
 [d3 dendrogram]: https://www.d3-graph-gallery.com/dendrogram

@@ -21,8 +21,8 @@ const Tag = styled.span`
 const TagTemplate = ({
   pageContext: { tag },
   data: {
-    allMarkdownRemark: { nodes }
-  }
+    allMarkdownRemark: { nodes },
+  },
 }) => (
   <Layout title={tag}>
     <Header>
@@ -34,8 +34,8 @@ const TagTemplate = ({
 
 TagTemplate.propTypes = {
   pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired
-  })
+    tag: PropTypes.string.isRequired,
+  }),
 };
 
 export const query = graphql`

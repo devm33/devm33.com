@@ -6,8 +6,8 @@ import ProjectGrid from "../components/ProjectGrid";
 
 const IndexPage = ({
   data: {
-    allMarkdownRemark: { nodes }
-  }
+    allMarkdownRemark: { nodes },
+  },
 }) => (
   <Layout>
     <ProjectGrid nodes={nodes} />

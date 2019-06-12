@@ -9,7 +9,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: "path",
-      value: path.join("/", fileNode.relativeDirectory)
+      value: path.join("/", fileNode.relativeDirectory),
     });
     // Adds the type field as the first directory of the page's path, e.g. "projects"
     createNodeField({
@@ -18,7 +18,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value: path
         .dirname(fileNode.relativeDirectory)
         .split(path.sep)
-        .pop()
+        .pop(),
     });
   }
 };
@@ -64,7 +64,7 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: `/tag/${tag}`,
       component: TagTemplate,
-      context: { tag }
+      context: { tag },
     })
   );
 };
