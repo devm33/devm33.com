@@ -1,4 +1,21 @@
 {
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "format": "prettier \"**/*.{md,js,jsx,json,css}\" --write --ignore-path .gitignore",
+    "lint:md": "write-good $(glob 'content/**/*.md')",
+    "format:md": "remark content/",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended",
+      "remark-lint-no-dead-urls"
+    ]
+  },
   "private": true,
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
@@ -32,6 +49,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "cli-glob": "^0.1.0",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.13.0",
     "eslint-config-prettier": "^4.3.0",
@@ -44,22 +62,5 @@
     "remark-preset-lint-recommended": "^3.0.2",
     "write-good": "^1.0.1"
   },
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "format": "prettier \"**/*.{md,js,jsx,json,css}\" --write --ignore-path .gitignore",
-    "lint:md": "write-good $(glob 'content/**/*.md)",
-    "format:md": "remark content/",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended",
-      "remark-lint-no-dead-urls"
-    ]
-  }
+  "license": "MIT"
 }
