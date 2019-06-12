@@ -23,6 +23,10 @@ a {
 }
 
 p {
-  margin-bottom: 1.65rem;
   line-height: 1.65em;
+}
+
+p,
+.gatsby-highlight {
+  margin-bottom: 1.65rem;
 }
