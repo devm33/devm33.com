@@ -130,15 +130,15 @@ this.worker.postMessage({
 ```
 
 The web worker search function itself is a standard breadth-first search
-implementation to exhaust the solution graph. Visiting is keyed off
+implementation to exhaust the solution graph. Visiting is tracked by
 intermediate states to reduce some duplicate paths. The neighbors function is
-also defined to avoid states that are duplicates due to associative operations
-or trivial operations (multiplying by one or adding zero).
+also defined to avoid states that are duplicates due to associative
+operations or trivial operations (multiplying by one or adding zero).
 
 I also added a performance measure to the search function to track what was
 happening on the worker thread. Of course then I became obsessed with optimizing
-the BFS for every nanosecond. Currently the search returns in under 0.1s, but
-I'm sure more could be done to go faster!
+the BFS for every nanosecond. I reduced the search time to under 0.1s, but
+I'm sure there's more I could do to go even faster!
 
 <!-- prettier-ignore -->
 ```js
@@ -170,3 +170,37 @@ function search(a, g) {
   postMessage({ type: 'DONE', time: (performance.now() - start) / 1000 });
 }
 ```
+
+## Drawing Solutions with D3
+
+Each solution to a numbers problem is a DAG and can be seen as sort of a trie.
+For example for the solution to the previous problem: $(5 + 2) * ((10 + 4) * 6 +
+3)$, we can draw the graph for this solution as:
+
+```
+       [509]
+      /     \
+     7   *   87
+    / \     /  \
+  (5)+(2)  84 + (3)
+          /  \
+        14 * (6)
+       / \
+    (10)+(4)
+```
+
+Here I've drawn the operators outside of the graph for aesthetics, but to see
+this a trie the value of each of the intermediate nodes is really the operator
+and the intermediate number is just a consequence of that operator on the two
+children.
+
+```
+   *  [509]
+ /   \
+7     87
+```
+
+I chose to use the [d3 dendrogram] to render this graph, rotated to have the
+starting numbers at the top collascing down to the goal number.
+
+[d3 dendrogram]: https://www.d3-graph-gallery.com/dendrogram
