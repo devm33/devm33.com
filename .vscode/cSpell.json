@@ -14,22 +14,27 @@
     "latex"
   ],
   "words": [
+    "Devraj",
+    "Linkedin",
+    "Mehta",
+    "Mehta's",
     "dendrogram",
     "devm",
+    "frontmatter",
     "gitignore",
     "katex",
     "minichat",
+    "minmax",
     "netlify",
     "prismjs",
     "repo",
     "solarizedlight",
     "tabstopper",
-    "yearclock",
-    "Devraj",
-    "Mehta",
-    "Mehta's"
+    "webp",
+    "yearclock"
   ],
   "ignorePaths": [
+    "package-lock.json",
     ".gitignore",
     ".cache/**",
     "public/**",
