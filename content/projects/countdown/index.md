@@ -83,10 +83,10 @@ rather than a ticking motion.
 To see the alternate solutions and confirm there is a solution when stuck (since
 sometimes it's not possible) I needed to write a solver. The search space of the
 problem is small since each number can only be used once and the branching
-factor is $\leq$ 4, less than since with associative operations equivalent paths
-can be pruned. Still since I wanted all solutions I implemented the solver in a
-web worker to keep the main thread free. This improvement was evident in the
-animation of the Countdown clock.
+factor is less than four since associative operations led to equivalent paths
+that can be pruned. Still since I wanted all solutions I implemented the solver
+in a web worker to keep the main thread free. This improvement was evident in
+the animation of the Countdown clock.
 
 Refactoring the search function to a web worker was straightforward with modern
 browser support, see https://caniuse.com/#feat=webworkers
@@ -202,8 +202,19 @@ children.
 ```
 
 I chose to use the [d3 dendrogram][] to render this graph, rotated to have the
-starting numbers at the top coalescing down to the goal number.
+starting numbers at the top coalescing down to the goal number. I used the
+[@vx][] library to integrate react and d3. Then, styled the starting numbers to
+look like the game tiles.
 
 [d3 dendrogram]: https://www.d3-graph-gallery.com/dendrogram
+[@vx]: https://github.com/hshoff/vx
 
 ![Solution diagram](./solution.png)
+
+## Follow up
+
+One thing to come back and add here is the ability to specify the game state as
+an input. This often comes up when I've seen an interesting numbers round and am
+curious what other solutions are possible.
+
+And of course the letters round would be fun to build.

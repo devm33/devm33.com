@@ -1,21 +1,24 @@
 {
-    "version": "0.1",
-    "language": "en",
-    "words": [
-        "dendrogram",
-        "devm",
-        "frontmatter",
-        "gitignore",
-        "katex",
-        "Linkedin",
-        "minichat",
-        "minmax",
-        "netlify",
-        "prismjs",
-        "repo",
-        "solarizedlight",
-        "tabstopper",
-        "webp",
-        "yearclock"
-    ]
+  "version": "0.1",
+  "language": "en",
+  "words": [
+    "dendrogram",
+    "devm",
+    "frontmatter",
+    "gitignore",
+    "katex",
+    "Linkedin",
+    "minichat",
+    "minmax",
+    "netlify",
+    "prismjs",
+    "repo",
+    "solarizedlight",
+    "tabstopper",
+    "webp",
+    "yearclock",
+    "Devraj",
+    "Mehta",
+    "Mehta's"
+  ]
 }
