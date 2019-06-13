@@ -5,15 +5,19 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 
+import { theme, rhythm } from "../style";
+
+const minTileSize = "300px";
+
 const Grid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(${minTileSize}, 1fr));
 `;
 
 // Ensure a minimum number of grid cells
 const GridFiller = styled.div`
-  @media (max-width: 300px) {
+  @media (max-width: ${minTileSize}) {
     display: none;
   }
 `;
@@ -54,7 +58,7 @@ const Subtitle = styled.div`
   flex: 0;
   transition: flex 0.5s ease-in-out;
   overflow: hidden;
-  font-size: ${props => props.theme.font.small};
+  font-size: ${theme.font.small};
   width: 100%;
   z-index: 1;
   pointer-events: none;
@@ -76,19 +80,19 @@ const Tags = styled.div`
 
 export const Tag = styled(Link)`
   border-radius: 0.5em;
-  border: 1px solid ${props => props.theme.link};
+  border: 1px solid ${theme.link};
   padding: 0.2em 0.5em;
   &.active,
   &:hover {
-    border-color: ${props => props.theme.accent};
-    background-color: ${props => props.theme.accent};
+    border-color: ${theme.accent};
+    background-color: ${theme.accent};
     color: white !important;
   }
 `;
 
 const Links = styled.span`
   pointer-events: auto; /* override parent Subtitle */
-  font-size: ${props => props.theme.font.icon};
+  font-size: ${theme.font.icon};
   a {
     margin-left: 1rem;
     /* Sad hack for alignment with text: */
@@ -148,7 +152,10 @@ const ProjectGrid = ({ nodes }) => (
         <Content>
           <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
           <Overlay>
-            <OverlayLink to={node.fields.path} aria-label={node.frontmatter.title}/>
+            <OverlayLink
+              to={node.fields.path}
+              aria-label={node.frontmatter.title}
+            />
             <TitleLink to={node.fields.path}>
               {node.frontmatter.title}
             </TitleLink>

@@ -1,6 +1,6 @@
 ---
 title: Countdown Solver
-updated: 2019-05-29
+updated: 2019-06-13
 image: countdown.png
 tagline: >
   Generates and solves Countdown numbers round with a BFS search in a web

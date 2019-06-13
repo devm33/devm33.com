@@ -5,27 +5,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import styled, { ThemeProvider } from "styled-components";
-import { lighten, darken } from "polished";
+import styled from "styled-components";
 
-import "./Layout.css";
+import "../reset.css";
 import Header from "./Header";
 import Meta from "./Meta";
-
-const theme = {
-  bg: "white",
-  color: "black",
-  secondary: lighten(0.3, "black"),
-  accent: "#d6006c",
-  link: darken(0.2, "cornflowerblue"),
-  break: {
-    s: "(max-width: 500px)",
-  },
-  font: {
-    small: "0.9rem",
-    icon: "1.12rem",
-  },
-};
+import { theme } from "../style";
 
 const Wrapper = styled.div`
   color: ${theme.fg};
@@ -36,6 +21,11 @@ const Wrapper = styled.div`
   }
   a:hover {
     color: ${theme.accent};
+  }
+  a {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out; /* all prop is overridden below */
+    transition-property: color, background-color, border-color;
   }
 `;
 
@@ -54,16 +44,14 @@ const Layout = ({ children, title, description }) => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <Wrapper>
-        <Meta
-          title={title || site.siteMetadata.title}
-          description={description || site.siteMetadata.description}
-        />
-        <Header siteTitle={site.siteMetadata.title} />
-        <main>{children}</main>
-      </Wrapper>
-    </ThemeProvider>
+    <Wrapper>
+      <Meta
+        title={title || site.siteMetadata.title}
+        description={description || site.siteMetadata.description}
+      />
+      <Header siteTitle={site.siteMetadata.title} />
+      <main>{children}</main>
+    </Wrapper>
   );
 };
 

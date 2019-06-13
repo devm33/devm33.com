@@ -6,6 +6,7 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism-solarizedlight.css";
 
+import { theme } from "../style";
 import Layout from "../components/Layout";
 
 const Article = styled.article`
@@ -20,7 +21,7 @@ const Subtitle = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  font-size: ${props => props.theme.font.small};
+  font-size: ${theme.font.small};
   margin: -0.25rem -0.25rem;
 `;
 
@@ -43,18 +44,18 @@ const Links = styled.span`
     display: flex;
     align-items: center;
     border-radius: 0.5em;
-    border: 1px solid ${props => props.theme.link};
+    border: 1px solid ${theme.link};
     padding: 0.2em 0.5em;
     &:active,
     &:hover {
-      border-color: ${props => props.theme.accent};
-      background-color: ${props => props.theme.accent};
+      border-color: ${theme.accent};
+      background-color: ${theme.accent};
       color: white !important;
     }
   }
   a > svg {
     margin-left: 0.5rem;
-    font-size: ${props => props.theme.font.icon};
+    font-size: ${theme.font.icon};
   }
 `;
 

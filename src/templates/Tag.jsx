@@ -3,6 +3,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 
+import { theme } from "../style";
 import Layout from "../components/Layout";
 import ProjectGrid from "../components/ProjectGrid";
 
@@ -13,8 +14,8 @@ const Header = styled.h1`
 
 const Tag = styled.span`
   border-radius: 0.5em;
-  border: 1px solid ${props => props.theme.link};
-  color: ${props => props.theme.link};
+  border: 1px solid ${theme.link};
+  color: ${theme.link};
   padding: 0.2em 0.5em;
 `;
 
