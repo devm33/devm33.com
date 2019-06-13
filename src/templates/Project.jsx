@@ -70,11 +70,11 @@ const ProjectTemplate = ({
         <Subtitle>
           <Updated>Last updated {frontmatter.updated}</Updated>
           <Links>
-            <a href={frontmatter.repo}>
+            <a href={frontmatter.repo} aria-label="GitHub repo">
               Source
               <FaGithub />
             </a>
-            <a href={frontmatter.link}>
+            <a href={frontmatter.link} aria-label="Project demo">
               Demo
               <FaExternalLinkAlt />
             </a>

@@ -148,7 +148,7 @@ const ProjectGrid = ({ nodes }) => (
         <Content>
           <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
           <Overlay>
-            <OverlayLink to={node.fields.path} />
+            <OverlayLink to={node.fields.path} aria-label={node.frontmatter.title}/>
             <TitleLink to={node.fields.path}>
               {node.frontmatter.title}
             </TitleLink>
@@ -167,7 +167,7 @@ const ProjectGrid = ({ nodes }) => (
                   <a href={node.frontmatter.repo} aria-label="GitHub repo">
                     <FaGithub />
                   </a>
-                  <a href={node.frontmatter.link}>
+                  <a href={node.frontmatter.link} aria-label="Project demo">
                     <FaExternalLinkAlt />
                   </a>
                 </Links>
