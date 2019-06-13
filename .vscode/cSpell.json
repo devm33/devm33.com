@@ -1,24 +1,39 @@
 {
   "version": "0.1",
   "language": "en",
+  "dictionaries": [
+    "en_US",
+    "companies",
+    "softwareTerms",
+    "node",
+    "html",
+    "css",
+    "fonts",
+    "filetypes",
+    "npm",
+    "latex"
+  ],
   "words": [
     "dendrogram",
     "devm",
-    "frontmatter",
     "gitignore",
     "katex",
-    "Linkedin",
     "minichat",
-    "minmax",
     "netlify",
     "prismjs",
     "repo",
     "solarizedlight",
     "tabstopper",
-    "webp",
     "yearclock",
     "Devraj",
     "Mehta",
     "Mehta's"
+  ],
+  "ignorePaths": [
+    ".gitignore",
+    ".cache/**",
+    "public/**",
+    "node_modules/**",
+    ".vscode/**"
   ]
 }
