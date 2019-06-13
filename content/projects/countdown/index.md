@@ -13,9 +13,9 @@ repo: https://github.com/devm33/countdown
 [_Countdown_] is a long running game show on the BBC. It consists of three types
 of rounds: letters rounds, numbers rounds, and a final anagram round. The
 letters round consists of trying to make the longest word out of a pool of nine
-random letters. Similarily, the final round consists of all contestants trying
-to figure out a single nine-letter anagram. The numbers round is the one I
-focused on for this project.
+random letters. Similarly, the final round consists of all contestants trying to
+figure out a single nine-letter anagram. The numbers round is the one I focused
+on for this project.
 
 As an aside, I discovered _Countdown_ via a crossover with [_8 out of 10 Cats_]
 a British panel show. It's great combination of comedy banter and game show, I
@@ -33,29 +33,28 @@ most four from the large category, in which case they numbers will include one
 of each 25, 50, 75, and 100. Then a three digit number is randomly generated
 between 100 and 999. The goal of the round is to create the three digit number
 from any subset of the six smaller numbers using addition, subtraction,
-multiplication, and division. Contestants are given 30 seconds and the winner is
+multiplication, and division. Contestants have 30 seconds and the winner is
 whoever gets closest within ten: ten points for getting the number, one for nine
 away.
 
 ![Numbers round example](./numbers_round.png)
 
-So for this example the contestant chose all small numbers. And an example
-solution to get 609 is $(5 + 2) * ((10 + 4) * 6 + 3)$, or simplifying $7*87$,
-quite a tough one to get!
+For this example the contestant chose all small numbers. And an example solution
+to get 609 is $(5 + 2) * ((10 + 4) * 6 + 3)$, or simplifying $7*87$, a tough one
+to get!
 
-I wanted to make a version of the numbers round that could be used for playing
-and practicing. This consisted of two efforts: first creating the game and then
-writing a solver.
+I wanted to make a version of the numbers round for playing and practicing. This
+consisted of two efforts: first creating the game and then writing a solver.
 
 ## Creating the Numbers Round
 
-I created the Countdown clock and numbers board with css only. Most of which was
+I created the Countdown clock and numbers board with css. Most of which was
 straightforward borders and rotation, e.g. for the clock ticks.
 
 ![Clock and board](./clock.png)
 
-The clock hand was put together with one of my favorite css tricks: a triangle
-made from abusing a border.
+The clock hand css uses one of my favorite css tricks: a triangle made from
+abusing a border.
 
 ![Clock breakdown](./clock_breakdown.png)
 
@@ -72,27 +71,27 @@ made from abusing a border.
 }
 ```
 
-This creates a triangle by way of adding a visible border on only one side of a
+This creates a triangle by way of adding a visible border on one side of a
 rectangle with zero width, see
 https://css-tricks.com/books/volume-i/how-to-make-a-triangle/
 
-The transition was used to smooth motion of the hand like the one used on the
-show -- rather than a ticking motion.
+The transition smooths motion of the hand like the one used on the show --
+rather than a ticking motion.
 
 ## Solving the Numbers Round
 
-In order to see the alternate solutions and confirm there is a solution when
-stuck (since sometimes it's not possible) I needed to write a solver. The search
-space of the problem is relatively small since each number can only be used once
-and the branching factor is $\leq$ 4, less than since with associative
-operations equivalent paths can be pruned. Still since I wanted all solutions I
-implemented the solver in a web worker to keep the main thread free. This
-improvement was especially evident in the operation of the Countdown clock.
+To see the alternate solutions and confirm there is a solution when stuck (since
+sometimes it's not possible) I needed to write a solver. The search space of the
+problem is small since each number can only be used once and the branching
+factor is $\leq$ 4, less than since with associative operations equivalent paths
+can be pruned. Still since I wanted all solutions I implemented the solver in a
+web worker to keep the main thread free. This improvement was evident in the
+animation of the Countdown clock.
 
 Refactoring the search function to a web worker was straightforward with modern
 browser support, see https://caniuse.com/#feat=webworkers
 
-The web worker code is placed in a separate available js file and given an event
+The web worker code is in a separate available js file and given an event
 listener to receive messages from the application.
 
 <!-- prettier-ignore -->
@@ -114,8 +113,8 @@ addEventListener("message", function(e) {
 }, false);
 ```
 
-In the application code the web worker is created and a corresponding event
-listener is added for receiving messages back from the worker.
+The application code creates the web worker and adds a corresponding event
+listener for receiving messages back from the worker.
 
 ```js
 this.worker = new Worker("search.js");
@@ -155,7 +154,7 @@ function search(a, g) {
       if(p.value === g) { // Check for goal
         goalFound = true;
         postMessage({ type: 'GOAL', path: p });
-        return; // Dont search past goal
+        return; // Don't search past goal
       } else if(!goalFound && p.value < g && g - p.value < closest) {
         closest = g - p.value;
         postMessage({ type: 'CLOSEST', path: p });
@@ -203,6 +202,6 @@ children.
 ```
 
 I chose to use the [d3 dendrogram][] to render this graph, rotated to have the
-starting numbers at the top collascing down to the goal number.
+starting numbers at the top coalescing down to the goal number.
 
 [d3 dendrogram]: https://www.d3-graph-gallery.com/dendrogram
