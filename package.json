@@ -8,6 +8,7 @@
     "format": "prettier \"**/*.{md,js,jsx,json,css}\" --write --ignore-path .gitignore",
     "lint:md": "write-good $(glob 'content/**/*.md')",
     "lint:links": "remark content/",
+    "lint:spelling": "cspell **/{*.jsx,*.md}",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "remarkConfig": {
@@ -49,6 +50,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "cli-glob": "^0.1.0",
+    "cspell": "^4.0.23",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.13.0",
     "eslint-config-prettier": "^4.3.0",
