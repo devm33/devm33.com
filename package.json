@@ -8,7 +8,7 @@
     "format": "prettier \"**/*.{md,js,jsx,json,css}\" --write --ignore-path .gitignore",
     "lint:md": "write-good $(glob 'content/**/*.md')",
     "lint:links": "remark content/",
-    "lint:spelling": "cspell **/{*.jsx,*.md}",
+    "lint:spelling": "cspell --config .vscode/cSpell.json '**/{*.jsx,*.md}'",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "remarkConfig": {
