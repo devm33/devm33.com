@@ -205,3 +205,5 @@ I chose to use the [d3 dendrogram][] to render this graph, rotated to have the
 starting numbers at the top coalescing down to the goal number.
 
 [d3 dendrogram]: https://www.d3-graph-gallery.com/dendrogram
+
+![Solution diagram](./solution.png)
