@@ -22,22 +22,9 @@ const GridFiller = styled.div`
   }
 `;
 
-// TODO are the styles in Card and Content needed?
 const Card = styled.div`
   position: relative;
-  &:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
-  }
-`;
-
-const Content = styled.div`
   height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
 `;
 
 const OverlayLink = styled(Link)`
@@ -150,39 +137,35 @@ const ProjectGrid = ({ nodes }) => (
   <Grid>
     {nodes.map(node => (
       <Card key={node.fields.path}>
-        <Content>
-          <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
-          <Overlay>
-            <OverlayLink
-              to={node.fields.path}
-              aria-label={node.frontmatter.title}
-            />
-            <TitleLink to={node.fields.path}>
-              {node.frontmatter.title}
-            </TitleLink>
-            <Subtitle>
-              <div>{node.frontmatter.tagline}</div>
-              <Tags>
-                {node.frontmatter.tags.map(tag => (
-                  <Tag key={tag} to={`/tag/${tag}`} activeClassName="active">
-                    {tag}
-                  </Tag>
-                ))}
-              </Tags>
-              <div>
-                <Updated>Last updated: {node.frontmatter.updated}</Updated>
-                <Links>
-                  <a href={node.frontmatter.repo} aria-label="GitHub repo">
-                    <FaGithub />
-                  </a>
-                  <a href={node.frontmatter.link} aria-label="Project demo">
-                    <FaExternalLinkAlt />
-                  </a>
-                </Links>
-              </div>
-            </Subtitle>
-          </Overlay>
-        </Content>
+        <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
+        <Overlay>
+          <OverlayLink
+            to={node.fields.path}
+            aria-label={node.frontmatter.title}
+          />
+          <TitleLink to={node.fields.path}>{node.frontmatter.title}</TitleLink>
+          <Subtitle>
+            <div>{node.frontmatter.tagline}</div>
+            <Tags>
+              {node.frontmatter.tags.map(tag => (
+                <Tag key={tag} to={`/tag/${tag}`} activeClassName="active">
+                  {tag}
+                </Tag>
+              ))}
+            </Tags>
+            <div>
+              <Updated>Last updated: {node.frontmatter.updated}</Updated>
+              <Links>
+                <a href={node.frontmatter.repo} aria-label="GitHub repo">
+                  <FaGithub />
+                </a>
+                <a href={node.frontmatter.link} aria-label="Project demo">
+                  <FaExternalLinkAlt />
+                </a>
+              </Links>
+            </div>
+          </Subtitle>
+        </Overlay>
       </Card>
     ))}
     <GridFiller />
