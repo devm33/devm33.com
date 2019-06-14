@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 
-import { theme, rhythm } from "../style";
+import { theme, scale, rhythm } from "../style";
 
 const minTileSize = "300px";
 
@@ -22,6 +22,7 @@ const GridFiller = styled.div`
   }
 `;
 
+// TODO are the styles in Card and Content needed?
 const Card = styled.div`
   position: relative;
   &:before {
@@ -48,17 +49,17 @@ const OverlayLink = styled(Link)`
 `;
 
 const TitleLink = styled(Link)`
-  font-size: 1.3rem;
+  ${scale(1 / 2)}
   padding: 1.5rem 0 1rem 0;
   text-align: center;
   z-index: 1;
 `;
 
 const Subtitle = styled.div`
+  ${theme.font.small}
   flex: 0;
   transition: flex 0.5s ease-in-out;
   overflow: hidden;
-  font-size: ${theme.font.small};
   width: 100%;
   z-index: 1;
   pointer-events: none;
@@ -92,7 +93,7 @@ export const Tag = styled(Link)`
 
 const Links = styled.span`
   pointer-events: auto; /* override parent Subtitle */
-  font-size: ${theme.font.icon};
+  ${theme.font.icon}
   a {
     margin-left: 1rem;
     /* Sad hack for alignment with text: */

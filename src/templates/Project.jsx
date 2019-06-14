@@ -21,8 +21,8 @@ const Subtitle = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  font-size: ${theme.font.small};
   margin: -0.25rem -0.25rem;
+  ${theme.font.small}
 `;
 
 const Project = styled.div`
@@ -55,7 +55,7 @@ const Links = styled.span`
   }
   a > svg {
     margin-left: 0.5rem;
-    font-size: ${theme.font.icon};
+    ${theme.font.icon}
   }
 `;
 
