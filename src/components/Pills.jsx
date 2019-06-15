@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { theme, rhythm } from "../style";
+import theme from "../theme";
+import { rhythm } from "../typography";
 
 const Wrapper = styled.span`
   display: flex;

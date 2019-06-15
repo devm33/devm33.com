@@ -5,7 +5,8 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 
-import { theme, scale, rhythm } from "../style";
+import theme from "../theme";
+import { scale, rhythm } from "../typography";
 import Pills from "./Pills";
 
 const minTileSize = "300px";

@@ -1,4 +1,4 @@
-import { theme } from "src/style";
+const config = require("./src/config");
 
 module.exports = {
   siteMetadata: {
@@ -22,7 +22,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: theme.contentWidth,
+              maxWidth: config.contentWidth,
             },
           },
           `gatsby-remark-smartypants`,
@@ -41,7 +41,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/style`,
+        pathToConfigModule: `src/typography`,
         omitGoogleFont: true,
       },
     },

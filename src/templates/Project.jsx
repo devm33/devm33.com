@@ -6,7 +6,8 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism-solarizedlight.css";
 
-import { theme, rhythm } from "../style";
+import theme from "../theme";
+import { rhythm } from "../typography";
 import Layout from "../components/Layout";
 import Pills from "../components/Pills";
 

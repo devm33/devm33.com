@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "gatsby";
 
-import { theme, rhythm } from "../style";
+import theme from "../theme";
+import { rhythm } from "../typography";
 
 const Wrapper = styled.header`
   display: flex;

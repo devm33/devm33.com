@@ -10,7 +10,7 @@ import styled from "styled-components";
 import "../reset.css";
 import Header from "./Header";
 import Meta from "./Meta";
-import { theme } from "../style";
+import theme from "../theme";
 
 const Wrapper = styled.div`
   color: ${theme.fg};
