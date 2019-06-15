@@ -1,3 +1,5 @@
+import { theme } from "src/style";
+
 module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
@@ -20,7 +22,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 700,
+              maxWidth: theme.contentWidth,
             },
           },
           `gatsby-remark-smartypants`,

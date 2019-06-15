@@ -4,24 +4,21 @@ import styled from "styled-components";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "gatsby";
 
-import { theme } from "../style";
+import { theme, rhythm } from "../style";
 
 const Wrapper = styled.header`
   display: flex;
   align-items: center;
-  padding: 1rem;
-  font-size: 1.12rem;
-  @media ${theme.break.s} {
-    font-size: 1rem;
-  }
+  padding: ${rhythm(1 / 2)};
 `;
 
+// TODO collapse Nav on mobile.
 const Nav = styled.nav`
   flex: 1;
   display: flex;
   justify-content: flex-start;
   a:not(:first-child) {
-    margin-left: 1rem;
+    margin-left: ${rhythm(1)};
   }
 `;
 
@@ -29,9 +26,9 @@ const Name = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  font-size: 1.5rem;
+  ${theme.font.title}
   @media ${theme.break.s} {
-    font-size: 1.2rem;
+    ${theme.font.subtitle}
   }
 `;
 
@@ -40,8 +37,9 @@ const IconLinks = styled.div`
   display: flex;
   justify-content: flex-end;
   a:not(:first-child) {
-    margin-left: 1rem;
+    margin-left: ${rhythm(1)};
   }
+  ${theme.font.icon};
 `;
 
 const Header = ({ siteTitle }) => (

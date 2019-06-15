@@ -6,6 +6,7 @@ import Img from "gatsby-image";
 import PropTypes from "prop-types";
 
 import { theme, scale, rhythm } from "../style";
+import Pills from "./Pills";
 
 const minTileSize = "300px";
 
@@ -28,16 +29,15 @@ const Card = styled.div`
 `;
 
 const OverlayLink = styled(Link)`
-  height: 100%;
-  left: 0;
   position: absolute;
-  top: 0;
+  height: 100%;
   width: 100%;
 `;
 
 const TitleLink = styled(Link)`
   ${scale(1 / 2)}
-  padding: 1.5rem 0 1rem 0;
+  padding-top: ${rhythm(1)};
+  padding-bottom: ${rhythm(1)};
   text-align: center;
   z-index: 1;
 `;
@@ -50,8 +50,13 @@ const Subtitle = styled.div`
   width: 100%;
   z-index: 1;
   pointer-events: none;
-  div {
-    padding: 0.5rem 1rem;
+  a {
+    pointer-events: all;
+  }
+  & > * {
+    padding-bottom: ${rhythm(1 / 2)};
+    padding-left: ${rhythm(1)};
+    padding-right: ${rhythm(1)};
   }
 `;
 
@@ -59,30 +64,10 @@ const Updated = styled.span`
   font-style: italic;
 `;
 
-const Tags = styled.div`
-  pointer-events: auto; /* override parent Subtitle */
-  a:not(:first-child) {
-    margin-left: 0.5rem;
-  }
-`;
-
-export const Tag = styled(Link)`
-  border-radius: 0.5em;
-  border: 1px solid ${theme.link};
-  padding: 0.2em 0.5em;
-  &.active,
-  &:hover {
-    border-color: ${theme.accent};
-    background-color: ${theme.accent};
-    color: white !important;
-  }
-`;
-
 const Links = styled.span`
-  pointer-events: auto; /* override parent Subtitle */
   ${theme.font.icon}
   a {
-    margin-left: 1rem;
+    margin-left: ${rhythm(1 / 2)};
     /* Sad hack for alignment with text: */
     position: relative;
     top: 3px;
@@ -146,13 +131,13 @@ const ProjectGrid = ({ nodes }) => (
           <TitleLink to={node.fields.path}>{node.frontmatter.title}</TitleLink>
           <Subtitle>
             <div>{node.frontmatter.tagline}</div>
-            <Tags>
+            <Pills>
               {node.frontmatter.tags.map(tag => (
-                <Tag key={tag} to={`/tag/${tag}`} activeClassName="active">
+                <Link key={tag} to={`/tag/${tag}`} activeClassName="active">
                   {tag}
-                </Tag>
+                </Link>
               ))}
-            </Tags>
+            </Pills>
             <div>
               <Updated>Last updated: {node.frontmatter.updated}</Updated>
               <Links>

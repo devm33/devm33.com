@@ -3,20 +3,22 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 
-import { theme } from "../style";
+import { theme, rhythm } from "../style";
 import Layout from "../components/Layout";
 import ProjectGrid from "../components/ProjectGrid";
 
 const Header = styled.h1`
-  font-size: 1.3rem;
-  padding: 1rem;
+  ${theme.font.title}
+  padding: ${rhythm(1 / 2)};
+  display: flex;
 `;
 
 const Tag = styled.span`
   border-radius: 0.5em;
   border: 1px solid ${theme.link};
   color: ${theme.link};
-  padding: 0.2em 0.5em;
+  padding: 0 0.5em;
+  margin-left: ${rhythm(1 / 4)};
 `;
 
 const TagTemplate = ({
@@ -25,7 +27,7 @@ const TagTemplate = ({
     allMarkdownRemark: { nodes },
   },
 }) => (
-  <Layout title={tag}>
+  <Layout title={`Projects tagged ${tag}`}>
     <Header>
       Projects tagged <Tag>{tag}</Tag>
     </Header>

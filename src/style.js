@@ -34,8 +34,12 @@ export const theme = {
     xs: "(max-width: 300px)",
     s: "(max-width: 500px)",
   },
+  contentWidth: 700,
   font: {
     small: scale(-1 / 6),
+    body: scale(0),
     icon: scale(1 / 6),
+    subtitle: scale(1 / 5),
+    title: scale(1 / 2),
   },
 };
