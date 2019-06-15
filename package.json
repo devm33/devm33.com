@@ -11,7 +11,7 @@
     "lint:md": "write-good $(glob 'content/**/*.md')",
     "lint:links": "remark content/",
     "lint:spelling": "cspell --config .vscode/cSpell.json '**/*.{md,js,jsx,json,css}'",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "npm run lint"
   },
   "remarkConfig": {
     "plugins": [
