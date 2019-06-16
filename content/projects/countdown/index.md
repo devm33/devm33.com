@@ -82,11 +82,11 @@ rather than a ticking motion.
 
 To see the alternate solutions and confirm there is a solution when stuck (since
 sometimes it's not possible) I needed to write a solver. The search space of the
-problem is small since each number can only be used once and the branching
-factor is less than four since associative operations led to equivalent paths
-that can be pruned. Still since I wanted all solutions I implemented the solver
-in a web worker to keep the main thread free. This improvement was evident in
-the animation of the Countdown clock.
+problem is small since the depth is at most six and the branching factor is less
+than four since associative operations led to equal value paths that are
+prunable. Still since I wanted all solutions I implemented the solver in a web
+worker to keep the main thread free. This improvement was evident in the
+animation of the Countdown clock.
 
 Refactoring the search function to a web worker was straightforward with modern
 browser support, see https://caniuse.com/#feat=webworkers
@@ -121,7 +121,8 @@ this.worker = new Worker("search.js");
 this.worker.addEventListener("message", e => this.onMessage(e.data));
 ```
 
-Messages are passed with data via a `postMessage` call.
+Each thread passes messages with data via a `postMessage` call. For example, the
+application code sends the following message to start a search.
 
 ```js
 this.worker.postMessage({
@@ -131,8 +132,8 @@ this.worker.postMessage({
 ```
 
 The web worker search function itself is a standard breadth-first search
-implementation to exhaust the solution graph. Visiting is tracked by
-intermediate states to reduce some duplicate paths. The neighbors function is
+implementation to exhaust the solution graph. The visited set key off of
+intermediate values to reduce some duplicate paths. The neighbors function is
 also defined to avoid states that are duplicates due to associative operations
 or trivial operations (multiplying by one or adding zero).
 
