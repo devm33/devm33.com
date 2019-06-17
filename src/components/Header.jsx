@@ -18,9 +18,6 @@ const Nav = styled.nav`
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  a:not(:first-child) {
-    margin-left: ${rhythm(1)};
-  }
 `;
 
 const Name = styled.div`
@@ -38,7 +35,7 @@ const IconLinks = styled.div`
   display: flex;
   justify-content: flex-end;
   a:not(:first-child) {
-    margin-left: ${rhythm(1)};
+    margin-left: ${rhythm(1 / 2)};
   }
   ${theme.font.icon};
 `;

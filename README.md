@@ -24,6 +24,10 @@ npm start
 
 Collapse top nav on mobile.
 
+Write about page.
+
+Add resume page (linked from about)
+
 Migrate to devm33.com and fix links.
 
 Add projects:
