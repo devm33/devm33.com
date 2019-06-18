@@ -22,11 +22,21 @@ npm start
 
 ## TODO
 
-Collapse top nav on mobile.
+Write pong page.
+
+Write gulp angular template page.
+
+Write fair coin flip page.
+
+Write minimal universal exponent.
+
+Write motivation extension page.
 
 Write about page.
 
 Add resume page (linked from about)
+
+Collapse top nav on mobile (potentially)
 
 Migrate to devm33.com and fix links.
 
