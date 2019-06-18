@@ -43,6 +43,6 @@ function tabDirective() {
 ```
 
 I built this plugin because I was over optimizing another side project using
-Angular. Building it served as a nice learning experience for the gulp plugin
-ecosystem. There were a lot of well maintained and well tested plugins to
-emulate.
+Angular. Building it served as a nice intro to the gulp plugin ecosystem. There
+were a lot of well maintained and well tested plugins to emulate (read: copy
+from).
