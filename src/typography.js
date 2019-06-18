@@ -16,6 +16,11 @@ const typography = new Typography({
   headerFontFamily: fonts,
   bodyFontFamily: fonts,
   scaleRatio: 2,
+  overrideStyles: ({ rhythm }) => ({
+    ".gatsby-highlight": {
+      "margin-bottom": rhythm(1),
+    },
+  }),
 });
 
 export const rhythm = typography.rhythm;
