@@ -37,13 +37,16 @@ const OverlayLink = styled(Link)`
 
 const TitleLink = styled(Link)`
   ${scale(1 / 2)}
+  width: 100%;
   padding-top: ${rhythm(1)};
   padding-bottom: ${rhythm(1)};
   text-align: center;
+  background-color: #ffffffec;
   z-index: 1;
 `;
 
 const Subtitle = styled.div`
+  background-color: #ffffffec;
   ${theme.font.small}
   flex: 0;
   transition: flex 0.5s ease-in-out;
@@ -81,38 +84,16 @@ const Overlay = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.92) 0%,
-    rgba(255, 255, 255, 0) 35%
-  );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  &:before {
-    background-color: rgba(255, 255, 255, 0.92);
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0;
-  }
   &:hover {
-    &:before {
-      opacity: 1;
-    }
     ${Subtitle} {
       flex: 1;
     }
   }
   @media (any-hover: none) {
-    &:before {
-      opacity: 1;
-    }
     ${Subtitle} {
       flex: 1;
     }
