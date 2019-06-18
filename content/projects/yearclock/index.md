@@ -19,6 +19,8 @@ opposite effect, instead of promoting a sense of urgency seeing your age
 increase - giving a calming impression from the clock hand moving a day at a
 time.
 
+[motivation]: /projects/motivation
+
 I've kept this extension as my new tab page for over a year now and to my
 surprise it has not had the calming affect I expected. Instead it often feels
 like the clock hand moves faster than expected as the weeks and months fly by.
