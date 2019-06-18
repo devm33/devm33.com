@@ -145,7 +145,7 @@ const ProjectGrid = ({ nodes }) => (
                 <a href={node.frontmatter.repo} aria-label="GitHub repo">
                   <FaGithub />
                 </a>
-                <a href={node.frontmatter.link} aria-label="Project demo">
+                <a href={node.frontmatter.link} aria-label="Project link">
                   <FaExternalLinkAlt />
                 </a>
               </Links>

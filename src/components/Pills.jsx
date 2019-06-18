@@ -24,7 +24,7 @@ const Wrapper = styled.span`
     }
   }
   a > svg {
-    margin-left: ${rhythm(1 / 2)};
+    margin-left: ${rhythm(1 / 4)};
     ${theme.font.icon}
   }
 `;

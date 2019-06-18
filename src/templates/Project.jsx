@@ -52,8 +52,8 @@ const ProjectTemplate = ({
               Source
               <FaGithub />
             </a>
-            <a href={frontmatter.link} aria-label="Project demo">
-              Demo
+            <a href={frontmatter.link} aria-label="Project link">
+              Link
               <FaExternalLinkAlt />
             </a>
           </Pills>
