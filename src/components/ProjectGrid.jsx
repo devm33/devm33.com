@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql, Link, navigateTo } from "gatsby";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import styled from "styled-components";
 import Img from "gatsby-image";
@@ -49,7 +49,7 @@ const Subtitle = styled.div`
   background-color: #ffffffec;
   ${theme.font.small}
   flex: 0;
-  transition: flex 0.5s ease-in-out;
+  transition: flex 0.3s ease-in-out;
   overflow: hidden;
   width: 100%;
   z-index: 1;
@@ -103,7 +103,7 @@ const Overlay = styled.div`
 const ProjectGrid = ({ nodes }) => (
   <Grid>
     {nodes.map(node => (
-      <Card key={node.fields.path}>
+      <Card key={node.fields.path} onClick={_ => navigateTo(node.fields.path)}>
         <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
         <Overlay>
           <OverlayLink
