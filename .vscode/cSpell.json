@@ -24,6 +24,7 @@
     "devm",
     "frontmatter",
     "gitignore",
+    "inlines",
     "katex",
     "minichat",
     "minmax",
