@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 import "katex/dist/katex.min.css";
-import "prismjs/themes/prism-solarizedlight.css";
+// import "prismjs/themes/prism-solarizedlight.css";
+import "prismjs/themes/prism.css";
 
 import theme from "../theme";
 import { rhythm } from "../typography";
