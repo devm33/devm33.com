@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 };
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
   const ProjectTemplate = path.resolve(`src/templates/Project.jsx`);
   const TagTemplate = path.resolve(`src/templates/Tag.jsx`);
   const tags = new Set();
@@ -67,4 +67,11 @@ exports.createPages = async ({ actions, graphql }) => {
       context: { tag },
     })
   );
+
+  // Create redirect for previous blog urls.
+  createRedirects({
+    fromPath: "/2014-12-04/",
+    toPath: "/projects/motivation",
+    isPermanent: true,
+  });
 };
