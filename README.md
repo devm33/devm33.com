@@ -22,15 +22,13 @@ npm start
 
 ## TODO
 
-Write pong page.
-
-Write gulp angular template page.
-
 Write fair coin flip page.
 
 Write minimal universal exponent.
 
-Write motivation extension page.
+Port jekyll-nfs post.
+
+Port 4clojure post.
 
 Write about page.
 
@@ -38,7 +36,7 @@ Add resume page (linked from about)
 
 Collapse top nav on mobile (potentially)
 
-Migrate to devm33.com and fix links.
+Migrate to devm33.com
 
 Add projects:
 

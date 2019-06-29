@@ -49,6 +49,7 @@ exports.createPages = async ({ actions, graphql }) => {
     throw projects.errors;
   }
 
+  // Add project pages.
   projects.data.allMarkdownRemark.nodes.forEach(node => {
     if (node.fields.type == "projects") {
       createPage({ path: node.fields.path, component: ProjectTemplate });
@@ -60,6 +61,7 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   });
 
+  // Add tag pages.
   tags.forEach(tag =>
     createPage({
       path: `/tag/${tag}`,
@@ -68,10 +70,25 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  // Create redirect for previous blog urls.
-  createRedirects({
-    fromPath: "/2014-12-04/",
+  // Add redirects.
+  createRedirect({
+    fromPath: "/projects",
+    toPath: "/",
+    isPermanent: true,
+  });
+  // Redirects for previous blog site urls.
+  createRedirect({
+    fromPath: "/2015-06-07",
+    toPath: "/projects/4clojure",
+  });
+  createRedirect({
+    fromPath: "/2014-12-04",
     toPath: "/projects/motivation",
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: "/2014-09-22",
+    toPath: "/projects/jekyll-nfs",
     isPermanent: true,
   });
 };
