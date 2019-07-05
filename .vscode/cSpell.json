@@ -25,6 +25,7 @@
     "devm",
     "frontmatter",
     "gitignore",
+    "daybox",
     "inlines",
     "katex",
     "minichat",
