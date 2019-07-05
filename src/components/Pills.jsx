@@ -11,9 +11,9 @@ const Wrapper = styled.span`
   a:not(:last-child) {
     margin-right: ${rhythm(1 / 2)};
   }
-  margin-bottom: -${rhythm(1 / 2)};
   a {
-    margin-bottom: ${rhythm(1 / 2)};
+    margin-top: ${rhythm(1 / 4)};
+    margin-bottom: ${rhythm(1 / 4)};
     display: flex;
     white-space: nowrap;
     align-items: center;

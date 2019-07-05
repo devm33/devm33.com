@@ -17,17 +17,14 @@ const Article = styled.article`
   max-width: ${theme.contentWidth}px;
 `;
 
-const margin = rhythm(1 / 4);
-
 const Subtitle = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: ${rhythm(1)};
-  margin: -${margin} -${margin};
+  padding-bottom: ${rhythm(3 / 4)};
   & > span {
-    margin: ${margin};
+    margin-bottom: ${rhythm(1 / 4)};
   }
   ${theme.font.small}
 `;

@@ -47,6 +47,11 @@ transparent borders. It made an appealing effect so I kept it.
 }
 ```
 
+Here is one of the `.day` elements highlighted to show how the effect emerges
+from all the transparent borders overlapping.
+
+![Day element highlighted](./daybox.png)
+
 Later, I added a light mode that inverted all the colors. The small circle in
 the center of the clock is a button that switches the mode. I'd like to add a
 color mode as well that transitions the color around the clock aligning with
