@@ -18,7 +18,7 @@ application would take place between two browsers using a direct connection,
 limiting user-input to initiating procedure, and perhaps re-implemented in
 WebAssembly to support a higher number of bits for the keys to be secure.
 
-# Algorithm
+## Algorithm
 
 Consider the two parties Bob and Alice.
 
@@ -54,3 +54,32 @@ residue].
 
 At this point, Alice does not know which of `a` or `b` is the root `r` that Bob
 used to generate `s`.
+
+**6. Alice sends one of the four roots to Bob.**
+
+![four roots choice](./four_roots.png)
+
+Since Alice doesn't know which root was Bob's original root there's a 50/50
+chance the root sent to Bob will be either the same one or its negation. In that
+case, Bob doesn't receive any new info. **This means Alice wins the coin flip.**
+
+Otherwise if Alice sends a root that Bob doesn't know about, Bob now has all
+four roots and is able to derive both of `n`'s prime factors `p` and `q`. **Bob
+then sends `p` and `q` back to Alice to prove it and that means Bob wins the
+coin flip.**
+
+## Implementation
+
+The substantive parts of the implementation are to complete steps 1 and 5:
+generating the primes factors and solving for the square roots. I left the
+jQuery UI-wiring code in the [`index.html`] and pulled the more complex out to a
+separate [js file].
+
+[`index.html`]: https://github.com/devm33/fair-coin-flip/blob/master/index.html
+[js file]:
+  https://github.com/devm33/fair-coin-flip/blob/master/fair-coin-flip.js
+
+To generate the primes efficiently, I used the [Sieve of Eratosthenes] to create
+a list of primes less than a million.
+
+[sieve of eratosthenes]: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
