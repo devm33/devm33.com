@@ -32,12 +32,16 @@
     "katex",
     "minichat",
     "minmax",
+    "modp",
     "netlify",
+    "pseudocode",
+    "performant",
     "prismjs",
     "repo",
     "solarizedlight",
     "tabstopper",
     "webp",
+    "yacas",
     "yearclock"
   ],
   "ignorePaths": [
