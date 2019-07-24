@@ -22,28 +22,22 @@ npm start
 
 ## TODO
 
-Write fair coin flip page.
+Launch checklist:
 
-Write minimal universal exponent.
+- [ ] Write minimal universal exponent.
+- [ ] Port jekyll-nfs post. (check redirect)
+- [ ] Port 4clojure post. (check redirect)
+- [ ] Write about page.
+- [ ] Add resume page (linked from about) (also generate pdf version)
+- [ ] Collapse top nav on mobile (potentially)
+- [ ] Migrate to devm33.com : see https://devm33.com/sitemap.xml
 
-Port jekyll-nfs post.
-
-Port 4clojure post.
-
-Write about page.
-
-Add resume page (linked from about)
-
-Collapse top nav on mobile (potentially)
-
-Migrate to devm33.com
-
-Add projects:
+Post launch candidates:
 
 - [ ] https://github.com/devm33/sugarscape-cuda
 - [ ] https://github.com/devm33/words/
 - [ ] https://github.com/devm33/single_monitor
 - [ ] https://github.com/devm33/4clojure_problems
 - [ ] All the minichat apps?
-- [ ] Previous site
+- [ ] Previous site?
 - [ ] This site when done :)

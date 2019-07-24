@@ -227,9 +227,9 @@ Note: assume all operations are mod the modulus (ie in Z modulus)
 Let result := 1
 While exponent > 0
   If exponent is odd then
-    result := result * base
-  base := base * base
-  exponent := integer divide exponent by 2
+    Multiply result by base
+  Square base
+  Integer divide exponent by 2
 Return result
 ```
 

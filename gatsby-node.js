@@ -91,4 +91,9 @@ exports.createPages = async ({ actions, graphql }) => {
     toPath: "/projects/jekyll-nfs",
     isPermanent: true,
   });
+  createRedirect({
+    fromPath: "/2014-09-21",
+    toPath: "/projects/jekyll-nfs",
+    isPermanent: true,
+  });
 };
