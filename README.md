@@ -22,17 +22,25 @@ npm start
 
 ## TODO
 
-Launch checklist:
+### Launch checklist:
 
+- [x] Write gulp angular template page.
+- [x] Write yearclock page.
+- [x] Write countdown page.
+- [x] Write tabstopper page.
+- [x] Write pong page.
+- [x] Write fair coin flip page.
 - [ ] Write minimal universal exponent.
-- [ ] Port jekyll-nfs post. (check redirect)
-- [ ] Port 4clojure post. (check redirect)
+- [x] Port motivation page and add redirect.
+- [ ] Port jekyll-nfs post and add redirect.
+- [ ] Port 4clojure post and add redirect.
+- [x] Add tag/category pages.
 - [ ] Write about page.
 - [ ] Add resume page (linked from about) (also generate pdf version)
 - [ ] Collapse top nav on mobile (potentially)
 - [ ] Migrate to devm33.com : see https://devm33.com/sitemap.xml
 
-Post launch candidates:
+### Post launch candidates:
 
 - [ ] https://github.com/devm33/sugarscape-cuda
 - [ ] https://github.com/devm33/words/
