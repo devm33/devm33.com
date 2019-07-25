@@ -33,7 +33,7 @@ npm start
 - [x] Write minimal universal exponent.
 - [x] Port motivation page and add redirect.
 - [x] Port jekyll-nfs post and add redirect.
-- [ ] Port 4clojure post and add redirect.
+- [x] Port 4clojure post and add redirect.
 - [x] Add tag/category pages.
 - [ ] Write about page.
 - [ ] Add resume page (linked from about) (also generate pdf version)
