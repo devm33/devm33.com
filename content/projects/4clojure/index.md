@@ -101,10 +101,11 @@ learning different parts of the clojure APIs.
 
 <http://www.4clojure.com/problem/60>
 
-Another place that I got great feedback was the clojure source code. I was
-introduced to clojure code by the 4clojure problems that consist of
-re-implementing core functions. The clojure docs link to the relevant line in
-the source. I appreciate when documentation links to the source it's describing.
+Another place that I got great feedback was the clojure source code. Some of the
+4clojure problems consist of re-implementing core functions which prompted me to
+look at the actual implementations. The clojure docs link to the relevant line
+in the source. I appreciate when documentation links to the source it's
+describing.
 
 <https://clojuredocs.org/clojure.core/reductions> See the link to source in the
 top right under clojure.core.
