@@ -38,7 +38,8 @@ npm start
 - [ ] Write about page.
 - [ ] Add resume page (linked from about) (also generate pdf version)
 - [ ] Collapse top nav on mobile (potentially)
-- [ ] Migrate to devm33.com : see https://devm33.com/sitemap.xml
+- [ ] Check https://devm33.com/sitemap.xml
+- [ ] Superimpose git history onto devm33 repo.
 
 ### Post launch candidates:
 
