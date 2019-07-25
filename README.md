@@ -30,9 +30,9 @@ npm start
 - [x] Write tabstopper page.
 - [x] Write pong page.
 - [x] Write fair coin flip page.
-- [ ] Write minimal universal exponent.
+- [x] Write minimal universal exponent.
 - [x] Port motivation page and add redirect.
-- [ ] Port jekyll-nfs post and add redirect.
+- [x] Port jekyll-nfs post and add redirect.
 - [ ] Port 4clojure post and add redirect.
 - [x] Add tag/category pages.
 - [ ] Write about page.
