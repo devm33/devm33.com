@@ -123,12 +123,16 @@ const ProjectGrid = ({ nodes }) => (
             <div>
               <Updated>Last updated: {node.frontmatter.updated}</Updated>
               <Links>
-                <a href={node.frontmatter.repo} aria-label="GitHub repo">
-                  <FaGithub />
-                </a>
-                <a href={node.frontmatter.link} aria-label="Project link">
-                  <FaExternalLinkAlt />
-                </a>
+                {node.frontmatter.repo && (
+                  <a href={node.frontmatter.repo} aria-label="GitHub repo">
+                    <FaGithub />
+                  </a>
+                )}
+                {node.frontmatter.link && (
+                  <a href={node.frontmatter.link} aria-label="Project link">
+                    <FaExternalLinkAlt />
+                  </a>
+                )}
               </Links>
             </div>
           </Subtitle>

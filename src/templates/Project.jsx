@@ -45,14 +45,18 @@ const ProjectTemplate = ({
         <Subtitle>
           <Updated>Last updated {frontmatter.updated}</Updated>
           <Pills>
-            <a href={frontmatter.repo} aria-label="GitHub repo">
-              Source
-              <FaGithub />
-            </a>
-            <a href={frontmatter.link} aria-label="Project link">
-              Link
-              <FaExternalLinkAlt />
-            </a>
+            {frontmatter.repo && (
+              <a href={frontmatter.repo} aria-label="GitHub repo">
+                Source
+                <FaGithub />
+              </a>
+            )}
+            {frontmatter.link && (
+              <a href={frontmatter.link} aria-label="Project link">
+                Link
+                <FaExternalLinkAlt />
+              </a>
+            )}
           </Pills>
           <Pills>
             {frontmatter.tags.map(tag => (
