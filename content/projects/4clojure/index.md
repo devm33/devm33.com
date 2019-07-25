@@ -54,7 +54,8 @@ This frustration is apparent in my submitted solution.
 This approach works but is clunky and far from efficient. Knowing what I know
 now I'd opt for using a lazy sequence.
 
-```clojure(defn fib [n]
+```clojure
+(defn fib [n]
   (letfn [(fib [a b] (cons a (lazy-seq (fib b (+ a b)))))]
     (take n (fib 1 1))))
 ```
