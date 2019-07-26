@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
 
 import theme from "../theme";
 import Layout from "../components/Layout";
@@ -10,11 +12,12 @@ const Article = styled.article`
   margin: 0 auto;
 `;
 
-const About = () => (
+const About = ({ data }) => (
   <Layout>
     <Article>
       <h1>About</h1>
-      <p>TODO: Create about page</p>
+      <p>Hello! I'm Devraj</p>
+      <Img fixed={data.fileName.childImageSharp.fixed} alt="" />
       <p>
         This blog&apos;s source:{" "}
         <a href="https://github.com/devm33/devm.dev">
@@ -26,3 +29,15 @@ const About = () => (
 );
 
 export default About;
+
+export const query = graphql`
+  query {
+    fileName: file(relativePath: { eq: "me.jpg" }) {
+      childImageSharp {
+        fixed(width: 300, height: 300) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`;
