@@ -16,7 +16,7 @@ const About = ({ data }) => (
   <Layout>
     <Article>
       <h1>About</h1>
-      <p>Hello! I'm Devraj</p>
+      <p>Hello! I&apos;m Devraj</p>
       <Img fixed={data.fileName.childImageSharp.fixed} alt="" />
       <p>
         This blog&apos;s source:{" "}
