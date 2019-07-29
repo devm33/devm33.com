@@ -41,7 +41,11 @@ npm start
 - [ ] Check https://devm33.com/sitemap.xml
 - [ ] Superimpose git history onto devm33 repo.
 
-### Post launch candidates:
+### Post-launch TODO:
+
+- [ ] Add image tags to Meta component and use on all pages with fallback.
+
+### Project candidates:
 
 - [ ] https://github.com/devm33/sugarscape-cuda
 - [ ] https://github.com/devm33/words/

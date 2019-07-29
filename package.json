@@ -10,7 +10,7 @@
     "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:md": "write-good $(glob 'content/**/*.md') --no-tooWordy",
     "lint:links": "remark content/",
-    "lint:spelling": "cspell --config .vscode/cSpell.json '**/*.{md,js,jsx,json,css}'",
+    "lint:spelling": "cspell --config .vscode/cSpell.json '**/*.{md,js,jsx,json,css,yml}'",
     "test": "npm run lint"
   },
   "remarkConfig": {
@@ -39,6 +39,7 @@
     "gatsby-source-filesystem": "^2.0.37",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
+    "gatsby-transformer-yaml": "^2.2.4",
     "katex": "^0.10.2",
     "polished": "^3.4.0",
     "prismjs": "^1.16.0",
