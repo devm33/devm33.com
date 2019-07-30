@@ -97,9 +97,9 @@ exports.createPages = async ({ actions, graphql }) => {
 
 // Generate PDF of resume page
 exports.onPostBuild = async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
   await page.goto(url.pathToFileURL(resumePath));
-  await page.pdf({ path: "./public/resume.pdf", scale: 1, format: "letter" });
+  await page.pdf({ path: "./public/resume.pdf" });
 };
