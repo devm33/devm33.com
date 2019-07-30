@@ -20,6 +20,9 @@ const typography = new Typography({
     ".gatsby-highlight": {
       "margin-bottom": rhythm(1),
     },
+    ".gatsby-image-wrapper": {
+      "margin-bottom": rhythm(1),
+    },
     code: {
       "font-size": "0.85rem !important" /* Overriding prismjs size */,
     },
