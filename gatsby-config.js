@@ -47,13 +47,6 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/typography`,
-        omitGoogleFont: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `devm.dev`,
