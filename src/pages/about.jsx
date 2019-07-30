@@ -16,13 +16,8 @@ const About = ({ data }) => (
   <Layout>
     <Article>
       <h1>About</h1>
-      <p>Hello! I&apos;m Devraj,</p>
-      <p>
-        <Img
-          fixed={data.fileName.childImageSharp.fixed}
-          alt="photo of my face"
-        />
-      </p>
+      <p>Hello! I&apos;m Devraj.</p>
+      <Img fixed={data.fileName.childImageSharp.fixed} alt="photo of my face" />
       <p>
         You can find me on <a href="https://github.com/devm33">LinkedIn</a> or{" "}
         <a href="https://www.linkedin.com/in/devrajmehta">GitHub</a>. My resume
