@@ -109,7 +109,7 @@ const Resume = ({
                 <i>{job.location}</i>
               </td>
               <TdRight>
-                {job.start} {job.finish && "–" + job.finish}
+                {job.start} {job.finish && "– " + job.finish}
               </TdRight>
             </TrMeta>
             <TrDesc>
