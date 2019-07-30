@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link, navigateTo } from "gatsby";
+import { graphql, Link, navigate } from "gatsby";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import styled from "styled-components";
 import Img from "gatsby-image";
@@ -103,7 +103,7 @@ const Overlay = styled.div`
 const ProjectGrid = ({ nodes }) => (
   <Grid>
     {nodes.map(node => (
-      <Card key={node.fields.path} onClick={_ => navigateTo(node.fields.path)}>
+      <Card key={node.fields.path} onClick={_ => navigate(node.fields.path)}>
         <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
         <Overlay>
           <OverlayLink
