@@ -8,7 +8,7 @@ import "../../reset.css";
 const email = "dev@devm.dev";
 
 const Wrapper = styled.div`
-  font-family: Times-Roman, Times, FreeSerif, serif;
+  font-family: Times-Roman, Times, FreeSerif, "Liberation Serif", serif;
   font-size: 16px;
   max-width: 682px;
   margin: 10px auto 100px auto;
