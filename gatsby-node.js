@@ -2,6 +2,8 @@ const path = require("path");
 const url = require("url");
 const puppeteer = require("puppeteer");
 
+/** DEBUG */ const { exec } = require("child_process");
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   // Add fields to markdown pages
@@ -97,6 +99,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
 // Generate PDF of resume page
 exports.onPostBuild = async () => {
+  /** DEBUG */ exec("fc-list", console.log);
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
