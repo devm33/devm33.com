@@ -1,4 +1,6 @@
 const path = require("path");
+const url = require("url");
+const puppeteer = require("puppeteer");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -91,4 +93,17 @@ exports.createPages = async ({ actions, graphql }) => {
     toPath: "/projects/jekyll-nfs",
     isPermanent: true,
   });
+};
+
+// Generate PDF of resume page
+exports.onPostBuild = async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto(
+    url.pathToFileURL(path.join(__dirname, "public/resume/index.html")),
+    {
+      waitUntil: "load",
+    }
+  );
+  await page.pdf({ path: "./public/resume.pdf" });
 };

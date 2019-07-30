@@ -35,8 +35,8 @@ npm start
 - [x] Port jekyll-nfs post and add redirect.
 - [x] Port 4clojure post and add redirect.
 - [x] Add tag/category pages.
-- [ ] Write about page.
-- [ ] Add resume page (linked from about) (also generate pdf version)
+- [x] Write about page.
+- [x] Add resume page (linked from about) (also generate pdf version)
 - [ ] Collapse top nav on mobile (potentially)
 - [ ] Check https://devm33.com/sitemap.xml
 - [ ] Superimpose git history onto devm33 repo.
