@@ -101,5 +101,5 @@ exports.onPostBuild = async () => {
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
   await page.goto(url.pathToFileURL(resumePath));
-  await page.pdf({ path: "./public/resume.pdf" });
+  await page.pdf({ path: "./public/resume.pdf", scale: 1, format: "letter" });
 };
