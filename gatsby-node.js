@@ -99,11 +99,7 @@ exports.createPages = async ({ actions, graphql }) => {
 exports.onPostBuild = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto(
-    url.pathToFileURL(path.join(__dirname, "public/resume/index.html")),
-    {
-      waitUntil: "load",
-    }
-  );
+  const resumePath = path.join(__dirname, "public/resume/index.html");
+  await page.goto(url.pathToFileURL(resumePath));
   await page.pdf({ path: "./public/resume.pdf" });
 };
