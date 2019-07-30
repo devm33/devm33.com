@@ -30,7 +30,10 @@ const About = ({ data }) => (
           https://github.com/devm33/devm.dev
         </a>
       </p>
-      <p>Feel free to reach me by email at anything at devm33.com</p>
+      <p>
+        Feel free to reach me by email at{" "}
+        <a href="mailto:dev@devm.dev">dev@devm.dev</a>
+      </p>
       <p>
         Cheers! <br /> Devraj
       </p>
