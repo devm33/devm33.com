@@ -8,7 +8,8 @@ import "../../reset.css";
 const email = "dev@devm.dev";
 
 const Wrapper = styled.div`
-  font-family: "Times New Roman", Times, serif;
+  font-family: Times, serif;
+  font-size: 12pt;
   max-width: 512pt;
   margin: 10px auto 100px auto;
   @media print {
@@ -28,6 +29,9 @@ const Wrapper = styled.div`
   h4 {
     margin: 10px 0 5px 0;
   }
+  table {
+    width: 100%;
+  }
 `;
 
 const Header = styled.header`
@@ -44,6 +48,7 @@ const TrMeta = styled.tr`
 const TrDesc = styled.tr`
   & > td {
     padding-bottom: 10px;
+    line-height: 1.25em;
   }
 `;
 const TdRight = styled.td`
