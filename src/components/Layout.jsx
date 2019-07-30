@@ -6,11 +6,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 
 import "../reset.css";
 import Header from "./Header";
 import Meta from "./Meta";
 import theme from "../theme";
+import typography from "../typography";
 
 const Wrapper = styled.div`
   color: ${theme.fg};
@@ -45,6 +47,9 @@ const Layout = ({ children, title, description }) => {
 
   return (
     <Wrapper>
+      <Helmet>
+        <style>{typography.toString()}</style>
+      </Helmet>
       <Meta
         title={title || site.siteMetadata.title}
         description={description || site.siteMetadata.description}

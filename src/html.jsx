@@ -1,8 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TypographyStyle } from "react-typography";
-
-import typography from "./typography";
 
 const HTML = props => (
   <html {...props.htmlAttributes}>
@@ -13,7 +10,6 @@ const HTML = props => (
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <TypographyStyle key={`TypographyStyle`} typography={typography} />
       {props.headComponents}
     </head>
     <body {...props.bodyAttributes}>
