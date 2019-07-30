@@ -25,10 +25,8 @@ const About = ({ data }) => (
       </p>
       <p />
       <p>
-        This blog&apos;s source is also on GitHub:{" "}
-        <a href="https://github.com/devm33/devm.dev">
-          https://github.com/devm33/devm.dev
-        </a>
+        This <a href="https://github.com/devm33/devm.dev">site&apos;s source</a>{" "}
+        is on GitHub.
       </p>
       <p>
         Feel free to reach me by email at{" "}
