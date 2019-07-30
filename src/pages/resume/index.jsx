@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import Meta from "../../components/Meta";
 import "../../reset.css";
@@ -47,8 +47,9 @@ const TrMeta = styled.tr`
 `;
 const TrDesc = styled.tr`
   & > td {
+    padding-top: 5px;
     padding-bottom: 10px;
-    line-height: 1.25em;
+    line-height: 1.35em;
   }
 `;
 const TdRight = styled.td`
@@ -57,6 +58,21 @@ const TdRight = styled.td`
 const TdJustify = styled.td`
   text-align: justify;
   text-align-last: justify;
+`;
+
+const NoPrint = styled.div`
+  @media print {
+    display: none;
+  }
+`;
+
+const TopLeft = styled(NoPrint)`
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  @media (max-width: 950px) {
+    display: none;
+  }
 `;
 
 const Resume = ({
@@ -142,6 +158,9 @@ const Resume = ({
         ))}
       </tbody>
     </table>
+    <TopLeft>
+      <Link to="/">&larr; Back to site</Link>
+    </TopLeft>
   </Wrapper>
 );
 
