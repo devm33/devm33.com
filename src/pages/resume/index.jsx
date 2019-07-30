@@ -9,8 +9,8 @@ const email = "dev@devm.dev";
 
 const Wrapper = styled.div`
   font-family: Times, serif;
-  font-size: 12pt;
-  max-width: 512pt;
+  font-size: 16px;
+  max-width: 682px;
   margin: 10px auto 100px auto;
   @media print {
     @page {
