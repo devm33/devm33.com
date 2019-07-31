@@ -9,7 +9,7 @@
     "lint": "npm run lint:js && npm run lint:md && npm run lint:links && npm run lint:spelling",
     "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:md": "write-good $(glob 'content/**/*.md') --no-tooWordy",
-    "lint:links": "remark content/",
+    "lint:links": "remark -f content/",
     "lint:spelling": "cspell --config .vscode/cSpell.json '**/*.{md,js,jsx,json,css,yml}'",
     "test": "npm run lint"
   },
