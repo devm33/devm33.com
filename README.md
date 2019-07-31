@@ -37,9 +37,10 @@ npm start
 - [x] Add tag/category pages.
 - [x] Write about page.
 - [x] Add resume page (linked from about) (also generate pdf version)
-- [ ] Check https://devm33.com/sitemap.xml
+- [x] Check https://devm33.com/sitemap.xml
 - [ ] Superimpose git history onto devm33 repo.
-- [ ] Copy google site verification file.
+- [ ] Copy static files: google verification, keybase, robots.txt
+      https://github.com/devm33/devm33
 
 ### Post-launch TODO:
 
