@@ -37,20 +37,20 @@ npm start
 - [x] Add tag/category pages.
 - [x] Write about page.
 - [x] Add resume page (linked from about) (also generate pdf version)
-- [ ] Collapse top nav on mobile (potentially)
 - [ ] Check https://devm33.com/sitemap.xml
 - [ ] Superimpose git history onto devm33 repo.
+- [ ] Copy google site verification file.
 
 ### Post-launch TODO:
 
 - [ ] Add image tags to Meta component and use on all pages with fallback.
+- [ ] Collapse top nav on mobile (potentially)
 
 ### Project candidates:
 
 - [ ] https://github.com/devm33/sugarscape-cuda
 - [ ] https://github.com/devm33/words/
 - [ ] https://github.com/devm33/single_monitor
-- [ ] https://github.com/devm33/4clojure_problems
 - [ ] All the minichat apps?
 - [ ] Previous site?
 - [ ] This site when done :)
