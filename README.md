@@ -38,7 +38,7 @@ npm start
 - [x] Write about page.
 - [x] Add resume page (linked from about) (also generate pdf version)
 - [x] Check https://devm33.com/sitemap.xml
-- [ ] Superimpose git history onto devm33 repo.
+- [x] Superimpose git history onto devm33 repo.
 - [ ] Copy static files: google verification, keybase, robots.txt
       https://github.com/devm33/devm33
 
