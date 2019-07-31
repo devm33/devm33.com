@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     @page {
       margin: 0;
     }
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 0;
   }
   a,
