@@ -129,7 +129,7 @@ var has_small_prime_factor = (function() {
 ```
 
 [sieve of eratosthenes]: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-[miller-rabin test]: https://en.wikipedia.org/wiki/Miller–Rabin_primality_test
+[miller-rabin test]: https://en.wikipedia.org/wiki/Miller-Rabin_primality_test
 
 Performance improvements probably exist in this function. Modulus can be an
 expensive call. However, this check was less expensive overall in the generation

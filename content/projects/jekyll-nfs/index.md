@@ -103,16 +103,14 @@ tampering and it was great!
 
 ### Conclusion
 
-I am deploying this with git on NearlyFreeSpeech.net. All my files are available
-on github <https://github.com/devm33/devm33> including the git hooks I use in a
-bare repo on the server (in the util folder). You can find a good post on
-setting that up here:
-<http://majorursa.net/content/using-jekyll-nearlyfreespeechnet>
+I am deploying this with git on NearlyFreeSpeech.net. Code is available on
+github <https://github.com/devm33/devm33> including the git hooks I use in a
+bare repo on the server (in the util folder).
 
 Cheers!
 
 [jekyll-execjs]:
   http://jekyllrb.com/docs/troubleshooting/#could-not-find-a-javascript-runtime-execjsruntimeunavailable
 [limitless-channels]:
-  http://www.limitlesschannels.com/code/2013/07/10/installing-custom-gems-on-your-hosted-jekyll-site.html
+  https://web.archive.org/web/20150214024736/http://www.limitlesschannels.com/code/2013/07/10/installing-custom-gems-on-your-hosted-jekyll-site.html
 [jekyll-issue46]: https://github.com/jekyll/jekyll-help/issues/46
