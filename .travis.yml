@@ -9,6 +9,7 @@ cache:
 script: npm run test
 
 before_deploy:
+  - sudo apt-get install -y ttf-mscorefonts-installer
   - npm run build
 
 deploy:
