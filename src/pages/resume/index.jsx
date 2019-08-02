@@ -88,7 +88,7 @@ const Resume = ({
         <a href="https://www.linkedin.com/in/devrajmehta">Devraj Mehta</a>
       </h1>
       <h4>
-        <a href="mailto:{email}">{email}</a>
+        <a href={`mailto:${email}`}>{email}</a>
       </h4>
     </Header>
     <table>
