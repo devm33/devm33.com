@@ -1,8 +1,8 @@
-# [devm.dev](https://devm.dev)
+# [devm33.com](https://devm33.com)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7c1054b3-a5b5-4cd8-9b54-b67cee3fdc11/deploy-status)](https://app.netlify.com/sites/devm/deploys)
-[![Maintainability](https://api.codeclimate.com/v1/badges/06a61da19a537a146da0/maintainability)](https://codeclimate.com/github/devm33/devm.dev)
-[![Build Status](https://travis-ci.org/devm33/devm.dev.svg?branch=master)](https://travis-ci.org/devm33/devm.dev)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c78b918f-2b19-453b-9db9-492b844a6e6d/deploy-status)](https://app.netlify.com/sites/devm33-com/deploys)
+[![Maintainability](https://api.codeclimate.com/v1/badges/105482f3c9c668c64fc9/maintainability)](https://codeclimate.com/github/devm33/devm33.com/maintainability)
+[![Build Status](https://travis-ci.org/devm33/devm33.com.svg?branch=master)](https://travis-ci.org/devm33/devm33.com)
 
 Website built with [gatsby](https://www.gatsbyjs.org).
 

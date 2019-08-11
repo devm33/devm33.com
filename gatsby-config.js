@@ -4,7 +4,8 @@ module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
     description: `Devraj Mehta's website.`,
-    siteUrl: `https://devm.dev`,
+    siteUrl: `https://devm33.com`,
+    email: `mail@devm33.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -49,8 +50,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `devm.dev`,
-        short_name: `devm.dev`,
+        name: `devm33.com`,
+        short_name: `devm33.com`,
         start_url: `/`,
         background_color: `#000`,
         theme_color: `#000`,

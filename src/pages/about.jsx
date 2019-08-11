@@ -12,12 +12,21 @@ const Article = styled.article`
   margin: 0 auto;
 `;
 
-const About = ({ data }) => (
+const About = ({
+  data: {
+    site: {
+      siteMetadata: { email },
+    },
+    fileName: {
+      childImageSharp: { fixed },
+    },
+  },
+}) => (
   <Layout>
     <Article>
       <h1>About</h1>
       <p>Hello! I&apos;m Devraj.</p>
-      <Img fixed={data.fileName.childImageSharp.fixed} alt="photo of my face" />
+      <Img fixed={fixed} alt="photo of my face" />
       <p>
         You can find me on <a href="https://github.com/devm33">LinkedIn</a> or{" "}
         <a href="https://www.linkedin.com/in/devrajmehta">GitHub</a>. My resume
@@ -25,12 +34,13 @@ const About = ({ data }) => (
       </p>
       <p />
       <p>
-        This <a href="https://github.com/devm33/devm.dev">site&apos;s source</a>{" "}
-        is on GitHub.
+        This{" "}
+        <a href="https://github.com/devm33/devm33.com">site&apos;s source</a> is
+        on GitHub.
       </p>
       <p>
         Feel free to reach me by email at{" "}
-        <a href="mailto:dev@devm.dev">dev@devm.dev</a>
+        <a href={`mailto:${email}`}>{email}</a>
       </p>
       <p>
         Cheers! <br /> Devraj
@@ -43,6 +53,11 @@ export default About;
 
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        email
+      }
+    }
     fileName: file(relativePath: { eq: "images/me.jpg" }) {
       childImageSharp {
         fixed(width: 250, height: 250) {

@@ -5,8 +5,6 @@ import { graphql, Link } from "gatsby";
 import Meta from "../../components/Meta";
 import "../../reset.css";
 
-const email = "dev@devm.dev";
-
 const Wrapper = styled.div`
   font-family: Times-Roman, Times, "Liberation Serif", serif;
   font-size: 16px;
@@ -79,6 +77,9 @@ const Resume = ({
   data: {
     allJobsYaml: { nodes: jobs },
     resumeYaml: skills,
+    site: {
+      siteMetadata: { email },
+    },
   },
 }) => (
   <Wrapper>
@@ -189,6 +190,11 @@ export const query = graphql`
       Frameworks
       Platforms
       Tools
+    }
+    site {
+      siteMetadata {
+        email
+      }
     }
   }
 `;
