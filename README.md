@@ -39,11 +39,11 @@ npm start
 - [x] Add resume page (linked from about) (also generate pdf version)
 - [x] Check https://devm33.com/sitemap.xml
 - [x] Superimpose git history onto devm33 repo.
-- [ ] Copy static files: google verification, keybase, robots.txt
-      https://github.com/devm33/devm33
+- [x] Copy static files: google verification, keybase, robots.txt
 
 ### Post-launch TODO:
 
+- [ ] Silence prism plain fallback warning.
 - [ ] Add image tags to Meta component and use on all pages with fallback.
 - [ ] Collapse top nav on mobile (potentially)
 
