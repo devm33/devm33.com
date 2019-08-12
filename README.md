@@ -32,7 +32,7 @@ npm start
 - [ ] https://github.com/devm33/words/
 - [ ] https://github.com/devm33/single_monitor
 
-## Done:
+## Done
 
 - [x] Previous site - jekyll-netlify
 
