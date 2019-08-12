@@ -43,9 +43,7 @@ npm start
 
 ### Post-launch TODO:
 
-- [ ] Silence prism plain fallback warning.
 - [ ] Add image tags to Meta component and use on all pages with fallback.
-- [ ] Collapse top nav on mobile (potentially)
 
 ### Project candidates:
 
