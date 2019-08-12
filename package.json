@@ -10,7 +10,7 @@
     "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:md": "write-good $(glob 'content/**/*.md') --no-tooWordy",
     "lint:links": "remark -f content/",
-    "lint:spelling": "cspell --config .vscode/cSpell.json '**/*.{md,js,jsx,json,css,yml}'",
+    "lint:spelling": "cspell '**/*.{md,js,jsx,json,css,yml}'",
     "deploy": "netlify deploy --prod --dir=public --message=\"$TRAVIS_COMMIT_MESSAGE\"",
     "test": "npm run lint"
   },
