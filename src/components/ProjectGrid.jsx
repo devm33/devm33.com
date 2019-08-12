@@ -179,7 +179,7 @@ export const fragment = graphql`
       repo
       image {
         childImageSharp {
-          fluid(maxWidth: 500, maxHeight: 500) {
+          fluid(maxWidth: 500, maxHeight: 500, srcSetBreakpoints: [300, 400]) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
