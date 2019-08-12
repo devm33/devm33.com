@@ -26,12 +26,15 @@ npm start
 
 ### Projects to add:
 
-- [ ] Previous site?
 - [ ] This site :)
 - [ ] Minichat apps exploration.
 - [ ] https://github.com/devm33/sugarscape-cuda
 - [ ] https://github.com/devm33/words/
 - [ ] https://github.com/devm33/single_monitor
+
+## Done:
+
+- [x] Previous site - jekyll-netlify
 
 ### Launch checklist:
 
