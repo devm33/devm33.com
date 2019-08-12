@@ -22,6 +22,17 @@ npm start
 
 ## TODO
 
+- [ ] Add image tags to Meta component and use on all pages with fallback.
+
+### Projects to add:
+
+- [ ] Previous site?
+- [ ] This site :)
+- [ ] Minichat apps exploration.
+- [ ] https://github.com/devm33/sugarscape-cuda
+- [ ] https://github.com/devm33/words/
+- [ ] https://github.com/devm33/single_monitor
+
 ### Launch checklist:
 
 - [x] Write gulp angular template page.
@@ -40,16 +51,3 @@ npm start
 - [x] Check https://devm33.com/sitemap.xml
 - [x] Superimpose git history onto devm33 repo.
 - [x] Copy static files: google verification, keybase, robots.txt
-
-### Post-launch TODO:
-
-- [ ] Add image tags to Meta component and use on all pages with fallback.
-
-### Project candidates:
-
-- [ ] https://github.com/devm33/sugarscape-cuda
-- [ ] https://github.com/devm33/words/
-- [ ] https://github.com/devm33/single_monitor
-- [ ] All the minichat apps?
-- [ ] Previous site?
-- [ ] This site when done :)
