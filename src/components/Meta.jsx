@@ -32,7 +32,7 @@ const Meta = ({ description, lang, title, image, url }) => (
         content: description,
       },
       {
-        property: `og:image `,
+        property: `og:image`,
         content: `${config.siteUrl}${image}`,
       },
       {
