@@ -33,7 +33,7 @@ const Meta = ({ description, lang, title, image }) => (
       },
       {
         property: `og:type`,
-        content: `website`,
+        content: `article`,
       },
       {
         name: `twitter:card`,
@@ -44,7 +44,7 @@ const Meta = ({ description, lang, title, image }) => (
         content: `@devm33`,
       },
       {
-        name: `fb:app_id`,
+        property: `fb:app_id`,
         content: `477033866176272`,
       },
     ]}
