@@ -115,7 +115,7 @@ const ProjectGrid = ({ nodes }) => (
             <div>{node.frontmatter.tagline}</div>
             <Pills>
               {node.frontmatter.tags.map(tag => (
-                <Link key={tag} to={`/tag/${tag}`} activeClassName="active">
+                <Link key={tag} to={`/tag/${tag}/`} activeClassName="active">
                   {tag}
                 </Link>
               ))}

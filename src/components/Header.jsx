@@ -43,7 +43,7 @@ const IconLinks = styled.div`
 const Header = ({ siteTitle }) => (
   <Wrapper>
     <Nav>
-      <Link to="/about">About</Link>
+      <Link to="/about/">About</Link>
     </Nav>
     <Name>
       <Link to="/">{siteTitle}</Link>

@@ -64,7 +64,7 @@ const ProjectTemplate = ({
           </Pills>
           <Pills>
             {frontmatter.tags.map(tag => (
-              <Link key={tag} to={`/tag/${tag}`}>
+              <Link key={tag} to={`/tag/${tag}/`}>
                 {tag}
               </Link>
             ))}

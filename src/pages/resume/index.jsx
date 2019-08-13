@@ -160,7 +160,7 @@ const Resume = ({
       </tbody>
     </table>
     <TopLeft>
-      <Link to="/about">&larr; Back to site</Link>
+      <Link to="/about/">&larr; Back to about</Link>
       <br />
       <br />
       <a href="/resume.pdf">PDF Version</a>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
 import theme from "../theme";
@@ -30,7 +30,7 @@ const About = ({
       <p>
         You can find me on <a href="https://github.com/devm33">LinkedIn</a> or{" "}
         <a href="https://www.linkedin.com/in/devrajmehta">GitHub</a>. My resume
-        is <a href="/resume">here</a>.
+        is <Link to="/resume/">here</Link>.
       </p>
       <p />
       <p>

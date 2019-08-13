@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: "path",
-      value: path.join("/", fileNode.relativeDirectory),
+      value: path.join("/", fileNode.relativeDirectory, "/"),
     });
     // Adds the type field as the first directory of the page's path, e.g. "projects"
     createNodeField({
@@ -66,7 +66,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // Add tag pages.
   tags.forEach(tag =>
     createPage({
-      path: `/tag/${tag}`,
+      path: `/tag/${tag}/`,
       component: TagTemplate,
       context: { tag },
     })
@@ -74,23 +74,23 @@ exports.createPages = async ({ actions, graphql }) => {
 
   // Add redirects.
   createRedirect({
-    fromPath: "/projects",
+    fromPath: "/projects/",
     toPath: "/",
     isPermanent: true,
   });
   // Redirects for previous blog site urls.
   createRedirect({
     fromPath: "/2015-06-07",
-    toPath: "/projects/4clojure",
+    toPath: "/projects/4clojure/",
   });
   createRedirect({
     fromPath: "/2014-12-04",
-    toPath: "/projects/motivation",
+    toPath: "/projects/motivation/",
     isPermanent: true,
   });
   createRedirect({
     fromPath: "/2014-09-22",
-    toPath: "/projects/jekyll-nfs",
+    toPath: "/projects/jekyll-nfs/",
     isPermanent: true,
   });
 };
