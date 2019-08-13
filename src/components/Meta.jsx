@@ -20,6 +20,10 @@ const Meta = ({ description, lang, title, image, url }) => (
         content: description,
       },
       {
+        property: `og:type`,
+        content: `website`,
+      },
+      {
         property: `og:title`,
         content: title,
       },
@@ -34,10 +38,6 @@ const Meta = ({ description, lang, title, image, url }) => (
       {
         property: `og:image`,
         content: `${config.siteUrl}${image}`,
-      },
-      {
-        property: `og:type`,
-        content: `website`,
       },
       {
         name: `twitter:card`,
