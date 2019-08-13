@@ -28,7 +28,7 @@ const TagTemplate = ({
     allMarkdownRemark: { nodes },
   },
 }) => (
-  <Layout title={`Projects tagged ${tag}`}>
+  <Layout title={`Projects tagged ${tag}`} url={`/tag/${tag}/`}>
     <Header>
       Projects tagged <Tag>{tag}</Tag>
     </Header>

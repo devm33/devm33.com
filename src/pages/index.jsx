@@ -9,7 +9,7 @@ const IndexPage = ({
     allMarkdownRemark: { nodes },
   },
 }) => (
-  <Layout>
+  <Layout url="/">
     <ProjectGrid nodes={nodes} />
   </Layout>
 );

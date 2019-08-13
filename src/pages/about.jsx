@@ -22,7 +22,7 @@ const About = ({
     },
   },
 }) => (
-  <Layout>
+  <Layout url="/about/">
     <Article>
       <h1>About</h1>
       <p>Hello! I&apos;m Devraj.</p>

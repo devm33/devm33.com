@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Layout = ({ children, title, description, image }) => {
+const Layout = ({ children, title, description, image, url }) => {
   const { site, fileName } = useStaticQuery(
     graphql`
       query SiteTitleQuery {
@@ -58,6 +58,7 @@ const Layout = ({ children, title, description, image }) => {
         <style>{typography.toString()}</style>
       </Helmet>
       <Meta
+        url={url}
         title={title || site.siteMetadata.title}
         description={description || site.siteMetadata.description}
         image={image || fileName.childImageSharp.fluid.src}
@@ -75,6 +76,7 @@ Layout.defaultProps = {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  url: PropTypes.string.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,

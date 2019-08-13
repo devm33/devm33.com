@@ -80,10 +80,15 @@ const Resume = ({
     site: {
       siteMetadata: { email },
     },
+    fileName: {
+      childImageSharp: {
+        fluid: { src },
+      },
+    },
   },
 }) => (
   <Wrapper>
-    <Meta title="Devraj Mehta Resume" />
+    <Meta title="Devraj Mehta Resume" url="/resume/" image={src} />
     <Header>
       <h1>
         <a href="https://www.linkedin.com/in/devrajmehta">Devraj Mehta</a>
@@ -194,6 +199,13 @@ export const query = graphql`
     site {
       siteMetadata {
         email
+      }
+    }
+    fileName: file(relativePath: { eq: "images/me.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          src
+        }
       }
     }
   }

@@ -35,13 +35,14 @@ const Updated = styled.span`
 
 const ProjectTemplate = ({
   data: {
-    markdownRemark: { frontmatter, html },
+    markdownRemark: { frontmatter, html, fields },
   },
 }) => (
   <Layout
     title={frontmatter.title}
     description={frontmatter.tagline}
     image={frontmatter.image.childImageSharp.fluid.src}
+    url={fields.path}
   >
     <Article>
       <header>
@@ -94,6 +95,9 @@ export const query = graphql`
             }
           }
         }
+      }
+      fields {
+        path
       }
     }
   }

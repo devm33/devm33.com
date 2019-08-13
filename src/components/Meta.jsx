@@ -8,7 +8,7 @@ import Helmet from "react-helmet";
 
 import config from "../config";
 
-const Meta = ({ description, lang, title, image }) => (
+const Meta = ({ description, lang, title, image, url }) => (
   <Helmet
     htmlAttributes={{
       lang,
@@ -20,20 +20,24 @@ const Meta = ({ description, lang, title, image }) => (
         content: description,
       },
       {
-        property: `og:title`,
+        name: `og:title`,
         content: title,
       },
       {
-        property: `og:description`,
+        name: `og:url`,
+        content: `${config.siteUrl}${url}`,
+      },
+      {
+        name: `og:description`,
         content: description,
       },
       {
-        property: `og:image `,
+        name: `og:image `,
         content: `${config.siteUrl}${image}`,
       },
       {
-        property: `og:type`,
-        content: `article`,
+        name: `og:type`,
+        content: `website`,
       },
       {
         name: `twitter:card`,
@@ -44,7 +48,7 @@ const Meta = ({ description, lang, title, image }) => (
         content: `@devm33`,
       },
       {
-        property: `fb:app_id`,
+        name: `fb:app_id`,
         content: `477033866176272`,
       },
     ]}
@@ -61,6 +65,7 @@ Meta.propTypes = {
   lang: PropTypes.string,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default Meta;
