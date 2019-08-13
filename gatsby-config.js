@@ -4,11 +4,17 @@ module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
     description: `Devraj Mehta's website.`,
-    siteUrl: `https://devm33.com`,
+    siteUrl: config.siteUrl,
     email: `mail@devm33.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: config.siteUrl,
+      },
+    },
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,

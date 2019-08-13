@@ -31,14 +31,21 @@ const Wrapper = styled.div`
   }
 `;
 
-const Layout = ({ children, title, description }) => {
-  const { site } = useStaticQuery(
+const Layout = ({ children, title, description, image }) => {
+  const { site, fileName } = useStaticQuery(
     graphql`
       query SiteTitleQuery {
         site {
           siteMetadata {
             title
             description
+          }
+        }
+        fileName: file(relativePath: { eq: "images/me.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1000) {
+              src
+            }
           }
         }
       }
@@ -53,6 +60,7 @@ const Layout = ({ children, title, description }) => {
       <Meta
         title={title || site.siteMetadata.title}
         description={description || site.siteMetadata.description}
+        image={image || fileName.childImageSharp.fluid.src}
       />
       <Header siteTitle={site.siteMetadata.title} />
       <main>{children}</main>
@@ -69,6 +77,7 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default Layout;

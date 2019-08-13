@@ -22,7 +22,7 @@ npm start
 
 ## TODO
 
-- [ ] Add image tags to Meta component and use on all pages with fallback.
+- [ ] Why is katex css loaded on all pages?
 
 ### Projects to add:
 
@@ -34,6 +34,7 @@ npm start
 
 ## Done
 
+- [x] Add image tags to Meta component and use on all pages with fallback.
 - [x] Previous site - jekyll-netlify
 
 ### Launch checklist:

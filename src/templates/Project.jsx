@@ -38,7 +38,11 @@ const ProjectTemplate = ({
     markdownRemark: { frontmatter, html },
   },
 }) => (
-  <Layout title={frontmatter.title}>
+  <Layout
+    title={frontmatter.title}
+    description={frontmatter.tagline}
+    image={frontmatter.image.childImageSharp.fluid.src}
+  >
     <Article>
       <header>
         <h1>{frontmatter.title}</h1>
@@ -79,9 +83,17 @@ export const query = graphql`
       frontmatter {
         title
         updated(formatString: "YYYY-MM-DD")
+        tagline
         tags
         link
         repo
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1000) {
+              src
+            }
+          }
+        }
       }
     }
   }
