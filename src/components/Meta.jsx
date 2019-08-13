@@ -21,7 +21,7 @@ const Meta = ({ description, lang, title, image, url }) => (
       },
       {
         property: `og:type`,
-        content: `website`,
+        content: `article`,
       },
       {
         property: `og:title`,
