@@ -105,7 +105,7 @@ const ProjectGrid = ({ nodes }) => (
     {nodes.map(node => (
       <Card key={node.fields.path} onClick={_ => navigate(node.fields.path)}>
         <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
-        <Overlay>
+        <Overlay onClick={e => e.stopPropagation()}>
           <OverlayLink
             to={node.fields.path}
             aria-label={node.frontmatter.title}
