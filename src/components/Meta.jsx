@@ -20,23 +20,23 @@ const Meta = ({ description, lang, title, image, url }) => (
         content: description,
       },
       {
-        name: `og:title`,
+        property: `og:title`,
         content: title,
       },
       {
-        name: `og:url`,
+        property: `og:url`,
         content: `${config.siteUrl}${url}`,
       },
       {
-        name: `og:description`,
+        property: `og:description`,
         content: description,
       },
       {
-        name: `og:image `,
+        property: `og:image `,
         content: `${config.siteUrl}${image}`,
       },
       {
-        name: `og:type`,
+        property: `og:type`,
         content: `website`,
       },
       {
@@ -48,7 +48,7 @@ const Meta = ({ description, lang, title, image, url }) => (
         content: `@devm33`,
       },
       {
-        name: `fb:app_id`,
+        property: `fb:app_id`,
         content: `477033866176272`,
       },
     ]}
