@@ -5,7 +5,7 @@ module.exports = {
     title: `Devraj Mehta`,
     description: `Devraj Mehta's website.`,
     siteUrl: config.siteUrl,
-    email: `mail@devm33.com`,
+    email: `dev@devm33.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
