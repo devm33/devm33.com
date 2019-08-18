@@ -22,11 +22,8 @@ npm start
 
 ## TODO
 
-- [ ] Why is katex css loaded on all pages?
-
 ### Projects to add:
 
-- [ ] This site :)
 - [ ] Minichat apps exploration.
 - [ ] https://github.com/devm33/sugarscape-cuda
 - [ ] https://github.com/devm33/words/
@@ -34,6 +31,7 @@ npm start
 
 ## Done
 
+- [x] This site :)
 - [x] Add image tags to Meta component and use on all pages with fallback.
 - [x] Previous site - jekyll-netlify
 
