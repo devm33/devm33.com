@@ -105,7 +105,7 @@ const ProjectGrid = ({ nodes }) => (
     {nodes.map(node => (
       <Card key={node.fields.path} onClick={_ => navigate(node.fields.path)}>
         <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
-        <Overlay onClick={e => e.stopPropagation()}>
+        <Overlay>
           <OverlayLink
             to={node.fields.path}
             aria-label={node.frontmatter.title}
@@ -115,7 +115,12 @@ const ProjectGrid = ({ nodes }) => (
             <div>{node.frontmatter.tagline}</div>
             <Pills>
               {node.frontmatter.tags.map(tag => (
-                <Link key={tag} to={`/tag/${tag}/`} activeClassName="active">
+                <Link
+                  key={tag}
+                  to={`/tag/${tag}/`}
+                  activeClassName="active"
+                  onClick={e => e.stopPropagation()}
+                >
                   {tag}
                 </Link>
               ))}
@@ -124,12 +129,20 @@ const ProjectGrid = ({ nodes }) => (
               <Updated>Last updated: {node.frontmatter.updated}</Updated>
               <Links>
                 {node.frontmatter.repo && (
-                  <a href={node.frontmatter.repo} aria-label="GitHub repo">
+                  <a
+                    href={node.frontmatter.repo}
+                    aria-label="GitHub repo"
+                    onClick={e => e.stopPropagation()}
+                  >
                     <FaGithub />
                   </a>
                 )}
                 {node.frontmatter.link && (
-                  <a href={node.frontmatter.link} aria-label="Project link">
+                  <a
+                    href={node.frontmatter.link}
+                    aria-label="Project link"
+                    onClick={e => e.stopPropagation()}
+                  >
                     <FaExternalLinkAlt />
                   </a>
                 )}
