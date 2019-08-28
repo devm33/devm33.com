@@ -22,6 +22,8 @@ npm start
 
 ## TODO
 
+- [ ] Add rss of projects.
+
 ### Projects to add:
 
 - [ ] Minichat apps exploration.
