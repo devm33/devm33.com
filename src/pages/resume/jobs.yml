@@ -1,11 +1,22 @@
+- uri: https://about.google/
+  name: Google
+  title: Web Engineer
+  location: Pittsburgh, PA
+  start: "2019"
+  finish: Present
+  description: >
+    Working on high-impact user and partner facing applications in support of
+    several billion-user Google products. Managing the design, architecture, and
+    development of full-stack web applications using cutting edge global-scale
+    technology.
 - uri: https://www.blog.google/products/admanager/reimagine-the-commercial-break/
   name: Google
   title: Product Tech Manager
   location: New York, NY
-  start: "2018"
-  finish: present
+  start: "2017"
+  finish: "2019"
   description: >
-    Managing Google Ad Manager Dynamic Ad Insertion product from design
+    Managed Google Ad Manager Dynamic Ad Insertion product from design
     development to feature rollouts and wide-scale deployment. Responsible for
     improving the product's serviceability and usability in order to reduce
     service costs and increase product revenue.
