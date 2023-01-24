@@ -6,7 +6,8 @@ import Meta from "../../components/Meta";
 import "../../reset.css";
 
 const Wrapper = styled.div`
-  font-family: Arial, sans-serif;
+  @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;1,400&display=swap');
+  font-family: 'Arimo', sans-serif;
   font-size: 14px;
   max-width: 682px;
   margin: 10px auto 100px auto;
@@ -132,8 +133,11 @@ const Resume = ({
           <td>
             <a href="https://gatech.edu">Georgia Institute of Technology</a>
           </td>
-          <td colSpan="2">
-            <i>B.S. Computer Science, Highest Honors</i>
+          <td>
+            BSc Computer Science
+          </td>
+          <td>
+            <i>Highest Honors</i>
           </td>
           <TdRight>2010 – 2014</TdRight>
         </TrMeta>
