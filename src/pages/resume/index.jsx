@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     @page {
       margin: 0;
     }
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 0;
   }
   a,
@@ -194,7 +194,6 @@ export const query = graphql`
       Languages
       Frameworks
       Platforms
-      Tools
     }
     site {
       siteMetadata {

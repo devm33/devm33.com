@@ -1,45 +1,31 @@
 Languages:
-  - Javascript
+  - TypeScript
+  - JavaScript
   - Dart
   - Java
   - Python
   - Go
   - Scala
   - SQL
-  - CSS
-  - SASS
+  - Sass
   - Bash
   - Clojure
   - MATLAB
 Frameworks:
   - Angular
+  - AngularDart
+  - RxJS
   - Material Design
   - React
-  - jQuery
-  - Apache
-  - Django
-  - Mongo
-  - MySQL
   - Lodash
+  - AppEngine
+  - Spanner
 Platforms:
   - Web
-  - mWeb
-  - Chrome extensions
+  - Chrome-extensions
   - Chromecast
   - iOS
   - tvOS
   - Android
   - Android TV
   - Roku
-Tools:
-  - Git
-  - Perforce
-  - SVN
-  - FFmpeg
-  - AppEngine
-  - Vagrant
-  - Gulp
-  - Jira
-  - Trac
-  - Travis
-  - JMeter
