@@ -137,14 +137,6 @@ const Resume = ({
           </td>
           <TdRight>2010 – 2014</TdRight>
         </TrMeta>
-        <TrMeta>
-          <td colSpan="3">
-            <a href="https://tjhsst.edu">
-              Thomas Jefferson High School for Science and Technology
-            </a>
-          </td>
-          <TdRight>2006 – 2010</TdRight>
-        </TrMeta>
       </tbody>
     </table>
     <table>
