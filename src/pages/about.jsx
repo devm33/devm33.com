@@ -28,9 +28,8 @@ const About = ({
       <p>Hello! I&apos;m Devraj.</p>
       <Img fixed={fixed} alt="photo of my face" />
       <p>
-        You can find me on <a href="https://github.com/devm33">LinkedIn</a> or{" "}
-        <a href="https://www.linkedin.com/in/devrajmehta">GitHub</a>. My resume
-        is <Link to="/resume/">here</Link>.
+        You can find me on <a href="https://www.linkedin.com/in/devrajmehta">LinkedIn</a> or{" "}
+        <a href="https://github.com/devm33">GitHub</a>. My resume is <Link to="/resume/">here</Link>.
       </p>
       <p />
       <p>
