@@ -6,8 +6,8 @@ import Meta from "../../components/Meta";
 import "../../reset.css";
 
 const Wrapper = styled.div`
-  font-family: Times-Roman, Times, "Liberation Serif", serif;
-  font-size: 16px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
   max-width: 682px;
   margin: 10px auto 100px auto;
   @media print {
