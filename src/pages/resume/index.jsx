@@ -39,6 +39,10 @@ const Header = styled.header`
   justify-content: space-around;
 `;
 
+const H1 = styled.h1`
+  letter-spacing: 0.5px;
+`;
+
 const TrMeta = styled.tr`
   & > td:not(:first-child) {
     padding-left: 5px;
@@ -91,9 +95,9 @@ const Resume = ({
   <Wrapper>
     <Meta title="Devraj Mehta Resume" url="/resume/" image={src} />
     <Header>
-      <h1>
+      <H1>
         <a href="https://www.linkedin.com/in/devrajmehta">Devraj Mehta</a>
-      </h1>
+      </H1>
       <h4>
         <a href={`mailto:${email}`}>{email}</a>
       </h4>
