@@ -2,7 +2,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "format": "prettier \"**/*.{md,js,jsx,json,css}\" --write --ignore-path .gitignore",
