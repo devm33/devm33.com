@@ -1,12 +1,23 @@
 - uri: https://about.google/
   name: Google
+  title: Engineering Manager
+  location: Pittsburgh, PA
+  start: "2021"
+  finish: Present
+  description: >
+    Led team building the platform for localization at Google. Responsible for
+    core user journeys such as project creation, project management, home page.
+    Operated in combined technical lead / manager role. Company-wide reviewer
+    for TypeScript language.
+- uri: https://about.google/
+  name: Google
   title: Software Engineer
   location: Pittsburgh, PA
   start: "2019"
   finish: Present
   description: >
-    Working on high-impact user and partner facing applications in support of
-    several billion-user Google products. Managing the design, architecture, and
+    Worked on high-impact user and partner facing applications in support of
+    several billion-user Google products. Managed the design, architecture, and
     development of full-stack web applications using cutting edge global-scale
     technology.
 - uri: https://www.blog.google/products/admanager/reimagine-the-commercial-break/
@@ -40,7 +51,7 @@
   description: >
     Researched tools for collaborative systems engineering. Developed web
     applications that brought research efforts to real world usage.  Led
-    development of deployed Angular application.
+    development of Angular application.
 - uri: https://cc.gatech.edu
   name: Georgia Tech
   title: Teaching Assistant
@@ -48,9 +59,8 @@
   start: Spring 2014
   finish: ""
   description: >
-    For course CS 3510 Design and Analysis of Algorithms with Professor
-    Maria-Florina Balcan, Ph.D. Held office hours for supplementary teaching,
-    and graded homework and tests.
+    For CS 3510 Design and Analysis of Algorithms, taught office hours and graded
+    homework and tests.
 - uri: https://yahoo.com
   name: Yahoo!
   title: Software Engineering Intern
@@ -58,10 +68,9 @@
   start: Summer 2013
   finish: ""
   description: >
-    Developed common components for Yahoo’s media sites.  Components were
-    reusable across a full range of browsers and devices, as well as being
-    internationalized and accessible.  Built and alpha-beta tested a native ad
-    format for Yahoo News, now part of the Gemini product.
+    Developed common components for Yahoo's media sites, responsive across a
+    full range of browsers and devices, internationalized, and accessible.
+    Built and alpha-beta tested a native ad format for Yahoo News.
 - uri: https://angel.co/company/digital-assent
   name: Digital Assent LLC
   title: Software Developer
@@ -69,11 +78,9 @@
   start: "2012"
   finish: "2013"
   description: >
-    Worked on a comprehensive tablet solution for health care practices.
-    Contributed to the core product: a single-page mobile-web application.
-    Worked directly with the CTO/co-founder on a small team. Completed projects
-    that were self-driven, across the full stack, and by necessity on a
-    fast-paced cycle.
+    Contributed to the core product: a single-page mobile-web tablet solution
+    for health care practices.  Worked directly with the CTO/co-founder on a
+    small team. Introduced CI/CD pipeline using Jenkins.
 - uri: http://riesenhuberlab.neuro.georgetown.edu
   name: Georgetown University
   title: CS Mentorship
@@ -81,9 +88,7 @@
   start: "2009"
   finish: "2010"
   description: >
-    Optimized computer vision model using massively parallel programming on
-    graphics processing units (GPU) to implement key operations integrated with
-    MATLAB model.  Achieved a speed up of 12.5x.
+    Acheived a 12.5x speed up on MATLAB computer vision model by implementing key operations in CUDA.
 - uri: https://socialcomplexity.gmu.edu
   name: George Mason University
   title: Software Developer Intern
@@ -91,6 +96,5 @@
   start: Summer 2009
   finish: ""
   description: >
-    Implemented a multi-agent modeling simulation using general purpose GPU
-    computing. Correlated performance with agent complexity as more basic agents
-    fit the massively parallel paradigm.
+    Correlated performance of multi-agent modeling simulation with agent
+    complexity in CUDA implementation.

@@ -20,9 +20,10 @@ Frameworks:
   - Lodash
   - AppEngine
   - Spanner
+  - MySQL
 Platforms:
   - Web
-  - Chrome-extensions
+  - Chrome extensions
   - Chromecast
   - iOS
   - tvOS
