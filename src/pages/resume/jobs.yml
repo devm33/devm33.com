@@ -1,20 +1,21 @@
 - uri: https://about.google/
   name: Google
-  title: Engineering Manager
+  title: Tech Lead Manager
   location: Pittsburgh, PA
   start: "2021"
   finish: Present
   description: >
     Led team building the platform for localization at Google. Responsible for
     core user journeys such as project creation, project management, home page.
-    Operated in combined technical lead / manager role. Company-wide reviewer
-    for TypeScript code.
+    Managed six engineers, while also serving as technical lead and making 
+    hands-on individual contributions. Company-wide reviewer for TypeScript
+    code.
 - uri: https://about.google/
   name: Google
   title: Software Engineer
   location: Pittsburgh, PA
   start: "2019"
-  finish: Present
+  finish: "2021"
   description: >
     Worked on high-impact user and partner facing applications in support of
     several billion-user Google products. Managed the design, architecture, and
