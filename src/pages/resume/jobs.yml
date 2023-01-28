@@ -53,7 +53,7 @@
       base.
     - >
       Monetized live events with millions of concurrent users such as the
-      Superbowl, MLB World Series, IPL Cricket with individually targeted video
+      Superbowl, MLB season, IPL tournament with individually targeted video
       ads.
   enabled: true
 - uri: https://admanager.google.com/home/
