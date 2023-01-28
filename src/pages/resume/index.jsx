@@ -162,7 +162,7 @@ const Resume = ({
       ))
     }
     <TopLeft>
-      <Link to="/about/">&larr; Back to about</Link>
+      <Link to="/">&larr; Back to about</Link>
       <br />
       <br />
       <a href="/resume.pdf">PDF Version</a>

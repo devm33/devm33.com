@@ -9,14 +9,14 @@
       Led team building the platform for localization at Google, translating
       millions of words per month.
     - >
-      Managed six engineers while serving as technical lead and making hands-on
-      contributions.
+      Simultaneously managed six engineers, served as technical lead, and made
+      individual contributions.
     - >
-      Architected and prototyped replacement of several legacy applications with
+      Architected and prototyped replacement of multiple legacy applications with
       a single platform. Sustained multi-year migration timeline by applying
       agile methodologies and consistent alignment between engineering teams,
       product, UX, and business stakeholders.
-    - Company-wide reviewer for TypeScript code.
+    - Reviewed 500+ changes as company-wide approver for TypeScript code.
   enabled: true
 - uri: https://about.google/
   name: Google
@@ -26,10 +26,10 @@
   finish: APR 2021
   description:
     - >
-      Lead for full-stack web applications in support of Google Play, Maps, and
-      consumer support.
+      Designed and developed full-stack web applications critical to Google
+      Play, Maps, and user support.
     - >
-      Launched rich text editor for real time translation for customer support
+      Launched rich text editor for real-time translation for customer support
       agents using custom language models to preserve tone and domain terms.
     - Built Angular components used company-wide.
   enabled: true
@@ -41,12 +41,14 @@
   finish: AUG 2019
   description:
     - >
-      Managed DoubleClick's Dynamic Ad Insertion (DAI) product from design to
-      deployment.
-    - Represented the technical face of the product to close clients Globally.
+      Managed DoubleClick Dynamic Ad Insertion (DAI) from feature design to
+      global deployment.
     - >
-      Grew streaming video ad revenue 200% YoY by landing acquired customer
-      migrations.
+      Interfaced directly with existing and prospective customers in order to
+      optimize integrations and land new business.
+    - >
+      Grew streaming video ad revenue 200% YoY by migrating acquired customer
+      base.
     - >
       Monetized live events with millions of concurrent users such as the
       Superbowl, MLB World Series, IPL Cricket with individually targeted video
@@ -63,11 +65,11 @@
       Managed relationships with broadcasting partners such as CBS, Fox, A&E,
       Disney.
     - >
-      Embedded with client's mobile app, connected device, and video serving
-      teams.
+      Embedded with customer engineering teams developing their mobile apps,
+      connected devices, and video serving to onboard and integrate services.
     - >
-      Built monitoring and created a team on-call rotation to proactively fix
-      live stream issues 24x7.
+      Built monitoring and set up an on-call rotation to proactively fix live
+      stream issues 24x7.
   enabled: true
 - uri: https://gtri.gatech.edu
   name: Georgia Tech Research Institute
@@ -89,8 +91,8 @@
   finish: MAY 2014
   description:
     - >
-      CS 3510 Design and Analysis of Algorithms, held office hours, graded
-      homework and tests.
+      Held office hours, graded homework and tests for CS 3510 Design and
+      Analysis of Algorithms.
   enabled: true
 - uri: https://yahoo.com
   name: Yahoo!
