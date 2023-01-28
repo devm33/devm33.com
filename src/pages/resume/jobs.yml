@@ -2,100 +2,135 @@
   name: Google
   title: Tech Lead Manager
   location: Pittsburgh, PA
-  start: "2021"
-  finish: Present
-  description: >
-    Led team building the platform for localization at Google. Responsible for
-    core user journeys such as project creation, project management, home page.
-    Managed six engineers, while also serving as technical lead and making 
-    hands-on individual contributions. Company-wide reviewer for TypeScript
-    code.
+  start: APR 2021
+  finish: PRESENT
+  description:
+    - >
+      Led team building the platform for localization at Google, translating
+      millions of words per month.
+    - >
+      Managed six engineers while serving as technical lead and making hands-on
+      contributions.
+    - >
+      Architected and prototyped replacement of several legacy applications with
+      a single platform. Sustained multi-year migration timeline by applying
+      agile methodologies and consistent alignment between engineering teams,
+      product, UX, and business stakeholders.
+    - Company-wide reviewer for TypeScript code.
+  enabled: true
 - uri: https://about.google/
   name: Google
   title: Software Engineer
   location: Pittsburgh, PA
-  start: "2019"
-  finish: "2021"
-  description: >
-    Worked on high-impact user and partner facing applications in support of
-    several billion-user Google products. Managed the design, architecture, and
-    development of full-stack web applications using cutting edge global-scale
-    technology.
+  start: AUG 2019
+  finish: APR 2021
+  description:
+    - >
+      Lead for full-stack web applications in support of Google Play, Maps, and
+      consumer support.
+    - >
+      Launched rich text editor for real time translation for customer support
+      agents using custom language models to preserve tone and domain terms.
+    - Built Angular components used company-wide.
+  enabled: true
 - uri: https://www.blog.google/products/admanager/reimagine-the-commercial-break/
   name: Google
   title: Product Tech Manager
   location: New York, NY
-  start: "2017"
-  finish: "2019"
-  description: >
-    Managed Google Ad Manager Dynamic Ad Insertion product from design
-    development to feature rollouts and wide-scale deployment. Responsible for
-    improving the product's serviceability and usability in order to reduce
-    service costs and increase product revenue.
+  start: NOV 2017
+  finish: AUG 2019
+  description:
+    - >
+      Managed DoubleClick's Dynamic Ad Insertion (DAI) product from design to
+      deployment.
+    - Represented the technical face of the product to close clients Globally.
+    - >
+      Grew streaming video ad revenue 200% YoY by landing acquired customer
+      migrations.
+    - >
+      Monetized live events with millions of concurrent users such as the
+      Superbowl, MLB World Series, IPL Cricket with individually targeted video
+      ads.
+  enabled: true
 - uri: https://admanager.google.com/home/
   name: Google
   title: Solutions Engineer
   location: New York, NY
-  start: "2015"
-  finish: "2017"
-  description: >
-    Managed relationships with Google's largest partners in the television
-    broadcaster and distributor space. Grew the business of server-side ad
-    insertion into streaming video. Supported live and linear streams, VOD
-    streaming, and client implementations on Android, iOS, and OTT devices.
+  start: AUG 2015
+  finish: NOV 2017
+  description:
+    - >
+      Managed relationships with broadcasting partners such as CBS, Fox, A&E,
+      Disney.
+    - >
+      Embedded with client's mobile app, connected device, and video serving
+      teams.
+    - >
+      Built monitoring and created a team on-call rotation to proactively fix
+      live stream issues 24x7.
+  enabled: true
 - uri: https://gtri.gatech.edu
   name: Georgia Tech Research Institute
   title: Research Scientist
   location: Atlanta, GA
-  start: "2014"
-  finish: "2015"
-  description: >
-    Researched tools for collaborative systems engineering. Developed web
-    applications that brought research efforts to real world usage.  Led
-    development of Angular application.
+  start: MAY 2014
+  finish: AUG 2015
+  description:
+    - >
+      Researched using web applications for collaborative applied systems
+      engineering.
+    - Led team to launch Angular application and land real-world usage.
+  enabled: true
 - uri: https://cc.gatech.edu
   name: Georgia Tech
   title: Teaching Assistant
   location: Atlanta, GA
-  start: Spring 2014
-  finish: ""
-  description: >
-    For CS 3510 Design and Analysis of Algorithms, taught office hours and graded
-    homework and tests.
+  start: JAN 2014
+  finish: MAY 2014
+  description:
+    - >
+      CS 3510 Design and Analysis of Algorithms, held office hours, graded
+      homework and tests.
+  enabled: true
 - uri: https://yahoo.com
   name: Yahoo!
   title: Software Engineering Intern
   location: Sunnyvale, CA
-  start: Summer 2013
-  finish: ""
-  description: >
-    Developed common components for Yahoo's media sites, responsive across a
-    full range of browsers and devices, internationalized, and accessible.
-    Built and alpha-beta tested a native ad format for Yahoo News.
+  start: MAY 2013
+  finish: AUG 2013
+  description:
+    - Built and alpha-beta tested a native ad format for Yahoo News.
+  enabled: true
 - uri: https://angel.co/company/digital-assent
-  name: Digital Assent LLC
+  name: Digital Assent
   title: Software Developer
   location: Atlanta, GA
-  start: "2012"
-  finish: "2013"
-  description: >
-    Contributed to the core product: a single-page mobile-web tablet solution
-    for health care practices.  Worked directly with the CTO/co-founder on a
-    small team. Introduced CI/CD pipeline using Jenkins.
+  start: JAN 2012
+  finish: DEC 2012
+  description:
+    - >
+      Worked directly with the CTO/co-founder on a tablet solution for health
+      care practices.
+  enabled: true
 - uri: http://riesenhuberlab.neuro.georgetown.edu
   name: Georgetown University
   title: CS Mentorship
   location: Washington, DC
-  start: "2009"
-  finish: "2010"
-  description: >
-    Acheived a 12.5x speed up on MATLAB computer vision model by implementing key operations in CUDA.
+  start: AUG 2009
+  finish: AUG 2010
+  description:
+    - >
+      Acheived a 12.5x speed up on MATLAB computer vision model by implementing
+      operations in CUDA.
+  enabled: false
 - uri: https://socialcomplexity.gmu.edu
   name: George Mason University
   title: Software Developer Intern
   location: Fairfax, VA
-  start: Summer 2009
-  finish: ""
-  description: >
-    Correlated performance of multi-agent modeling simulation with agent
-    complexity in CUDA implementation.
+  start: MAY 2009
+  finish: AUG 2009
+  description:
+    - >
+      Correlated performance of multi-agent simulation with agent complexity in
+      CUDA implementation.
+  enabled: false
