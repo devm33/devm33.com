@@ -28,7 +28,7 @@ const About = ({
       <Img fixed={fixed} alt="photo of my face" />
       <p>
         You can find me on <a href="https://www.linkedin.com/in/devrajmehta">LinkedIn</a> or{" "}
-        <a href="https://github.com/devm33">GitHub</a>. My resume is <Link to="/resume/">here</Link>.
+        <a href="https://github.com/devm33">GitHub</a>. See here for my <Link to="/resume/">resume</Link>.
       </p>
       <p />
       <p>
