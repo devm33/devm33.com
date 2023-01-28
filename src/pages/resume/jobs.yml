@@ -33,6 +33,10 @@
     - >
       Launched rich text editor for real-time translation for customer support
       agents using custom language models to preserve tone and domain terms.
+    - >
+      Migrated content and copyright review workflow applications from legacy
+      tech stack reducing review vendor time with improved UX and total
+      turnaround time by adding automation.
     - Built Angular components used company-wide.
   enabled: true
 - uri: https://www.blog.google/products/admanager/reimagine-the-commercial-break/
