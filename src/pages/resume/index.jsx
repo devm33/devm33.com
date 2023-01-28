@@ -51,8 +51,9 @@ const Header = styled.header`
 `;
 
 const ContactInfo = styled.div`
-  display: flex;
-  gap: 1em;
+  & > a + a {
+    margin-left: 14px;
+  }
 `;
 
 const TitleRow = styled.div`
