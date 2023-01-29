@@ -14,6 +14,9 @@ const Wrapper = styled.div`
   margin: 1em auto 10em auto;
   max-width: 682px;
   line-height: 1.4;
+  @media (max-width: 700px) {
+    margin: 1em;
+  }
   @media print {
     @page {
       margin: 0;
@@ -28,6 +31,7 @@ const Wrapper = styled.div`
   h1 {
     font-size: 1.5em;
     letter-spacing: 0.5px;
+    white-space: nowrap;
   }
   h2 {
     font-size: 1em;
@@ -51,6 +55,9 @@ const Header = styled.header`
 `;
 
 const ContactInfo = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
   & > a + a {
     margin-left: 14px;
   }
