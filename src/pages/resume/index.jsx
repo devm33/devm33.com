@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   margin: 1em auto 10em auto;
   max-width: 682px;
   line-height: 1.4;
-  @media (max-width: 700px) {
+  @media only screen and (max-width: 700px) {
     margin: 1em;
   }
   @media print {
