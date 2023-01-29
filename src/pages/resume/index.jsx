@@ -6,8 +6,6 @@ import Meta from "../../components/Meta";
 import "../../reset.css";
 
 const Wrapper = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;1,400&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;1,400&display=swap');
   font-family: 'Mulish', sans-serif;
   font-size: 14px;
@@ -79,9 +77,10 @@ const DateRange = styled.div`
   color: #666;
   font-size: 0.85em;
   margin-left: auto;
+  text-align: end;
 `;
 
-const DateSpan = styled.span`
+const NoWrapSpan = styled.span`
   white-space: nowrap;
 `;
 
@@ -121,7 +120,9 @@ const Resume = ({
         Devraj Mehta
       </h1>
       <ContactInfo>
-        <a href="https://www.linkedin.com/in/devrajmehta">linkedin.com/in/devrajmehta</a>
+        <a href="https://www.linkedin.com/in/devrajmehta">
+          linkedin.com/in/devrajmehta
+        </a>
         <a href={`mailto:${email}`}>{email}</a>
       </ContactInfo>
     </Header>
@@ -135,12 +136,13 @@ const Resume = ({
             <Location>- {job.location}</Location>
           </h3>
           <DateRange>
-            <DateSpan>{job.start}</DateSpan> - <DateSpan>{job.finish}</DateSpan>
+            <NoWrapSpan>{job.start}</NoWrapSpan> -{' '}
+            <NoWrapSpan>{job.finish}</NoWrapSpan>
           </DateRange>
         </TitleRow>
         <ul>
           {job.description.map(desc => (
-            <li>{desc}</li>
+            <li key={desc}>{desc}</li>
           ))}
         </ul>
       </div>
@@ -150,11 +152,11 @@ const Resume = ({
     <TitleRow>
       <h3>
         <a href="https://gatech.edu">Georgia Institute of Technology</a>,{' '}
-        BSc Computer Science{' '}
+        <NoWrapSpan>BSc Computer Science</NoWrapSpan>{' '}
         <Location>- Atlanta, GA</Location>
       </h3>
       <DateRange>
-        <DateSpan>AUG 2010</DateSpan> - <DateSpan>MAY 2014</DateSpan>
+        <NoWrapSpan>AUG 2010</NoWrapSpan> - <NoWrapSpan>MAY 2014</NoWrapSpan>
       </DateRange>
     </TitleRow>
     <div>
