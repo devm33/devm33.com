@@ -175,7 +175,7 @@ const Resume = ({
       <Link to="/">&larr; Back to site</Link>
       <br />
       <br />
-      <a href="/resume.pdf">PDF Version</a>
+      <a href="/devraj_mehta_resume.pdf">PDF Version</a>
     </TopLeft>
   </Wrapper >
 );

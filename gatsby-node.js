@@ -93,6 +93,11 @@ exports.createPages = async ({ actions, graphql }) => {
     toPath: "/projects/jekyll-nfs/",
     isPermanent: true,
   });
+  // Redirect for resume pdf
+  createRedirect({
+    fromPath: "/resume.pdf",
+    toPath: "/devraj_mehta_resume.pdf",
+  });
 };
 
 // Generate PDF of resume page
@@ -101,5 +106,5 @@ exports.onPostBuild = async () => {
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
   await page.goto(url.pathToFileURL(resumePath));
-  await page.pdf({ path: "./public/resume.pdf" });
+  await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
 };
