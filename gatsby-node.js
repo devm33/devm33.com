@@ -97,6 +97,7 @@ exports.createPages = async ({ actions, graphql }) => {
   createRedirect({
     fromPath: "/resume.pdf",
     toPath: "/devraj_mehta_resume.pdf",
+    isPermanent: true,
   });
 };
 
