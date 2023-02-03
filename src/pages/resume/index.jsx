@@ -20,7 +20,7 @@ const Wrapper = styled.div`
       margin: 0;
     }
     margin-bottom: 0;
-    margin-top: 2em;
+    margin-top: 1.5em;
   }
   a,
   a:visited {
