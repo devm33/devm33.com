@@ -31,12 +31,12 @@
       Designed and developed full-stack web applications critical to Google
       Play, Maps, and user support.
     - >
-      Launched rich-text editor for real-time translation for customer support
-      agents using custom language models to preserve tone and domain terms.
+      Launched rich-text editor for real-time translation for support agents
+      using custom language models, enabling $30M+ in cost savings.
     - >
-      Migrated content and copyright review workflow applications from legacy
-      tech stack reducing review vendor time with improved UX and total
-      turnaround time by adding automation.
+      Migrated content and copyright review applications from legacy
+      tech stack. Reduced time spent per review by 52% by improving workflow
+      design and user experience.
     - Built Angular components used company-wide.
   enabled: true
 - uri: https://www.blog.google/products/admanager/reimagine-the-commercial-break/
@@ -50,15 +50,15 @@
       Managed DoubleClick Dynamic Ad Insertion (DAI) from feature design to
       global deployment.
     - >
-      Interfaced directly with existing and prospective customers in order to
-      optimize integrations and land new business.
+      Interfaced directly customers and partners in order to expand integrations
+      and land new business.
     - >
-      Grew streaming video ad revenue 200% YoY by migrating acquired customer
-      base.
+      Grew streaming video ad revenue 4x YoY by optimizing existing clients and
+      expanding customer base 6x globally.
     - >
-      Monetized live events with millions of concurrent users such as the
-      Super Bowl, MLB season, IPL tournament with individually targeted video
-      ads.
+      Monetized live events with millions of concurrent users such as the NFL
+      Super Bowl, MLB world series, IPL cricket tournament with individually
+      targeted video ads.
   enabled: true
 - uri: https://admanager.google.com/home/
   name: Google
