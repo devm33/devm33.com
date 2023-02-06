@@ -18,10 +18,11 @@ Frameworks:
   - RxJS
   - Material Design
   - React
-  - Lodash
-  - AppEngine
+  - Django
   - Spanner
   - MySQL
+  - MongoDB
+  - Redis
 Platforms:
   - Web
   - Chrome extensions
