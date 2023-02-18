@@ -72,12 +72,6 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  // Add redirects.
-  createRedirect({
-    fromPath: "/projects/",
-    toPath: "/",
-    isPermanent: true,
-  });
   // Redirects for previous blog site urls.
   createRedirect({
     fromPath: "/2015-06-07",

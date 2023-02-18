@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql, Link } from "gatsby";
-import Img from "gatsby-image";
+import { StaticImage } from "gatsby-plugin-image";
 
 import theme from "../theme";
 import Layout from "../components/Layout";
@@ -12,20 +12,18 @@ const Article = styled.article`
   margin: 0 auto;
 `;
 
-const About = ({
-  data: {
-    site: {
-      siteMetadata: { email },
-    },
-    fileName: {
-      childImageSharp: { fixed },
-    },
-  },
-}) => (
+const About = () => (
   <Layout url="/">
     <Article>
       <p>Hello! I&apos;m Devraj.</p>
-      <Img fixed={fixed} alt="photo of my face" />
+      <StaticImage
+        src="../images/me.jpg"
+        alt="headshot"
+        placeholder="blurred"
+        layout="fixed"
+        width={250}
+        height={250}
+      />
       <p>
         You can find me on <a href="https://www.linkedin.com/in/devrajmehta">LinkedIn</a> or{" "}
         <a href="https://github.com/devm33">GitHub</a>. See here for my <Link to="/resume/">resume</Link>.
@@ -44,20 +42,3 @@ const About = ({
 );
 
 export default About;
-
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        email
-      }
-    }
-    fileName: file(relativePath: { eq: "images/me.jpg" }) {
-      childImageSharp {
-        fixed(width: 250, height: 250) {
-          ...GatsbyImageSharpFixed_withWebp
-        }
-      }
-    }
-  }
-`;
