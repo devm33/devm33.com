@@ -2,8 +2,8 @@ import React from "react";
 import { graphql, Link, navigate } from "gatsby";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import styled from "styled-components";
-import Img from "gatsby-image";
 import PropTypes from "prop-types";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import theme from "../theme";
 import { scale, rhythm } from "../typography";
@@ -104,7 +104,7 @@ const ProjectGrid = ({ nodes }) => (
   <Grid>
     {nodes.map(node => (
       <Card key={node.fields.path} onClick={_ => navigate(node.fields.path)}>
-        <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
+        <GatsbyImage image={getImage(node.frontmatter.image)} alt="" />
         <Overlay>
           <OverlayLink
             to={node.fields.path}
@@ -192,9 +192,13 @@ export const fragment = graphql`
       repo
       image {
         childImageSharp {
-          fluid(maxWidth: 500, maxHeight: 500, srcSetBreakpoints: [300, 400]) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            width: 500,
+            height: 500,
+            breakpoints: [300, 400],
+            placeholder: BLURRED,
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }

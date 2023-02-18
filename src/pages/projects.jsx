@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import ProjectGrid from "../components/ProjectGrid";
 
-const IndexPage = ({
+const ProjectsPage = ({
   data: {
     allMarkdownRemark: { nodes },
   },
@@ -15,10 +15,10 @@ const IndexPage = ({
 );
 
 export const query = graphql`
-  query IndexQuery {
+  query ProjectsQuery {
     allMarkdownRemark(
       filter: { fields: { type: { eq: "projects" } } }
-      sort: { fields: frontmatter___updated, order: DESC }
+      sort: {frontmatter: {updated: DESC}}
     ) {
       nodes {
         ...ProjectGridFields
@@ -27,4 +27,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default ProjectsPage;

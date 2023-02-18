@@ -49,7 +49,7 @@ export const query = graphql`
         fields: { type: { eq: "projects" } }
         frontmatter: { tags: { eq: $tag } }
       }
-      sort: { fields: frontmatter___updated, order: DESC }
+      sort: {frontmatter: {updated: DESC}}
     ) {
       nodes {
         ...ProjectGridFields

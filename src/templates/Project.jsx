@@ -2,6 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { getSrc } from "gatsby-plugin-image"
 
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism.css";
@@ -41,7 +42,7 @@ const ProjectTemplate = ({
   <Layout
     title={frontmatter.title}
     description={frontmatter.tagline}
-    image={frontmatter.image.childImageSharp.fluid.src}
+    image={getSrc(frontmatter.image)}
     url={fields.path}
   >
     <Article>
@@ -90,9 +91,7 @@ export const query = graphql`
         repo
         image {
           childImageSharp {
-            fluid(maxWidth: 1000) {
-              src
-            }
+            gatsbyImageData(width: 1000)
           }
         }
       }
