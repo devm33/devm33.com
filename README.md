@@ -22,6 +22,9 @@ npm start
 
 ## TODO
 
+- [ ] Finish cleaning up gatsby-plugin-image migration
+- [ ] Switch to [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
+
 - [ ] Add rss of projects.
 
 ### Projects to add:
