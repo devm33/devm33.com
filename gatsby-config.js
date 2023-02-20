@@ -8,6 +8,19 @@ module.exports = {
     email: `dev@devm.dev`,
   },
   plugins: [
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+        web: [
+          {
+            name: `Mulish`,
+            file: `https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;1,400&display=block`,
+          },
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
