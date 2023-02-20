@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   }
   h2 {
     font-size: 1em;
-    margin: 1em 0 0.5em 0;
+    margin: 1em 0 0 0;
   }
   h3 {
     font-size: 1em;
@@ -63,7 +63,7 @@ const ContactInfo = styled.div`
 
 const TitleRow = styled.div`
   display: flex;
-  margin: 0.5em 0 0.1em 0;
+  margin: 0.3em 0 0.1em 0;
 `;
 
 const Location = styled.span`
