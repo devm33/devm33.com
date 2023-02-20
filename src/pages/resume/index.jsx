@@ -5,8 +5,9 @@ import { graphql, Link } from "gatsby";
 import Meta from "../../components/Meta";
 import "../../reset.css";
 
+// @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;1,400&display=block');
+
 const Wrapper = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;1,400&display=block');
   font-family: 'Mulish', sans-serif;
   font-size: 14px;
   margin: 1em auto 10em auto;
