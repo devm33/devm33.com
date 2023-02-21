@@ -4,7 +4,7 @@ updated: 2015-06-07
 image: screenshot.png
 tagline: Completed all of the problems on 4clojure.com
 tags: [clojure]
-link: http://www.4clojure.com/user/devm33
+link: https://web.archive.org/web/http://www.4clojure.com/user/devm33
 repo: https://github.com/devm33/4clojure_problems
 ---
 
@@ -36,7 +36,7 @@ any feedback!
 
 ## Fibonacci
 
-<http://www.4clojure.com/problem/26>
+[4clojure.com/problem/26](https://web.archive.org/web/http://www.4clojure.com/problem/26)
 
 The classic Fibonacci series problem. A goto for learning new languages, in
 particular functional languages. This was the first problem I had to write down
@@ -75,7 +75,7 @@ tail optimize without use of `recur`.
 
 ## Replicate a sequence
 
-<http://www.4clojure.com/problem/33>
+[4clojure.com/problem/33](https://web.archive.org/web/http://www.4clojure.com/problem/33)
 
 While I came up with the alternative fibonacci solutions above, I often saved
 other user's solutions alongside mine as well. For example, let's take problem
@@ -100,7 +100,7 @@ learning different parts of the clojure APIs.
 
 ## Sequence Reductions
 
-<http://www.4clojure.com/problem/60>
+[4clojure.com/problem/60](https://web.archive.org/web/http://www.4clojure.com/problem/60)
 
 Another place that I got great feedback was the clojure source code. Some of the
 4clojure problems consist of re-implementing core functions which prompted me to
@@ -136,7 +136,7 @@ problems as well.
 
 ## Prime Numbers
 
-<http://www.4clojure.com/problem/67>
+[4clojure.com/problem/67](https://web.archive.org/web/http://www.4clojure.com/problem/67)
 
 I didn't learn anything in particular from this problem. I love this method of
 testing primality.
@@ -169,7 +169,7 @@ probably be a post to itself because that took a minute.
 
 ## Language of a DFA
 
-<http://www.4clojure.com/problem/164>
+[4clojure.com/problem/164](https://web.archive.org/web/http://www.4clojure.com/problem/164)
 
 The problems on 4clojure have four tiers of difficulty: elementary, easy,
 medium, and hard. Elementary and easy often were possible to solve in the editor
@@ -260,13 +260,13 @@ end of these four weeks. I enjoyed using these aspects of the language:
 I had a lot of fun going through 4clojure and I am thankful to the creators and
 maintainers. I look forward to more fun with clojure in the future.
 
-[4clojure]: http://www.4clojure.com/
-[devm33]: http://www.4clojure.com/user/devm33
-[users]: http://www.4clojure.com/users
+[4clojure]: https://web.archive.org/web/http://www.4clojure.com/
+[devm33]: https://web.archive.org/web/http://www.4clojure.com/user/devm33
+[users]: https://web.archive.org/web/http://www.4clojure.com/users
 [github]: https://github.com/devm33/4clojure_problems
 [mapcat]: https://clojuredocs.org/clojure.core/mapcat
 [dfa]: http://en.wikipedia.org/wiki/Deterministic_finite_automaton
-[140]: http://www.4clojure.com/problem/140
-[152]: http://www.4clojure.com/problem/152
-[127]: http://www.4clojure.com/problem/127
-[pcl]: http://www.4clojure.com/user/_pcl
+[140]: https://web.archive.org/web/http://www.4clojure.com/problem/140
+[152]: https://web.archive.org/web/http://www.4clojure.com/problem/152
+[127]: https://web.archive.org/web/http://www.4clojure.com/problem/127
+[pcl]: https://web.archive.org/web/http://www.4clojure.com/user/_pcl
