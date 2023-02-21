@@ -56,7 +56,6 @@
     "typography": "^0.16.21"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
     "cli-glob": "^0.1.0",
     "cspell": "^6.26.3",
     "eslint": "^8.34.0",

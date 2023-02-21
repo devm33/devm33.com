@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
 import theme from "../theme";
