@@ -128,7 +128,7 @@
   finish: AUG 2010
   description:
     - >
-      Acheived a 12.5x speed up on MATLAB computer vision model by implementing
+      Achieved a 12.5x speed up on MATLAB computer vision model by implementing
       operations in CUDA.
   enabled: false
 - uri: https://socialcomplexity.gmu.edu

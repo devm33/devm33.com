@@ -18,7 +18,7 @@ const About = () => (
       <p>Hello! I&apos;m Devraj.</p>
       <StaticImage
         src="../images/me.jpg"
-        alt="headshot"
+        alt="head shot"
         placeholder="blurred"
         layout="fixed"
         width={250}
