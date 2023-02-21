@@ -10,11 +10,13 @@ import "../../reset.css";
 const Wrapper = styled.div`
   font-family: 'Mulish', sans-serif;
   font-size: 14px;
-  margin: 1em auto 10em auto;
+  margin: 0 auto;
+  padding: 2em 0 6em 0;
   max-width: 682px;
   line-height: 1.4;
   @media only screen and (max-width: 700px) {
-    margin: 1em;
+    margin: 0 1em;
+    padding: 1em 0;
   }
   @media print {
     @page {
@@ -22,6 +24,7 @@ const Wrapper = styled.div`
     }
     margin-bottom: 0;
     margin-top: 1.5em;
+    padding: 0;
   }
   a,
   a:visited {
