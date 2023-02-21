@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Helmet from "react-helmet";
+import { getSrc } from "gatsby-plugin-image"
 
 import "../reset.css";
 import Header from "./Header";
@@ -43,9 +44,7 @@ const Layout = ({ children, title, description, image, url }) => {
         }
         fileName: file(relativePath: { eq: "images/me.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 1000) {
-              src
-            }
+            gatsbyImageData(width: 1000)
           }
         }
       }
@@ -61,7 +60,7 @@ const Layout = ({ children, title, description, image, url }) => {
         url={url}
         title={title || site.siteMetadata.title}
         description={description || site.siteMetadata.description}
-        image={image || fileName.childImageSharp.fluid.src}
+        image={image || getSrc(fileName)}
       />
       <Header siteTitle={site.siteMetadata.title} />
       <main>{children}</main>

@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import { graphql, Link } from "gatsby";
+import { getSrc } from "gatsby-plugin-image"
 
 import Meta from "../../components/Meta";
 import "../../reset.css";
@@ -108,15 +109,11 @@ const Resume = ({
     site: {
       siteMetadata: { email },
     },
-    fileName: {
-      childImageSharp: {
-        fluid: { src },
-      },
-    },
+    fileName,
   },
 }) => (
   <Wrapper>
-    <Meta title="Devraj Mehta Resume" url="/resume/" image={src} />
+    <Meta title="Devraj Mehta Resume" url="/resume/" image={getSrc(fileName)} />
     <Header>
       <h1>
         Devraj Mehta
@@ -212,9 +209,7 @@ export const query = graphql`
     }
     fileName: file(relativePath: { eq: "images/me.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1000) {
-          src
-        }
+        gatsbyImageData(width: 1000)
       }
     }
   }

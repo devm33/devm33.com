@@ -22,7 +22,6 @@ npm start
 
 ## TODO
 
-- [ ] Finish cleaning up gatsby-plugin-image migration
 - [ ] Switch to [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
 
 - [ ] Add rss of projects.
@@ -36,6 +35,8 @@ npm start
 
 ## Done
 
+- [x] Finish cleaning up gatsby-plugin-image migration
+- [x] Migrate from Gatsby 2.x to 5.x
 - [x] This site :)
 - [x] Add image tags to Meta component and use on all pages with fallback.
 - [x] Previous site - jekyll-netlify
