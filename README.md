@@ -2,7 +2,6 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c78b918f-2b19-453b-9db9-492b844a6e6d/deploy-status)](https://app.netlify.com/sites/devm33-com/deploys)
 [![Maintainability](https://api.codeclimate.com/v1/badges/105482f3c9c668c64fc9/maintainability)](https://codeclimate.com/github/devm33/devm33.com/maintainability)
-[![Build Status](https://travis-ci.org/devm33/devm33.com.svg?branch=master)](https://travis-ci.org/devm33/devm33.com)
 
 Website built with [gatsby](https://www.gatsbyjs.org).
 
