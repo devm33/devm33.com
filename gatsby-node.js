@@ -40,6 +40,13 @@ exports.createPages = async ({ actions, graphql }) => {
           }
           frontmatter {
             tags
+            title
+            tagline
+            image {
+              childImageSharp {
+                gatsbyImageData(width: 1000)
+              }
+            }
           }
         }
       }
@@ -54,7 +61,12 @@ exports.createPages = async ({ actions, graphql }) => {
   // Add project pages.
   projects.data.allMarkdownRemark.nodes.forEach(node => {
     if (node.fields.type == "projects") {
-      createPage({ path: node.fields.path, component: ProjectTemplate });
+      createPage({ path: node.fields.path, component: ProjectTemplate,
+      context: { 
+        title: node.frontmatter.title,
+        description: node.frontmatter.tagline,
+        image: node.frontmatter.image,
+      }});
       if (node.frontmatter.tags) {
         node.frontmatter.tags.forEach(tag => tags.add(tag));
       }
@@ -68,7 +80,7 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: `/tag/${tag}/`,
       component: TagTemplate,
-      context: { tag },
+      context: { tag, title: `Projects tagged ${tag}`, },
     })
   );
 

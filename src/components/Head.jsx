@@ -1,9 +1,10 @@
 import { useStaticQuery, graphql } from "gatsby";
+import { getSrc } from "gatsby-plugin-image"
 
 import config from "../config";
 
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
-export const Head = ({ location, data, pageContext }) => {
+export const Head = ({ location, pageContext }) => {
   const { site, fileName } = useStaticQuery(
     graphql`
       query HeadQuery {
@@ -23,7 +24,9 @@ export const Head = ({ location, data, pageContext }) => {
   );
   const title = pageContext.title || site.siteMetadata.title;
   const description = pageContext.description || site.siteMetadata.description;
-  const image = data.image || getSrc(fileName);
+  const image = pageContext.image ?
+    getSrc(pageContext.image) :
+    getSrc(fileName);
   return (
     <>
       <html lang="en" />
