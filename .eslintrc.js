@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["prettier", "plugin:react/recommended"],
+  extends: ["google", "prettier", "plugin:react/recommended"],
   plugins: ["react", "jsx-a11y", "import"],
   settings: {
     react: {
@@ -7,6 +7,8 @@ module.exports = {
     },
   },
   rules: {
+    "require-jsdoc": "off",
+    "valid-jsdoc": "off",
     "react/prop-types": [2, { ignore: ["data"] }],
   },
   env: {
