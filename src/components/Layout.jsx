@@ -1,19 +1,10 @@
-/**
- * Layout component to serve as the base for all pages.
- */
-
 import React from "react";
 import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Helmet from "react-helmet";
-import { getSrc } from "gatsby-plugin-image"
 
 import "../reset.css";
-import Header from "./Header";
-import Meta from "./Meta";
+import { Header } from "./Header";
 import theme from "../theme";
-import typography from "../typography";
 
 const Wrapper = styled.div`
   color: ${theme.fg};
@@ -32,53 +23,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const Layout = ({ children, title, description, image, url }) => {
-  const { site, fileName } = useStaticQuery(
-    graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-        fileName: file(relativePath: { eq: "images/me.jpg" }) {
-          childImageSharp {
-            gatsbyImageData(width: 1000)
-          }
-        }
-      }
-    `
-  );
-
-  return (
-    <Wrapper>
-      <Helmet>
-        <style>{typography.toString()}</style>
-      </Helmet>
-      <Meta
-        url={url}
-        title={title || site.siteMetadata.title}
-        description={description || site.siteMetadata.description}
-        image={image || getSrc(fileName)}
-      />
-      <Header siteTitle={site.siteMetadata.title} />
-      <main>{children}</main>
-    </Wrapper>
-  );
-};
-
-Layout.defaultProps = {
-  title: ``,
-  description: ``,
-};
+/** Layout component to serve as the base for all pages.  */
+export const Layout = ({ children }) => (
+  <Wrapper>
+    <Header />
+    <main>{children}</main>
+  </Wrapper>
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
 };
 
 export default Layout;

@@ -10,7 +10,7 @@ const fonts = [
   "sans-serif",
 ];
 
-const typography = new Typography({
+export const typography = new Typography({
   baseFontSize: "16px",
   baseLineHeight: 1.65,
   headerFontFamily: fonts,
@@ -31,5 +31,3 @@ const typography = new Typography({
 
 export const rhythm = typography.rhythm;
 export const scale = typography.scale;
-
-export default typography;

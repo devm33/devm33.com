@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import theme from "../theme";
 import Layout from "../components/Layout";
+import theme from "../theme";
+import { Head as CommonHead } from "../components/Head";
 
 const Article = styled.article`
   max-width: ${theme.contentWidth}px;
@@ -10,13 +11,24 @@ const Article = styled.article`
   margin: 0 auto;
 `;
 
-const NotFoundPage = () => (
-  <Layout title="404: Not found" url="/404.html">
-    <Article>
-      <h1>Resource not found</h1>
-      <p>Sorry this resource was not found.</p>
-    </Article>
-  </Layout>
-);
+export default function NotFoundPag() {
+  return (
+    <Layout>
+      <Article>
+        <h1>Resource not found</h1>
+        <p>Sorry this resource was not found.</p>
+      </Article>
+    </Layout>
+  );
+}
 
-export default NotFoundPage;
+export function Head({ pageContext, ...rest }) {
+  const props = {
+    ...rest,
+    pageContext: {
+      ...pageContext,
+      title: '404: Not found',
+    },
+  };
+  return <CommonHead {...props} />;
+}

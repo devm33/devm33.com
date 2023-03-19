@@ -4,12 +4,14 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import ProjectGrid from "../components/ProjectGrid";
 
+export { Head } from "../components/Head";
+
 const ProjectsPage = ({
   data: {
     allMarkdownRemark: { nodes },
   },
 }) => (
-  <Layout url="/projects/">
+  <Layout>
     <ProjectGrid nodes={nodes} />
   </Layout>
 );

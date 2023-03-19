@@ -1,6 +1,5 @@
 import { lighten, darken } from "polished";
 import { scale } from "./typography";
-import config from "./config";
 
 export const theme = {
   bg: "white",
@@ -19,7 +18,7 @@ export const theme = {
     subtitle: scale(1 / 5),
     title: scale(1 / 2),
   },
-  ...config,
+  contentWidth: 700,
 };
 
 export default theme;
