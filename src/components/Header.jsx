@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 import theme from "../theme";
 import { rhythm } from "../typography";
@@ -40,34 +41,37 @@ const IconLinks = styled.div`
   ${theme.font.icon};
 `;
 
-const Header = ({ siteTitle }) => (
-  <Wrapper>
-    <Nav>
-      <Link to="/projects/">Projects</Link>
-    </Nav>
-    <Name>
-      <Link to="/">{siteTitle}</Link>
-    </Name>
-    <IconLinks>
-      <a href="https://github.com/devm33" aria-label="GitHub profile">
-        <FaGithub />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/devrajmehta/"
-        aria-label="LinkedIn profile"
-      >
-        <FaLinkedin />
-      </a>
-    </IconLinks>
-  </Wrapper>
-);
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+export const Header = () => {
+  const { site } = useStaticQuery(
+    graphql`
+      query HeaderQuery {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  );
+  return (
+    <Wrapper>
+      <Nav>
+        <Link to="/projects/">Projects</Link>
+      </Nav>
+      <Name>
+        <Link to="/">{site.siteMetadata.title}</Link>
+      </Name>
+      <IconLinks>
+        <a href="https://github.com/devm33" aria-label="GitHub profile">
+          <FaGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/devrajmehta/"
+          aria-label="LinkedIn profile"
+        >
+          <FaLinkedin />
+        </a>
+      </IconLinks>
+    </Wrapper>
+  );
 };
-
-Header.defaultProps = {
-  siteTitle: ``,
-};
-
-export default Header;

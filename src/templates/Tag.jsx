@@ -8,6 +8,8 @@ import { rhythm } from "../typography";
 import Layout from "../components/Layout";
 import ProjectGrid from "../components/ProjectGrid";
 
+export { Head } from "../components/Head";
+
 const Header = styled.h1`
   ${theme.font.title}
   padding: ${rhythm(1 / 2)};
@@ -28,7 +30,7 @@ const TagTemplate = ({
     allMarkdownRemark: { nodes },
   },
 }) => (
-  <Layout title={`Projects tagged ${tag}`} url={`/tag/${tag}/`}>
+  <Layout>
     <Header>
       Projects tagged <Tag>{tag}</Tag>
     </Header>

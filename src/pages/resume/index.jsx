@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql, Link } from "gatsby";
-import { getSrc } from "gatsby-plugin-image"
 
-import Meta from "../../components/Meta";
+import { Head as CommonHead } from "../../components/Head";
 import "../../reset.css";
 
 const Wrapper = styled.div`
@@ -102,84 +101,82 @@ const TopLeft = styled(NoPrint)`
   }
 `;
 
-const Resume = ({
+export default function Resume({
   data: {
     allJobsYaml: { nodes: jobs },
     resumeYaml: skills,
     site: {
       siteMetadata: { email },
     },
-    fileName,
   },
-}) => (
-  <Wrapper>
-    <Meta title="Devraj Mehta Resume" url="/resume/" image={getSrc(fileName)} />
-    <Header>
-      <h1>
-        Devraj Mehta
-      </h1>
-      <ContactInfo>
-        <a href="https://www.linkedin.com/in/devrajmehta">
-          linkedin.com/in/devrajmehta
-        </a>
-        <a href={`mailto:${email}`}>{email}</a>
-      </ContactInfo>
-    </Header>
+}) {
+  return (
+    <Wrapper>
+      <Header>
+        <h1>
+          Devraj Mehta
+        </h1>
+        <ContactInfo>
+          <a href="https://www.linkedin.com/in/devrajmehta">
+            linkedin.com/in/devrajmehta
+          </a>
+          <a href={`mailto:${email}`}>{email}</a>
+        </ContactInfo>
+      </Header>
 
-    <h2>EXPERIENCE</h2>
-    {jobs.filter(job => job.enabled).map(job => (
-      <div key={job.id}>
-        <TitleRow>
-          <h3>
-            <a href={job.uri}>{job.name}</a>, {job.title}{' '}
-            <Location>- {job.location}</Location>
-          </h3>
-          <DateRange>
-            <NoWrapSpan>{job.start}</NoWrapSpan> -{' '}
-            <NoWrapSpan>{job.finish}</NoWrapSpan>
-          </DateRange>
-        </TitleRow>
-        <ul>
-          {job.description.map(desc => (
-            <li key={desc}>{desc}</li>
-          ))}
-        </ul>
-      </div>
-    ))}
-
-    <h2>EDUCATION</h2>
-    <TitleRow>
-      <h3>
-        <a href="https://gatech.edu">Georgia Institute of Technology</a>,{' '}
-        <NoWrapSpan>BSc Computer Science</NoWrapSpan>{' '}
-        <Location>- Atlanta, GA</Location>
-      </h3>
-      <DateRange>
-        <NoWrapSpan>AUG 2010</NoWrapSpan> - <NoWrapSpan>MAY 2014</NoWrapSpan>
-      </DateRange>
-    </TitleRow>
-    <div>
-      Highest Honors
-    </div>
-
-    <h2>SKILLS</h2>
-    {
-      Object.keys(skills).map(category => (
-        <div key={category}>
-          {skills[category].join(", ")}
+      <h2>EXPERIENCE</h2>
+      {jobs.filter(job => job.enabled).map(job => (
+        <div key={job.id}>
+          <TitleRow>
+            <h3>
+              <a href={job.uri}>{job.name}</a>, {job.title}{' '}
+              <Location>- {job.location}</Location>
+            </h3>
+            <DateRange>
+              <NoWrapSpan>{job.start}</NoWrapSpan> -{' '}
+              <NoWrapSpan>{job.finish}</NoWrapSpan>
+            </DateRange>
+          </TitleRow>
+          <ul>
+            {job.description.map(desc => (
+              <li key={desc}>{desc}</li>
+            ))}
+          </ul>
         </div>
-      ))
-    }
-    <TopLeft>
-      <Link to="/">&larr; Back to site</Link>
-      <br />
-      <br />
-      <a href="/devraj_mehta_resume.pdf">PDF Version</a>
-    </TopLeft>
-  </Wrapper >
-);
+      ))}
 
-export default Resume;
+      <h2>EDUCATION</h2>
+      <TitleRow>
+        <h3>
+          <a href="https://gatech.edu">Georgia Institute of Technology</a>,{' '}
+          <NoWrapSpan>BSc Computer Science</NoWrapSpan>{' '}
+          <Location>- Atlanta, GA</Location>
+        </h3>
+        <DateRange>
+          <NoWrapSpan>AUG 2010</NoWrapSpan> - <NoWrapSpan>MAY 2014</NoWrapSpan>
+        </DateRange>
+      </TitleRow>
+      <div>
+        Highest Honors
+      </div>
+
+      <h2>SKILLS</h2>
+      {
+        Object.keys(skills).map(category => (
+          <div key={category}>
+            {skills[category].join(", ")}
+          </div>
+        ))
+      }
+      <TopLeft>
+        <Link to="/">&larr; Back to site</Link>
+        <br />
+        <br />
+        <a href="/devraj_mehta_resume.pdf">PDF Version</a>
+      </TopLeft>
+    </Wrapper >
+  );
+}
 
 export const query = graphql`
   query {
@@ -207,10 +204,17 @@ export const query = graphql`
         email
       }
     }
-    fileName: file(relativePath: { eq: "images/me.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(width: 1000)
-      }
-    }
   }
 `;
+
+export function Head({ pageContext, ...rest }) {
+  const props = {
+    ...rest,
+    pageContext: {
+      ...pageContext,
+      title: 'Devraj Mehta Resume',
+      dropTypography: true,
+    },
+  };
+  return <CommonHead {...props} />;
+}

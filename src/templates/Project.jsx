@@ -2,7 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { getSrc } from "gatsby-plugin-image"
+import { getSrc } from "gatsby-plugin-image";
 
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism.css";
@@ -11,6 +11,8 @@ import theme from "../theme";
 import { rhythm } from "../typography";
 import Layout from "../components/Layout";
 import Pills from "../components/Pills";
+
+export { Head } from "../components/Head";
 
 const Article = styled.article`
   margin: 0 auto;
@@ -36,15 +38,10 @@ const Updated = styled.span`
 
 const ProjectTemplate = ({
   data: {
-    markdownRemark: { frontmatter, html, fields },
+    markdownRemark: { frontmatter, html },
   },
 }) => (
-  <Layout
-    title={frontmatter.title}
-    description={frontmatter.tagline}
-    image={getSrc(frontmatter.image)}
-    url={fields.path}
-  >
+  <Layout>
     <Article>
       <header>
         <h1>{frontmatter.title}</h1>
@@ -94,9 +91,6 @@ export const query = graphql`
             gatsbyImageData(width: 1000)
           }
         }
-      }
-      fields {
-        path
       }
     }
   }

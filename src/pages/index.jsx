@@ -6,6 +6,8 @@ import { StaticImage } from "gatsby-plugin-image";
 import theme from "../theme";
 import Layout from "../components/Layout";
 
+export { Head } from "../components/Head";
+
 const Article = styled.article`
   max-width: ${theme.contentWidth}px;
   width: 80%;
@@ -13,7 +15,7 @@ const Article = styled.article`
 `;
 
 const About = () => (
-  <Layout url="/">
+  <Layout>
     <Article>
       <p>Hello! I&apos;m Devraj.</p>
       <StaticImage

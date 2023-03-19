@@ -1,17 +1,19 @@
-import { useStaticQuery, graphql } from "gatsby";
+import React from "react";
 import { getSrc } from "gatsby-plugin-image"
+import { useStaticQuery, graphql } from "gatsby";
 
-import config from "../config";
+import { typography } from "../typography";
 
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
-export const Head = ({ location, pageContext }) => {
-  const { site, fileName } = useStaticQuery(
+export function Head({ location, pageContext }) {
+  const { site: { siteMetadata }, fileName } = useStaticQuery(
     graphql`
       query HeadQuery {
         site {
           siteMetadata {
             title
             description
+            siteUrl
           }
         }
         fileName: file(relativePath: { eq: "images/me.jpg" }) {
@@ -22,11 +24,10 @@ export const Head = ({ location, pageContext }) => {
       }
     `
   );
-  const title = pageContext.title || site.siteMetadata.title;
-  const description = pageContext.description || site.siteMetadata.description;
-  const image = pageContext.image ?
-    getSrc(pageContext.image) :
-    getSrc(fileName);
+  const title = pageContext.title || siteMetadata.title;
+  const description = pageContext.description || siteMetadata.description;
+  const image = pageContext.image ? pageContext.image : fileName;
+  const { siteUrl } = siteMetadata;
   return (
     <>
       <html lang="en" />
@@ -34,12 +35,13 @@ export const Head = ({ location, pageContext }) => {
       <meta name="description" content={description} />
       <meta name="og:type" content="article" />
       <meta name="og:title" content={title} />
-      <meta name="og:url" content={`${config.siteUrl}${location.pathname}`} />
+      <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
       <meta name="og:description" content={description} />
-      <meta name="og:image" content={`${config.siteUrl}${image}`} />
+      <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@devm33" />
       <meta name="fb:app_id" content="477033866176272" />
+      {!pageContext.dropTypography && <style>{typography.toString()}</style>}
     </>
   );
 };
