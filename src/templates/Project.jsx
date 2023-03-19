@@ -1,16 +1,15 @@
+import { graphql, Link } from "gatsby";
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import styled from "styled-components";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { getSrc } from "gatsby-plugin-image";
 
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism.css";
 
-import theme from "../theme";
-import { rhythm } from "../typography";
 import Layout from "../components/Layout";
 import Pills from "../components/Pills";
+import theme from "../theme";
+import { rhythm } from "../typography";
 
 export { Head } from "../components/Head";
 
