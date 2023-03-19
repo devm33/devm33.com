@@ -136,7 +136,7 @@ problems as well.
 
 ## Prime Numbers
 
-[4clojure.com/problem/67](https://web.archive.org/web/http://www.4clojure.com/problem/67)
+[4clojure.com/problem/67](https://web.archive.org/web/20191018054333/http://www.4clojure.com/problem/67)
 
 I didn't learn anything in particular from this problem. I love this method of
 testing primality.
