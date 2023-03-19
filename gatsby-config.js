@@ -1,5 +1,3 @@
-const config = require("./src/config");
-
 module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
