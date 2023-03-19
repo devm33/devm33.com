@@ -1,6 +1,7 @@
+import { graphql, Link } from "gatsby";
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import { graphql, Link } from "gatsby";
 
 import { Head as CommonHead } from "../../components/Head";
 import "../../reset.css";
@@ -73,7 +74,7 @@ const Location = styled.span`
   font-style: italic;
   font-weight: normal;
   white-space: nowrap;
-`
+`;
 
 const DateRange = styled.div`
   color: #666;
@@ -218,3 +219,7 @@ export function Head({ pageContext, ...rest }) {
   };
   return <CommonHead {...props} />;
 }
+
+Head.propTypes = {
+  pageContext: PropTypes.object.isRequired,
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
@@ -11,7 +12,7 @@ const Article = styled.article`
   margin: 0 auto;
 `;
 
-export default function NotFoundPag() {
+export default function NotFoundPage() {
   return (
     <Layout>
       <Article>
@@ -32,3 +33,7 @@ export function Head({ pageContext, ...rest }) {
   };
   return <CommonHead {...props} />;
 }
+
+Head.propTypes = {
+  pageContext: PropTypes.object.isRequired,
+};

@@ -1,6 +1,7 @@
+import { graphql, useStaticQuery } from "gatsby";
+import { getSrc } from "gatsby-plugin-image";
+import PropTypes from "prop-types";
 import React from "react";
-import { getSrc } from "gatsby-plugin-image"
-import { useStaticQuery, graphql } from "gatsby";
 
 import { typography } from "../typography";
 
@@ -44,4 +45,16 @@ export function Head({ location, pageContext }) {
       {!pageContext.dropTypography && <style>{typography.toString()}</style>}
     </>
   );
+};
+
+Head.propTypes = {
+  pageContext: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
+    dropTypography: PropTypes.bool,
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
 };
