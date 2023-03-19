@@ -1,5 +1,4 @@
 import { graphql, Link } from "gatsby";
-import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
@@ -208,6 +207,7 @@ export const query = graphql`
   }
 `;
 
+// eslint-disable-next-line react/prop-types
 export function Head({ pageContext, ...rest }) {
   const props = {
     ...rest,
@@ -219,7 +219,3 @@ export function Head({ pageContext, ...rest }) {
   };
   return <CommonHead {...props} />;
 }
-
-Head.propTypes = {
-  pageContext: PropTypes.object.isRequired,
-};
