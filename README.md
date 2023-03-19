@@ -27,7 +27,6 @@ npm start
 - [ ] Potentially remove html.jsx
 - [ ] Consider removing typography.js, see 
       [feat(gatsby-starter-blog): Remove typography.js (#27001)](https://github.com/gatsbyjs/gatsby-starter-blog/commit/4955e4d569e51d27bf0ba2cbae85d5fdd94ad3b1#diff-26ca35c3be6d07c84bb77f1e63a1b19487279d5b9c9a9392179b3a35647e1254)
-- [ ] Switch to [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
 
 - [ ] Add rss of projects.
 
@@ -40,6 +39,7 @@ npm start
 
 ## Done
 
+- [x] Switch to [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
 - [x] Finish cleaning up gatsby-plugin-image migration
 - [x] Migrate from Gatsby 2.x to 5.x
 - [x] This site :)
