@@ -1,8 +1,10 @@
+
+const siteUrl = 'https://devm33.com';
 module.exports = {
   siteMetadata: {
     title: `Devraj Mehta`,
     description: `Devraj Mehta's website.`,
-    siteUrl: 'https://devm33.com',
+    siteUrl,
     email: `dev@devm.dev`,
   },
   plugins: [
@@ -22,9 +24,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
-      options: {
-        siteUrl: config.siteUrl,
-      },
+      options: { siteUrl },
     },
     `gatsby-transformer-yaml`,
     {
@@ -48,7 +48,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: config.contentWidth,
+              maxWidth: 700, // Matches theme contentWidth
             },
           },
           `gatsby-remark-smartypants`,
