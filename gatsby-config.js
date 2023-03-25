@@ -9,20 +9,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-omni-font-loader`,
-      options: {
-        mode: "render-blocking",
-        enableListener: false,
-        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
-        web: [
-          {
-            name: `Mulish`,
-            file: `https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;1,400&display=block`,
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: { siteUrl },
     },
@@ -65,6 +51,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-split-css`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

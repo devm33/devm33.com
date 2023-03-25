@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Head as CommonHead } from "../../components/Head";
+import "../../mulish-font.css";
 import "../../reset.css";
 
 const Wrapper = styled.div`
