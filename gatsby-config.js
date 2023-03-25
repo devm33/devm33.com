@@ -51,6 +51,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-split-css`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
