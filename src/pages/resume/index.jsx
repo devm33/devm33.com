@@ -218,5 +218,17 @@ export function Head({ pageContext, ...rest }) {
       dropTypography: true,
     },
   };
-  return <CommonHead {...props} />;
+  return (
+    <CommonHead {...props}>
+      <link
+        href="/mulish-font-full.css"
+        rel="preload"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+      />
+      <noscript>
+        <link rel="stylesheet" href="/mulish-font-full.css" />
+      </noscript>
+    </CommonHead>
+  );
 }

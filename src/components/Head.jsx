@@ -6,7 +6,7 @@ import React from "react";
 import { typography } from "../typography";
 
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
-export function Head({ location, pageContext }) {
+export function Head({ location, pageContext, children }) {
   const { site: { siteMetadata }, fileName } = useStaticQuery(
     graphql`
       query HeadQuery {
@@ -43,6 +43,7 @@ export function Head({ location, pageContext }) {
       <meta name="twitter:site" content="@devm33" />
       <meta name="fb:app_id" content="477033866176272" />
       {!pageContext.dropTypography && <style>{typography.toString()}</style>}
+      {children}
     </>
   );
 };
@@ -57,4 +58,5 @@ Head.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }),
+  children: PropTypes.node,
 };

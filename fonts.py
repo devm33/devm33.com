@@ -2,9 +2,11 @@
 
 import urllib.parse
 
+api = 'https://fonts.googleapis.com/css2'
+font = 'family=Mulish:ital,wght@0,400..500;1,400'
+# font = 'family=Mulish:ital,wght@0,400'
 chars = ''.join([chr(i) for i in range(0X021, 0X07E)])
-print('https://fonts.googleapis.com/css?family=Mulish:ital,wght@400..500;1,400&display=block&text='
-      + urllib.parse.quote(chars))
+print(api + '?' + font + '&display=block&text=' + urllib.parse.quote(chars))
 
 
 # Either download and base64 the font or use this tool:
