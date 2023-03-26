@@ -61,12 +61,14 @@ exports.createPages = async ({ actions, graphql }) => {
   // Add project pages.
   projects.data.allMarkdownRemark.nodes.forEach(node => {
     if (node.fields.type == "projects") {
-      createPage({ path: node.fields.path, component: ProjectTemplate,
-      context: { 
-        title: node.frontmatter.title,
-        description: node.frontmatter.tagline,
-        image: node.frontmatter.image,
-      }});
+      createPage({
+        path: node.fields.path, component: ProjectTemplate,
+        context: {
+          title: node.frontmatter.title,
+          description: node.frontmatter.tagline,
+          image: node.frontmatter.image,
+        }
+      });
       if (node.frontmatter.tags) {
         node.frontmatter.tags.forEach(tag => tags.add(tag));
       }
@@ -112,6 +114,6 @@ exports.onPostBuild = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
-  await page.goto(url.pathToFileURL(resumePath));
+  await page.goto(url.pathToFileURL(resumePath), { waitUntil: "networkidle0" });
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
 };
