@@ -22,6 +22,8 @@ npm start
 ## TODO
 
 - [ ] Migrate to TypeScript
+- [ ] Migrate from styled-components to native CSS modules
+- [ ] On project page avoid inline SVG duplication
 - [ ] Potentially remove html.jsx
 - [ ] Consider removing typography.js, see 
       [feat(gatsby-starter-blog): Remove typography.js (#27001)](https://github.com/gatsbyjs/gatsby-starter-blog/commit/4955e4d569e51d27bf0ba2cbae85d5fdd94ad3b1#diff-26ca35c3be6d07c84bb77f1e63a1b19487279d5b9c9a9392179b3a35647e1254)
