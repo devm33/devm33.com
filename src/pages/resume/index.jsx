@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Head as CommonHead } from "../../components/Head";
-import "../../mulish-font.css";
+import "../../mulish-lite-font.css";
 import "../../reset.css";
 
 const Wrapper = styled.div`
@@ -219,5 +219,11 @@ export function Head({ pageContext, ...rest }) {
       dropTypography: true,
     },
   };
-  return <CommonHead {...props} />;
+  return (
+    <CommonHead {...props}>
+      <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+      <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"></link>
+    </CommonHead>
+  );
 }
