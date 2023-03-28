@@ -7,7 +7,7 @@ import "../../mulish-lite-font.css";
 import "../../reset.css";
 
 const Wrapper = styled.div`
-  font-family: 'Mulish', 'MulishLite', sans-serif;
+  font-family: 'MulishLite', sans-serif;
   font-size: 14px;
   margin: 0 auto;
   padding: 2em 0 6em 0;
