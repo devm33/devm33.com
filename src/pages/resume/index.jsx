@@ -7,7 +7,7 @@ import "../../mulish-lite-font.css";
 import "../../reset.css";
 
 const Wrapper = styled.div`
-  font-family: 'Mulish', 'MulishLite', sans-serif;
+  font-family: 'MulishLite', sans-serif;
   font-size: 14px;
   margin: 0 auto;
   padding: 2em 0 6em 0;
@@ -21,7 +21,6 @@ const Wrapper = styled.div`
     @page {
       margin: 0;
     }
-    font-family: 'Mulish', sans-serif;
     margin-bottom: 0;
     margin-top: 1.5em;
     padding: 0;
@@ -219,11 +218,5 @@ export function Head({ pageContext, ...rest }) {
       dropTypography: true,
     },
   };
-  return (
-    <CommonHead {...props}>
-      <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-      <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"></link>
-    </CommonHead>
-  );
+  return <CommonHead {...props} />;
 }
