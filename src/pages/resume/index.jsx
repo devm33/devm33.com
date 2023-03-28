@@ -21,7 +21,6 @@ const Wrapper = styled.div`
     @page {
       margin: 0;
     }
-    font-family: 'Mulish', sans-serif;
     margin-bottom: 0;
     margin-top: 1.5em;
     padding: 0;
