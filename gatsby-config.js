@@ -37,7 +37,6 @@ module.exports = {
               maxWidth: 700, // Matches theme contentWidth
             },
           },
-          `gatsby-remark-smartypants`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-katex`,

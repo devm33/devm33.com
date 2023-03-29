@@ -6,7 +6,7 @@ tagline: Troubleshooting setting up Jekyll on NearlyFreeSpeech.net hosting.
 tags: [jekyll, nearlyfreespeech.net, rubygems]
 ---
 
-This turned out to be a bit of an adventure...
+This turned out to be a bit of an adventure…
 
 ### Gem install setup
 
