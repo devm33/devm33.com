@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import React from "react";
+import styled from "styled-components";
 
-import theme from "../theme";
 import Layout from "../components/Layout";
+import theme from "../theme";
 
 export { Head } from "../components/Head";
 

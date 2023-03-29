@@ -3,8 +3,9 @@ import React from "react";
 import styled from "styled-components";
 
 import "../reset.css";
-import { Header } from "./Header";
 import theme from "../theme";
+import { Header } from "./Header";
+import { InstallIcons } from "./Icons";
 
 const Wrapper = styled.div`
   color: ${theme.fg};
@@ -26,6 +27,7 @@ const Wrapper = styled.div`
 /** Layout component to serve as the base for all pages.  */
 export const Layout = ({ children }) => (
   <Wrapper>
+    <InstallIcons />
     <Header />
     <main>{children}</main>
   </Wrapper>

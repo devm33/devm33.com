@@ -1,12 +1,12 @@
-import React from "react";
 import { graphql, Link, navigate } from "gatsby";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import styled from "styled-components";
-import PropTypes from "prop-types";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import PropTypes from "prop-types";
+import React from "react";
+import styled from "styled-components";
 
 import theme from "../theme";
-import { scale, rhythm } from "../typography";
+import { rhythm, scale } from "../typography";
+import { GitHubIcon, LinkIcon } from "./Icons";
 import Pills from "./Pills";
 
 const minTileSize = "300px";
@@ -134,7 +134,7 @@ const ProjectGrid = ({ nodes }) => (
                     aria-label="GitHub repo"
                     onClick={e => e.stopPropagation()}
                   >
-                    <FaGithub />
+                    <GitHubIcon />
                   </a>
                 )}
                 {node.frontmatter.link && (
@@ -143,7 +143,7 @@ const ProjectGrid = ({ nodes }) => (
                     aria-label="Project link"
                     onClick={e => e.stopPropagation()}
                   >
-                    <FaExternalLinkAlt />
+                    <LinkIcon />
                   </a>
                 )}
               </Links>

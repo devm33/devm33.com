@@ -1,11 +1,11 @@
 import { graphql, Link } from "gatsby";
 import React from "react";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import styled from "styled-components";
 
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism.css";
 
+import { GitHubIcon, LinkIcon } from "../components/Icons";
 import Layout from "../components/Layout";
 import Pills from "../components/Pills";
 import theme from "../theme";
@@ -50,13 +50,13 @@ const ProjectTemplate = ({
             {frontmatter.repo && (
               <a href={frontmatter.repo} aria-label="GitHub repo">
                 Source
-                <FaGithub />
+                <GitHubIcon />
               </a>
             )}
             {frontmatter.link && (
               <a href={frontmatter.link} aria-label="Project link">
                 Link
-                <FaExternalLinkAlt />
+                <LinkIcon />
               </a>
             )}
           </Pills>

@@ -1,11 +1,10 @@
+import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Link } from "gatsby";
-import { useStaticQuery, graphql } from "gatsby";
 
 import theme from "../theme";
 import { rhythm } from "../typography";
+import { GitHubIcon, LinkedinIcon } from "./Icons";
 
 const Wrapper = styled.header`
   display: flex;
@@ -62,13 +61,13 @@ export const Header = () => {
       </Name>
       <IconLinks>
         <a href="https://github.com/devm33" aria-label="GitHub profile">
-          <FaGithub />
+          <GitHubIcon />
         </a>
         <a
           href="https://www.linkedin.com/in/devrajmehta/"
           aria-label="LinkedIn profile"
         >
-          <FaLinkedin />
+          <LinkedinIcon />
         </a>
       </IconLinks>
     </Wrapper>
