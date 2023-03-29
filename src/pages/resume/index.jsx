@@ -3,11 +3,11 @@ import React from "react";
 import styled from "styled-components";
 
 import { Head as CommonHead } from "../../components/Head";
-import "../../mulish-lite-font.css";
+import "../../mulish-font.css";
 import "../../reset.css";
 
 const Wrapper = styled.div`
-  font-family: 'MulishLite', sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   margin: 0 auto;
   padding: 2em 0 6em 0;
