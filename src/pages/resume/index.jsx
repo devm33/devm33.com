@@ -130,11 +130,11 @@ export default function Resume({
         <div key={job.id}>
           <TitleRow>
             <h3>
-              <a href={job.uri}>{job.name}</a>, {job.title}{' '}
+              <a href={job.uri}>{job.name}</a>, {job.title} { }
               <Location>- {job.location}</Location>
             </h3>
             <DateRange>
-              <NoWrapSpan>{job.start}</NoWrapSpan> -{' '}
+              <NoWrapSpan>{job.start}</NoWrapSpan> - { }
               <NoWrapSpan>{job.finish}</NoWrapSpan>
             </DateRange>
           </TitleRow>
@@ -149,8 +149,8 @@ export default function Resume({
       <h2>EDUCATION</h2>
       <TitleRow>
         <h3>
-          <a href="https://gatech.edu">Georgia Institute of Technology</a>,{' '}
-          <NoWrapSpan>BSc Computer Science</NoWrapSpan>{' '}
+          <a href="https://gatech.edu">Georgia Institute of Technology</a>, { }
+          <NoWrapSpan>BSc Computer Science</NoWrapSpan> { }
           <Location>- Atlanta, GA</Location>
         </h3>
         <DateRange>
