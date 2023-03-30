@@ -25,6 +25,8 @@ npm start
 - [ ] Migrate from styled-components to native CSS modules
 - [ ] Consider removing typography.js, see 
       [feat(gatsby-starter-blog): Remove typography.js (#27001)](https://github.com/gatsbyjs/gatsby-starter-blog/commit/4955e4d569e51d27bf0ba2cbae85d5fdd94ad3b1#diff-26ca35c3be6d07c84bb77f1e63a1b19487279d5b9c9a9392179b3a35647e1254)
+- [ ] Use html.js to remove unnecessary meta tags.
+- [ ] Try to use ssr to remove gatsby-image tags on resume page.
 - [ ] Add rss of projects.
 
 ### Projects to add:
