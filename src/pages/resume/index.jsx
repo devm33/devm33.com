@@ -126,7 +126,7 @@ export default function Resume({
       </Header>
 
       <h2>EXPERIENCE</h2>
-      {jobs.filter(job => job.enabled).map(job => (
+      {jobs.map(job => (
         <div key={job.id}>
           <TitleRow>
             <h3>
@@ -181,7 +181,7 @@ export default function Resume({
 
 export const query = graphql`
   query {
-    allJobsYaml {
+    allJobsYaml(filter: { enabled: { eq: true } }) {
       nodes {
         id
         uri
@@ -192,7 +192,6 @@ export const query = graphql`
         title
         start
         finish
-        enabled
       }
     }
     resumeYaml {
