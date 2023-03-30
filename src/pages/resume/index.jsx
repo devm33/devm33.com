@@ -1,106 +1,10 @@
 import { graphql, Link } from "gatsby";
 import React from "react";
-import styled from "styled-components";
 
 import { Head as CommonHead } from "../../components/Head";
 import "../../mulish-font.css";
-import "../../reset.css";
-
-const Wrapper = styled.div`
-  font-family: 'Mulish', sans-serif;
-  font-size: 14px;
-  margin: 0 auto;
-  padding: 2em 0 6em 0;
-  max-width: 682px;
-  line-height: 1.4;
-  @media only screen and (max-width: 700px) {
-    margin: 0 1em;
-    padding: 1em 0;
-  }
-  @media print {
-    @page {
-      margin: 0;
-    }
-    margin-bottom: 0;
-    margin-top: 1.5em;
-    padding: 0;
-  }
-  a,
-  a:visited {
-    color: #1976d2;
-  }
-  h1 {
-    font-size: 1.5em;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-  }
-  h2 {
-    font-size: 1em;
-    margin: 1em 0 0 0;
-  }
-  h3 {
-    font-size: 1em;
-  }
-  ul {
-    padding-inline-start: 20px;
-  }
-  li {
-    list-style-type: circle;
-  }
-`;
-
-const Header = styled.header`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const ContactInfo = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: end;
-  & > a + a {
-    margin-left: 14px;
-  }
-`;
-
-const TitleRow = styled.div`
-  display: flex;
-  margin: 0.3em 0 0.1em 0;
-`;
-
-const Location = styled.span`
-  color: #666;
-  font-style: italic;
-  font-weight: normal;
-  white-space: nowrap;
-`;
-
-const DateRange = styled.div`
-  color: #666;
-  font-size: 0.85em;
-  margin-left: auto;
-  text-align: end;
-`;
-
-const NoWrapSpan = styled.span`
-  white-space: nowrap;
-`;
-
-const NoPrint = styled.div`
-  @media print {
-    display: none;
-  }
-`;
-
-const TopLeft = styled(NoPrint)`
-  left: 30px;
-  position: fixed;
-  top: 30px;
-  @media (max-width: 950px) {
-    display: none;
-  }
-`;
+import "./index.css";
+import * as css from "./index.module.css";
 
 export default function Resume({
   data: {
@@ -112,32 +16,34 @@ export default function Resume({
   },
 }) {
   return (
-    <Wrapper>
-      <Header>
+    <main className={css.main}>
+      <header className={css.header}>
         <h1>
           Devraj Mehta
         </h1>
-        <ContactInfo>
+        <div className={css.contactInfo}>
           <a href="https://www.linkedin.com/in/devrajmehta">
             linkedin.com/in/devrajmehta
           </a>
           <a href={`mailto:${email}`}>{email}</a>
-        </ContactInfo>
-      </Header>
+        </div>
+      </header>
 
       <h2>EXPERIENCE</h2>
       {jobs.map(job => (
         <div key={job.id}>
-          <TitleRow>
+          <div className={css.titleRow}>
             <h3>
               <a href={job.uri}>{job.name}</a>, {job.title} { }
-              <Location>- {job.location}</Location>
+              <span className={`${css.location} ${css.nowrap}`}>
+                - {job.location}
+              </span>
             </h3>
-            <DateRange>
-              <NoWrapSpan>{job.start}</NoWrapSpan> - { }
-              <NoWrapSpan>{job.finish}</NoWrapSpan>
-            </DateRange>
-          </TitleRow>
+            <div className={css.dateRange}>
+              <span className={css.nowrap}>{job.start}</span> - { }
+              <span className={css.nowrap}>{job.finish}</span>
+            </div>
+          </div>
           <ul>
             {job.description.map(desc => (
               <li key={desc}>{desc}</li>
@@ -147,16 +53,17 @@ export default function Resume({
       ))}
 
       <h2>EDUCATION</h2>
-      <TitleRow>
+      <div className={css.titleRow}>
         <h3>
           <a href="https://gatech.edu">Georgia Institute of Technology</a>, { }
-          <NoWrapSpan>BSc Computer Science</NoWrapSpan> { }
-          <Location>- Atlanta, GA</Location>
+          <span className={css.nowrap}>BSc Computer Science</span> { }
+          <span className={`${css.location} ${css.nowrap}`}>- Atlanta, GA</span>
         </h3>
-        <DateRange>
-          <NoWrapSpan>AUG 2010</NoWrapSpan> - <NoWrapSpan>MAY 2014</NoWrapSpan>
-        </DateRange>
-      </TitleRow>
+        <div className={css.dateRange}>
+          <span className={css.nowrap}>AUG 2010</span> - { }
+          <span className={css.nowrap}>MAY 2014</span>
+        </div>
+      </div>
       <div>
         Highest Honors
       </div>
@@ -169,13 +76,13 @@ export default function Resume({
           </div>
         ))
       }
-      <TopLeft>
+      <div className={`${css.noPrint} ${css.topLeft}`}>
         <Link to="/">&larr; Back to site</Link>
         <br />
         <br />
         <a href="/devraj_mehta_resume.pdf">PDF Version</a>
-      </TopLeft>
-    </Wrapper >
+      </div>
+    </main>
   );
 }
 
