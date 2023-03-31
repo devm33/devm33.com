@@ -52,6 +52,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-minify-classnames`,
     `gatsby-plugin-split-css`,
+    `gatsby-plugin-minify`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
