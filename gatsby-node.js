@@ -34,6 +34,7 @@ exports.createPages = async ({ actions, graphql }) => {
     {
       allMarkdownRemark {
         nodes {
+          html
           fields {
             path
             type
@@ -61,12 +62,14 @@ exports.createPages = async ({ actions, graphql }) => {
   // Add project pages.
   projects.data.allMarkdownRemark.nodes.forEach(node => {
     if (node.fields.type == "projects") {
+      console.log(node.fields.path, node.html.includes(`<span class="katex">`));
       createPage({
         path: node.fields.path, component: ProjectTemplate,
         context: {
           title: node.frontmatter.title,
           description: node.frontmatter.tagline,
           image: node.frontmatter.image,
+          katex: node.html.includes(`<span class="katex">`),
         }
       });
       if (node.frontmatter.tags) {

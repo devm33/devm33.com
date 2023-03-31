@@ -47,7 +47,7 @@ Head.propTypes = {
   pageContext: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.object,
     dropTypography: PropTypes.bool,
   }),
   location: PropTypes.shape({

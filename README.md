@@ -21,10 +21,10 @@ npm start
 
 ## TODO
 
-- [ ] Migrate to TypeScript
-- [ ] Migrate from styled-components to native CSS modules
-- [ ] Consider removing typography.js, see 
+- [ ] Removing typography.js, see 
       [feat(gatsby-starter-blog): Remove typography.js (#27001)](https://github.com/gatsbyjs/gatsby-starter-blog/commit/4955e4d569e51d27bf0ba2cbae85d5fdd94ad3b1#diff-26ca35c3be6d07c84bb77f1e63a1b19487279d5b9c9a9392179b3a35647e1254)
+- [ ] Migrate from styled-components to native CSS modules
+- [ ] Migrate to TypeScript
 - [ ] Add rss of projects.
 
 ### Projects to add:
@@ -36,6 +36,7 @@ npm start
 
 ## Done
 
+- [x] Limit katex css to pages that use it
 - [x] Use html.js to remove unnecessary meta tags.
 - [x] Remove html.jsx
 - [x] On project page avoid inline SVG duplication

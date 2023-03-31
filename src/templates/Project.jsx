@@ -2,7 +2,6 @@ import { graphql, Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
-import "katex/dist/katex.min.css";
 import "prismjs/themes/prism.css";
 
 import { GitHubIcon, LinkIcon } from "../components/Icons";
@@ -35,44 +34,48 @@ const Updated = styled.span`
   font-style: italic;
 `;
 
-const ProjectTemplate = ({
-  data: {
-    markdownRemark: { frontmatter, html },
-  },
-}) => (
-  <Layout>
-    <Article>
-      <header>
-        <h1>{frontmatter.title}</h1>
-        <Subtitle>
-          <Updated>Last updated {frontmatter.updated}</Updated>
-          <Pills>
-            {frontmatter.repo && (
-              <a href={frontmatter.repo} aria-label="GitHub repo">
-                Source
-                <GitHubIcon />
-              </a>
-            )}
-            {frontmatter.link && (
-              <a href={frontmatter.link} aria-label="Project link">
-                Link
-                <LinkIcon />
-              </a>
-            )}
-          </Pills>
-          <Pills>
-            {frontmatter.tags.map(tag => (
-              <Link key={tag} to={`/tag/${tag}/`}>
-                {tag}
-              </Link>
-            ))}
-          </Pills>
-        </Subtitle>
-      </header>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </Article>
-  </Layout>
-);
+export default function ProjectTemplate({
+  data: { markdownRemark: { frontmatter, html } },
+  pageContext: { katex },
+}) {
+  if (katex) {
+    import("katex/dist/katex.min.css");
+  }
+  return (
+    <Layout>
+      <Article>
+        <header>
+          <h1>{frontmatter.title}</h1>
+          <Subtitle>
+            <Updated>Last updated {frontmatter.updated}</Updated>
+            <Pills>
+              {frontmatter.repo && (
+                <a href={frontmatter.repo} aria-label="GitHub repo">
+                  Source
+                  <GitHubIcon />
+                </a>
+              )}
+              {frontmatter.link && (
+                <a href={frontmatter.link} aria-label="Project link">
+                  Link
+                  <LinkIcon />
+                </a>
+              )}
+            </Pills>
+            <Pills>
+              {frontmatter.tags.map(tag => (
+                <Link key={tag} to={`/tag/${tag}/`}>
+                  {tag}
+                </Link>
+              ))}
+            </Pills>
+          </Subtitle>
+        </header>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </Article>
+    </Layout>
+  );
+}
 
 export const query = graphql`
   query($path: String!) {
@@ -94,5 +97,3 @@ export const query = graphql`
     }
   }
 `;
-
-export default ProjectTemplate;
