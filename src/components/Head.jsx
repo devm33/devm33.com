@@ -31,7 +31,6 @@ export function Head({ location, pageContext, children }) {
   const { siteUrl } = siteMetadata;
   return (
     <>
-      <html lang="en" />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="og:type" content="article" />
