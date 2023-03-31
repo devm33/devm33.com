@@ -33,14 +33,10 @@ export function Head({ location, pageContext, children }) {
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="og:type" content="article" />
       <meta name="og:title" content={title} />
       <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
       <meta name="og:description" content={description} />
       <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@devm33" />
-      <meta name="fb:app_id" content="477033866176272" />
       {!pageContext.dropTypography && <style>{typography.toString()}</style>}
       {children}
     </>
