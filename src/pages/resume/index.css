@@ -2,6 +2,11 @@
   margin: 0;
 }
 
+html {
+  /* Prevent adjustments of font size after orientation changes in iOS. */
+  -webkit-text-size-adjust: 100%;
+}
+
 a,
 a:visited {
   color: #1976d2;
@@ -28,4 +33,10 @@ ul {
 
 li {
   list-style-type: circle;
+}
+
+@media print {
+  @page {
+    margin: 0;
+  }
 }
