@@ -17,7 +17,7 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   replaceHeadComponents(headComponents);
 };
 
-/** Returns false for the Gatbsy generator tag to remove it. */
+/** Returns false for the Gatsby generator tag to remove it. */
 function removeGeneratorTag({ type, props }) {
   return type !== 'meta' || props?.name !== 'generator';
 }
