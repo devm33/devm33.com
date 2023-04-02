@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 /** Layout component to serve as the base for all pages.  */
 export const Layout = ({ children }) => (
   <Wrapper>
-    <InstallIcons />
+    <InstallIcons github={true} link={true} linkedin={true} />
     <Header />
     <main>{children}</main>
   </Wrapper>
