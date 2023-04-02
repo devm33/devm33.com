@@ -29,6 +29,7 @@ npm start
 - [ ] Clean up linting setup
 - [ ] Add plugin to sort css properties alphabetically
 - [ ] Add editorconfig
+- [ ] Conditionally load prism css on project template
 
 ### Projects to add:
 
