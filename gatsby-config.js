@@ -50,8 +50,9 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-minify-classnames`,
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-split-css`,
+    `gatsby-plugin-minify-classnames`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
