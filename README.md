@@ -30,6 +30,8 @@ npm start
 - [ ] Add plugin to sort css properties alphabetically
 - [ ] Add editorconfig
 - [ ] Conditionally load prism css on project template
+- [ ] [Consider
+  preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 
 ### Projects to add:
 
