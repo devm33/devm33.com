@@ -26,6 +26,9 @@ npm start
 - [ ] Migrate from styled-components to native CSS modules
 - [ ] Migrate to TypeScript
 - [ ] Add rss of projects.
+- [ ] Clean up linting setup
+- [ ] Add plugin to sort css properties alphabetically
+- [ ] Add editorconfig
 
 ### Projects to add:
 
