@@ -1,0 +1,10 @@
+.path {
+  fill: currentColor;
+  stroke-width: 0;
+  stroke: currentColor;
+}
+
+.svg {
+  height: 1em;
+  width: 1em;
+}
