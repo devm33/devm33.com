@@ -9,7 +9,7 @@ module.exports = {
   rules: {
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
-    "react/prop-types": [2, { ignore: ["data"] }],
+    "react/prop-types": 0,
   },
   env: {
     browser: true,
