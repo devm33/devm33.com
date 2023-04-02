@@ -30,11 +30,11 @@ exports.createPages = async ({ actions, graphql }) => {
   const ProjectTemplate = path.resolve(`src/templates/Project.jsx`);
   const TagTemplate = path.resolve(`src/templates/Tag.jsx`);
   const tags = new Set();
-  const projects = await graphql(`
-    {
-      allMarkdownRemark {
+  const { data: { projects, katexProjects, prismProjects } } = await graphql(`
+    query createPages {
+      projects: allMarkdownRemark {
         nodes {
-          html
+          id
           fields {
             path
             type
@@ -51,25 +51,38 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      katexProjects: allMarkdownRemark(
+        filter: {html: {regex: "/class=\\"katex\\"/"}}
+      ) {
+        nodes {
+          id
+        }
+      }
+      prismProjects: allMarkdownRemark(
+        filter: {html: {regex: "/class=\\"gatsby-highlight\\"/"}}
+      ) {
+        nodes {
+          id
+        }
+      }
     }
   `);
-
-  if (projects.errors) {
-    console.error(projects.errors);
-    throw projects.errors;
-  }
+  const katex = new Set(katexProjects.nodes.map(node => node.id));
+  const prism = new Set(prismProjects.nodes.map(node => node.id));
 
   // Add project pages.
-  projects.data.allMarkdownRemark.nodes.forEach(node => {
+  projects.nodes.forEach(node => {
     if (node.fields.type == "projects") {
       createPage({
-        path: node.fields.path, component: ProjectTemplate,
+        path: node.fields.path,
+        component: ProjectTemplate,
         context: {
           title: node.frontmatter.title,
           description: node.frontmatter.tagline,
           image: node.frontmatter.image,
-          katex: node.html.includes(`<span class="katex">`),
-        }
+          katex: katex.has(node.id),
+          prism: prism.has(node.id),
+        },
       });
       if (node.frontmatter.tags) {
         node.frontmatter.tags.forEach(tag => tags.add(tag));

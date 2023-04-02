@@ -2,8 +2,6 @@ import { graphql, Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
-import "prismjs/themes/prism.css";
-
 import { GitHubIcon, LinkIcon } from "../components/Icons";
 import Layout from "../components/Layout";
 import Pills from "../components/Pills";
@@ -36,10 +34,13 @@ const Updated = styled.span`
 
 export default function ProjectTemplate({
   data: { markdownRemark: { frontmatter, html } },
-  pageContext: { katex },
+  pageContext: { katex, prism },
 }) {
   if (katex) {
     import("katex/dist/katex.min.css");
+  }
+  if (prism) {
+    import("prismjs/themes/prism.css");
   }
   return (
     <Layout>

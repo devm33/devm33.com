@@ -29,7 +29,6 @@ npm start
 - [ ] Clean up linting setup
 - [ ] Add plugin to sort css properties alphabetically
 - [ ] Add editorconfig
-- [ ] Conditionally load prism css on project template
 - [ ] [Consider
   preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 
@@ -42,6 +41,7 @@ npm start
 
 ## Done
 
+- [x] Conditionally lazy load prism css on project template
 - [x] Limit katex css to pages that use it
 - [x] Use html.js to remove unnecessary meta tags.
 - [x] Remove html.jsx
