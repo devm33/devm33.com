@@ -2,8 +2,9 @@ import { graphql, Link } from "gatsby";
 import React from "react";
 
 import { Head as CommonHead } from "../../components/Head";
+import { FileIcon, InstallIcons } from "../../components/Icons";
+import "../../global.css";
 import "../../mulish-font.css";
-import "./index.css";
 import * as css from "./index.module.css";
 
 export default function Resume({
@@ -17,15 +18,30 @@ export default function Resume({
 }) {
   return (
     <main className={css.main}>
+      <InstallIcons file={true} />
       <header className={css.header}>
-        <h1>
-          Devraj Mehta
-        </h1>
+        <div className={css.headerTitle}>
+          <h1>
+            <span className={css.onlyPrint}>Devraj Mehta</span>
+            <Link to="/" className={`${css.noPrint} ${css.headerLink}`}>
+              Devraj Mehta
+            </Link>
+          </h1>
+          <a
+            aria-label="Link to PDF version"
+            className={`${css.noPrint} ${css.pdfLink}`}
+            href="/devraj_mehta_resume.pdf"
+          >
+            <FileIcon />
+          </a>
+        </div>
         <div className={css.contactInfo}>
-          <a href="https://www.linkedin.com/in/devrajmehta">
+          <a
+            className={css.contactLink}
+            href="https://www.linkedin.com/in/devrajmehta">
             linkedin.com/in/devrajmehta
           </a>
-          <a href={`mailto:${email}`}>{email}</a>
+          <a className={css.contactLink} href={`mailto:${email}`}>{email}</a>
         </div>
       </header>
 
@@ -76,12 +92,6 @@ export default function Resume({
           </div>
         ))
       }
-      <div className={`${css.noPrint} ${css.topLeft}`}>
-        <Link to="/">&larr; Back to site</Link>
-        <br />
-        <br />
-        <a href="/devraj_mehta_resume.pdf">PDF Version</a>
-      </div>
     </main>
   );
 }

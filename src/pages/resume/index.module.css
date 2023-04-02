@@ -1,11 +1,38 @@
+.main a,
+.main a:visited {
+  color: #1976d2;
+}
+
+.main h1 {
+  font-size: 1.5em;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.main h2 {
+  font-size: 1em;
+  margin: 1em 0 0 0;
+}
+
+.main h3 {
+  font-size: 1em;
+}
+
+.main ul {
+  padding-inline-start: 1.5em;
+}
+
+.main li {
+  list-style-type: circle;
+}
+
 .main {
-  font-family: 'Mulish',
-    sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
-  margin: 0 auto;
-  padding: 2em 0 6em 0;
-  max-width: 682px;
   line-height: 1.4;
+  margin: 0 auto;
+  max-width: 49em;
+  padding: 2em 0 6em 0;
 }
 
 @media only screen and (max-width: 700px) {
@@ -15,32 +42,53 @@
   }
 }
 
-@media print {
-  .main {
-    margin-bottom: 0;
-    margin-top: 1.5em;
-    padding: 0;
-  }
-
-  .no-print {
-    display: none;
-  }
-}
-
 .header {
   align-items: center;
   display: flex;
   justify-content: space-between;
 }
 
+.header-title {
+  align-items: center;
+  display: flex;
+  gap: 1em;
+}
+
+.header-link {
+  text-decoration: none;
+}
+
+.pdf-link {
+  align-items: center;
+  display: flex;
+}
+
+@media (hover: hover) {
+  .pdf-link::after {
+    content: '';
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .pdf-link:hover::after {
+    content: 'Open PDF';
+    margin-inline-start: 0.3em;
+    opacity: 1;
+  }
+}
+
 .contact-info {
   display: flex;
   flex-wrap: wrap;
+  gap: 0 1em;
   justify-content: end;
 }
 
-.contact-info>a+a {
-  margin-left: 14px;
+.contact-link {
+  max-width: 30vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .title-row {
@@ -65,14 +113,26 @@
   white-space: nowrap;
 }
 
-.top-left {
-  left: 30px;
-  position: fixed;
-  top: 30px;
+.only-print {
+  display: none;
 }
 
-@media (max-width: 950px) {
-  .top-left {
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  .main {
+    margin-bottom: 0;
+    margin-top: 1.5em;
+    padding: 0;
+  }
+
+  .no-print {
     display: none;
+  }
+
+  .only-print {
+    display: unset;
   }
 }

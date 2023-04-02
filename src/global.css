@@ -1,0 +1,9 @@
+* {
+  /* Remove default margin */
+  margin: 0;
+}
+
+html {
+  /* Prevent adjustments of font size after orientation changes in iOS. */
+  -webkit-text-size-adjust: 100%;
+}

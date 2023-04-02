@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import "../reset.css";
+import "../global.css";
 import theme from "../theme";
 import { Header } from "./Header";
 import { InstallIcons } from "./Icons";
