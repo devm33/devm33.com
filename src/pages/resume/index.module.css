@@ -1,3 +1,19 @@
+.main {
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 49em;
+  padding: 2em 0 6em 0;
+}
+
+@media only screen and (max-width: 700px) {
+  .main {
+    margin: 0 1em;
+    padding: 1em 0;
+  }
+}
+
 .main a,
 .main a:visited {
   color: #1976d2;
@@ -24,22 +40,6 @@
 
 .main li {
   list-style-type: circle;
-}
-
-.main {
-  font-family: 'Mulish', sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  margin: 0 auto;
-  max-width: 49em;
-  padding: 2em 0 6em 0;
-}
-
-@media only screen and (max-width: 700px) {
-  .main {
-    margin: 0 1em;
-    padding: 1em 0;
-  }
 }
 
 .header {
