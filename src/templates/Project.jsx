@@ -40,7 +40,7 @@ export default function ProjectTemplate({
     import("katex/dist/katex.min.css");
   }
   if (prism) {
-    import("prismjs/themes/prism.css");
+    import("prismjs/themes/prism.min.css");
   }
   return (
     <Layout>
