@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 import "../global.css";
 import theme from "../theme";
-import { Header } from "./Header";
 import { InstallIcons } from "./Icons";
+import { Navbar } from "./Navbar";
 
 const Wrapper = styled.div`
   color: ${theme.fg};
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 export const Layout = ({ children }) => (
   <Wrapper>
     <InstallIcons github={true} link={true} linkedin={true} />
-    <Header />
+    <Navbar />
     <main>{children}</main>
   </Wrapper>
 );

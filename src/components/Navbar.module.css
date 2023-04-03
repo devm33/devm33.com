@@ -1,0 +1,24 @@
+.nav-bar {
+  align-items: center;
+  display: flex;
+  padding: 0.825rem;
+}
+
+.nav-bar>* {
+  flex: 1;
+}
+
+.title {
+  font-size: 1.41421rem;
+  line-height: 2.475rem;
+  text-align: center;
+}
+
+.icon-links {
+  font-size: 1.12246rem;
+  text-align: end;
+}
+
+.icon-links>a+a {
+  margin-inline-start: 0.825rem;
+}
