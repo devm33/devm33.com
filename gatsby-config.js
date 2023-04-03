@@ -49,9 +49,7 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-postcss`,
-    `gatsby-plugin-split-css`,
     `gatsby-plugin-minify-classnames`,
     {
       resolve: `gatsby-plugin-manifest`,
