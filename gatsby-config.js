@@ -49,7 +49,6 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-postcss`,
     `gatsby-plugin-minify-classnames`,
     {
       resolve: `gatsby-plugin-manifest`,
