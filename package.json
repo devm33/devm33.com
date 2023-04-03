@@ -70,5 +70,9 @@
     "remark-lint-no-dead-urls": "^1.1.0",
     "write-good": "^1.0.8"
   },
+  "browserslist": [
+    ">5%",
+    "not dead and supports es6-module"
+  ],
   "license": "MIT"
 }
