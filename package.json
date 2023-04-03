@@ -71,8 +71,7 @@
     "write-good": "^1.0.8"
   },
   "browserslist": [
-    ">5%",
-    "not dead and supports es6-module"
+    "defaults and supports es6-module"
   ],
   "license": "MIT"
 }

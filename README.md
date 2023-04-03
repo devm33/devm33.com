@@ -27,6 +27,7 @@ npm start
 - [ ] Migrate to TypeScript
 - [ ] Add rss of projects.
 - [ ] Clean up linting setup
+  - https://github.com/browserslist/browserslist-example
 - [ ] Add plugin to sort css properties alphabetically
 - [ ] Add editorconfig
 - [ ] [Consider
