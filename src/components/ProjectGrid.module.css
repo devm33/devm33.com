@@ -33,6 +33,7 @@
 .subtitle {
   background-color: #ffffffec;
   flex: 0;
+  font-size: 0.8909rem;
   overflow: hidden;
   pointer-events: none;
   transition: flex 0.3s ease-in-out;

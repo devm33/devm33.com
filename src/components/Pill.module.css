@@ -19,6 +19,8 @@
   margin-inline-start: var(--quarter-space);
 }
 
-.pill+.pill {
-  margin-inline-start: var(--half-space);
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--half-space);
 }

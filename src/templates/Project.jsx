@@ -3,7 +3,7 @@ import React from "react";
 
 import { GitHubIcon, LinkIcon } from "../components/Icons";
 import { Layout } from "../components/Layout";
-import { pill } from "../components/Pill.module.css";
+import { pill, pillGroup } from "../components/Pill.module.css";
 import { subtitle } from "./Project.module.css";
 
 export { Head } from "../components/Head";
@@ -25,7 +25,7 @@ export default function ProjectTemplate({
           <h1>{frontmatter.title}</h1>
           <div className={subtitle}>
             <i>Last updated {frontmatter.updated}</i>
-            <div>
+            <div className={pillGroup}>
               {frontmatter.repo && (
                 <a
                   aria-label="GitHub repo"
@@ -47,7 +47,7 @@ export default function ProjectTemplate({
                 </a>
               )}
             </div>
-            <div>
+            <div className={pillGroup}>
               {frontmatter.tags.map(tag => (
                 <Link key={tag} className={pill} to={`/tag/${tag}/`}>
                   {tag}

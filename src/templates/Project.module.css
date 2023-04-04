@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   font-size: var(--small-font);
+  gap: var(--half-space);
   justify-content: space-between;
   margin-bottom: var(--baseline);
 }

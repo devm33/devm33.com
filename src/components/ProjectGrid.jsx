@@ -3,7 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { pill } from "../components/Pill.module.css";
+import { pill, pillGroup } from "../components/Pill.module.css";
 import { GitHubIcon, LinkIcon } from "./Icons";
 import * as css from "./ProjectGrid.module.css";
 
@@ -27,7 +27,7 @@ export function ProjectGrid({ nodes }) {
             </Link>
             <div className={css.subtitle}>
               <div>{node.frontmatter.tagline}</div>
-              <div>
+              <div className={pillGroup}>
                 {node.frontmatter.tags.map(tag => (
                   <Link
                     key={tag}
