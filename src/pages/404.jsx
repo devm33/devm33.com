@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 import { Head as CommonHead } from "../components/Head";
@@ -25,7 +24,3 @@ export function Head({ pageContext, ...rest }) {
   };
   return <CommonHead {...props} />;
 }
-
-Head.propTypes = {
-  pageContext: PropTypes.object.isRequired,
-};
