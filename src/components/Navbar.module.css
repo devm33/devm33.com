@@ -1,7 +1,7 @@
 .nav-bar {
   align-items: center;
   display: flex;
-  padding: 0.825rem;
+  padding: var(--half-space);
 }
 
 .nav-bar>* {
@@ -20,5 +20,5 @@
 }
 
 .icon-links>a+a {
-  margin-inline-start: 0.825rem;
+  margin-inline-start: var(--half-space);
 }

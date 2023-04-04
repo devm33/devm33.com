@@ -15,9 +15,9 @@
 }
 
 .pill>svg {
-  margin-inline-start: 0.4125rem;
+  margin-inline-start: var(--quarter-space);
 }
 
 .pill+.pill {
-  margin-inline-start: 0.825rem;
+  margin-inline-start: var(--half-space);
 }
