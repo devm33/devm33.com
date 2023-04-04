@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
+import { pill } from "../components/Pill.module.css";
 import theme from "../theme";
 import { rhythm, scale } from "../typography";
 import { GitHubIcon, LinkIcon } from "./Icons";
-import Pills from "./Pills";
 
 const minTileSize = "300px";
 
@@ -113,18 +113,18 @@ const ProjectGrid = ({ nodes }) => (
           <TitleLink to={node.fields.path}>{node.frontmatter.title}</TitleLink>
           <Subtitle>
             <div>{node.frontmatter.tagline}</div>
-            <Pills>
+            <div>
               {node.frontmatter.tags.map(tag => (
                 <Link
                   key={tag}
+                  className={pill}
                   to={`/tag/${tag}/`}
-                  activeClassName="active"
                   onClick={e => e.stopPropagation()}
                 >
                   {tag}
                 </Link>
               ))}
-            </Pills>
+            </div>
             <div>
               <Updated>Last updated: {node.frontmatter.updated}</Updated>
               <Links>
