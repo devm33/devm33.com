@@ -1,12 +1,12 @@
+import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { graphql } from "gatsby";
 import styled from "styled-components";
 
+import { Layout } from "../components/Layout";
+import ProjectGrid from "../components/ProjectGrid";
 import theme from "../theme";
 import { rhythm } from "../typography";
-import Layout from "../components/Layout";
-import ProjectGrid from "../components/ProjectGrid";
 
 export { Head } from "../components/Head";
 

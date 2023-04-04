@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import Layout from "../components/Layout";
-import theme from "../theme";
 import { Head as CommonHead } from "../components/Head";
+import { Layout } from "../components/Layout";
+import theme from "../theme";
 
 const Article = styled.article`
   max-width: ${theme.contentWidth}px;

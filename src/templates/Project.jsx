@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { GitHubIcon, LinkIcon } from "../components/Icons";
-import Layout from "../components/Layout";
+import { Layout } from "../components/Layout";
 import Pills from "../components/Pills";
 import theme from "../theme";
 import { rhythm } from "../typography";
