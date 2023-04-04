@@ -25,7 +25,6 @@ export default function Index() {
           <a href="https://github.com/devm33">GitHub</a>. See here for my { }
           <Link to="/resume/">resume</Link>.
         </p>
-        <p />
         <p>
           This { }
           <a href="https://github.com/devm33/devm33.com">site&apos;s source</a> is
