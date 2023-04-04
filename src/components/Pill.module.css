@@ -1,0 +1,23 @@
+.pill {
+  align-items: center;
+  border-radius: 0.5em;
+  border: 1px solid var(--link);
+  display: inline-flex;
+  padding: 0 0.5em;
+  white-space: nowrap;
+}
+
+.pill:active,
+.pill:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.pill>svg {
+  margin-inline-start: 0.4125rem;
+}
+
+.pill+.pill {
+  margin-inline-start: 0.825rem;
+}
