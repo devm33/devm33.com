@@ -1,6 +1,6 @@
 import React from "react";
 
-import { path } from "./Icons.module.css";
+import { path, svg } from "./Icons.module.css";
 
 export function InstallIcons({
   file = false,
