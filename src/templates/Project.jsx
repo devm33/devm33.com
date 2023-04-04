@@ -10,12 +10,6 @@ import { rhythm } from "../typography";
 
 export { Head } from "../components/Head";
 
-const Article = styled.article`
-  margin: 0 auto;
-  width: 80%;
-  max-width: ${theme.contentWidth}px;
-`;
-
 const Subtitle = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -44,7 +38,7 @@ export default function ProjectTemplate({
   }
   return (
     <Layout>
-      <Article>
+      <article>
         <header>
           <h1>{frontmatter.title}</h1>
           <Subtitle>
@@ -73,7 +67,7 @@ export default function ProjectTemplate({
           </Subtitle>
         </header>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-      </Article>
+      </article>
     </Layout>
   );
 }

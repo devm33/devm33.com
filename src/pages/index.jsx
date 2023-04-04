@@ -1,22 +1,14 @@
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
 
 import { Layout } from "../components/Layout";
-import theme from "../theme";
 
 export { Head } from "../components/Head";
 
-const Article = styled.article`
-  max-width: ${theme.contentWidth}px;
-  width: 80%;
-  margin: 0 auto;
-`;
-
 const About = () => (
   <Layout>
-    <Article>
+    <article>
       <p>Hello! I&apos;m Devraj.</p>
       <StaticImage
         src="../images/me.jpg"
@@ -41,7 +33,7 @@ const About = () => (
       <p>
         Cheers! <br /> Devraj
       </p>
-    </Article>
+    </article>
   </Layout>
 );
 

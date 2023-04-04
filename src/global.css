@@ -23,6 +23,12 @@ body {
   line-height: var(--baseline);
 }
 
+article {
+  max-width: 700px;
+  width: 80%;
+  margin: 0 auto;
+}
+
 a,
 a:visited {
   color: var(--link);
