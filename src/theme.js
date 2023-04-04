@@ -15,7 +15,6 @@ export const theme = {
     small: scale(-1 / 6),
     body: scale(0),
     icon: scale(1 / 6),
-    subtitle: scale(1 / 5),
     title: scale(1 / 2),
   },
 };
