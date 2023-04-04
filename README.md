@@ -32,6 +32,7 @@ npm start
 - [ ] Add editorconfig
 - [ ] [Consider
   preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
+- [ ] Add dark mode
 
 ### Projects to add:
 
