@@ -14,6 +14,7 @@ html {
   --accent: #d6006c;
   --link: #1976d2;
   --baseline: 1.65rem;
+  --header-line: 1.1;
   --small-font: 0.8909rem;
 }
 
@@ -73,7 +74,7 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-  line-height: 1.1;
+  line-height: var(--header-line);
   text-rendering: optimizeLegibility;
 }
 

@@ -5,6 +5,8 @@
   margin: 0 auto;
   max-width: 49em;
   padding: 2em 0 6em 0;
+  --baseline: 0;
+  --header-line: 1.4;
 }
 
 @media only screen and (max-width: 700px) {
@@ -17,6 +19,7 @@
 .main a,
 .main a:visited {
   color: #1976d2;
+  text-decoration: underline;
 }
 
 .main h1 {
@@ -54,7 +57,8 @@
   gap: 1em;
 }
 
-.header-link {
+/** Specificity needed to override .main a style above */
+.main .header-link {
   text-decoration: none;
 }
 
