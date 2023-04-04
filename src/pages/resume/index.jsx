@@ -3,8 +3,7 @@ import React from "react";
 
 import { Head as CommonHead } from "../../components/Head";
 import { FileIcon, InstallIcons } from "../../components/Icons";
-import "../../global.css";
-import "../../mulish-font.css";
+import "./mulish-font.css";
 import * as css from "./index.module.css";
 
 export default function Resume({

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import "../global.css";
 import { InstallIcons } from "./Icons";
 import { Navbar } from "./Navbar";
 
