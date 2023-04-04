@@ -33,7 +33,9 @@ a,
 a:visited {
   color: var(--link);
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transition-property: color, background-color, border-color;
 }
 
 a:hover {
