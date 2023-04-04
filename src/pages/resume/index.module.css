@@ -1,12 +1,16 @@
 .main {
+  /* Match header line-height with body line-height */
+  --header-line: 1.4;
+  /* Zero out spacing for resume */
+  --baseline: 0;
+  --half-space: 0;
+  --quarter-space: 0;
   font-family: 'Mulish', sans-serif;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: var(--header-line);
   margin: 0 auto;
   max-width: 49em;
   padding: 2em 0 6em 0;
-  --baseline: 0;
-  --header-line: 1.4;
 }
 
 @media only screen and (max-width: 700px) {
