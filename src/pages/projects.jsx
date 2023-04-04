@@ -2,7 +2,7 @@ import { graphql } from "gatsby";
 import React from "react";
 
 import { Layout } from "../components/Layout";
-import ProjectGrid from "../components/ProjectGrid";
+import { ProjectGrid } from "../components/ProjectGrid";
 
 export { Head } from "../components/Head";
 

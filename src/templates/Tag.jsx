@@ -3,7 +3,7 @@ import React from "react";
 
 import { Layout } from "../components/Layout";
 import { pill } from "../components/Pill.module.css";
-import ProjectGrid from "../components/ProjectGrid";
+import { ProjectGrid } from "../components/ProjectGrid";
 import { title, titlePill } from "./Tag.module.css";
 
 export { Head } from "../components/Head";
