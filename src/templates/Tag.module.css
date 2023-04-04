@@ -1,0 +1,9 @@
+.title {
+  font-size: 1.41421rem;
+  line-height: 2.475rem;
+  padding: var(--half-space);
+}
+
+.title-pill {
+  margin-inline-start: var(--quarter-space);
+}

@@ -2,6 +2,7 @@
   align-items: center;
   border-radius: 0.5em;
   border: 1px solid var(--link);
+  color: var(--link);
   display: inline-flex;
   padding: 0 0.5em;
   white-space: nowrap;
