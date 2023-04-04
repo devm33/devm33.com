@@ -1,0 +1,8 @@
+.subtitle {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--small-font);
+  justify-content: space-between;
+  margin-bottom: var(--baseline);
+}

@@ -1,30 +1,12 @@
 import { graphql, Link } from "gatsby";
 import React from "react";
-import styled from "styled-components";
 
 import { GitHubIcon, LinkIcon } from "../components/Icons";
 import { Layout } from "../components/Layout";
-import Pills from "../components/Pills";
-import theme from "../theme";
-import { rhythm } from "../typography";
+import { pill } from "../components/Pill.module.css";
+import { subtitle } from "./Project.module.css";
 
 export { Head } from "../components/Head";
-
-const Subtitle = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: ${rhythm(3 / 4)};
-  & > span {
-    margin-bottom: ${rhythm(1 / 4)};
-  }
-  ${theme.font.small}
-`;
-
-const Updated = styled.span`
-  font-style: italic;
-`;
 
 export default function ProjectTemplate({
   data: { markdownRemark: { frontmatter, html } },
@@ -41,30 +23,38 @@ export default function ProjectTemplate({
       <article>
         <header>
           <h1>{frontmatter.title}</h1>
-          <Subtitle>
-            <Updated>Last updated {frontmatter.updated}</Updated>
-            <Pills>
+          <div className={subtitle}>
+            <i>Last updated {frontmatter.updated}</i>
+            <div>
               {frontmatter.repo && (
-                <a href={frontmatter.repo} aria-label="GitHub repo">
+                <a
+                  aria-label="GitHub repo"
+                  className={pill}
+                  href={frontmatter.repo}
+                >
                   Source
                   <GitHubIcon />
                 </a>
               )}
               {frontmatter.link && (
-                <a href={frontmatter.link} aria-label="Project link">
+                <a
+                  aria-label="Project link"
+                  className={pill}
+                  href={frontmatter.link}
+                >
                   Link
                   <LinkIcon />
                 </a>
               )}
-            </Pills>
-            <Pills>
+            </div>
+            <div>
               {frontmatter.tags.map(tag => (
-                <Link key={tag} to={`/tag/${tag}/`}>
+                <Link key={tag} className={pill} to={`/tag/${tag}/`}>
                   {tag}
                 </Link>
               ))}
-            </Pills>
-          </Subtitle>
+            </div>
+          </div>
         </header>
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </article>

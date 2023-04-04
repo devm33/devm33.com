@@ -14,6 +14,7 @@ html {
   --accent: #d6006c;
   --link: #1976d2;
   --baseline: 1.65rem;
+  --small-font: 0.8909rem;
 }
 
 body {
