@@ -24,7 +24,7 @@ body {
   background-color: var(--background);
   color: var(--color);
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: var(--baseline);
+  line-height: 1.65;
 }
 
 article {
