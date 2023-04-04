@@ -14,6 +14,11 @@
   position: relative;
 }
 
+.image {
+  /* Overrides global image spacing */
+  margin-bottom: 0;
+}
+
 .overlay-link {
   height: 100%;
   position: absolute;

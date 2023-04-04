@@ -15,7 +15,11 @@ export function ProjectGrid({ nodes }) {
           key={node.fields.path}
           className={css.card}
           onClick={_ => navigate(node.fields.path)}>
-          <GatsbyImage image={getImage(node.frontmatter.image)} alt="" />
+          <GatsbyImage
+            className={css.image}
+            image={getImage(node.frontmatter.image)}
+            alt=""
+          />
           <div className={css.overlay}>
             <Link
               className={css.overlayLink}
