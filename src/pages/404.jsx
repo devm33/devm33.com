@@ -1,24 +1,16 @@
 import PropTypes from "prop-types";
 import React from "react";
-import styled from "styled-components";
 
 import { Head as CommonHead } from "../components/Head";
 import { Layout } from "../components/Layout";
-import theme from "../theme";
-
-const Article = styled.article`
-  max-width: ${theme.contentWidth}px;
-  width: 80%;
-  margin: 0 auto;
-`;
 
 export default function NotFoundPage() {
   return (
     <Layout>
-      <Article>
+      <article>
         <h1>Resource not found</h1>
         <p>Sorry this resource was not found.</p>
-      </Article>
+      </article>
     </Layout>
   );
 }
