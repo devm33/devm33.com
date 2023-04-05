@@ -49,17 +49,5 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `devm33.com`,
-        short_name: `devm33.com`,
-        start_url: `/`,
-        background_color: `#000`,
-        theme_color: `#000`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon-512.png`,
-      },
-    },
   ],
 };
