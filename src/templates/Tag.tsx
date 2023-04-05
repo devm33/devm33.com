@@ -1,4 +1,4 @@
-import { graphql } from "gatsby";
+import { PageProps, graphql } from "gatsby";
 import React from "react";
 
 import { Layout } from "../components/Layout";
@@ -8,7 +8,13 @@ import { title, titlePill } from "./Tag.module.css";
 
 export { Head } from "../components/Head";
 
-export default function TagTemplate({ data, pageContext }) {
+interface PageContext {
+  tag: string;
+}
+
+export default function TagTemplate(
+  { data, pageContext }: PageProps<Queries.TagPageQuery, PageContext>
+) {
   return (
     <Layout>
       <h1 className={title}>
@@ -21,7 +27,7 @@ export default function TagTemplate({ data, pageContext }) {
 }
 
 export const query = graphql`
-  query($tag: String!) {
+  query TagPage($tag: String!) {
     allMarkdownRemark(
       filter: {
         fields: { type: { eq: "projects" } }

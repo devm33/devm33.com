@@ -1,6 +1,10 @@
 
 const siteUrl = 'https://devm33.com';
 module.exports = {
+  graphqlTypegen: {
+    typesOutputPath: `.cache/gatsby-types.d.ts`,
+    generateOnBuild: true,
+  },
   siteMetadata: {
     title: `Devraj Mehta`,
     description: `Devraj Mehta's website.`,
