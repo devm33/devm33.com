@@ -61,6 +61,7 @@ module.exports = {
         icon: `src/images/favicon-512.png`,
       },
     },
+    `gatsby-plugin-mini-css-class-name`,
     `gatsby-plugin-split-css`,
   ],
 };
