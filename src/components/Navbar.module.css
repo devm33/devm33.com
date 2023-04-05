@@ -12,6 +12,7 @@
   font-size: 1.41421rem;
   line-height: 2.475rem;
   text-align: center;
+  white-space: nowrap;
 }
 
 .icon-links {
