@@ -27,8 +27,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
-  const ProjectTemplate = path.resolve(`src/templates/Project.jsx`);
-  const TagTemplate = path.resolve(`src/templates/Tag.jsx`);
+  const ProjectTemplate = path.resolve(`src/templates/Project.tsx`);
+  const TagTemplate = path.resolve(`src/templates/Tag.tsx`);
   const tags = new Set();
   const { data: { projects, katexProjects, prismProjects } } = await graphql(`
     query createPages {
