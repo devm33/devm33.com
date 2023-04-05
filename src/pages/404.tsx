@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Head as CommonHead } from "../components/Head";
+import { createHeadWithTitle } from "../components/Head";
 import { Layout } from "../components/Layout";
 
 export default function NotFoundPage() {
@@ -14,13 +14,4 @@ export default function NotFoundPage() {
   );
 }
 
-export function Head({ pageContext, ...rest }) {
-  const props = {
-    ...rest,
-    pageContext: {
-      ...pageContext,
-      title: '404: Not found',
-    },
-  };
-  return <CommonHead {...props} />;
-}
+export const Head = createHeadWithTitle('404: Not found');

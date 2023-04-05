@@ -12,8 +12,12 @@ interface PageContext {
   } | null;
 }
 
+interface Props extends HeadProps<object, PageContext> {
+  title?: string;
+}
+
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
-export function Head({ location, pageContext }: HeadProps<object, PageContext>) {
+export function Head(props: Props) {
   const query: Queries.HeadQuery = useStaticQuery(
     graphql`
       query Head {
@@ -33,18 +37,23 @@ export function Head({ location, pageContext }: HeadProps<object, PageContext>) 
     `
   );
   const siteMetadata = query.site?.siteMetadata;
-  const title = pageContext.title || siteMetadata?.title;
-  const description = pageContext.description || siteMetadata?.description;
-  const image = (pageContext.image || query.fileName)!.childImageSharp!;
+  const title = props.title || props.pageContext.title || siteMetadata?.title;
+  const desc = props.pageContext.description || siteMetadata?.description;
+  const image = (props.pageContext.image || query.fileName)!.childImageSharp!;
   const siteUrl = siteMetadata?.siteUrl ?? '';
   return (
     <>
       <title>{title}</title>
-      <meta name="description" content={description || undefined} />
-      <meta name="og:description" content={description || undefined} />
+      <meta name="description" content={desc || undefined} />
+      <meta name="og:description" content={desc || undefined} />
       <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
       <meta name="og:title" content={title || undefined} />
-      <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
+      <meta name="og:url" content={`${siteUrl}${props.location.pathname}`} />
     </>
   );
 };
+
+/** Helper to customize page title on a given page. */
+export function createHeadWithTitle(title: string) {
+  return (props: Props) => Head({title, ...props});
+}

@@ -1,20 +1,19 @@
-import { graphql, Link } from "gatsby";
+import { graphql, Link, PageProps } from "gatsby";
 import React from "react";
 
-import { Head as CommonHead } from "../../components/Head";
+import { createHeadWithTitle } from "../../components/Head";
 import { FileIcon, InstallIcons } from "../../components/Icons";
-import "./mulish-font.css";
 import * as css from "./index.module.css";
+import "./mulish-font.css";
 
 export default function Resume({
   data: {
     allJobsYaml: { nodes: jobs },
     resumeYaml: skills,
-    site: {
-      siteMetadata: { email },
-    },
+    site,
   },
-}) {
+}: PageProps<Queries.ResumeQuery>) {
+  const email = site!.siteMetadata!.email!;
   return (
     <main className={css.main}>
       <InstallIcons file={true} />
@@ -49,7 +48,7 @@ export default function Resume({
         <div key={job.id}>
           <div className={css.titleRow}>
             <h3>
-              <a href={job.uri}>{job.name}</a>, {job.title} { }
+              <a href={job.uri || undefined}>{job.name}</a>, {job.title} { }
               <span className={`${css.location} ${css.nowrap}`}>
                 - {job.location}
               </span>
@@ -60,7 +59,7 @@ export default function Resume({
             </div>
           </div>
           <ul>
-            {job.description.map(desc => (
+            {job.description?.map(desc => (
               <li key={desc}>{desc}</li>
             ))}
           </ul>
@@ -85,9 +84,9 @@ export default function Resume({
 
       <h2>SKILLS</h2>
       {
-        Object.keys(skills).map(category => (
+        Object.entries(skills!).map(([category, list]) => (
           <div key={category}>
-            {skills[category].join(", ")}
+            {list!.join(", ")}
           </div>
         ))
       }
@@ -96,7 +95,7 @@ export default function Resume({
 }
 
 export const query = graphql`
-  query {
+  query Resume {
     allJobsYaml(filter: { enabled: { eq: true } }) {
       nodes {
         id
@@ -123,15 +122,4 @@ export const query = graphql`
   }
 `;
 
-// eslint-disable-next-line react/prop-types
-export function Head({ pageContext, ...rest }) {
-  const props = {
-    ...rest,
-    pageContext: {
-      ...pageContext,
-      title: 'Devraj Mehta Resume',
-      dropTypography: true,
-    },
-  };
-  return <CommonHead {...props} />;
-}
+export const Head = createHeadWithTitle('Devraj Mehta Resume');
