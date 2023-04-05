@@ -153,3 +153,19 @@ exports.onCreateWebpackConfig = ({ actions, getConfig, stage, }) => {
   }
   actions.replaceWebpackConfig(config);
 };
+
+// Site type for site metadata.
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type Site {
+      siteMetadata: SiteMetadata!
+    }
+
+    type SiteMetadata {
+      title: String!
+      description: String!
+      siteUrl: String!
+      email: String!
+    }
+  `);
+};
