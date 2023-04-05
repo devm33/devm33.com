@@ -1,7 +1,13 @@
 .main {
+  /* Match header line-height with body line-height */
+  --header-line: 1.4;
+  /* Zero out spacing for resume */
+  --baseline: 0;
+  --half-space: 0;
+  --quarter-space: 0;
   font-family: 'Mulish', sans-serif;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: var(--header-line);
   margin: 0 auto;
   max-width: 49em;
   padding: 2em 0 6em 0;
@@ -16,7 +22,7 @@
 
 .main a,
 .main a:visited {
-  color: #1976d2;
+  text-decoration: underline;
 }
 
 .main h1 {
@@ -54,7 +60,8 @@
   gap: 1em;
 }
 
-.header-link {
+/** Specificity needed to override .main a style above */
+.main .header-link {
   text-decoration: none;
 }
 
@@ -81,7 +88,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0 1em;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .contact-link {

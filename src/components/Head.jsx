@@ -3,8 +3,6 @@ import { getSrc } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { typography } from "../typography";
-
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
 export function Head({ location, pageContext, children }) {
   const { site: { siteMetadata }, fileName } = useStaticQuery(
@@ -37,7 +35,6 @@ export function Head({ location, pageContext, children }) {
       <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
       <meta name="og:description" content={description} />
       <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
-      {!pageContext.dropTypography && <style>{typography.toString()}</style>}
       {children}
     </>
   );

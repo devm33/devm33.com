@@ -134,3 +134,22 @@ exports.onPostBuild = async () => {
   await page.goto(url.pathToFileURL(resumePath));
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
 };
+
+// Minify css module class names
+exports.onCreateWebpackConfig = ({ actions, getConfig, stage, }) => {
+  if (!stage.includes('build')) return;
+  const config = getConfig();
+  // Note this approach assumes css config is in a oneOf block.
+  for (const { oneOf } of config.module.rules) {
+    if (!oneOf?.length) continue;
+    for (const { use } of oneOf) {
+      if (!use) continue;
+      for (const { loader, options } of use) {
+        if (!loader?.includes(`${path.sep}css-loader${path.sep}`)) continue;
+        if (!options?.modules) continue;
+        options.modules.localIdentName = "[hash:hex:5]";
+      }
+    }
+  }
+  actions.replaceWebpackConfig(config);
+};

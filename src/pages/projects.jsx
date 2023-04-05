@@ -1,20 +1,18 @@
-import React from "react";
 import { graphql } from "gatsby";
+import React from "react";
 
-import Layout from "../components/Layout";
-import ProjectGrid from "../components/ProjectGrid";
+import { Layout } from "../components/Layout";
+import { ProjectGrid } from "../components/ProjectGrid";
 
 export { Head } from "../components/Head";
 
-const ProjectsPage = ({
-  data: {
-    allMarkdownRemark: { nodes },
-  },
-}) => (
-  <Layout>
-    <ProjectGrid nodes={nodes} />
-  </Layout>
-);
+export default function ProjectsPage({ data }) {
+  return (
+    <Layout>
+      <ProjectGrid nodes={data.allMarkdownRemark.nodes} />
+    </Layout>
+  );
+};
 
 export const query = graphql`
   query ProjectsQuery {
@@ -28,5 +26,3 @@ export const query = graphql`
     }
   }
 `;
-
-export default ProjectsPage;

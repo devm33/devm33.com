@@ -1,0 +1,86 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 300px) {
+  .grid-filler {
+    display: none;
+  }
+}
+
+.card {
+  height: 100%;
+  position: relative;
+}
+
+.card>.image {
+  /* Overrides global image spacing */
+  margin-bottom: 0;
+}
+
+.overlay-link {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.title-link {
+  background-color: #ffffffec;
+  font-size: 1.41421rem;
+  line-height: 2.475rem;
+  padding: var(--baseline) 0;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.subtitle {
+  background-color: #ffffffec;
+  flex: 0;
+  font-size: 0.8909rem;
+  overflow: hidden;
+  pointer-events: none;
+  transition: flex 0.3s ease-in-out;
+  width: 100%;
+  z-index: 1;
+}
+
+.subtitle a {
+  pointer-events: all;
+}
+
+.subtitle>* {
+  padding-bottom: var(--half-space);
+  padding-left: var(--baseline);
+  padding-right: var(--baseline);
+}
+
+.icon-links>a {
+  margin-left: var(--half-space);
+  /* Sad hack for alignment with text: */
+  position: relative;
+  top: 3px;
+}
+
+.overlay {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.overlay:hover .subtitle {
+  flex: 1;
+}
+
+@media (any-hover: none) {
+  .subtitle {
+    flex: 1;
+  }
+}

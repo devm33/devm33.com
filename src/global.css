@@ -7,3 +7,105 @@ html {
   /* Prevent adjustments of font size after orientation changes in iOS. */
   -webkit-text-size-adjust: 100%;
 }
+
+:root {
+  --color: #333;
+  --background: transparent;
+  --accent: #d6006c;
+  --link: #1976d2;
+  --baseline: 1.65rem;
+  --header-line: 1.1;
+  --small-font: 0.8909rem;
+  --quarter-space: calc(var(--baseline)/4);
+  --half-space: calc(var(--baseline)/2);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--color);
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: var(--baseline);
+}
+
+article {
+  max-width: 700px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+a,
+a:visited {
+  color: var(--link);
+  text-decoration: none;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  transition-property: color, background-color, border-color;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+p,
+.gatsby-highlight,
+.gatsby-image-wrapper {
+  margin-bottom: var(--baseline);
+}
+
+ul,
+ol {
+  margin-inline-start: var(--baseline);
+}
+
+li {
+  margin-bottom: var(--half-space);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  line-height: var(--header-line);
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.51572rem;
+}
+
+h3 {
+  font-size: 1.31951rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.87055rem;
+}
+
+h6 {
+  font-size: 0.81225rem;
+}
+
+.gatsby-highlight code[class*=language-],
+.gatsby-highlight pre[class*=language-] {
+  /* Override prismjs size */
+  font-size: 0.85rem;
+}
