@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.image {
+.card>.image {
   /* Overrides global image spacing */
   margin-bottom: 0;
 }
