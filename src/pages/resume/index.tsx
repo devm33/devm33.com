@@ -6,14 +6,8 @@ import { FileIcon, InstallIcons } from "../../components/Icons";
 import * as css from "./index.module.css";
 import "./mulish-font.css";
 
-export default function Resume({
-  data: {
-    allJobsYaml: { nodes: jobs },
-    resumeYaml: skills,
-    site,
-  },
-}: PageProps<Queries.ResumeQuery>) {
-  const email = site!.siteMetadata!.email!;
+export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
+  const email = data.site!.siteMetadata.email;
   return (
     <main className={css.main}>
       <InstallIcons file={true} />
@@ -44,7 +38,7 @@ export default function Resume({
       </header>
 
       <h2>EXPERIENCE</h2>
-      {jobs.map(job => (
+      {data.allJobsYaml.nodes.map(job => (
         <div key={job.id}>
           <div className={css.titleRow}>
             <h3>
@@ -84,7 +78,7 @@ export default function Resume({
 
       <h2>SKILLS</h2>
       {
-        Object.entries(skills!).map(([category, list]) => (
+        Object.entries(data.resumeYaml!).map(([category, list]) => (
           <div key={category}>
             {list!.join(", ")}
           </div>
