@@ -1,4 +1,4 @@
-import { graphql, Link } from "gatsby";
+import { graphql, Link, PageProps } from "gatsby";
 import React from "react";
 
 import { GitHubIcon, LinkIcon } from "../components/Icons";
@@ -8,16 +8,22 @@ import { subtitle } from "./Project.module.css";
 
 export { Head } from "../components/Head";
 
-export default function ProjectTemplate({
-  data: { markdownRemark: { frontmatter, html } },
-  pageContext: { katex, prism },
-}) {
-  if (katex) {
+interface PageContext {
+  katex: boolean;
+  prism: boolean;
+}
+
+export default function ProjectTemplate(
+  { data, pageContext }: PageProps<Queries.ProjectPageQuery, PageContext>
+) {
+  if (pageContext.katex) {
     import("katex/dist/katex.min.css");
   }
-  if (prism) {
+  if (pageContext.prism) {
     import("prismjs/themes/prism.min.css");
   }
+  const { frontmatter, html } = data.markdownRemark!;
+  if (!frontmatter || !html) throw new Error('Missing required page data');
   return (
     <Layout>
       <article>
@@ -48,7 +54,7 @@ export default function ProjectTemplate({
               )}
             </div>
             <div className={pillGroup}>
-              {frontmatter.tags.map(tag => (
+              {frontmatter.tags?.map(tag => (
                 <Link key={tag} className={pill} to={`/tag/${tag}/`}>
                   {tag}
                 </Link>
@@ -63,7 +69,7 @@ export default function ProjectTemplate({
 }
 
 export const query = graphql`
-  query($path: String!) {
+  query ProjectPage($path: String!) {
     markdownRemark(fields: { path: { eq: $path } }) {
       html
       frontmatter {

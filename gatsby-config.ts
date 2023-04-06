@@ -1,6 +1,12 @@
 
+import type { GatsbyConfig } from "gatsby";
+
 const siteUrl = 'https://devm33.com';
-module.exports = {
+const config: GatsbyConfig = {
+  graphqlTypegen: {
+    typesOutputPath: `.cache/gatsby-types.d.ts`,
+    generateOnBuild: true,
+  },
   siteMetadata: {
     title: `Devraj Mehta`,
     description: `Devraj Mehta's website.`,
@@ -18,13 +24,6 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `content`,
-        path: `${__dirname}/content`,
       },
     },
     {
@@ -52,3 +51,5 @@ module.exports = {
     `gatsby-plugin-split-css`,
   ],
 };
+
+export default config;
