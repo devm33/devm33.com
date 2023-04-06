@@ -11,7 +11,8 @@
     "lint:md": "write-good $(glob 'content/**/*.md') --no-tooWordy",
     "lint:links": "remark -f content/",
     "lint:spelling": "cspell '**/*.{md,js,jsx,json,css,yml}'",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "typecheck": "tsc --noEmit"
   },
   "remarkConfig": {
     "plugins": [
