@@ -22,7 +22,7 @@ npm start
 ## TODO
 
 - [ ] Migrate to TypeScript: https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#migrating-to-typescript
-- [ ] Add rss of projects.
+- [ ] Add rss of projects: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Clean up linting setup
   - https://github.com/browserslist/browserslist-example
 - [ ] Add plugin to sort css properties alphabetically
