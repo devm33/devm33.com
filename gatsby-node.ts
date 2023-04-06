@@ -13,21 +13,7 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent!)!;
     const relativeDirectory = fileNode.relativeDirectory as string;
-    // Adds path to page.
-    createNodeField({
-      node,
-      name: "path",
-      value: path.join("/", relativeDirectory, "/"),
-    });
-    // Adds the type field as the first directory of the page's path, e.g. "projects"
-    createNodeField({
-      node,
-      name: "type",
-      value: path
-        .dirname(relativeDirectory)
-        .split(path.sep)
-        .pop(),
-    });
+    createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
   }
 };
 
@@ -47,7 +33,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
           id
           fields {
             path
-            type
           }
           frontmatter {
             tags
@@ -82,23 +67,19 @@ export const createPages: GatsbyNode["createPages"] = async ({
 
   // Add project pages.
   result.data!.projects.nodes.forEach(node => {
-    if (node.fields?.type == "projects") {
-      createPage({
-        path: node.fields.path!,
-        component: ProjectTemplate,
-        context: {
-          title: node.frontmatter!.title,
-          description: node.frontmatter!.tagline,
-          image: node.frontmatter!.image,
-          katex: katex.has(node.id),
-          prism: prism.has(node.id),
-        },
-      });
-      if (node.frontmatter?.tags) {
-        node.frontmatter.tags.forEach(tag => tags.add(tag));
-      }
-    } else {
-      throw new Error("Unknown markdown page type");
+    createPage({
+      path: node.fields!.path!,
+      component: ProjectTemplate,
+      context: {
+        title: node.frontmatter!.title,
+        description: node.frontmatter!.tagline,
+        image: node.frontmatter!.image,
+        katex: katex.has(node.id),
+        prism: prism.has(node.id),
+      },
+    });
+    if (node.frontmatter?.tags) {
+      node.frontmatter.tags.forEach(tag => tags.add(tag));
     }
   });
 

@@ -29,10 +29,7 @@ export default function TagTemplate(
 export const query = graphql`
   query TagPage($tag: String!) {
     allMarkdownRemark(
-      filter: {
-        fields: { type: { eq: "projects" } }
-        frontmatter: { tags: { eq: $tag } }
-      }
+      filter: { frontmatter: { tags: { eq: $tag } } }
       sort: {frontmatter: {updated: DESC}}
     ) {
       nodes {

@@ -16,10 +16,7 @@ export default function ProjectsPage(props: PageProps<Queries.ProjectsQuery>) {
 
 export const query = graphql`
   query Projects {
-    allMarkdownRemark(
-      filter: { fields: { type: { eq: "projects" } } }
-      sort: {frontmatter: {updated: DESC}}
-    ) {
+    allMarkdownRemark(sort: {frontmatter: {updated: DESC}}) {
       nodes {
         ...ProjectGridFields
       }
