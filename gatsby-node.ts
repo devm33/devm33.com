@@ -41,8 +41,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 }) => {
   const { createPage, createRedirect } = actions;
   const tags = new Set();
-  //const { data: { projects, katexProjects, prismProjects } } 
-  const { data }: Queries.CreatePagesQuery = await graphql(`
+  const { data } = await graphql<Queries.CreatePagesQuery>(`#graphql
     query CreatePages {
       projects: allMarkdownRemark {
         nodes {
