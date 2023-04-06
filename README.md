@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Migrate to TypeScript: https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/#migrating-to-typescript
 - [ ] Add rss of projects: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Clean up linting setup
   - https://github.com/browserslist/browserslist-example
@@ -40,6 +39,7 @@ npm start
 
 ## Done
 
+- [x] Migrate to TypeScript
 - [x] Remove typography.js
 - [x] Migrate from styled-components to native CSS modules
 - [x] Conditionally lazy load prism css on project template
