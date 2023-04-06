@@ -1,37 +1,49 @@
-const path = require("path");
-const url = require("url");
-const puppeteer = require("puppeteer");
+import { GatsbyNode } from "gatsby";
+import path from "path";
+import puppeteer from "puppeteer";
+import url from "url";
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+
+export const onCreateNode: GatsbyNode["onCreateNode"] = ({
+  node,
+  actions,
+  getNode,
+}) => {
   const { createNodeField } = actions;
   // Add fields to markdown pages
   if (node.internal.type === "MarkdownRemark") {
-    const fileNode = getNode(node.parent);
+    const fileNode = getNode(node.parent!)!;
+    const relativeDirectory = fileNode.relativeDirectory as string;
     // Adds path to page.
     createNodeField({
       node,
       name: "path",
-      value: path.join("/", fileNode.relativeDirectory, "/"),
+      value: path.join("/", relativeDirectory, "/"),
     });
     // Adds the type field as the first directory of the page's path, e.g. "projects"
     createNodeField({
       node,
       name: "type",
       value: path
-        .dirname(fileNode.relativeDirectory)
+        .dirname(relativeDirectory)
         .split(path.sep)
         .pop(),
     });
   }
 };
 
-exports.createPages = async ({ actions, graphql }) => {
+const ProjectTemplate = path.resolve(`src/templates/Project.tsx`);
+const TagTemplate = path.resolve(`src/templates/Tag.tsx`);
+
+export const createPages: GatsbyNode["createPages"] = async ({
+  actions,
+  graphql,
+}) => {
   const { createPage, createRedirect } = actions;
-  const ProjectTemplate = path.resolve(`src/templates/Project.tsx`);
-  const TagTemplate = path.resolve(`src/templates/Tag.tsx`);
   const tags = new Set();
-  const { data: { projects, katexProjects, prismProjects } } = await graphql(`
-    query createPages {
+  //const { data: { projects, katexProjects, prismProjects } } 
+  const { data }: Queries.CreatePagesQuery = await graphql(`
+    query CreatePages {
       projects: allMarkdownRemark {
         nodes {
           id
@@ -67,11 +79,11 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
-  const katex = new Set(katexProjects.nodes.map(node => node.id));
-  const prism = new Set(prismProjects.nodes.map(node => node.id));
+  const katex = new Set(data.katexProjects.nodes.map(node => node.id));
+  const prism = new Set(data.prismProjects.nodes.map(node => node.id));
 
   // Add project pages.
-  projects.nodes.forEach(node => {
+  data.projects.nodes.forEach(node => {
     if (node.fields.type == "projects") {
       createPage({
         path: node.fields.path,
@@ -125,18 +137,22 @@ exports.createPages = async ({ actions, graphql }) => {
 };
 
 // Generate PDF of resume page
-exports.onPostBuild = async () => {
+export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   const browser = await puppeteer.launch({
     args: ['--font-render-hinting=none'],
   });
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
-  await page.goto(url.pathToFileURL(resumePath));
+  await page.goto(url.pathToFileURL(resumePath).toString());
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
 };
 
 // Minify css module class names
-exports.onCreateWebpackConfig = ({ actions, getConfig, stage, }) => {
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
+  actions,
+  getConfig,
+  stage,
+}) => {
   if (!stage.includes('build')) return;
   const config = getConfig();
   // Note this approach assumes css config is in a oneOf block.
@@ -155,17 +171,18 @@ exports.onCreateWebpackConfig = ({ actions, getConfig, stage, }) => {
 };
 
 // Site type for site metadata.
-exports.createSchemaCustomization = ({ actions }) => {
-  actions.createTypes(`
-    type Site {
-      siteMetadata: SiteMetadata!
-    }
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"]
+  = ({ actions }) => {
+    actions.createTypes(`
+      type Site {
+        siteMetadata: SiteMetadata!
+      }
 
-    type SiteMetadata {
-      title: String!
-      description: String!
-      siteUrl: String!
-      email: String!
-    }
+      type SiteMetadata {
+        title: String!
+        description: String!
+        siteUrl: String!
+        email: String!
+      }
   `);
-};
+  };
