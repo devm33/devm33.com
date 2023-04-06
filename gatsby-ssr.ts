@@ -6,7 +6,9 @@ import { ReactNode, isValidElement } from "react";
  * set head and body components to be rendered in your html.js
  * See https://www.gatsbyjs.org/docs/ssr-apis/#onRenderBody
  */
-export const onRenderBody: GatsbySSR["onRenderBody"] = ({ setHtmlAttributes }) => {
+export const onRenderBody: GatsbySSR["onRenderBody"] = ({
+  setHtmlAttributes,
+}) => {
   setHtmlAttributes({ lang: 'en' });
 };
 
@@ -15,7 +17,10 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = ({ setHtmlAttributes }) =
  * replace head components to be rendered in your html.js
  * See https://www.gatsbyjs.org/docs/ssr-apis/#onPreRenderHTML
  */
-export const onPreRenderHTML: GatsbySSR["onPreRenderHTML"] = ({ getHeadComponents, replaceHeadComponents }) => {
+export const onPreRenderHTML: GatsbySSR["onPreRenderHTML"] = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
   const headComponents = getHeadComponents().filter(removeGeneratorTag);
   replaceHeadComponents(headComponents);
 };
