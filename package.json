@@ -42,7 +42,6 @@
     "gatsby-transformer-yaml": "^5.8.0",
     "katex": "^0.16.4",
     "prismjs": "^1.29.0",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
@@ -60,7 +59,7 @@
     "eslint-plugin-react": "^7.32.2",
     "netlify-cli": "^13.2.2",
     "prettier": "^2.8.7",
-    "puppeteer": "^19.8.3",
+    "puppeteer": "^19.8.5",
     "remark-cli": "^11.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
     "write-good": "^1.0.8"
