@@ -3,7 +3,6 @@ import path from "path";
 import puppeteer from "puppeteer";
 import url from "url";
 
-
 export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   node,
   actions,
@@ -41,7 +40,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 }) => {
   const { createPage, createRedirect } = actions;
   const tags = new Set();
-  const { data } = await graphql<Queries.CreatePagesQuery>(`#graphql
+  const result = await graphql<Queries.CreatePagesQuery>(`#graphql
     query CreatePages {
       projects: allMarkdownRemark {
         nodes {
@@ -63,14 +62,14 @@ export const createPages: GatsbyNode["createPages"] = async ({
         }
       }
       katexProjects: allMarkdownRemark(
-        filter: {html: {regex: "/class=\\"katex\\"/"}}
+        filter: {html: {regex: "/katex/"}}
       ) {
         nodes {
           id
         }
       }
       prismProjects: allMarkdownRemark(
-        filter: {html: {regex: "/class=\\"gatsby-highlight\\"/"}}
+        filter: {html: {regex: "/gatsby-highlight/"}}
       ) {
         nodes {
           id
@@ -78,24 +77,24 @@ export const createPages: GatsbyNode["createPages"] = async ({
       }
     }
   `);
-  const katex = new Set(data.katexProjects.nodes.map(node => node.id));
-  const prism = new Set(data.prismProjects.nodes.map(node => node.id));
+  const katex = new Set(result.data!.katexProjects.nodes.map(node => node.id));
+  const prism = new Set(result.data!.prismProjects.nodes.map(node => node.id));
 
   // Add project pages.
-  data.projects.nodes.forEach(node => {
-    if (node.fields.type == "projects") {
+  result.data!.projects.nodes.forEach(node => {
+    if (node.fields?.type == "projects") {
       createPage({
-        path: node.fields.path,
+        path: node.fields.path!,
         component: ProjectTemplate,
         context: {
-          title: node.frontmatter.title,
-          description: node.frontmatter.tagline,
-          image: node.frontmatter.image,
+          title: node.frontmatter!.title,
+          description: node.frontmatter!.tagline,
+          image: node.frontmatter!.image,
           katex: katex.has(node.id),
           prism: prism.has(node.id),
         },
       });
-      if (node.frontmatter.tags) {
+      if (node.frontmatter?.tags) {
         node.frontmatter.tags.forEach(tag => tags.add(tag));
       }
     } else {
