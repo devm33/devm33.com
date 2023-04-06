@@ -6,7 +6,7 @@ import * as css from "./Navbar.module.css";
 
 
 export function Navbar() {
-  const { site }: Queries.HeaderQuery = useStaticQuery(graphql`
+  const { site } = useStaticQuery<Queries.HeaderQuery>(graphql`
     query Header {
       site {
         siteMetadata {

@@ -18,7 +18,7 @@ interface Props extends HeadProps<object, PageContext> {
 
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
 export function Head(props: Props) {
-  const query: Queries.HeadQuery = useStaticQuery(
+  const query = useStaticQuery<Queries.HeadQuery>(
     graphql`
       query Head {
         site {
@@ -55,5 +55,5 @@ export function Head(props: Props) {
 
 /** Helper to customize page title on a given page. */
 export function createHeadWithTitle(title: string) {
-  return (props: Props) => Head({title, ...props});
+  return (props: Props) => Head({ title, ...props });
 }
