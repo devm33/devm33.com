@@ -23,7 +23,6 @@ npm start
 
 - [ ] Clean up linting setup [example](https://github.com/browserslist/browserslist-example)
 - [ ] Add plugin to sort css properties alphabetically
-- [ ] Add editorconfig
 - [ ] [Consider
   preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 - [ ] Add dark mode
@@ -38,6 +37,7 @@ npm start
 
 ## Done
 
+- [x] Add editorconfig
 - [x] Migrate to TypeScript
 - [x] Remove typography.js
 - [x] Migrate from styled-components to native CSS modules
