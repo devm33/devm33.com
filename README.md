@@ -23,6 +23,7 @@ npm start
 
 - [ ] Clean up linting setup
       [example](https://github.com/browserslist/browserslist-example)
+      - [ ] Add [style lint](https://github.com/browserslist/browserslist-example#stylelint)
 - [ ] Add plugin to sort css properties alphabetically
 - [ ] [Consider preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 - [ ] Add dark mode
