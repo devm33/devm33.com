@@ -20,6 +20,9 @@
   "browserslist": [
     "defaults and supports es6-module"
   ],
+  "prettier": {
+    "proseWrap": "always"
+  },
   "remarkConfig": {
     "plugins": [
       "remark-lint-no-dead-urls"
