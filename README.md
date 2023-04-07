@@ -21,14 +21,13 @@ npm start
 
 ## TODO
 
-- [ ] Add rss of projects: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
-- [ ] Clean up linting setup
-  - https://github.com/browserslist/browserslist-example
+- [ ] Clean up linting setup [example](https://github.com/browserslist/browserslist-example)
 - [ ] Add plugin to sort css properties alphabetically
 - [ ] Add editorconfig
 - [ ] [Consider
   preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 - [ ] Add dark mode
+- [ ] Add rss of projects, [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
 
 ### Projects to add:
 
