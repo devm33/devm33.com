@@ -13,9 +13,10 @@ interface PageContext {
   prism: boolean;
 }
 
-export default function ProjectTemplate(
-  { data, pageContext }: PageProps<Queries.ProjectPageQuery, PageContext>
-) {
+export default function ProjectTemplate({
+  data,
+  pageContext,
+}: PageProps<Queries.ProjectPageQuery, PageContext>) {
   if (pageContext.katex) {
     import("katex/dist/katex.min.css");
   }
@@ -23,7 +24,7 @@ export default function ProjectTemplate(
     import("prismjs/themes/prism.min.css");
   }
   const { frontmatter, html } = data.markdownRemark!;
-  if (!frontmatter || !html) throw new Error('Missing required page data');
+  if (!frontmatter || !html) throw new Error("Missing required page data");
   return (
     <Layout>
       <article>
@@ -54,7 +55,7 @@ export default function ProjectTemplate(
               )}
             </div>
             <div className={pillGroup}>
-              {frontmatter.tags?.map(tag => (
+              {frontmatter.tags?.map((tag) => (
                 <Link key={tag} className={pill} to={`/tag/${tag}/`}>
                   {tag}
                 </Link>

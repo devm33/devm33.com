@@ -9,7 +9,7 @@ import { ReactNode, isValidElement } from "react";
 export const onRenderBody: GatsbySSR["onRenderBody"] = ({
   setHtmlAttributes,
 }) => {
-  setHtmlAttributes({ lang: 'en' });
+  setHtmlAttributes({ lang: "en" });
 };
 
 /**
@@ -28,5 +28,5 @@ export const onPreRenderHTML: GatsbySSR["onPreRenderHTML"] = ({
 /** Returns false for the Gatsby generator tag to remove it. */
 function removeGeneratorTag(node: ReactNode): boolean {
   if (!isValidElement(node)) return true;
-  return node.type !== 'meta' || node.props.name !== 'generator';
+  return node.type !== "meta" || node.props.name !== "generator";
 }

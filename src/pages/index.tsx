@@ -20,15 +20,17 @@ export default function Index() {
           height={250}
         />
         <p>
-          You can find me on { }
-          <a href="https://www.linkedin.com/in/devrajmehta">LinkedIn</a> or { }
-          <a href="https://github.com/devm33">GitHub</a>. See here for my { }
+          You can find me on {}
+          <a href="https://www.linkedin.com/in/devrajmehta">LinkedIn</a> or {}
+          <a href="https://github.com/devm33">GitHub</a>. See here for my {}
           <Link to="/resume/">resume</Link>.
         </p>
         <p>
-          This { }
-          <a href="https://github.com/devm33/devm33.com">site&apos;s source</a> is
-          on GitHub.
+          This {}
+          <a href="https://github.com/devm33/devm33.com">
+            site&apos;s source
+          </a>{" "}
+          is on GitHub.
         </p>
         <p>
           Cheers! <br /> Devraj

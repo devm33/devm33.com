@@ -4,7 +4,6 @@ import React from "react";
 import { GitHubIcon, LinkedinIcon } from "./Icons";
 import * as css from "./Navbar.module.css";
 
-
 export function Navbar() {
   const { site } = useStaticQuery<Queries.HeaderQuery>(graphql`
     query Header {

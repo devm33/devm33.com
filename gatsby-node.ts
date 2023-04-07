@@ -26,7 +26,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 }) => {
   const { createPage, createRedirect } = actions;
   const tags = new Set();
-  const result = await graphql<Queries.CreatePagesQuery>(`#graphql
+  const result = await graphql<Queries.CreatePagesQuery>(/* GraphQL */ `
     query CreatePages {
       projects: allMarkdownRemark {
         nodes {
@@ -46,15 +46,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
           }
         }
       }
-      katexProjects: allMarkdownRemark(
-        filter: {html: {regex: "/katex/"}}
-      ) {
+      katexProjects: allMarkdownRemark(filter: { html: { regex: "/katex/" } }) {
         nodes {
           id
         }
       }
       prismProjects: allMarkdownRemark(
-        filter: {html: {regex: "/gatsby-highlight/"}}
+        filter: { html: { regex: "/gatsby-highlight/" } }
       ) {
         nodes {
           id
@@ -62,11 +60,15 @@ export const createPages: GatsbyNode["createPages"] = async ({
       }
     }
   `);
-  const katex = new Set(result.data!.katexProjects.nodes.map(node => node.id));
-  const prism = new Set(result.data!.prismProjects.nodes.map(node => node.id));
+  const katex = new Set(
+    result.data!.katexProjects.nodes.map((node) => node.id),
+  );
+  const prism = new Set(
+    result.data!.prismProjects.nodes.map((node) => node.id),
+  );
 
   // Add project pages.
-  result.data!.projects.nodes.forEach(node => {
+  result.data!.projects.nodes.forEach((node) => {
     createPage({
       path: node.fields!.path!,
       component: ProjectTemplate,
@@ -79,17 +81,17 @@ export const createPages: GatsbyNode["createPages"] = async ({
       },
     });
     if (node.frontmatter?.tags) {
-      node.frontmatter.tags.forEach(tag => tags.add(tag));
+      node.frontmatter.tags.forEach((tag) => tags.add(tag));
     }
   });
 
   // Add tag pages.
-  tags.forEach(tag =>
+  tags.forEach((tag) =>
     createPage({
       path: `/tag/${tag}/`,
       component: TagTemplate,
-      context: { tag, title: `Projects tagged ${tag}`, },
-    })
+      context: { tag, title: `Projects tagged ${tag}` },
+    }),
   );
 
   // Redirects for previous blog site urls.
@@ -118,7 +120,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 // Generate PDF of resume page
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   const browser = await puppeteer.launch({
-    args: ['--font-render-hinting=none'],
+    args: ["--font-render-hinting=none"],
   });
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
@@ -132,7 +134,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
   getConfig,
   stage,
 }) => {
-  if (!stage.includes('build')) return;
+  if (!stage.includes("build")) return;
   const config = getConfig();
   // Note this approach assumes css config is in a oneOf block.
   for (const { oneOf } of config.module.rules) {
@@ -150,8 +152,8 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
 };
 
 // Site type for site metadata.
-export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"]
-  = ({ actions }) => {
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
+  ({ actions }) => {
     actions.createTypes(`
       type Site {
         siteMetadata: SiteMetadata!
