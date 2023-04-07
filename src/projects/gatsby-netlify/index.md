@@ -109,7 +109,7 @@ tags.forEach((tag) =>
     path: `/tag/${tag}/`,
     component: TagTemplate,
     context: { tag },
-  })
+  }),
 );
 ```
 

@@ -21,7 +21,8 @@
     "defaults and supports es6-module"
   ],
   "prettier": {
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "trailingComma": "all"
   },
   "remarkConfig": {
     "plugins": [
