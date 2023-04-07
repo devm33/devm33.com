@@ -11,7 +11,7 @@
     "lint": "npm run lint:js && npm run lint:md && npm run lint:spelling",
     "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:md": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
-    "lint:spelling": "cspell '**/*.{md,js,jsx,json,css,yml}'",
+    "lint:spelling": "cspell '**' --no-progress",
     "serve": "gatsby serve",
     "start": "npm run develop",
     "test": "npm run lint",
@@ -20,6 +20,34 @@
   "browserslist": [
     "defaults and supports es6-module"
   ],
+  "cspell": {
+    "dictionaries": [
+      "companies",
+      "css",
+      "custom-words",
+      "en_US",
+      "filetypes",
+      "fonts",
+      "html",
+      "latex",
+      "node",
+      "npm",
+      "softwareTerms"
+    ],
+    "dictionaryDefinitions": [
+      {
+        "name": "custom-words",
+        "path": "./src/custom-words.txt",
+        "addWords": true
+      }
+    ],
+    "ignorePaths": [
+      "package-lock.json"
+    ],
+    "language": "en",
+    "useGitignore": true,
+    "version": "0.2"
+  },
   "prettier": {
     "proseWrap": "always",
     "trailingComma": "all"

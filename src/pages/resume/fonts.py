@@ -2,6 +2,8 @@
 
 import urllib.parse
 
+# spell-checker: disable
+
 api = 'https://fonts.googleapis.com/css2'
 # font = 'family=Mulish:ital,wght@0,400..500;1,400'
 font = 'family=Mulish:ital,wght@0,400'
