@@ -8,8 +8,8 @@
     "format": "prettier \"**/*.{md,js,jsx,json,css}\" --write --ignore-path .gitignore",
     "lint": "npm run lint:js && npm run lint:md && npm run lint:links && npm run lint:spelling",
     "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:md": "write-good $(glob 'content/**/*.md') --no-tooWordy",
-    "lint:links": "remark -f content/",
+    "lint:md": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
+    "lint:links": "remark -f src/projects/",
     "lint:spelling": "cspell '**/*.{md,js,jsx,json,css,yml}'",
     "test": "npm run lint",
     "typecheck": "tsc --noEmit"
