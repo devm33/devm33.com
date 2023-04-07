@@ -5,7 +5,7 @@
   --baseline: 0;
   --half-space: 0;
   --quarter-space: 0;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: var(--header-line);
   margin: 0 auto;
@@ -72,13 +72,13 @@
 
 @media (hover: hover) {
   .pdf-link::after {
-    content: '';
+    content: "";
     opacity: 0;
     transition: opacity 0.3s;
   }
 
   .pdf-link:hover::after {
-    content: 'Open PDF';
+    content: "Open PDF";
     margin-inline-start: 0.3em;
     opacity: 1;
   }

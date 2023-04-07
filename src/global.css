@@ -16,8 +16,8 @@ html {
   --baseline: 1.65rem;
   --header-line: 1.1;
   --small-font: 0.8909rem;
-  --quarter-space: calc(var(--baseline)/4);
-  --half-space: calc(var(--baseline)/2);
+  --quarter-space: calc(var(--baseline) / 4);
+  --half-space: calc(var(--baseline) / 2);
 }
 
 body {
@@ -104,8 +104,8 @@ h6 {
   font-size: 0.81225rem;
 }
 
-.gatsby-highlight code[class*=language-],
-.gatsby-highlight pre[class*=language-] {
+.gatsby-highlight code[class*="language-"],
+.gatsby-highlight pre[class*="language-"] {
   /* Override prismjs size */
   font-size: 0.85rem;
 }

@@ -118,7 +118,7 @@ listener for receiving messages back from the worker.
 
 ```js
 this.worker = new Worker("search.js");
-this.worker.addEventListener("message", e => this.onMessage(e.data));
+this.worker.addEventListener("message", (e) => this.onMessage(e.data));
 ```
 
 Each thread passes messages with data via a `postMessage` call. For example, the

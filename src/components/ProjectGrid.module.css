@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.card>.image {
+.card > .image {
   /* Overrides global image spacing */
   margin-bottom: 0;
 }
@@ -50,13 +50,13 @@
   pointer-events: all;
 }
 
-.subtitle>* {
+.subtitle > * {
   padding-bottom: var(--half-space);
   padding-left: var(--baseline);
   padding-right: var(--baseline);
 }
 
-.icon-links>a {
+.icon-links > a {
   margin-left: var(--half-space);
   /* Sad hack for alignment with text: */
   position: relative;

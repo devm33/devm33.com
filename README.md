@@ -21,12 +21,13 @@ npm start
 
 ## TODO
 
-- [ ] Clean up linting setup [example](https://github.com/browserslist/browserslist-example)
+- [ ] Clean up linting setup
+      [example](https://github.com/browserslist/browserslist-example)
 - [ ] Add plugin to sort css properties alphabetically
-- [ ] [Consider
-  preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
+- [ ] [Consider preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 - [ ] Add dark mode
-- [ ] Add rss of projects, [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
+- [ ] Add rss of projects,
+      [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
 
 ### Projects to add:
 
@@ -48,7 +49,8 @@ npm start
 - [x] On project page avoid inline SVG duplication
 - [x] Load webfont inline on resume page
 - [x] Limit katex to project pages
-- [x] Switch to [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
+- [x] Switch to
+      [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
 - [x] Finish cleaning up gatsby-plugin-image migration
 - [x] Migrate from Gatsby 2.x to 5.x
 - [x] This site :)

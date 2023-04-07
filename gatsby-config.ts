@@ -1,7 +1,6 @@
-
 import type { GatsbyConfig } from "gatsby";
 
-const siteUrl = 'https://devm33.com';
+const siteUrl = "https://devm33.com";
 const config: GatsbyConfig = {
   graphqlTypegen: {
     typesOutputPath: `.cache/gatsby-types.d.ts`,

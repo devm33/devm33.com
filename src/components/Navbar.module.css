@@ -4,7 +4,7 @@
   padding: var(--half-space);
 }
 
-.nav-bar>* {
+.nav-bar > * {
   flex: 1;
 }
 
@@ -20,6 +20,6 @@
   text-align: end;
 }
 
-.icon-links>a+a {
+.icon-links > a + a {
   margin-inline-start: var(--half-space);
 }

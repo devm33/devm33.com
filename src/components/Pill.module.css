@@ -15,7 +15,7 @@
   color: white;
 }
 
-.pill>svg {
+.pill > svg {
   margin-inline-start: var(--quarter-space);
 }
 

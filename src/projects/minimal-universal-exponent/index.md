@@ -24,7 +24,7 @@ a^m \equiv 1 \pmod n \quad\forall a \in \Z_n^+ \quad\textrm{where}\quad
 \textrm{gcd}(a, n) = 1
 $$
 
-This Carmichael function, we'll refer to it as $$ \lambda(n) = m $$, is
+This Carmichael function, we'll refer to it as $$\lambda(n) = m$$, is
 instrumental to the generation of [RSA] keys.
 
 [rsa]: https://en.wikipedia.org/wiki/RSA_(cryptosystem)
@@ -62,7 +62,7 @@ function min_unv_exp(num) {
     one for the first lcm to work */
 
   /* Iterate through prime factors, computing lcm of each totient */
-  prime_factorization(num).forEach(function(factor) {
+  prime_factorization(num).forEach(function (factor) {
     if (factor.p === 2) {
       if (factor.e == 2) {
         e = lcm(e, 2);
@@ -104,24 +104,24 @@ function prime_factorization(n) {
 ```
 
 This relies on the observation that dividing $$n$$ by its the smallest prime
-factor $$ p_1^{r_1} $$ the smallest number greater than $$ p_1 $$ that divides
-$$ n/p_1^{r_1} $$ is necessarily a prime factor of $$n$$.
+factor $$p_1^{r_1}$$ the smallest number greater than $$p_1$$ that divides
+$$n/p_1^{r_1}$$ is necessarily a prime factor of $$n$$.
 
-A quick proof for this follows from contradiction. Let $$ p_1^{r_1} $$ be the
-factor of $$n$$ such that $$ p_1 $$ is minimal and $$ r_1 $$ is maximal.
+A quick proof for this follows from contradiction. Let $$p_1^{r_1}$$ be the
+factor of $$n$$ such that $$p_1$$ is minimal and $$r_1$$ is maximal.
 
-Now assume $$ q > p_1 $$ is the next smallest divisor of $$ n $$ and $$ q $$ is
-not prime.
+Now assume $$q > p_1$$ is the next smallest divisor of $$n$$ and $$q$$ is not
+prime.
 
-Since $$ q $$ is composite, there must exist a prime factor $$ \phi < q $$.
+Since $$q$$ is composite, there must exist a prime factor $$\phi < q$$.
 
 $$
 \phi|q \,\rarr\, \phi|n
 $$
 
-Since $$ \phi|n \,\rarr\,  \phi > p_1 $$ otherwise $$ p_1 $$ would not be the
+Since $$\phi|n \,\rarr\, \phi > p_1$$ otherwise $$p_1$$ would not be the
 smallest prime factor of n.
 
-However, since $$ q > \phi > p_1 $$ and $$ \phi|n $$ that means $$q$$ is not the
+However, since $$q > \phi > p_1$$ and $$\phi|n$$ that means $$q$$ is not the
 next smallest divisor of $$n$$ unless $$q=\phi$$ in which case $$q$$ is prime
 breaking our assumption that $$q$$ is composite. &#8718;
