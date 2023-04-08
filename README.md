@@ -21,6 +21,7 @@ npm start
 
 ## TODO
 
+- [ ] Possible to move plugins dir into src dir?
 - [ ] Clean up linting setup
       [example](https://github.com/browserslist/browserslist-example)
 - [ ] Add graphql to eslint
