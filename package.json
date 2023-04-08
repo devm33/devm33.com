@@ -5,7 +5,6 @@
     "build": "gatsby build",
     "check:links": "remark -f src/projects/",
     "clean": "gatsby clean",
-    "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write . --ignore-path .gitignore",
     "format:pkg": "format-package -w",
     "lint": "npm run lint:ts && npm run lint:md && npm run lint:spelling",
@@ -13,7 +12,7 @@
     "lint:md": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
     "lint:spelling": "cspell '**' --no-progress",
     "serve": "gatsby serve",
-    "start": "npm run develop",
+    "start": "gatsby develop -H 0.0.0.0",
     "test": "npm run lint",
     "typecheck": "tsc --noEmit"
   },
