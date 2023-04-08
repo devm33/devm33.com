@@ -65,6 +65,7 @@ runtimes
 seqno
 solarizedlight
 stefanzweifel
+stylelint
 tabstopper
 therubyracer
 totient

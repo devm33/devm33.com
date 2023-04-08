@@ -7,8 +7,10 @@
     "clean": "gatsby clean",
     "format": "run-s format:*",
     "format:code": "prettier --write . --ignore-path .gitignore",
+    "format:css": "stylelint \"**/*.css\" --fix",
     "format:pkg": "format-package -w",
     "lint": "run-s lint:*",
+    "lint:css": "stylelint \"**/*.css\"",
     "lint:md": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
     "lint:spelling": "cspell '**' --no-progress",
     "lint:ts": "eslint . --ext .ts,.tsx --ignore-path .gitignore",
@@ -74,6 +76,11 @@
       "remark-lint-no-dead-urls"
     ]
   },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard"
+    ]
+  },
   "dependencies": {
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.33",
@@ -115,6 +122,8 @@
     "puppeteer": "^19.8.5",
     "remark-cli": "^11.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
+    "stylelint": "^15.4.0",
+    "stylelint-config-standard": "^32.0.0",
     "write-good": "^1.0.8"
   }
 }
