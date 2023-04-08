@@ -10,6 +10,12 @@ interface Props {
   nodes: readonly Queries.ProjectGridFieldsFragment[];
 }
 
+function getFrontmatterImage(node: Queries.ProjectGridFieldsFragment) {
+  const image = getImage(node.frontmatter?.image?.childImageSharp ?? null);
+  if (!image) throw new Error("Missing project grid image");
+  return image;
+}
+
 export function ProjectGrid({ nodes }: Props) {
   return (
     <div className={css.grid}>
@@ -18,10 +24,13 @@ export function ProjectGrid({ nodes }: Props) {
           key={node.fields?.path}
           className={css.card}
           onClick={() => navigate(node.fields?.path ?? "")}
+          onKeyDown={() => navigate(node.fields?.path ?? "")}
+          role="link"
+          tabIndex={0}
         >
           <GatsbyImage
             className={css.image}
-            image={getImage(node.frontmatter?.image?.childImageSharp ?? null)!}
+            image={getFrontmatterImage(node)}
             alt=""
           />
           <div className={css.overlay}>

@@ -13,17 +13,16 @@ interface PageContext {
   prism: boolean;
 }
 
-export default function ProjectTemplate({
-  data,
-  pageContext,
-}: PageProps<Queries.ProjectPageQuery, PageContext>) {
-  if (pageContext.katex) {
+type Props = PageProps<Queries.ProjectPageQuery, PageContext>;
+
+export default function ProjectTemplate(props: Props) {
+  if (props.pageContext.katex) {
     import("katex/dist/katex.min.css");
   }
-  if (pageContext.prism) {
+  if (props.pageContext.prism) {
     import("prismjs/themes/prism.min.css");
   }
-  const { frontmatter, html } = data.markdownRemark!;
+  const { frontmatter, html } = props.data.markdownRemark ?? {};
   if (!frontmatter || !html) throw new Error("Missing required page data");
   return (
     <Layout>

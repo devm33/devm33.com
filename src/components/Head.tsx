@@ -39,8 +39,10 @@ export function Head(props: Props) {
   const siteMetadata = query.site?.siteMetadata;
   const title = props.title || props.pageContext.title || siteMetadata?.title;
   const desc = props.pageContext.description || siteMetadata?.description;
-  const image = (props.pageContext.image || query.fileName)!.childImageSharp!;
-  const siteUrl = siteMetadata?.siteUrl ?? "";
+  const image = (props.pageContext.image || query.fileName)?.childImageSharp;
+  const siteUrl = siteMetadata?.siteUrl;
+  if (!image) throw new Error("Missing image for page head");
+  if (!siteUrl) throw new Error("Missing siteUrl for page head");
   return (
     <>
       <title>{title}</title>

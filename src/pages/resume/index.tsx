@@ -7,7 +7,7 @@ import * as css from "./index.module.css";
 import "./mulish-font.css";
 
 export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
-  const email = data.site!.siteMetadata.email;
+  const email = data.site?.siteMetadata.email;
   return (
     <main className={css.main}>
       <InstallIcons file={true} />
@@ -78,8 +78,8 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
       <div>Highest Honors</div>
 
       <h2>SKILLS</h2>
-      {Object.entries(data.resumeYaml!).map(([category, list]) => (
-        <div key={category}>{list!.join(", ")}</div>
+      {Object.entries(data.resumeYaml ?? {}).map(([category, list]) => (
+        <div key={category}>{list?.join(", ")}</div>
       ))}
     </main>
   );

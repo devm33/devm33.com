@@ -10,10 +10,12 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
 }) => {
   const { createNodeField } = actions;
   // Add fields to markdown pages
-  if (node.internal.type === "MarkdownRemark") {
-    const fileNode = getNode(node.parent!)!;
-    const relativeDirectory = fileNode.relativeDirectory as string;
-    createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
+  if (node.internal.type === "MarkdownRemark" && node.parent) {
+    const fileNode = getNode(node.parent);
+    if (fileNode) {
+      const relativeDirectory = fileNode.relativeDirectory as string;
+      createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
+    }
   }
 };
 
@@ -23,6 +25,7 @@ const TagTemplate = path.resolve(`src/templates/Tag.tsx`);
 export const createPages: GatsbyNode["createPages"] = async ({
   actions,
   graphql,
+  reporter,
 }) => {
   const { createPage, createRedirect } = actions;
   const tags = new Set();
@@ -60,22 +63,26 @@ export const createPages: GatsbyNode["createPages"] = async ({
       }
     }
   `);
-  const katex = new Set(
-    result.data!.katexProjects.nodes.map((node) => node.id),
-  );
-  const prism = new Set(
-    result.data!.prismProjects.nodes.map((node) => node.id),
-  );
+  if (result.errors || !result.data) {
+    reporter.panicOnBuild("Error while running GraphQL query.");
+    return;
+  }
+  const katex = new Set(result.data.katexProjects.nodes.map((node) => node.id));
+  const prism = new Set(result.data.prismProjects.nodes.map((node) => node.id));
 
   // Add project pages.
-  result.data!.projects.nodes.forEach((node) => {
+  for (const node of result.data.projects.nodes) {
+    if (!node.fields?.path || !node.frontmatter) {
+      reporter.panicOnBuild("Project node missing required fields.");
+      return;
+    }
     createPage({
-      path: node.fields!.path!,
+      path: node.fields.path,
       component: ProjectTemplate,
       context: {
-        title: node.frontmatter!.title,
-        description: node.frontmatter!.tagline,
-        image: node.frontmatter!.image,
+        title: node.frontmatter.title,
+        description: node.frontmatter.tagline,
+        image: node.frontmatter.image,
         katex: katex.has(node.id),
         prism: prism.has(node.id),
       },
@@ -83,7 +90,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
     if (node.frontmatter?.tags) {
       node.frontmatter.tags.forEach((tag) => tags.add(tag));
     }
-  });
+  }
 
   // Add tag pages.
   tags.forEach((tag) =>
