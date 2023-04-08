@@ -25,7 +25,6 @@ npm start
       [ref](https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/#graphql-eslint)
 - [ ] Add
       [style lint](https://github.com/browserslist/browserslist-example#stylelint)
-- [ ] Add CI to test lint and check:links
 - [ ] Add plugin to sort css properties alphabetically
 - [ ] [Consider preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 - [ ] Add dark mode
@@ -41,6 +40,7 @@ npm start
 
 ## Done
 
+- [x] Add GitHub actions for linting and formatting
 - [x] Update linting setup
 - [x] Add editorconfig
 - [x] Migrate to TypeScript
