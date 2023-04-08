@@ -64,6 +64,7 @@ rubygems
 runtimes
 seqno
 solarizedlight
+stefanzweifel
 tabstopper
 therubyracer
 totient
