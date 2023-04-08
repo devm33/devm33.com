@@ -21,8 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Clean up linting setup
-      [example](https://github.com/browserslist/browserslist-example)
 - [ ] Add graphql to eslint
       [ref](https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/#graphql-eslint)
 - [ ] Add
@@ -43,6 +41,7 @@ npm start
 
 ## Done
 
+- [x] Update linting setup
 - [x] Add editorconfig
 - [x] Migrate to TypeScript
 - [x] Remove typography.js

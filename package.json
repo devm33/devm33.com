@@ -8,9 +8,9 @@
     "format": "prettier --write . --ignore-path .gitignore",
     "format:pkg": "format-package -w",
     "lint": "npm run lint:ts && npm run lint:md && npm run lint:spelling",
-    "lint:ts": "eslint . --ext .ts,.tsx --ignore-path .gitignore",
     "lint:md": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
     "lint:spelling": "cspell '**' --no-progress",
+    "lint:ts": "eslint . --ext .ts,.tsx --ignore-path .gitignore",
     "serve": "gatsby serve",
     "start": "gatsby develop -H 0.0.0.0",
     "test": "npm run lint",
@@ -19,23 +19,6 @@
   "browserslist": [
     "defaults and supports es6-module"
   ],
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "env": {
-      "es6": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:jsx-a11y/recommended",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "react",
-      "jsx-a11y"
-    ]
-  },
   "cspell": {
     "dictionaries": [
       "companies",
@@ -63,6 +46,23 @@
     "language": "en",
     "useGitignore": true,
     "version": "0.2"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "env": {
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:jsx-a11y/recommended",
+      "prettier"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "react",
+      "jsx-a11y"
+    ]
   },
   "prettier": {
     "proseWrap": "always",
