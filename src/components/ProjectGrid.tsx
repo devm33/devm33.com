@@ -10,37 +10,47 @@ interface Props {
   nodes: readonly Queries.ProjectGridFieldsFragment[];
 }
 
+function getFrontmatterImage(node: Queries.ProjectGridFieldsFragment) {
+  const image = getImage(node.frontmatter?.image?.childImageSharp ?? null);
+  if (!image) throw new Error("Missing project grid image");
+  return image;
+}
+
 export function ProjectGrid({ nodes }: Props) {
   return (
     <div className={css.grid}>
-      {nodes.map(node => (
+      {nodes.map((node) => (
         <div
           key={node.fields?.path}
           className={css.card}
-          onClick={_ => navigate(node.fields?.path ?? '')}>
+          onClick={() => navigate(node.fields?.path ?? "")}
+          onKeyDown={() => navigate(node.fields?.path ?? "")}
+          role="link"
+          tabIndex={0}
+        >
           <GatsbyImage
             className={css.image}
-            image={getImage(node.frontmatter?.image?.childImageSharp ?? null)!}
+            image={getFrontmatterImage(node)}
             alt=""
           />
           <div className={css.overlay}>
             <Link
               className={css.overlayLink}
-              to={node.fields?.path ?? ''}
-              aria-label={node.frontmatter?.title ?? ''}
+              to={node.fields?.path ?? ""}
+              aria-label={node.frontmatter?.title ?? ""}
             />
-            <Link className={css.titleLink} to={node.fields?.path ?? ''}>
+            <Link className={css.titleLink} to={node.fields?.path ?? ""}>
               {node.frontmatter?.title}
             </Link>
             <div className={css.subtitle}>
               <div>{node.frontmatter?.tagline}</div>
               <div className={pillGroup}>
-                {node.frontmatter?.tags?.map(tag => (
+                {node.frontmatter?.tags?.map((tag) => (
                   <Link
                     key={tag}
                     className={pill}
                     to={`/tag/${tag}/`}
-                    onClick={e => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {tag}
                   </Link>
@@ -53,7 +63,7 @@ export function ProjectGrid({ nodes }: Props) {
                     <a
                       href={node.frontmatter?.repo}
                       aria-label="GitHub repo"
-                      onClick={e => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <GitHubIcon />
                     </a>
@@ -62,7 +72,7 @@ export function ProjectGrid({ nodes }: Props) {
                     <a
                       href={node.frontmatter?.link}
                       aria-label="Project link"
-                      onClick={e => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <LinkIcon />
                     </a>
@@ -95,10 +105,10 @@ export const fragment = graphql`
       image {
         childImageSharp {
           gatsbyImageData(
-            width: 500,
-            height: 500,
-            breakpoints: [300, 400],
-            placeholder: BLURRED,
+            width: 500
+            height: 500
+            breakpoints: [300, 400]
+            placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
           )
         }

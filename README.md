@@ -21,14 +21,10 @@ npm start
 
 ## TODO
 
-- [ ] Add rss of projects: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
-- [ ] Clean up linting setup
-  - https://github.com/browserslist/browserslist-example
-- [ ] Add plugin to sort css properties alphabetically
-- [ ] Add editorconfig
-- [ ] [Consider
-  preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
+- [ ] [Consider preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 - [ ] Add dark mode
+- [ ] Add rss of projects,
+      [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
 
 ### Projects to add:
 
@@ -39,6 +35,11 @@ npm start
 
 ## Done
 
+- [x] Add plugin to sort css properties alphabetically
+- [x] Add stylelint
+- [x] Add GitHub actions for linting and formatting
+- [x] Update linting setup
+- [x] Add editorconfig
 - [x] Migrate to TypeScript
 - [x] Remove typography.js
 - [x] Migrate from styled-components to native CSS modules
@@ -49,7 +50,8 @@ npm start
 - [x] On project page avoid inline SVG duplication
 - [x] Load webfont inline on resume page
 - [x] Limit katex to project pages
-- [x] Switch to [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
+- [x] Switch to
+      [gatsby-head](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/)
 - [x] Finish cleaning up gatsby-plugin-image migration
 - [x] Migrate from Gatsby 2.x to 5.x
 - [x] This site :)

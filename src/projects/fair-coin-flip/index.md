@@ -108,11 +108,11 @@ generating a larger prime list offline and storing it. But it was not the
 bottleneck of the procedure so I didn't try to optimize it further.
 
 ```js
-var has_small_prime_factor = (function() {
+var has_small_prime_factor = (function () {
   /* anonymous function to trap list in scope to generate once */
   var small_prime = find_all_primes_less_than(1e6);
   var len = small_prime.length;
-  return function(n) {
+  return function (n) {
     /* Returns true if n has a factor in list of small primes */
     for (var i = 0; i < len; i++) {
       if (n % small_prime[i] === 0) {
@@ -247,12 +247,12 @@ b^e =  b^{(\sum_{i=0}^n a_i 2^i)} = \prod_{i=0}^{n} b^{a_i} b^{2^i}
 $$
 
 Which is what we are calculating in the above pseudocode. When we check if the
-exponent is odd at each loop we are checking where $$ a_i $$ is 1 or 0. If
-$$ a_i $$ is 1 the exponent (at the ith iteration of the while loop) will be odd
-in which case we need to multiply our result by $$ b^{a_i} = b^1 = b $$.
-Otherwise if $$ a_i = 0 $$ then $$ b^0 = 1 $$ which doesn't affect the product.
-Regardless of whether the exponent is odd at every iteration we need to account
-for the $$ b^{2^i} $$ product which happens by progressively squaring the base.
+exponent is odd at each loop we are checking where $$a_i$$ is 1 or 0. If $$a_i$$
+is 1 the exponent (at the ith iteration of the while loop) will be odd in which
+case we need to multiply our result by $$b^{a_i} = b^1 = b$$. Otherwise if
+$$a_i = 0$$ then $$b^0 = 1$$ which doesn't affect the product. Regardless of
+whether the exponent is odd at every iteration we need to account for the
+$$b^{2^i}$$ product which happens by progressively squaring the base.
 
 The calculation to solve for the square roots of each prime put this faster
 modular exponentiation to good use:

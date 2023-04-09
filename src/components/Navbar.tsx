@@ -4,7 +4,6 @@ import React from "react";
 import { GitHubIcon, LinkedinIcon } from "./Icons";
 import * as css from "./Navbar.module.css";
 
-
 export function Navbar() {
   const { site } = useStaticQuery<Queries.HeaderQuery>(graphql`
     query Header {
@@ -21,7 +20,7 @@ export function Navbar() {
         <Link to="/projects/">Projects</Link>
       </div>
       <div className={css.title}>
-        <Link to="/">{site!.siteMetadata.title}</Link>
+        <Link to="/">{site?.siteMetadata.title}</Link>
       </div>
       <div className={css.iconLinks}>
         <a href="https://github.com/devm33" aria-label="GitHub profile">

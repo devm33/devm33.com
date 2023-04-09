@@ -1,19 +1,21 @@
 .main {
   /* Match header line-height with body line-height */
   --header-line: 1.4;
+
   /* Zero out spacing for resume */
   --baseline: 0;
   --half-space: 0;
   --quarter-space: 0;
-  font-family: 'Mulish', sans-serif;
+
+  font-family: Mulish, sans-serif;
   font-size: 14px;
   line-height: var(--header-line);
   margin: 0 auto;
   max-width: 49em;
-  padding: 2em 0 6em 0;
+  padding: 2em 0 6em;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (width <= 700px) {
   .main {
     margin: 0 1em;
     padding: 1em 0;
@@ -33,7 +35,7 @@
 
 .main h2 {
   font-size: 1em;
-  margin: 1em 0 0 0;
+  margin: 1em 0 0;
 }
 
 .main h3 {
@@ -72,13 +74,13 @@
 
 @media (hover: hover) {
   .pdf-link::after {
-    content: '';
+    content: "";
     opacity: 0;
     transition: opacity 0.3s;
   }
 
   .pdf-link:hover::after {
-    content: 'Open PDF';
+    content: "Open PDF";
     margin-inline-start: 0.3em;
     opacity: 1;
   }
@@ -100,7 +102,7 @@
 
 .title-row {
   display: flex;
-  margin: 0.3em 0 0.1em 0;
+  margin: 0.3em 0 0.1em;
 }
 
 .location {

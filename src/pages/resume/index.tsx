@@ -7,7 +7,7 @@ import * as css from "./index.module.css";
 import "./mulish-font.css";
 
 export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
-  const email = data.site!.siteMetadata.email;
+  const email = data.site?.siteMetadata.email;
   return (
     <main className={css.main}>
       <InstallIcons file={true} />
@@ -30,30 +30,33 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
         <div className={css.contactInfo}>
           <a
             className={css.contactLink}
-            href="https://www.linkedin.com/in/devrajmehta">
+            href="https://www.linkedin.com/in/devrajmehta"
+          >
             linkedin.com/in/devrajmehta
           </a>
-          <a className={css.contactLink} href={`mailto:${email}`}>{email}</a>
+          <a className={css.contactLink} href={`mailto:${email}`}>
+            {email}
+          </a>
         </div>
       </header>
 
       <h2>EXPERIENCE</h2>
-      {data.allJobsYaml.nodes.map(job => (
+      {data.allJobsYaml.nodes.map((job) => (
         <div key={job.id}>
           <div className={css.titleRow}>
             <h3>
-              <a href={job.uri || undefined}>{job.name}</a>, {job.title} { }
+              <a href={job.uri || undefined}>{job.name}</a>, {job.title} {}
               <span className={`${css.location} ${css.nowrap}`}>
                 - {job.location}
               </span>
             </h3>
             <div className={css.dateRange}>
-              <span className={css.nowrap}>{job.start}</span> - { }
+              <span className={css.nowrap}>{job.start}</span> - {}
               <span className={css.nowrap}>{job.finish}</span>
             </div>
           </div>
           <ul>
-            {job.description?.map(desc => (
+            {job.description?.map((desc) => (
               <li key={desc}>{desc}</li>
             ))}
           </ul>
@@ -63,27 +66,21 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
       <h2>EDUCATION</h2>
       <div className={css.titleRow}>
         <h3>
-          <a href="https://gatech.edu">Georgia Institute of Technology</a>, { }
-          <span className={css.nowrap}>BSc Computer Science</span> { }
+          <a href="https://gatech.edu">Georgia Institute of Technology</a>, {}
+          <span className={css.nowrap}>BSc Computer Science</span> {}
           <span className={`${css.location} ${css.nowrap}`}>- Atlanta, GA</span>
         </h3>
         <div className={css.dateRange}>
-          <span className={css.nowrap}>AUG 2010</span> - { }
+          <span className={css.nowrap}>AUG 2010</span> - {}
           <span className={css.nowrap}>MAY 2014</span>
         </div>
       </div>
-      <div>
-        Highest Honors
-      </div>
+      <div>Highest Honors</div>
 
       <h2>SKILLS</h2>
-      {
-        Object.entries(data.resumeYaml!).map(([category, list]) => (
-          <div key={category}>
-            {list!.join(", ")}
-          </div>
-        ))
-      }
+      {Object.entries(data.resumeYaml ?? {}).map(([category, list]) => (
+        <div key={category}>{list?.join(", ")}</div>
+      ))}
     </main>
   );
 }
@@ -116,4 +113,4 @@ export const query = graphql`
   }
 `;
 
-export const Head = createHeadWithTitle('Devraj Mehta Resume');
+export const Head = createHeadWithTitle("Devraj Mehta Resume");

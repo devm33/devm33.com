@@ -12,11 +12,11 @@ export default function ProjectsPage(props: PageProps<Queries.ProjectsQuery>) {
       <ProjectGrid nodes={props.data.allMarkdownRemark.nodes} />
     </Layout>
   );
-};
+}
 
 export const query = graphql`
   query Projects {
-    allMarkdownRemark(sort: {frontmatter: {updated: DESC}}) {
+    allMarkdownRemark(sort: { frontmatter: { updated: DESC } }) {
       nodes {
         ...ProjectGridFields
       }

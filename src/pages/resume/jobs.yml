@@ -12,10 +12,10 @@
       Simultaneously managed six engineers, served as technical lead, and made
       individual contributions.
     - >
-      Architected and prototyped replacement of multiple legacy applications with
-      a single platform. Sustained multi-year migration timeline by applying
-      agile methodologies and consistent alignment between engineering teams,
-      product, UX, and business stakeholders.
+      Architected and prototyped replacement of multiple legacy applications
+      with a single platform. Sustained multi-year migration timeline by
+      applying agile methodologies and consistent alignment between engineering
+      teams, product, UX, and business stakeholders.
     - >
       Reviewed 500+ changes as company-wide approver for TypeScript, providing
       mentorship and upholding code quality.
@@ -34,9 +34,9 @@
       Launched rich-text editor for real-time translation for support agents
       using custom language models, enabling $30M+ in cost savings.
     - >
-      Migrated content and copyright review applications from legacy
-      tech stack. Reduced time spent per review by 52% by improving workflow
-      design and user experience.
+      Migrated content and copyright review applications from legacy tech stack.
+      Reduced time spent per review by 52% by improving workflow design and user
+      experience.
     - Built Angular components used company-wide.
   enabled: true
 - uri: https://www.blog.google/products/admanager/reimagine-the-commercial-break/

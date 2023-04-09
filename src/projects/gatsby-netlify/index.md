@@ -96,20 +96,20 @@ database using passed in Redux actions (in this case [createPage]):
 const tags = new Set();
 
 // Add project pages.
-projects.data.allMarkdownRemark.nodes.forEach(node => {
+projects.data.allMarkdownRemark.nodes.forEach((node) => {
   createPage({ path: node.fields.path, component: ProjectTemplate });
   if (node.frontmatter.tags) {
-    node.frontmatter.tags.forEach(tag => tags.add(tag));
+    node.frontmatter.tags.forEach((tag) => tags.add(tag));
   }
 });
 
 // Add tag pages.
-tags.forEach(tag =>
+tags.forEach((tag) =>
   createPage({
     path: `/tag/${tag}/`,
     component: TagTemplate,
     context: { tag },
-  })
+  }),
 );
 ```
 
@@ -131,7 +131,7 @@ React, e.g.
 
 ```jsx
 {
-  jobs.map(job => (
+  jobs.map((job) => (
     <Fragment key={job.id}>
       <TrMeta>
         <td>

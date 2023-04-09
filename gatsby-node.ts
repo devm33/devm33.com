@@ -10,10 +10,12 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
 }) => {
   const { createNodeField } = actions;
   // Add fields to markdown pages
-  if (node.internal.type === "MarkdownRemark") {
-    const fileNode = getNode(node.parent!)!;
-    const relativeDirectory = fileNode.relativeDirectory as string;
-    createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
+  if (node.internal.type === "MarkdownRemark" && node.parent) {
+    const fileNode = getNode(node.parent);
+    if (fileNode) {
+      const relativeDirectory = fileNode.relativeDirectory as string;
+      createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
+    }
   }
 };
 
@@ -23,10 +25,11 @@ const TagTemplate = path.resolve(`src/templates/Tag.tsx`);
 export const createPages: GatsbyNode["createPages"] = async ({
   actions,
   graphql,
+  reporter,
 }) => {
   const { createPage, createRedirect } = actions;
   const tags = new Set();
-  const result = await graphql<Queries.CreatePagesQuery>(`#graphql
+  const result = await graphql<Queries.CreatePagesQuery>(/* GraphQL */ `
     query CreatePages {
       projects: allMarkdownRemark {
         nodes {
@@ -46,15 +49,13 @@ export const createPages: GatsbyNode["createPages"] = async ({
           }
         }
       }
-      katexProjects: allMarkdownRemark(
-        filter: {html: {regex: "/katex/"}}
-      ) {
+      katexProjects: allMarkdownRemark(filter: { html: { regex: "/katex/" } }) {
         nodes {
           id
         }
       }
       prismProjects: allMarkdownRemark(
-        filter: {html: {regex: "/gatsby-highlight/"}}
+        filter: { html: { regex: "/gatsby-highlight/" } }
       ) {
         nodes {
           id
@@ -62,34 +63,42 @@ export const createPages: GatsbyNode["createPages"] = async ({
       }
     }
   `);
-  const katex = new Set(result.data!.katexProjects.nodes.map(node => node.id));
-  const prism = new Set(result.data!.prismProjects.nodes.map(node => node.id));
+  if (result.errors || !result.data) {
+    reporter.panicOnBuild("Error while running GraphQL query.");
+    return;
+  }
+  const katex = new Set(result.data.katexProjects.nodes.map((node) => node.id));
+  const prism = new Set(result.data.prismProjects.nodes.map((node) => node.id));
 
   // Add project pages.
-  result.data!.projects.nodes.forEach(node => {
+  for (const node of result.data.projects.nodes) {
+    if (!node.fields?.path || !node.frontmatter) {
+      reporter.panicOnBuild("Project node missing required fields.");
+      return;
+    }
     createPage({
-      path: node.fields!.path!,
+      path: node.fields.path,
       component: ProjectTemplate,
       context: {
-        title: node.frontmatter!.title,
-        description: node.frontmatter!.tagline,
-        image: node.frontmatter!.image,
+        title: node.frontmatter.title,
+        description: node.frontmatter.tagline,
+        image: node.frontmatter.image,
         katex: katex.has(node.id),
         prism: prism.has(node.id),
       },
     });
     if (node.frontmatter?.tags) {
-      node.frontmatter.tags.forEach(tag => tags.add(tag));
+      node.frontmatter.tags.forEach((tag) => tags.add(tag));
     }
-  });
+  }
 
   // Add tag pages.
-  tags.forEach(tag =>
+  tags.forEach((tag) =>
     createPage({
       path: `/tag/${tag}/`,
       component: TagTemplate,
-      context: { tag, title: `Projects tagged ${tag}`, },
-    })
+      context: { tag, title: `Projects tagged ${tag}` },
+    }),
   );
 
   // Redirects for previous blog site urls.
@@ -118,7 +127,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 // Generate PDF of resume page
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   const browser = await puppeteer.launch({
-    args: ['--font-render-hinting=none'],
+    args: ["--font-render-hinting=none"],
   });
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
@@ -132,7 +141,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
   getConfig,
   stage,
 }) => {
-  if (!stage.includes('build')) return;
+  if (!stage.includes("build")) return;
   const config = getConfig();
   // Note this approach assumes css config is in a oneOf block.
   for (const { oneOf } of config.module.rules) {
@@ -150,8 +159,8 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
 };
 
 // Site type for site metadata.
-export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"]
-  = ({ actions }) => {
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
+  ({ actions }) => {
     actions.createTypes(`
       type Site {
         siteMetadata: SiteMetadata!

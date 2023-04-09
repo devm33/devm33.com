@@ -12,9 +12,10 @@ interface PageContext {
   tag: string;
 }
 
-export default function TagTemplate(
-  { data, pageContext }: PageProps<Queries.TagPageQuery, PageContext>
-) {
+export default function TagTemplate({
+  data,
+  pageContext,
+}: PageProps<Queries.TagPageQuery, PageContext>) {
   return (
     <Layout>
       <h1 className={title}>
@@ -30,7 +31,7 @@ export const query = graphql`
   query TagPage($tag: String!) {
     allMarkdownRemark(
       filter: { frontmatter: { tags: { eq: $tag } } }
-      sort: {frontmatter: {updated: DESC}}
+      sort: { frontmatter: { updated: DESC } }
     ) {
       nodes {
         ...ProjectGridFields

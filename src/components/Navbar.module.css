@@ -4,22 +4,22 @@
   padding: var(--half-space);
 }
 
-.nav-bar>* {
+.nav-bar > * {
   flex: 1;
 }
 
 .title {
-  font-size: 1.41421rem;
+  font-size: 1.4142rem;
   line-height: 2.475rem;
   text-align: center;
   white-space: nowrap;
 }
 
 .icon-links {
-  font-size: 1.12246rem;
+  font-size: 1.1225rem;
   text-align: end;
 }
 
-.icon-links>a+a {
+.icon-links > a + a {
   margin-inline-start: var(--half-space);
 }

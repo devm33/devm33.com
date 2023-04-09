@@ -5,6 +5,7 @@
 
 html {
   /* Prevent adjustments of font size after orientation changes in iOS. */
+  /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -16,8 +17,8 @@ html {
   --baseline: 1.65rem;
   --header-line: 1.1;
   --small-font: 0.8909rem;
-  --quarter-space: calc(var(--baseline)/4);
-  --half-space: calc(var(--baseline)/2);
+  --quarter-space: calc(var(--baseline) / 4);
+  --half-space: calc(var(--baseline) / 2);
 }
 
 body {
@@ -28,9 +29,9 @@ body {
 }
 
 article {
+  margin: 0 auto;
   max-width: 700px;
   width: 80%;
-  margin: 0 auto;
 }
 
 a,
@@ -38,8 +39,8 @@ a:visited {
   color: var(--link);
   text-decoration: none;
   transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
   transition-property: color, background-color, border-color;
+  transition-timing-function: ease-in-out;
 }
 
 a:hover {
@@ -85,11 +86,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.51572rem;
+  font-size: 1.5157rem;
 }
 
 h3 {
-  font-size: 1.31951rem;
+  font-size: 1.3195rem;
 }
 
 h4 {
@@ -97,15 +98,15 @@ h4 {
 }
 
 h5 {
-  font-size: 0.87055rem;
+  font-size: 0.8705rem;
 }
 
 h6 {
-  font-size: 0.81225rem;
+  font-size: 0.8122rem;
 }
 
-.gatsby-highlight code[class*=language-],
-.gatsby-highlight pre[class*=language-] {
+.gatsby-highlight code[class*="language-"],
+.gatsby-highlight pre[class*="language-"] {
   /* Override prismjs size */
   font-size: 0.85rem;
 }

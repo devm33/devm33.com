@@ -14,4 +14,4 @@ export default function NotFoundPage() {
   );
 }
 
-export const Head = createHeadWithTitle('404: Not found');
+export const Head = createHeadWithTitle("404: Not found");

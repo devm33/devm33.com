@@ -3,7 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-@media (max-width: 300px) {
+@media (width <= 300px) {
   .grid-filler {
     display: none;
   }
@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.card>.image {
+.card > .image {
   /* Overrides global image spacing */
   margin-bottom: 0;
 }
@@ -27,7 +27,7 @@
 
 .title-link {
   background-color: #ffffffec;
-  font-size: 1.41421rem;
+  font-size: 1.4142rem;
   line-height: 2.475rem;
   padding: var(--baseline) 0;
   text-align: center;
@@ -50,14 +50,15 @@
   pointer-events: all;
 }
 
-.subtitle>* {
+.subtitle > * {
   padding-bottom: var(--half-space);
   padding-left: var(--baseline);
   padding-right: var(--baseline);
 }
 
-.icon-links>a {
+.icon-links > a {
   margin-left: var(--half-space);
+
   /* Sad hack for alignment with text: */
   position: relative;
   top: 3px;

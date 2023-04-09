@@ -40,23 +40,20 @@ native bookmarks [^3]. Right now I have completed navigating and deleting. On
 the backlog is renaming/editing and rearranging.
 
 [^1]:
-
-  Default focus for new tab page is the url bar. A single tab brings focus to
-  the page or more specifically to the first link on the page. I've noticed some
-  chrome extension widgets will insert themselves in the focus chain after the
-  url bar though, so shift-tab is useful in that case to go backwards through
-  the focus chain, i.e. the last link on the page.
+    Default focus for new tab page is the url bar. A single tab brings focus to
+    the page or more specifically to the first link on the page. I've noticed
+    some chrome extension widgets will insert themselves in the focus chain
+    after the url bar though, so shift-tab is useful in that case to go
+    backwards through the focus chain, i.e. the last link on the page.
 
 [^2]:
-
-  The key for a bookmark will be a number if the bookmark is in the first nine
-  bookmarks. After that I use characters in the order defined by character code,
-  starting with ':' at 58, '9' is 57.
+    The key for a bookmark will be a number if the bookmark is in the first nine
+    bookmarks. After that I use characters in the order defined by character
+    code, starting with ':' at 58, '9' is 57.
 
 [^3]:
-
-  At least I can build as much as is possible with the [chrome extension
-  bookmarks api][bookmarks-api].
+    At least I can build as much as is possible with the [chrome extension
+    bookmarks api][bookmarks-api].
 
 [motivation chrome extension]: https://github.com/maccman/motivation
 [bookmarks-api]: https://developer.chrome.com/extensions/bookmarks
