@@ -49,7 +49,7 @@ export function Head(props: Props) {
   const siteUrl = siteMetadata?.siteUrl;
   if (!image) throw new Error("Missing image for page head");
   if (!siteUrl) throw new Error("Missing siteUrl for page head");
-  if (!favicon) throw new Error('Missing favicon image for page head');
+  if (!favicon) throw new Error("Missing favicon image for page head");
   return (
     <>
       <title>{title}</title>
@@ -58,7 +58,7 @@ export function Head(props: Props) {
       <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
       <meta name="og:title" content={title || undefined} />
       <meta name="og:url" content={`${siteUrl}${props.location.pathname}`} />
-      <link rel="icon" href={getSrc(favicon)} type="image/png"/>
+      <link rel="icon" href={getSrc(favicon)} type="image/png" />
     </>
   );
 }
