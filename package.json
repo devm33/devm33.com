@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "gatsby build",
+    "cbs": "run-s clean build serve",
     "check-links": "remark -f src/projects/",
     "clean": "gatsby clean",
     "format": "run-s format:*",
