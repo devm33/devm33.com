@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] [Consider preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
 - [ ] Add dark mode
 - [ ] Add rss of projects,
       [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
