@@ -29,9 +29,9 @@ body {
 }
 
 article {
+  margin: 0 auto;
   max-width: 700px;
   width: 80%;
-  margin: 0 auto;
 }
 
 a,
@@ -39,8 +39,8 @@ a:visited {
   color: var(--link);
   text-decoration: none;
   transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
   transition-property: color, background-color, border-color;
+  transition-timing-function: ease-in-out;
 }
 
 a:hover {

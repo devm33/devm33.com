@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Add plugin to sort css properties alphabetically
 - [ ] Add graphql to eslint
       [ref](https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/#graphql-eslint)
 - [ ] [Consider preact](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-6-consider-using-the-preact-plugin)
@@ -38,6 +37,7 @@ npm start
 
 ## Done
 
+- [x] Add plugin to sort css properties alphabetically
 - [x] Add stylelint
 - [x] Add GitHub actions for linting and formatting
 - [x] Update linting setup

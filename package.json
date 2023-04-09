@@ -80,7 +80,11 @@
     "extends": [
       "stylelint-config-standard"
     ],
+    "plugins": [
+      "stylelint-order"
+    ],
     "rules": {
+      "order/properties-alphabetical-order": true,
       "value-keyword-case": [
         "lower",
         {
@@ -135,6 +139,7 @@
     "remark-lint-no-dead-urls": "^1.1.0",
     "stylelint": "^15.4.0",
     "stylelint-config-standard": "^32.0.0",
+    "stylelint-order": "^6.0.3",
     "write-good": "^1.0.8"
   }
 }

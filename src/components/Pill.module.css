@@ -1,7 +1,7 @@
 .pill {
   align-items: center;
-  border-radius: 0.5em;
   border: 1px solid var(--link);
+  border-radius: 0.5em;
   color: var(--link);
   display: inline-flex;
   padding: 0 0.5em;
