@@ -7,10 +7,10 @@
     "clean": "gatsby clean",
     "format": "run-s format:*",
     "format:code": "prettier --write . --ignore-path .gitignore",
-    "format:css": "stylelint \"**/*.css\" --fix",
+    "format:css": "stylelint \"src/**/*.css\" --fix",
     "format:pkg": "format-package -w",
     "lint": "run-s lint:*",
-    "lint:css": "stylelint \"**/*.css\"",
+    "lint:css": "stylelint \"src/**/*.css\"",
     "lint:md": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
     "lint:spelling": "cspell '**' --no-progress",
     "lint:ts": "eslint . --ext .ts,.tsx --ignore-path .gitignore",
@@ -79,7 +79,18 @@
   "stylelint": {
     "extends": [
       "stylelint-config-standard"
-    ]
+    ],
+    "rules": {
+      "value-keyword-case": [
+        "lower",
+        {
+          "camelCaseSvgKeywords": true,
+          "ignoreProperties": [
+            "text-rendering"
+          ]
+        }
+      ]
+    }
   },
   "dependencies": {
     "@types/node": "^18.15.11",

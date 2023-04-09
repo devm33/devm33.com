@@ -3,7 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-@media (max-width: 300px) {
+@media (width <= 300px) {
   .grid-filler {
     display: none;
   }
@@ -27,7 +27,7 @@
 
 .title-link {
   background-color: #ffffffec;
-  font-size: 1.41421rem;
+  font-size: 1.4142rem;
   line-height: 2.475rem;
   padding: var(--baseline) 0;
   text-align: center;
@@ -58,6 +58,7 @@
 
 .icon-links > a {
   margin-left: var(--half-space);
+
   /* Sad hack for alignment with text: */
   position: relative;
   top: 3px;
