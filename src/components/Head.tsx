@@ -28,7 +28,7 @@ export function Head(props: Props) {
             siteUrl
           }
         }
-        headshot: file(relativePath: { eq: "images/me.jpg" }) {
+        me: file(relativePath: { eq: "images/me.jpg" }) {
           childImageSharp {
             gatsbyImageData(width: 1000)
           }
@@ -44,7 +44,7 @@ export function Head(props: Props) {
   const siteMetadata = query.site?.siteMetadata;
   const title = props.title || props.pageContext.title || siteMetadata?.title;
   const desc = props.pageContext.description || siteMetadata?.description;
-  const image = (props.pageContext.image || query.headshot)?.childImageSharp;
+  const image = (props.pageContext.image || query.me)?.childImageSharp;
   const favicon = query.favicon?.childImageSharp;
   const siteUrl = siteMetadata?.siteUrl;
   if (!image) throw new Error("Missing image for page head");
