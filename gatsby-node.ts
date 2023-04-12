@@ -29,7 +29,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
   reporter,
 }) => {
   const { createPage, createRedirect } = actions;
-  const tags = new Set();
   const result = await graphql<Queries.CreatePagesQuery>(/* GraphQL */ `
     query CreatePages {
       projects: allMarkdownRemark {
@@ -67,6 +66,9 @@ export const createPages: GatsbyNode["createPages"] = async ({
           gatsbyImageData(width: 32)
         }
       }
+      tags: allMarkdownRemark {
+        distinct(field: { frontmatter: { tags: SELECT } })
+      }
     }
   `);
   if (result.errors || !result.data) {
@@ -93,19 +95,16 @@ export const createPages: GatsbyNode["createPages"] = async ({
         prism: prism.has(node.id),
       },
     });
-    if (node.frontmatter?.tags) {
-      node.frontmatter.tags.forEach((tag) => tags.add(tag));
-    }
   }
 
   // Add tag pages.
-  tags.forEach((tag) =>
+  for (const tag of result.data.tags.distinct) {
     createPage({
       path: `/tag/${tag}/`,
       component: TagTemplate,
       context: { tag, title: `Projects tagged ${tag}` },
-    }),
-  );
+    });
+  }
 
   // Redirect favicon.ico to png
   const faviconSharp = result.data.favicon?.childImageSharp;
