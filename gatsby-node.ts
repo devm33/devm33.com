@@ -1,5 +1,4 @@
 import { GatsbyNode } from "gatsby";
-import { getSrc } from "gatsby-plugin-image";
 import path from "path";
 import puppeteer from "puppeteer";
 import url from "url";
@@ -61,11 +60,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
           id
         }
       }
-      favicon: file(relativePath: { eq: "images/favicon-512.png" }) {
-        childImageSharp {
-          gatsbyImageData(width: 32)
-        }
-      }
       tags: allMarkdownRemark {
         distinct(field: { frontmatter: { tags: SELECT } })
       }
@@ -106,16 +100,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
     });
   }
 
-  // Redirect favicon.ico to png
-  const faviconSharp = result.data.favicon?.childImageSharp;
-  if (!faviconSharp) throw new Error("Failed to query favicon");
-  const faviconPath = getSrc(faviconSharp);
-  if (!faviconPath) throw new Error("Failed to load favicon src");
-  createRedirect({
-    fromPath: "/favicon.ico",
-    toPath: faviconPath,
-    isPermanent: true,
-  });
   // Redirects for previous blog site urls.
   createRedirect({
     fromPath: "/2015-06-07",

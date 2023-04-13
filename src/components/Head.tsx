@@ -33,11 +33,6 @@ export function Head(props: Props) {
             gatsbyImageData(width: 1000)
           }
         }
-        favicon: file(relativePath: { eq: "images/favicon-512.png" }) {
-          childImageSharp {
-            gatsbyImageData(width: 32)
-          }
-        }
       }
     `,
   );
@@ -45,11 +40,9 @@ export function Head(props: Props) {
   const title = props.title || props.pageContext.title || siteMetadata?.title;
   const desc = props.pageContext.description || siteMetadata?.description;
   const image = (props.pageContext.image || query.me)?.childImageSharp;
-  const favicon = query.favicon?.childImageSharp;
   const siteUrl = siteMetadata?.siteUrl;
   if (!image) throw new Error("Missing image for page head");
   if (!siteUrl) throw new Error("Missing siteUrl for page head");
-  if (!favicon) throw new Error("Missing favicon image for page head");
   return (
     <>
       <title>{title}</title>
@@ -58,7 +51,6 @@ export function Head(props: Props) {
       <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
       <meta name="og:title" content={title || undefined} />
       <meta name="og:url" content={`${siteUrl}${props.location.pathname}`} />
-      <link rel="icon" href={getSrc(favicon)} type="image/png" />
     </>
   );
 }
