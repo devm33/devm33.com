@@ -88,19 +88,8 @@ h2 {
 }
 
 h3 {
+  /* Note unused */
   font-size: 1.3195rem;
-}
-
-h4 {
-  font-size: 1rem;
-}
-
-h5 {
-  font-size: 0.8705rem;
-}
-
-h6 {
-  font-size: 0.8122rem;
 }
 
 .gatsby-highlight code[class*="language-"],
