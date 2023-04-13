@@ -1,19 +1,12 @@
 import { GatsbySSR } from "gatsby";
 import React, { ReactNode, isValidElement } from "react";
 
-/**
- * Called after every page Gatsby server renders while building HTML so you can
- * set head and body components to be rendered in your html.js
- * See https://www.gatsbyjs.org/docs/ssr-apis/#onRenderBody
- */
-export const onRenderBody: GatsbySSR["onRenderBody"] = ({
-  setHeadComponents,
-  setHtmlAttributes,
-}) => {
+/** See https://www.gatsbyjs.org/docs/ssr-apis/#onRenderBody */
+export const onRenderBody: GatsbySSR["onRenderBody"] = (args) => {
   // Set html lang attribute
-  setHtmlAttributes({ lang: "en" });
+  args.setHtmlAttributes({ lang: "en" });
   // Set static head components present on all pages
-  setHeadComponents([
+  args.setHeadComponents([
     <meta charSet="utf-8" />,
     <meta name="viewport" content="width=device-width, initial-scale=1" />,
     <meta name="twitter:card" content="summary" />,
@@ -23,22 +16,16 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = ({
   ]);
 };
 
-/**
- * Called after every page Gatsby server renders while building HTML so you can
- * replace head components to be rendered in your html.js
- * See https://www.gatsbyjs.org/docs/ssr-apis/#onPreRenderHTML
- */
-export const onPreRenderHTML: GatsbySSR["onPreRenderHTML"] = ({
-  getHeadComponents,
-  replaceHeadComponents,
-}) => {
-  // Remove Gatsby generator meta tag
-  const headComponents = getHeadComponents().filter(removeGeneratorTag);
-  replaceHeadComponents(headComponents);
+/** See https://www.gatsbyjs.org/docs/ssr-apis/#onPreRenderHTML */
+export const onPreRenderHTML: GatsbySSR["onPreRenderHTML"] = (args) => {
+  args.replaceHeadComponents(args.getHeadComponents().filter(removeTags));
 };
 
-/** Returns false for the Gatsby generator tag to remove it. */
-function removeGeneratorTag(node: ReactNode): boolean {
+/** Returns false to remove unwanted tags from <head>. */
+function removeTags(node: ReactNode): boolean {
   if (!isValidElement(node)) return true;
-  return node.type !== "meta" || node.props.name !== "generator";
+  if (node.type !== "meta") return true; // Only removing meta tags
+  if (node.props.name === "generator") return false; // Gatsby generator tag
+  if (node.props.name === "x-ua-compatible") return false; // IE tag
+  return true;
 }
