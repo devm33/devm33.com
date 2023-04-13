@@ -3,9 +3,7 @@
   --header-line: 1.4;
 
   /* Zero out spacing for resume */
-  --baseline: 0;
-  --half-space: 0;
-  --quarter-space: 0;
+  --unit: 0;
 
   font-family: Mulish, sans-serif;
   font-size: 14px;

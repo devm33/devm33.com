@@ -1,7 +1,7 @@
 .nav-bar {
   align-items: center;
   display: flex;
-  padding: var(--half-space);
+  padding: calc(var(--unit) / 2);
 }
 
 .nav-bar > * {
@@ -21,5 +21,5 @@
 }
 
 .icon-links > a + a {
-  margin-inline-start: var(--half-space);
+  margin-inline-start: calc(var(--unit) / 2);
 }

@@ -16,11 +16,11 @@
 }
 
 .pill > svg {
-  margin-inline-start: var(--quarter-space);
+  margin-inline-start: calc(var(--unit) / 4);
 }
 
 .pill-group {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--half-space);
+  gap: calc(var(--unit) / 2);
 }

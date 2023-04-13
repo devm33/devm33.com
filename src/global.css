@@ -11,21 +11,19 @@ html {
 
 :root {
   --color: #333;
-  --background: transparent;
+  --bg: transparent;
   --accent: #d6006c;
   --link: #1976d2;
-  --baseline: 1.65rem;
+  --unit: 1.65rem;
   --header-line: 1.1;
   --small-font: 0.8909rem;
-  --quarter-space: calc(var(--baseline) / 4);
-  --half-space: calc(var(--baseline) / 2);
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--bg);
   color: var(--color);
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: var(--baseline);
+  line-height: var(--unit);
 }
 
 article {
@@ -58,16 +56,16 @@ ol,
 p,
 .gatsby-highlight,
 .gatsby-image-wrapper {
-  margin-bottom: var(--baseline);
+  margin-bottom: var(--unit);
 }
 
 ul,
 ol {
-  margin-inline-start: var(--baseline);
+  margin-inline-start: var(--unit);
 }
 
 li {
-  margin-bottom: var(--half-space);
+  margin-bottom: calc(var(--unit) / 2);
 }
 
 h1,
