@@ -5,7 +5,7 @@
 }
 
 .svg {
-  font-size: 1.1225rem;
+  font-size: var(--font-1);
   height: 1em;
   width: 1em;
 }

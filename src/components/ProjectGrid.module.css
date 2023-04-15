@@ -27,8 +27,8 @@
 
 .title-link {
   background-color: #ffffffec;
-  font-size: 1.4142rem;
-  line-height: 2.475rem;
+  font-size: var(--font-2);
+  line-height: var(--header-line);
   padding: var(--unit) 0;
   text-align: center;
   width: 100%;
@@ -38,7 +38,7 @@
 .subtitle {
   background-color: #ffffffec;
   flex: 0;
-  font-size: 0.8909rem;
+  font-size: var(--font-0);
   overflow: hidden;
   pointer-events: none;
   transition: flex 0.3s ease-in-out;

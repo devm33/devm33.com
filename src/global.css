@@ -15,8 +15,13 @@ html {
   --accent: #d6006c;
   --link: #1976d2;
   --unit: 1.65rem;
-  --header-line: 1.1;
-  --small-font: 0.8909rem;
+  --header-line: 3.3rem; /* 2 x unit */
+
+  /* https://modularscale.com/?16&px&1.2 */
+  --font-0: 0.833rem;
+  --font-1: 1.2rem;
+  --font-2: 1.44rem;
+  --font-3: 1.728rem;
 }
 
 body {
@@ -80,15 +85,15 @@ h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: var(--font-3);
 }
 
 h2 {
-  font-size: 1.5157rem;
+  font-size: var(--font-2);
 }
 
 h3 {
-  font-size: 1.3195rem;
+  font-size: var(--font-1);
 }
 
 .gatsby-highlight code[class*="language-"],
