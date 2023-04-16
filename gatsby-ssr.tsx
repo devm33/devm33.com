@@ -7,12 +7,11 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = (args) => {
   args.setHtmlAttributes({ lang: "en" });
   // Set static head components present on all pages
   args.setHeadComponents([
-    <meta charSet="utf-8" />,
-    <meta name="viewport" content="width=device-width, initial-scale=1" />,
-    <meta name="twitter:card" content="summary" />,
-    <meta name="twitter:site" content="@devm33" />,
-    <meta name="fb:app_id" content="477033866176272" />,
-    <meta name="og:type" content="article" />,
+    <meta key="charSet" charSet="utf-8" />,
+    <meta key="twitter:card" name="twitter:card" content="summary" />,
+    <meta key="twitter:site" name="twitter:site" content="@devm33" />,
+    <meta key="fb:app_id" name="fb:app_id" content="477033866176272" />,
+    <meta key="og:type" name="og:type" content="article" />,
   ]);
 };
 
