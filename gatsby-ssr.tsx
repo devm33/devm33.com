@@ -7,7 +7,6 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = (args) => {
   args.setHtmlAttributes({ lang: "en" });
   // Set static head components present on all pages
   args.setHeadComponents([
-    <meta key="charSet" charSet="utf-8" />,
     <meta key="twitter:card" name="twitter:card" content="summary" />,
     <meta key="twitter:site" name="twitter:site" content="@devm33" />,
     <meta key="fb:app_id" name="fb:app_id" content="477033866176272" />,
@@ -17,7 +16,8 @@ export const onRenderBody: GatsbySSR["onRenderBody"] = (args) => {
 
 /** See https://www.gatsbyjs.org/docs/ssr-apis/#onPreRenderHTML */
 export const onPreRenderHTML: GatsbySSR["onPreRenderHTML"] = (args) => {
-  args.replaceHeadComponents(args.getHeadComponents().filter(removeTags));
+  const head = args.getHeadComponents();
+  args.replaceHeadComponents(head.filter(removeTags).map(modifyTags));
 };
 
 /** Returns false to remove unwanted tags from <head>. */
@@ -25,6 +25,17 @@ function removeTags(node: ReactNode): boolean {
   if (!isValidElement(node)) return true;
   if (node.type !== "meta") return true; // Only removing meta tags
   if (node.props.name === "generator") return false; // Gatsby generator tag
-  if (node.props.name === "x-ua-compatible") return false; // IE tag
+  if (node.props.httpEquiv === "x-ua-compatible") return false; // IE tag
   return true;
+}
+
+/** Returns modified <head> tags. */
+function modifyTags(node: ReactNode): ReactNode {
+  if (!isValidElement(node)) return node;
+  if (node.type === "meta" && node.props.name === "viewport") {
+    return (
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    );
+  }
+  return node;
 }
