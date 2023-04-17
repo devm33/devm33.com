@@ -21,7 +21,11 @@ npm start
 
 ## TODO
 
-- [ ] Bypass webpack css splitting by loading katex and prism css via link
+- [ ] Remove css splitting
+- [ ] Set cache headers on katex and prism css files
+- [ ] Unify layout across pages
+- [ ] Use [splice api](https://www.gatsbyjs.com/docs/how-to/performance/using-slices/) for nav
+- [ ] Replace project grid with list (maybe remove thumbnails)
 - [ ] Add dark mode
 - [ ] Add rss of projects,
       [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
@@ -35,6 +39,7 @@ npm start
 
 ## Done
 
+- [x] Bypass webpack css splitting by loading katex and prism css via link
 - [x] Add plugin to sort css properties alphabetically
 - [x] Add stylelint
 - [x] Add GitHub actions for linting and formatting
