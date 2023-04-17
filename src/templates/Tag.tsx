@@ -12,7 +12,7 @@ interface PageContext {
   tag: string;
 }
 
-type Props = PageProps<Queries.TagPageQuery, PageContext>
+type Props = PageProps<Queries.TagPageQuery, PageContext>;
 
 export default function TagTemplate(props: Props) {
   return (

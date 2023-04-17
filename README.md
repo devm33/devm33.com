@@ -24,7 +24,9 @@ npm start
 - [ ] Remove css splitting
 - [ ] Set cache headers on katex and prism css files
 - [ ] Unify layout across pages
-- [ ] Use [splice api](https://www.gatsbyjs.com/docs/how-to/performance/using-slices/) for nav
+- [ ] Use
+      [splice api](https://www.gatsbyjs.com/docs/how-to/performance/using-slices/)
+      for nav
 - [ ] Replace project grid with list (maybe remove thumbnails)
 - [ ] Add dark mode
 - [ ] Add rss of projects,
