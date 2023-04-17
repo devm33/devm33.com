@@ -12,17 +12,16 @@ interface PageContext {
   tag: string;
 }
 
-export default function TagTemplate({
-  data,
-  pageContext,
-}: PageProps<Queries.TagPageQuery, PageContext>) {
+type Props = PageProps<Queries.TagPageQuery, PageContext>
+
+export default function TagTemplate(props: Props) {
   return (
     <Layout>
       <h1 className={title}>
         Projects tagged
-        <span className={`${pill} ${titlePill}`}>{pageContext.tag}</span>
+        <span className={`${pill} ${titlePill}`}>{props.pageContext.tag}</span>
       </h1>
-      <ProjectGrid nodes={data.allMarkdownRemark.nodes} />
+      <ProjectGrid nodes={props.data.allMarkdownRemark.nodes} />
     </Layout>
   );
 }
