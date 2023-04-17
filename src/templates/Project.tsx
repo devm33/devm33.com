@@ -8,20 +8,9 @@ import { subtitle } from "./Project.module.css";
 
 export { Head } from "../components/Head";
 
-interface PageContext {
-  katex: boolean;
-  prism: boolean;
-}
-
-type Props = PageProps<Queries.ProjectPageQuery, PageContext>;
+type Props = PageProps<Queries.ProjectPageQuery>;
 
 export default function ProjectTemplate(props: Props) {
-  if (props.pageContext.katex) {
-    import("katex/dist/katex.min.css");
-  }
-  if (props.pageContext.prism) {
-    import("prismjs/themes/prism.min.css");
-  }
   const { frontmatter, html } = props.data.markdownRemark ?? {};
   if (!frontmatter || !html) throw new Error("Missing required page data");
   return (
