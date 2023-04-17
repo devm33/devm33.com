@@ -21,6 +21,7 @@ npm start
 
 ## TODO
 
+- [ ] Bypass webpack css splitting by loading katex and prism css via link
 - [ ] Add dark mode
 - [ ] Add rss of projects,
       [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
