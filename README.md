@@ -21,6 +21,8 @@ npm start
 
 ## TODO
 
+- [ ] Fix katex fonts
+- [ ] Replace mulish webfont with full webfont, use it everywhere
 - [ ] Set cache headers on katex and prism css files, ideally immutable
 - [ ] Unify layout across pages
 - [ ] Use
