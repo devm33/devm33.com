@@ -28,6 +28,7 @@ npm start
       [splice api](https://www.gatsbyjs.com/docs/how-to/performance/using-slices/)
       for nav
 - [ ] Replace project grid with list (maybe remove thumbnails)
+- [ ] Fix variable font-weight on resume
 - [ ] Add dark mode
 - [ ] Add rss of projects,
       [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
