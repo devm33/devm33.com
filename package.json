@@ -104,7 +104,6 @@
     "@types/react-dom": "^18.0.11",
     "gatsby": "^5.8.1",
     "gatsby-plugin-canonical-urls": "^5.8.0",
-    "gatsby-plugin-catch-links": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",
     "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-sharp": "^5.8.1",

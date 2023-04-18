@@ -17,7 +17,6 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-canonical-urls`,
       options: { siteUrl },
     },
-    `gatsby-plugin-catch-links`,
     `gatsby-plugin-image`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sharp`,
