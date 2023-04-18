@@ -15,12 +15,15 @@ const config: GatsbyConfig = {
   plugins: [
     {
       resolve: `gatsby-plugin-canonical-urls`,
-      options: { siteUrl },
+      options: { siteUrl, stripQueryString: true },
     },
     `gatsby-plugin-image`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: { createLinkInHead: false },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
