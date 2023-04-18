@@ -4,30 +4,22 @@ import path from "path";
 import puppeteer from "puppeteer";
 import url from "url";
 
-export const onCreateNode: GatsbyNode["onCreateNode"] = ({
-  node,
-  actions,
-  getNode,
-}) => {
+export const onCreateNode: GatsbyNode["onCreateNode"] = (args) => {
+  const { node, actions, getNode } = args;
   const { createNodeField } = actions;
   // Add fields to markdown pages
-  if (node.internal.type === "MarkdownRemark" && node.parent) {
-    const fileNode = getNode(node.parent);
-    if (fileNode) {
-      const relativeDirectory = fileNode.relativeDirectory as string;
-      createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
-    }
-  }
+  if (node.internal.type !== "MarkdownRemark" || !node.parent) return;
+  const fileNode = getNode(node.parent);
+  if (!fileNode) return;
+  const relativeDirectory = fileNode.relativeDirectory as string;
+  createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
 };
 
 const ProjectTemplate = path.resolve(`src/templates/Project.tsx`);
 const TagTemplate = path.resolve(`src/templates/Tag.tsx`);
 
-export const createPages: GatsbyNode["createPages"] = async ({
-  actions,
-  graphql,
-  reporter,
-}) => {
+export const createPages: GatsbyNode["createPages"] = async (args) => {
+  const { actions, graphql, reporter } = args;
   const { createPage, createRedirect } = actions;
   const result = await graphql<Queries.CreatePagesQuery>(/* GraphQL */ `
     query CreatePages {
