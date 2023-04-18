@@ -116,15 +116,7 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
   });
 };
 
-export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
-  // Generate PDF of resume page
-  const browser = await puppeteer.launch({
-    args: ["--font-render-hinting=none"],
-  });
-  const page = await browser.newPage();
-  const resumePath = path.join(__dirname, "public/resume/index.html");
-  await page.goto(url.pathToFileURL(resumePath).toString());
-  await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
+export const onPostBootstrap: GatsbyNode["onPostBootstrap"] = async () => {
   // Copy static css files to public directory
   await copyFile(
     path.join(__dirname, "node_modules/katex/dist/katex.min.css"),
@@ -134,6 +126,17 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
     path.join(__dirname, "node_modules/prismjs/themes/prism.min.css"),
     path.join(__dirname, "public/prism.min.css"),
   );
+};
+
+export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
+  // Generate PDF of resume page
+  const browser = await puppeteer.launch({
+    args: ["--font-render-hinting=none"],
+  });
+  const page = await browser.newPage();
+  const resumePath = path.join(__dirname, "public/resume/index.html");
+  await page.goto(url.pathToFileURL(resumePath).toString());
+  await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
 };
 
 // Minify css module class names
