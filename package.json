@@ -109,7 +109,6 @@
     "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-sharp": "^5.8.1",
     "gatsby-plugin-sitemap": "^6.8.0",
-    "gatsby-plugin-split-css": "^2.0.3",
     "gatsby-remark-copy-linked-files": "^6.8.0",
     "gatsby-remark-images": "^7.8.0",
     "gatsby-remark-katex": "^7.8.0",

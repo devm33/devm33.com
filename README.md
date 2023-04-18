@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Remove css splitting
 - [ ] Set cache headers on katex and prism css files, ideally immutable
 - [ ] Unify layout across pages
 - [ ] Use
@@ -42,6 +41,7 @@ npm start
 
 ## Done
 
+- [x] Remove css splitting
 - [x] Make katex/prism css available on development using bootstrap hook
 - [x] Bypass webpack css splitting by loading katex and prism css via link
 - [x] Add plugin to sort css properties alphabetically

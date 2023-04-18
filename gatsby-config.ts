@@ -47,7 +47,6 @@ const config: GatsbyConfig = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-split-css`,
   ],
 };
 
