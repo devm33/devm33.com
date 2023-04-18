@@ -25,14 +25,11 @@ npm start
 - [ ] Replace mulish webfont with full webfont, use it everywhere
 - [ ] Set cache headers on katex and prism css files, ideally immutable
 - [ ] Unify layout across pages
-- [ ] Use
-      [splice api](https://www.gatsbyjs.com/docs/how-to/performance/using-slices/)
-      for nav
+- [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
 - [ ] Replace project grid with list (maybe remove thumbnails)
 - [ ] Fix variable font-weight on resume
 - [ ] Add dark mode
-- [ ] Add rss of projects,
-      [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
+- [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 
 ### Projects to add:
 
