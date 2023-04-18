@@ -17,7 +17,11 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-canonical-urls`,
       options: { siteUrl },
     },
-    `gatsby-transformer-yaml`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -35,18 +39,14 @@ const config: GatsbyConfig = {
               maxWidth: 700, // Matches src/global.css article width
             },
           },
-          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-katex`,
+          `gatsby-remark-prismjs`,
         ],
       },
     },
-    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-catch-links`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-netlify`,
+    `gatsby-transformer-yaml`,
   ],
 };
 
