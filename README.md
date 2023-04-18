@@ -22,7 +22,9 @@ npm start
 ## TODO
 
 - [ ] Remove css splitting
-- [ ] Set cache headers on katex and prism css files
+- [ ] Set cache headers on katex and prism css files, ideally immutable
+- [ ] Fix katex/prism css being available on local run (maybe use a different
+      hook besides post build)
 - [ ] Unify layout across pages
 - [ ] Use
       [splice api](https://www.gatsbyjs.com/docs/how-to/performance/using-slices/)
