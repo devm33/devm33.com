@@ -37,9 +37,7 @@ const config: GatsbyConfig = {
         plugins: [
           {
             resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 700, // Matches src/global.css article width
-            },
+            options: { maxWidth: 700 }, // Matches src/global.css article width
           },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-katex`,
