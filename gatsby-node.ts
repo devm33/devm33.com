@@ -46,13 +46,6 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
           id
         }
       }
-      prismProjects: allMarkdownRemark(
-        filter: { html: { regex: "/gatsby-highlight/" } }
-      ) {
-        nodes {
-          id
-        }
-      }
       tags: allMarkdownRemark {
         distinct(field: { frontmatter: { tags: SELECT } })
       }
@@ -63,7 +56,6 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
     return;
   }
   const katex = new Set(result.data.katexProjects.nodes.map((node) => node.id));
-  const prism = new Set(result.data.prismProjects.nodes.map((node) => node.id));
 
   // Add project pages.
   for (const node of result.data.projects.nodes) {
@@ -79,7 +71,6 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
         description: node.frontmatter.tagline,
         image: node.frontmatter.image,
         katex: katex.has(node.id),
-        prism: prism.has(node.id),
       },
     });
   }
