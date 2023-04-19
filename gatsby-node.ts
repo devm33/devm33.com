@@ -165,12 +165,6 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
               !/katex/.test(module.identifier()),
             enforce: true,
           },
-          katex: {
-            name: "katex",
-            test: /katex/,
-            chunks: "initial",
-            enforce: true,
-          },
         },
       },
     },
