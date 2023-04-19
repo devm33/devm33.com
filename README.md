@@ -21,8 +21,9 @@ npm start
 
 ## TODO
 
+- [ ] Set immutable cache headers on katex css files
+- [ ] Remove code to lazy load prism css since including it (1.3kb) in main css
 - [ ] Replace mulish webfont with full webfont, use it everywhere
-- [ ] Set cache headers on katex and prism css files, ideally immutable
 - [ ] Unify layout across pages
 - [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
 - [ ] Replace project grid with list (maybe remove thumbnails)
