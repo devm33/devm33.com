@@ -10,8 +10,6 @@ interface PageContext {
       readonly gatsbyImageData: IGatsbyImageData;
     } | null;
   } | null;
-  katex?: boolean;
-  prism?: boolean;
 }
 
 interface Props extends HeadProps<object, PageContext> {
@@ -53,12 +51,6 @@ export function Head(props: Props) {
       <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
       <meta name="og:title" content={title || undefined} />
       <meta name="og:url" content={`${siteUrl}${props.location.pathname}`} />
-      {props.pageContext.katex && (
-        <link href="/katex.min.css" rel="stylesheet" />
-      )}
-      {props.pageContext.prism && (
-        <link href="/prism.min.css" rel="stylesheet" />
-      )}
     </>
   );
 }

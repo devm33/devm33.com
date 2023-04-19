@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Fix katex fonts
 - [ ] Replace mulish webfont with full webfont, use it everywhere
 - [ ] Set cache headers on katex and prism css files, ideally immutable
 - [ ] Unify layout across pages
@@ -40,6 +39,7 @@ npm start
 
 ## Done
 
+- [x] Fix katex fonts by leveraging webpack to separate katex css
 - [x] Remove css splitting
 - [x] Make katex/prism css available on development using bootstrap hook
 - [x] Bypass webpack css splitting by loading katex and prism css via link

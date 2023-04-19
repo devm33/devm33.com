@@ -1,8 +1,8 @@
 import { GatsbyNode } from "gatsby";
-import { copyFile } from "node:fs/promises";
 import path from "path";
 import puppeteer from "puppeteer";
 import url from "url";
+import { Module } from "webpack";
 
 export const onCreateNode: GatsbyNode["onCreateNode"] = (args) => {
   const { node, actions, getNode } = args;
@@ -116,18 +116,6 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
   });
 };
 
-export const onPostBootstrap: GatsbyNode["onPostBootstrap"] = async () => {
-  // Copy static css files to public directory
-  await copyFile(
-    path.join(__dirname, "node_modules/katex/dist/katex.min.css"),
-    path.join(__dirname, "public/katex.min.css"),
-  );
-  await copyFile(
-    path.join(__dirname, "node_modules/prismjs/themes/prism.min.css"),
-    path.join(__dirname, "public/prism.min.css"),
-  );
-};
-
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   // Generate PDF of resume page
   const browser = await puppeteer.launch({
@@ -139,14 +127,14 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
 };
 
-// Minify css module class names
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
   actions,
   getConfig,
   stage,
 }) => {
-  if (!stage.includes("build")) return;
   const config = getConfig();
+  if (!stage.includes("build")) return;
+  // Minify css module class names use 5-digit hex hash
   // Note this approach assumes css config is in a oneOf block.
   for (const { oneOf } of config.module.rules) {
     if (!oneOf?.length) continue;
@@ -160,6 +148,33 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
     }
   }
   actions.replaceWebpackConfig(config);
+  if (stage !== "build-javascript") return;
+  // Separate katex css from main css build
+  actions.setWebpackConfig({
+    optimization: {
+      runtimeChunk: {
+        name: "webpack-runtime",
+      },
+      splitChunks: {
+        name: false,
+        cacheGroups: {
+          styles: {
+            name: "styles",
+            test: (module: Module) =>
+              module.type === "css/mini-extract" &&
+              !/katex/.test(module.identifier()),
+            enforce: true,
+          },
+          katex: {
+            name: "katex",
+            test: /katex/,
+            chunks: "initial",
+            enforce: true,
+          },
+        },
+      },
+    },
+  });
 };
 
 // Site type for site metadata.
