@@ -26,7 +26,7 @@ npm start
 - [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
 - [ ] Replace project grid with list (maybe remove thumbnails)
 - [ ] Fix variable font-weight on resume
-- [ ] Add dark mode
+- [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 
 ### Projects to add:
