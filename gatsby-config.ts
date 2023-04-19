@@ -18,7 +18,14 @@ const config: GatsbyConfig = {
       options: { siteUrl, stripQueryString: true },
     },
     `gatsby-plugin-image`,
-    `gatsby-plugin-netlify`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          "/*.css": [`Cache-Control: public, max-age=31536000, immutable`],
+        },
+      },
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-sitemap`,

@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Set immutable cache headers on katex css files
 - [ ] Remove code to lazy load prism css since including it (1.3kb) in main css
 - [ ] Replace mulish webfont with full webfont, use it everywhere
 - [ ] Unify layout across pages
@@ -40,6 +39,7 @@ npm start
 
 ## Done
 
+- [x] Set immutable cache headers on katex css files
 - [x] Fix katex fonts by leveraging webpack to separate katex css
 - [x] Remove css splitting
 - [x] Make katex/prism css available on development using bootstrap hook
