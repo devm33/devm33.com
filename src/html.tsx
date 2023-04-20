@@ -24,6 +24,13 @@ export default function HTML(props: Props) {
         <meta name="twitter:site" content="@devm33" />
         <meta name="fb:app_id" content="477033866176272" />
         <meta name="og:type" content="article" />
+        <link
+          rel="preload"
+          href="/fonts/mulish.woff2"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+        />
         {filterHeadComponents(props.headComponents)}
       </head>
       <body {...props.bodyAttributes}>
