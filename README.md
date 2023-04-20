@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [~] Replace mulish webfont with full webfont, use it everywhere
 - [ ] Unify layout across pages
 - [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
 - [ ] Replace project grid with list (maybe remove thumbnails)
@@ -38,6 +37,7 @@ npm start
 
 ## Done
 
+- [x] Replace mulish webfont with full webfont, use it everywhere
 - [x] Remove code to lazy load prism css since including it (1.3kb) in main css
 - [x] Set immutable cache headers on katex css files
 - [x] Fix katex fonts by leveraging webpack to separate katex css
