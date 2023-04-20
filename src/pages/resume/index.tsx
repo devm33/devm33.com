@@ -4,7 +4,6 @@ import React from "react";
 import { createHeadWithTitle } from "../../components/Head";
 import { FileIcon, InstallIcons } from "../../components/Icons";
 import * as css from "./index.module.css";
-import "./mulish-font.css";
 
 export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
   const email = data.site?.siteMetadata.email;

@@ -21,7 +21,7 @@ npm start
 
 ## TODO
 
-- [ ] Replace mulish webfont with full webfont, use it everywhere
+- [~] Replace mulish webfont with full webfont, use it everywhere
 - [ ] Unify layout across pages
 - [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
 - [ ] Replace project grid with list (maybe remove thumbnails)

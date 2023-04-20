@@ -24,6 +24,7 @@ const config: GatsbyConfig = {
         headers: {
           "/*.css": [`Cache-Control: public, max-age=31536000, immutable`],
           "/*.js": [`Cache-Control: public, max-age=31536000, immutable`],
+          "/fonts/*": [`Cache-Control: public, max-age=31536000, immutable`],
         },
       },
     },
