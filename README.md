@@ -27,6 +27,7 @@ npm start
 - [ ] Fix variable font-weight on resume
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
+- [ ] Consider switching to mdx to better load images
 
 ### Projects to add:
 
