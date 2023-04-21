@@ -110,6 +110,7 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   // Generate PDF of resume page
   const browser = await puppeteer.launch({
+    headless: false,
     args: ["--font-render-hinting=none", "--enable-logging", "--no-sandbox"],
   });
   const page = await browser.newPage();
@@ -120,6 +121,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   await page.evaluateHandle("document.fonts.ready");
   await page.screenshot({ path: "./public/test.png" });
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
+  console.log("resume pdf printed");
   await browser.close();
 };
 
