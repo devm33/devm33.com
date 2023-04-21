@@ -120,6 +120,8 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   await page.evaluateHandle("document.fonts.ready");
   await page.screenshot({ path: "./public/test.png" });
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
+  const version = await page.browser().version();
+  console.log("chrome version", version);
   console.log("resume pdf printed");
   await browser.close();
 };
