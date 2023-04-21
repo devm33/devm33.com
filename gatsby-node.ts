@@ -117,7 +117,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   // cSpell:ignore wght
   const content =
     "@import url('https://fonts.googleapis.com/css2?" +
-    "family=Mulish:ital,wght@0,200..1000;1,200..1000');";
+    "family=Mulish:ital,wght@0,400;0,700;1,400');";
   await page.addStyleTag({ content });
   await page.evaluateHandle("document.fonts.ready");
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
