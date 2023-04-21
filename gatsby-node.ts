@@ -115,12 +115,10 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
   await page.goto(url.pathToFileURL(resumePath).toString());
-  // cSpell:ignore wght
   const encoding = "base64";
-  const normal = await readFile("./static/fonts/mulish.woff2", { encoding });
-  const italic = await readFile("./static/fonts/mulish-ital.woff2", {
-    encoding,
-  });
+  const fonts = "./static/fonts";
+  const normal = await readFile(`${fonts}/mulish.woff2`, { encoding });
+  const italic = await readFile(`${fonts}/mulish-ital.woff2`, { encoding });
   const content = `
   @font-face {
     font-family: Mulish;
@@ -136,7 +134,6 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   }
   `;
   await page.addStyleTag({ content });
-  await page.evaluateHandle("document.fonts.ready"); // TODO remove?
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
   await browser.close();
 };
