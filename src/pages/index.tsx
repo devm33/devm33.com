@@ -14,7 +14,8 @@ export default function Index() {
         <StaticImage
           src="../images/me.jpg"
           alt="head shot"
-          placeholder="blurred"
+          placeholder="dominantColor"
+          loading="eager"
           layout="fixed"
           width={250}
           height={250}

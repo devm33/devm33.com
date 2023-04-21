@@ -108,8 +108,8 @@ export const fragment = graphql`
             width: 500
             height: 500
             breakpoints: [300, 400]
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
+            placeholder: DOMINANT_COLOR
+            formats: [AUTO, WEBP]
           )
         }
       }
