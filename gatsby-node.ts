@@ -110,6 +110,7 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   // Generate PDF of resume page
   const browser = await puppeteer.launch({
+    product: "firefox",
     args: ["--font-render-hinting=none", "--disable-web-security"],
   });
   const page = await browser.newPage();
