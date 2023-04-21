@@ -27,11 +27,7 @@ html {
 body {
   background-color: var(--bg);
   color: var(--color);
-
-  /* Debugging puppeteer web font loading
   font-family: Mulish, MulishFallback, Arial, sans-serif;
-   */
-  font-family: Mulish, MulishFallback, serif;
   line-height: var(--unit);
 }
 
