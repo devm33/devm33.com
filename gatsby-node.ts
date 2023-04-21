@@ -117,6 +117,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   await page.goto(url.pathToFileURL(resumePath).toString(), {
     waitUntil: "networkidle0", // cspell:disable-line
   });
+  await page.evaluateHandle(() => document.fonts.ready);
   await page.screenshot();
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
 };
