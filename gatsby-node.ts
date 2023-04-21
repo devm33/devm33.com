@@ -110,7 +110,7 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   // Generate PDF of resume page
   const browser = await puppeteer.launch({
-    args: ["--font-render-hinting=none"],
+    args: ["--font-render-hinting=none", "--disable-web-security"],
   });
   const page = await browser.newPage();
   const resumePath = path.join(__dirname, "public/resume/index.html");
