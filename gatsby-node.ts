@@ -118,8 +118,9 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
     waitUntil: "networkidle0", // cspell:disable-line
   });
   await page.evaluateHandle("document.fonts.ready");
-  await page.screenshot();
+  await page.screenshot({ path: "./public/test.png" });
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
+  await browser.close();
 };
 
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
