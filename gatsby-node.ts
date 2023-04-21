@@ -134,6 +134,7 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   }
   `;
   await page.addStyleTag({ content });
+  await page.evaluateHandle("document.fonts.ready");
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
   await browser.close();
 };
