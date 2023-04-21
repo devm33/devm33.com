@@ -5,7 +5,6 @@
   /* Zero out spacing for resume */
   --unit: 0;
 
-  font-family: Mulish, sans-serif;
   font-size: 14px;
   line-height: var(--header-line);
   margin: 0 auto;
