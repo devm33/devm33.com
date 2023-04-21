@@ -117,12 +117,15 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   await page.goto(url.pathToFileURL(resumePath).toString(), {
     waitUntil: "networkidle0", // cspell:disable-line
   });
+  await page.addStyleTag({
+    content:
+      "@import url('https://fonts.googleapis.com/css2?" +
+      // cspell:disable-next-line
+      "family=Mulish:ital,wght@0,200..1000;1,200..1000&display=block');",
+  });
   await page.evaluateHandle("document.fonts.ready");
   await page.screenshot({ path: "./public/test.png" });
   await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
-  const version = await page.browser().version();
-  console.log("chrome version", version);
-  console.log("resume pdf printed");
   await browser.close();
 };
 
