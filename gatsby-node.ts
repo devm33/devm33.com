@@ -186,7 +186,7 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
 // Site type for site metadata.
 export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
   ({ actions }) => {
-    actions.createTypes(`
+    actions.createTypes(/* GraphQL */ `
       type Site {
         siteMetadata: SiteMetadata!
       }
@@ -197,5 +197,5 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
         siteUrl: String!
         email: String!
       }
-  `);
+    `);
   };
