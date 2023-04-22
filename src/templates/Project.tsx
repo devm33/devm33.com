@@ -20,8 +20,8 @@ export default function ProjectTemplate(props: Props) {
   if (props.pageContext.katex) {
     import("katex/dist/katex.min.css");
   }
-  const { frontmatter, html } = props.data.markdownRemark ?? {};
-  if (!frontmatter || !html) throw new Error("Missing required page data");
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { frontmatter, html } = props.data.markdownRemark!;
   return (
     <Layout>
       <article>
@@ -52,7 +52,7 @@ export default function ProjectTemplate(props: Props) {
               )}
             </div>
             <div className={pillGroup}>
-              {frontmatter.tags?.map((tag) => (
+              {frontmatter.tags.map((tag) => (
                 <Link key={tag} className={pill} to={`/tag/${tag}/`}>
                   {tag}
                 </Link>
@@ -60,7 +60,8 @@ export default function ProjectTemplate(props: Props) {
             </div>
           </div>
         </header>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
+        <div dangerouslySetInnerHTML={{ __html: html! }} />
       </article>
     </Layout>
   );

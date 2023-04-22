@@ -17,7 +17,7 @@ export function Navbar() {
   return (
     <nav className={css.navBar}>
       <Link to="/" className={css.title}>
-        {site?.siteMetadata.title}
+        {site.siteMetadata.title}
       </Link>
       <div className={css.iconLinks}>
         <a href="https://github.com/devm33" aria-label="GitHub profile">

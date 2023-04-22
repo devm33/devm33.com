@@ -6,7 +6,7 @@ import { FileIcon, InstallIcons } from "../../components/Icons";
 import * as css from "./index.module.css";
 
 export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
-  const email = data.site?.siteMetadata.email;
+  const email = data.site.siteMetadata.email;
   return (
     <main className={css.main}>
       <InstallIcons file={true} />

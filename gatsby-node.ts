@@ -139,13 +139,10 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   await browser.close();
 };
 
-export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
-  actions,
-  getConfig,
-  stage,
-}) => {
-  const config = getConfig();
-  if (!stage.includes("build")) return;
+type OnCreateWebpackConfig = GatsbyNode["onCreateWebpackConfig"];
+export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
+  const config = args.getConfig();
+  if (!args.stage.includes("build")) return;
   // Minify css module class names use 5-digit hex hash
   // Note this approach assumes css config is in a oneOf block.
   for (const { oneOf } of config.module.rules) {
@@ -159,10 +156,10 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
       }
     }
   }
-  actions.replaceWebpackConfig(config);
-  if (stage !== "build-javascript") return;
+  args.actions.replaceWebpackConfig(config);
+  if (args.stage !== "build-javascript") return;
   // Separate katex css from main css build
-  actions.setWebpackConfig({
+  args.actions.setWebpackConfig({
     optimization: {
       runtimeChunk: {
         name: "webpack-runtime",
@@ -183,19 +180,49 @@ export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
   });
 };
 
-// Site type for site metadata.
-export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
-  ({ actions }) => {
-    actions.createTypes(/* GraphQL */ `
-      type Site {
-        siteMetadata: SiteMetadata!
-      }
+type CreateSchemaCustomization = GatsbyNode["createSchemaCustomization"];
+export const createSchemaCustomization: CreateSchemaCustomization = (args) => {
+  args.actions.createTypes(/* GraphQL */ `
+    type Site {
+      siteMetadata: SiteMetadata!
+    }
 
-      type SiteMetadata {
-        title: String!
-        description: String!
-        siteUrl: String!
-        email: String!
-      }
-    `);
-  };
+    type SiteMetadata {
+      title: String!
+      description: String!
+      siteUrl: String!
+      email: String!
+    }
+
+    type MarkdownRemark implements Node {
+      fields: MarkdownRemarkFields!
+      frontmatter: MarkdownRemarkFrontmatter!
+      html: String!
+    }
+
+    type MarkdownRemarkFrontmatter {
+      link: String!
+      repo: String!
+      tagline: String!
+      tags: [String!]!
+      title: String!
+    }
+
+    type MarkdownRemarkFields {
+      path: String!
+    }
+  `);
+};
+
+export const createResolvers: GatsbyNode["createResolvers"] = (args) => {
+  args.createResolvers({
+    Query: {
+      site: {
+        type: "Site!",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        resolve: async (source: any, args: any, context: any) =>
+          context.nodeModel.findOne({ type: "Site" }),
+      },
+    },
+  });
+};
