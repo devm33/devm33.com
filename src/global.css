@@ -29,9 +29,6 @@ body {
   color: var(--color);
   font-family: Mulish, MulishFallback, Arial, sans-serif;
   line-height: var(--unit);
-}
-
-article {
   margin: 0 auto;
   max-width: 700px;
   width: 80%;
