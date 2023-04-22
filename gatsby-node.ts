@@ -192,6 +192,8 @@ export const createSchemaCustomization: CreateSchemaCustomization = (args) => {
       description: String!
       siteUrl: String!
       email: String!
+      github: String!
+      linkedin: String!
     }
 
     type MarkdownRemark implements Node {

@@ -10,23 +10,23 @@ export function Navbar() {
       site {
         siteMetadata {
           title
+          github
+          linkedin
         }
       }
     }
   `);
+  const { title, github, linkedin } = site.siteMetadata;
   return (
     <nav className={css.navBar}>
       <Link to="/" className={css.title}>
-        {site.siteMetadata.title}
+        {title}
       </Link>
       <div className={css.iconLinks}>
-        <a href="https://github.com/devm33" aria-label="GitHub profile">
+        <a href={github} aria-label="GitHub profile">
           <GitHubIcon />
         </a>
-        <a
-          href="https://www.linkedin.com/in/devrajmehta/"
-          aria-label="LinkedIn profile"
-        >
+        <a href={linkedin} aria-label="LinkedIn profile">
           <LinkedinIcon />
         </a>
       </div>

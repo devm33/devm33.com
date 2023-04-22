@@ -11,6 +11,8 @@ const config: GatsbyConfig = {
     description: `Devraj Mehta's website.`,
     siteUrl,
     email: `dev@devm.dev`,
+    github: "https://github.com/devm33",
+    linkedin: "https://www.linkedin.com/in/devrajmehta/",
   },
   plugins: [
     {

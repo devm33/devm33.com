@@ -6,7 +6,7 @@ import { FileIcon, InstallIcons } from "../../components/Icons";
 import * as css from "./index.module.css";
 
 export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
-  const email = data.site.siteMetadata.email;
+  const { email, linkedin } = data.site.siteMetadata;
   return (
     <main className={css.main}>
       <InstallIcons file={true} />
@@ -27,10 +27,7 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
           </a>
         </div>
         <div className={css.contactInfo}>
-          <a
-            className={css.contactLink}
-            href="https://www.linkedin.com/in/devrajmehta"
-          >
+          <a className={css.contactLink} href={linkedin}>
             linkedin.com/in/devrajmehta
           </a>
           <a className={css.contactLink} href={`mailto:${email}`}>
@@ -107,6 +104,7 @@ export const query = graphql`
     site {
       siteMetadata {
         email
+        linkedin
       }
     }
   }
