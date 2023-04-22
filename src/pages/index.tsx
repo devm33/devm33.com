@@ -23,15 +23,19 @@ export default function Index() {
         <p>
           You can find me on {}
           <a href="https://www.linkedin.com/in/devrajmehta">LinkedIn</a> or {}
-          <a href="https://github.com/devm33">GitHub</a>. See here for my {}
-          <Link to="/resume/">resume</Link>.
+          <a href="https://github.com/devm33">GitHub</a>.
         </p>
         <p>
-          This {}
+          This site contains {}
+          <Link to="/resume/">my resume</Link> and some written up {}
+          <Link to="/projects/">projects</Link>.
+        </p>
+        <p>
+          See also {}
           <a href="https://github.com/devm33/devm33.com">
-            site&apos;s source
-          </a>{" "}
-          is on GitHub.
+            the source for this site
+          </a>
+          .
         </p>
         <p>
           Cheers! <br /> Devraj
