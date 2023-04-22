@@ -201,8 +201,8 @@ export const createSchemaCustomization: CreateSchemaCustomization = (args) => {
     }
 
     type MarkdownRemarkFrontmatter {
-      link: String!
-      repo: String!
+      link: String
+      repo: String
       tagline: String!
       tags: [String!]!
       title: String!
