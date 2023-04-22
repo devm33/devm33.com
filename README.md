@@ -21,6 +21,7 @@ npm start
 
 ## TODO
 
+- [~] Unify header across pages
 - [ ] Unify layout across pages
 - [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
 - [ ] Replace project grid with list (maybe remove thumbnails)
