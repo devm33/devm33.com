@@ -26,7 +26,7 @@ export default function Index(props: PageProps<Queries.HomepageQuery>) {
           <a href={github}>GitHub</a>.
         </p>
         <p>
-          This site contains <Link to="/resume/">my resume</Link> and some
+          This site contains my <Link to="/resume/">resume</Link> and some
           written up <Link to="/projects/">projects</Link>.
         </p>
         <p>
