@@ -53,6 +53,11 @@
     display: unset;
   }
 
+  .nav-bar {
+    margin-top: calc(var(--unit) / 2);
+  }
+
+  /* Specificity required to override base link color. */
   a.title {
     color: var(--color);
     font-weight: 600;

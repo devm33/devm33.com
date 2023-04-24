@@ -1,9 +1,5 @@
 .main {
-  /* Match header line-height with body line-height */
-  --header-line: 1.4;
-
-  /* Zero out spacing for resume */
-  --unit: 0;
+  --header-line: 1.4; /* Match header line-height with body line-height */
 
   font-size: 14px;
   line-height: var(--header-line);
@@ -14,12 +10,14 @@
   text-decoration: underline;
 }
 
-.main h2 {
+.main h2,
+.main h3 {
   font-size: 1em;
 }
 
-.main h3 {
-  font-size: 1em;
+.main ul,
+.main li {
+  margin: 0; /* Override global styles */
 }
 
 .main ul {
