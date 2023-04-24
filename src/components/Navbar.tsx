@@ -1,33 +1,55 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 
-import { GitHubIcon, LinkedinIcon } from "./Icons";
+import { FileIcon, GitHubIcon, LinkedinIcon } from "./Icons";
 import * as css from "./Navbar.module.css";
 
-export function Navbar() {
+export function Navbar({ resume = false }) {
   const { site } = useStaticQuery<Queries.HeaderQuery>(graphql`
     query Header {
       site {
         siteMetadata {
-          title
+          email
           github
           linkedin
+          title
         }
       }
     }
   `);
-  const { title, github, linkedin } = site.siteMetadata;
+  const { email, github, linkedin, title } = site.siteMetadata;
   return (
     <nav className={css.navBar}>
-      <Link to="/" className={css.title}>
-        {title}
-      </Link>
+      <div className={css.titleGroup}>
+        <Link to="/" className={css.title}>
+          {title}
+        </Link>
+        {resume && (
+          <a
+            aria-label="Link to PDF of resume"
+            className={`${css.noPrint} ${css.pdfLink}`}
+            href="/devraj_mehta_resume.pdf"
+          >
+            <FileIcon />
+          </a>
+        )}
+      </div>
       <div className={css.iconLinks}>
-        <a href={github} aria-label="GitHub profile">
+        <a aria-label="GitHub profile" className={css.noPrint} href={github}>
           <GitHubIcon />
         </a>
-        <a href={linkedin} aria-label="LinkedIn profile">
+        <a
+          aria-label="LinkedIn profile"
+          className={css.noPrint}
+          href={linkedin}
+        >
           <LinkedinIcon />
+        </a>
+        <a className={css.onlyPrint} href={linkedin}>
+          linkedin.com/in/devrajmehta
+        </a>
+        <a className={css.onlyPrint} href={`mailto:${email}`}>
+          {email}
         </a>
       </div>
     </nav>

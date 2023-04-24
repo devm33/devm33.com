@@ -4,12 +4,62 @@
   justify-content: space-between;
 }
 
+.title-group {
+  align-items: center;
+  display: flex;
+  gap: 1em;
+}
+
 .title {
   font-size: var(--font-2);
   line-height: var(--header-line);
   white-space: nowrap;
 }
 
-.icon-links > a + a {
-  margin-inline-start: calc(var(--unit) / 2);
+.pdf-link {
+  align-items: center;
+  display: flex;
+}
+
+@media (hover: hover) {
+  .pdf-link::after {
+    content: "";
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .pdf-link:hover::after {
+    content: "Open PDF";
+    margin-inline-start: 0.3em;
+    opacity: 1;
+  }
+}
+
+.icon-links {
+  display: flex;
+  gap: 1em;
+}
+
+.only-print {
+  display: none;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  .only-print {
+    display: unset;
+  }
+
+  a.title {
+    color: var(--color);
+    font-weight: 600;
+  }
+
+  .icon-links > a {
+    font-size: 14px; /* To match resume font */
+    text-decoration: underline;
+  }
 }

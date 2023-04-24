@@ -1,42 +1,14 @@
-import { graphql, Link, PageProps } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import React from "react";
 
 import { createHeadWithTitle } from "../../components/Head";
-import { FileIcon } from "../../components/Icons";
 import { Layout } from "../../components/Layout";
 import * as css from "./index.module.css";
 
 export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
-  const { email, linkedin } = data.site.siteMetadata;
   return (
-    <Layout>
-      <article className={css.main}>
-        <header className={css.header}>
-          <div className={css.headerTitle}>
-            <h1>
-              <span className={css.onlyPrint}>Devraj Mehta</span>
-              <Link to="/" className={`${css.noPrint} ${css.headerLink}`}>
-                Devraj Mehta
-              </Link>
-            </h1>
-            <a
-              aria-label="Link to PDF version"
-              className={`${css.noPrint} ${css.pdfLink}`}
-              href="/devraj_mehta_resume.pdf"
-            >
-              <FileIcon />
-            </a>
-          </div>
-          <div className={css.contactInfo}>
-            <a className={css.contactLink} href={linkedin}>
-              linkedin.com/in/devrajmehta
-            </a>
-            <a className={css.contactLink} href={`mailto:${email}`}>
-              {email}
-            </a>
-          </div>
-        </header>
-
+    <Layout mainClass={css.main} resume>
+      <section className={css.section}>
         <h2>EXPERIENCE</h2>
         {data.allJobsYaml.nodes.map((job) => (
           <div key={job.id}>
@@ -59,7 +31,8 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
             </ul>
           </div>
         ))}
-
+      </section>
+      <section className={css.section}>
         <h2>EDUCATION</h2>
         <div className={css.titleRow}>
           <h3>
@@ -75,12 +48,13 @@ export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
           </div>
         </div>
         <div>Highest Honors</div>
-
+      </section>
+      <section className={css.section}>
         <h2>SKILLS</h2>
         {Object.entries(data.resumeYaml ?? {}).map(([category, list]) => (
           <div key={category}>{list?.join(", ")}</div>
         ))}
-      </article>
+      </section>
     </Layout>
   );
 }
@@ -104,12 +78,6 @@ export const query = graphql`
       Languages
       Frameworks
       Platforms
-    }
-    site {
-      siteMetadata {
-        email
-        linkedin
-      }
     }
   }
 `;

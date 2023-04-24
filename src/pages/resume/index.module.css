@@ -7,13 +7,6 @@
 
   font-size: 14px;
   line-height: var(--header-line);
-  padding: 2em 0 6em; /* TODO remove */
-}
-
-@media only screen and (width <= 700px) {
-  .main {
-    padding: 1em 0; /* TODO remove */
-  }
 }
 
 .main a,
@@ -21,15 +14,8 @@
   text-decoration: underline;
 }
 
-.main h1 {
-  font-size: 1.5em;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-}
-
 .main h2 {
   font-size: 1em;
-  margin: 1em 0 0;
 }
 
 .main h3 {
@@ -44,54 +30,8 @@
   list-style-type: circle;
 }
 
-.header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-.header-title {
-  align-items: center;
-  display: flex;
-  gap: 1em;
-}
-
-/** Specificity needed to override .main a style above */
-.main .header-link {
-  text-decoration: none;
-}
-
-.pdf-link {
-  align-items: center;
-  display: flex;
-}
-
-@media (hover: hover) {
-  .pdf-link::after {
-    content: "";
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .pdf-link:hover::after {
-    content: "Open PDF";
-    margin-inline-start: 0.3em;
-    opacity: 1;
-  }
-}
-
-.contact-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1em;
-  justify-content: flex-end;
-}
-
-.contact-link {
-  max-width: 30vw;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.section + .section {
+  margin-top: 1em;
 }
 
 .title-row {
@@ -114,28 +54,4 @@
 
 .nowrap {
   white-space: nowrap;
-}
-
-.only-print {
-  display: none;
-}
-
-@media print {
-  @page {
-    margin: 0;
-  }
-
-  .main {
-    margin-bottom: 0;
-    margin-top: 1.5em;
-    padding: 0;
-  }
-
-  .no-print {
-    display: none;
-  }
-
-  .only-print {
-    display: unset;
-  }
 }

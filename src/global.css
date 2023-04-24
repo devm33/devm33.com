@@ -39,6 +39,12 @@ body {
   }
 }
 
+@media print {
+  @page {
+    margin: 0;
+  }
+}
+
 a,
 a:visited {
   color: var(--link);
