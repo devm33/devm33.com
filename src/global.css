@@ -4,6 +4,10 @@
 }
 
 html {
+  /* Hack to prevent auto vertical-scrollbar from shifting content. */
+  margin-right: calc(-1 * (100vw - 100%));
+  overflow-x: hidden;
+
   /* Prevent adjustments of font size after orientation changes in iOS. */
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%;
