@@ -7,7 +7,7 @@ import { Navbar } from "./Navbar";
 export function Layout({ children }: React.PropsWithChildren) {
   return (
     <>
-      <InstallIcons github={true} link={true} linkedin={true} />
+      <InstallIcons />
       <Navbar />
       <main>{children}</main>
     </>
