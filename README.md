@@ -21,8 +21,10 @@ npm start
 
 ## TODO
 
+- [ ] Add webpack @components resolve
+- [ ] Determine if resolver is needed for site schema change
 - [~] Unify header across pages
-- [ ] Unify layout across pages
+- [~] Unify layout across pages
 - [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
 - [ ] Replace project grid with list (maybe remove thumbnails)
 - [ ] Fix variable font-weight on resume
