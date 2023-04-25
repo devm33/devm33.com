@@ -40,17 +40,15 @@
   gap: 1em;
 }
 
-.only-print {
-  display: none;
+@media screen {
+  .only-print {
+    display: none;
+  }
 }
 
 @media print {
   .no-print {
     display: none;
-  }
-
-  .only-print {
-    display: unset;
   }
 
   .nav-bar {
