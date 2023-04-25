@@ -27,6 +27,7 @@ npm start
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
+- [ ] https://github.com/csstools/stylelint-value-no-unknown-custom-properties
 
 ### Projects to add:
 
