@@ -1,7 +1,7 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 
-import { FileIcon, GitHubIcon, LinkedinIcon } from "./Icons";
+import { Icon, Icons } from "./Icons";
 import * as css from "./Navbar.module.css";
 
 export function Navbar({ resume = false }) {
@@ -30,20 +30,20 @@ export function Navbar({ resume = false }) {
             className={`${css.noPrint} ${css.pdfLink}`}
             href="/devraj_mehta_resume.pdf"
           >
-            <FileIcon />
+            <Icon icon={Icons.File} />
           </a>
         )}
       </div>
       <div className={css.iconLinks}>
         <a aria-label="GitHub profile" className={css.noPrint} href={github}>
-          <GitHubIcon />
+          <Icon icon={Icons.GitHub} />
         </a>
         <a
           aria-label="LinkedIn profile"
           className={css.noPrint}
           href={linkedin}
         >
-          <LinkedinIcon />
+          <Icon icon={Icons.LinkedIn} />
         </a>
         <a className={css.onlyPrint} href={linkedin}>
           linkedin.com/in/devrajmehta

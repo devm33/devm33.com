@@ -3,7 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { pill, pillGroup } from "../components/Pill.module.css";
-import { GitHubIcon, LinkIcon } from "./Icons";
+import { Icon, Icons } from "./Icons";
 import * as css from "./ProjectGrid.module.css";
 
 interface Props {
@@ -60,7 +60,7 @@ export function ProjectGrid({ nodes }: Props) {
                       aria-label="GitHub repo"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <GitHubIcon />
+                      <Icon icon={Icons.GitHub} />
                     </a>
                   )}
                   {node.frontmatter.link && (
@@ -69,7 +69,7 @@ export function ProjectGrid({ nodes }: Props) {
                       aria-label="Project link"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <LinkIcon />
+                      <Icon icon={Icons.Link} />
                     </a>
                   )}
                 </span>

@@ -3,7 +3,7 @@ import React from "react";
 
 import "prismjs/themes/prism.min.css";
 
-import { GitHubIcon, LinkIcon } from "../components/Icons";
+import { Icon, Icons } from "../components/Icons";
 import { Layout } from "../components/Layout";
 import { pill, pillGroup } from "../components/Pill.module.css";
 import { subtitle } from "./Project.module.css";
@@ -37,7 +37,7 @@ export default function ProjectTemplate(props: Props) {
                   href={frontmatter.repo}
                 >
                   Source
-                  <GitHubIcon />
+                  <Icon icon={Icons.GitHub} />
                 </a>
               )}
               {frontmatter.link && (
@@ -47,7 +47,7 @@ export default function ProjectTemplate(props: Props) {
                   href={frontmatter.link}
                 >
                   Link
-                  <LinkIcon />
+                  <Icon icon={Icons.Link} />
                 </a>
               )}
             </div>
