@@ -21,6 +21,7 @@ npm start
 
 ## TODO
 
+- [ ] Remove unneeded template strings from gatsby-config
 - [ ] Add webpack @components resolve
 - [ ] Determine if resolver is needed for site schema change
 - [~] Unify header across pages
