@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  font-size: var(--small-font);
+  font-size: var(--font-0);
   gap: calc(var(--unit) / 2);
   justify-content: space-between;
   margin-bottom: var(--unit);
