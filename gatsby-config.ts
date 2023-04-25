@@ -1,6 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
 
 const siteUrl = "https://devm33.com";
+const imm = ["Cache-Control: public, max-age=31536000, immutable"];
 const config: GatsbyConfig = {
   graphqlTypegen: {
     typesOutputPath: ".cache/gatsby-types.d.ts",
@@ -22,13 +23,7 @@ const config: GatsbyConfig = {
     "gatsby-plugin-image",
     {
       resolve: "gatsby-plugin-netlify",
-      options: {
-        headers: {
-          "/*.css": ["Cache-Control: public, max-age=31536000, immutable"],
-          "/*.js": ["Cache-Control: public, max-age=31536000, immutable"],
-          "/fonts/*": ["Cache-Control: public, max-age=31536000, immutable"],
-        },
-      },
+      options: { headers: { "/*.css": imm, "/*.js": imm, "/fonts/*": imm } },
     },
     "gatsby-plugin-sharp",
     {
