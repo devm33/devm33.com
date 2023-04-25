@@ -1,7 +1,7 @@
-import { graphql, Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 import React from "react";
 
-import { Icon, Icons } from "../components/Icons";
+import { Icon, Icons } from "@components/Icons";
 import * as css from "./Navbar.module.css";
 
 interface Props {

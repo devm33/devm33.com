@@ -2,7 +2,7 @@ import { graphql, Link, navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
-import { pill, pillGroup } from "../components/Pill.module.css";
+import { pill, pillGroup } from "@components/Pill.module.css";
 import { Icon, Icons } from "./Icons";
 import * as css from "./ProjectGrid.module.css";
 

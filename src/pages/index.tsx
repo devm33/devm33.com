@@ -2,9 +2,9 @@ import { Link, PageProps, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 
-import { Layout } from "../components/Layout";
+import { Layout } from "@components/Layout";
 
-export { Head } from "../components/Head";
+export { Head } from "@components/Head";
 
 export default function Index(props: PageProps<Queries.HomepageQuery>) {
   const { github, linkedin } = props.data.site.siteMetadata;

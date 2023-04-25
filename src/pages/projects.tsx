@@ -1,10 +1,10 @@
 import { PageProps, graphql } from "gatsby";
 import React from "react";
 
-import { Layout } from "../components/Layout";
-import { ProjectGrid } from "../components/ProjectGrid";
+import { Layout } from "@components/Layout";
+import { ProjectGrid } from "@components/ProjectGrid";
 
-export { Head } from "../components/Head";
+export { Head } from "@components/Head";
 
 export default function ProjectsPage(props: PageProps<Queries.ProjectsQuery>) {
   return (

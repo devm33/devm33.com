@@ -3,12 +3,12 @@ import React from "react";
 
 import "prismjs/themes/prism.min.css";
 
-import { Icon, Icons } from "../components/Icons";
-import { Layout } from "../components/Layout";
-import { pill, pillGroup } from "../components/Pill.module.css";
+import { Icon, Icons } from "@components/Icons";
+import { Layout } from "@components/Layout";
+import { pill, pillGroup } from "@components/Pill.module.css";
 import { subtitle } from "./Project.module.css";
 
-export { Head } from "../components/Head";
+export { Head } from "@components/Head";
 
 interface PageContext {
   katex: boolean;

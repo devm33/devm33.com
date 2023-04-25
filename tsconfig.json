@@ -6,6 +6,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "paths": {
+      "@components/*": ["./src/components/*"]
+    },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true

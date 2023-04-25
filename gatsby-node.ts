@@ -144,9 +144,16 @@ export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
 
 type OnCreateWebpackConfig = GatsbyNode["onCreateWebpackConfig"];
 export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
+  // Add import alias for components directory
+  args.actions.setWebpackConfig({
+    resolve: {
+      alias: { "@components": path.resolve(__dirname, "src/components") },
+    },
+  });
+
+  // Minify css module class names use 5-digit hex hash
   const config = args.getConfig();
   if (!args.stage.includes("build")) return;
-  // Minify css module class names use 5-digit hex hash
   // Note this approach assumes css config is in a oneOf block.
   for (const { oneOf } of config.module.rules) {
     if (!oneOf?.length) continue;
@@ -160,8 +167,9 @@ export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
     }
   }
   args.actions.replaceWebpackConfig(config);
-  if (args.stage !== "build-javascript") return;
+
   // Separate katex css from main css build
+  if (args.stage !== "build-javascript") return;
   args.actions.setWebpackConfig({
     optimization: {
       runtimeChunk: {

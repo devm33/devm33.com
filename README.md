@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Add webpack @components resolve
 - [ ] Replace project grid with list (maybe remove thumbnails)
 - [ ] Consolidate global css
 - [ ] Maybe add page transition animations
@@ -38,6 +37,7 @@ npm start
 
 ## Done
 
+- [x] Resolve @components alias to src/components/ directory
 - [x] Modify site schema type without overriding resolver implementation
 - [x] Remove unneeded template strings from gatsby-config
 - [x] Use Slice for navbar

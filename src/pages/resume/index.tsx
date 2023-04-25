@@ -1,8 +1,8 @@
 import { graphql, PageProps } from "gatsby";
 import React from "react";
 
-import { createHeadWithTitle } from "../../components/Head";
-import { Layout } from "../../components/Layout";
+import { createHeadWithTitle } from "@components/Head";
+import { Layout } from "@components/Layout";
 import * as css from "./index.module.css";
 
 export default function Resume({ data }: PageProps<Queries.ResumeQuery>) {
