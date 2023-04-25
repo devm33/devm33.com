@@ -1,7 +1,7 @@
 import { Link, graphql } from "gatsby";
 import React from "react";
 
-import { Icon, Icons } from "@components/Icons";
+import { IconLink, Icons } from "@components/Icons";
 import * as css from "./Navbar.module.css";
 
 interface Props {
@@ -18,26 +18,27 @@ export default function Navbar({ data, resume }: Props) {
           {title}
         </Link>
         {resume && (
-          <a
+          <IconLink
             aria-label="Link to PDF of resume"
             className={`${css.noPrint} ${css.pdfLink}`}
             href="/devraj_mehta_resume.pdf"
-          >
-            <Icon icon={Icons.File} />
-          </a>
+            icon={Icons.File}
+          />
         )}
       </div>
       <div className={css.iconLinks}>
-        <a aria-label="GitHub profile" className={css.noPrint} href={github}>
-          <Icon icon={Icons.GitHub} />
-        </a>
-        <a
+        <IconLink
+          aria-label="GitHub profile"
+          className={css.noPrint}
+          href={github}
+          icon={Icons.GitHub}
+        />
+        <IconLink
           aria-label="LinkedIn profile"
           className={css.noPrint}
           href={linkedin}
-        >
-          <Icon icon={Icons.LinkedIn} />
-        </a>
+          icon={Icons.LinkedIn}
+        />
         <a className={css.onlyPrint} href={linkedin}>
           linkedin.com/in/devrajmehta
         </a>

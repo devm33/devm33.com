@@ -2,6 +2,18 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  position: relative; /* debugging centering */
+}
+
+/* debugging centering */
+.nav-bar::after {
+  background-color: red;
+  content: " ";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 .title-group {

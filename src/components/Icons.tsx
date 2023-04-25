@@ -1,6 +1,6 @@
-import React from "react";
+import React, { AnchorHTMLAttributes } from "react";
 
-import { path, svg } from "./Icons.module.css";
+import { path, svg, link } from "./Icons.module.css";
 
 /** Enum with available svg icons. */
 export enum Icons {
@@ -16,6 +16,22 @@ export function Icon({ icon }: { icon: Icons }) {
     <svg className={svg}>
       <use href={`#icon${icon}`} />
     </svg>
+  );
+}
+
+interface IconLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  icon: Icons;
+}
+
+/* Component to render an svg icon inside an anchor tag. */
+export function IconLink({ icon, className, ...rest }: IconLinkProps) {
+  const classes = link + (className ? " " + className : "");
+  return (
+    <a className={classes} {...rest}>
+      <svg className={svg}>
+        <use href={`#icon${icon}`} />
+      </svg>
+    </a>
   );
 }
 
