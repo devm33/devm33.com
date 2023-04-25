@@ -1,5 +1,6 @@
 .main {
   --header-line: 1.4; /* Match header line-height with body line-height */
+  --unit: 0; /* Zero out spacing for resume */
 
   font-size: 14px;
   line-height: var(--header-line);
@@ -13,11 +14,6 @@
 .main h2,
 .main h3 {
   font-size: 1em;
-}
-
-.main ul,
-.main li {
-  margin: 0; /* Override global styles */
 }
 
 .main ul {
