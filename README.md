@@ -24,11 +24,9 @@ npm start
 - [ ] Remove unneeded template strings from gatsby-config
 - [ ] Add webpack @components resolve
 - [ ] Determine if resolver is needed for site schema change
-- [~] Unify header across pages
-- [~] Unify layout across pages
-- [ ] Use https://www.gatsbyjs.com/docs/how-to/performance/using-slices/
+- [~] Consolidate global css
 - [ ] Replace project grid with list (maybe remove thumbnails)
-- [ ] Fix variable font-weight on resume
+- [ ] Maybe add page transition animations
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
@@ -42,6 +40,9 @@ npm start
 
 ## Done
 
+- [x] Use Slice for navbar
+- [x] Unify navbar across pages
+- [x] Fix variable font-weight on resume
 - [x] Replace mulish webfont with full webfont, use it everywhere
 - [x] Remove code to lazy load prism css since including it (1.3kb) in main css
 - [x] Set immutable cache headers on katex css files
