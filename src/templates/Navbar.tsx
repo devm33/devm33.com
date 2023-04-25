@@ -1,10 +1,10 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 
-import { Icon, Icons } from "./Icons";
+import { Icon, Icons } from "../components/Icons";
 import * as css from "./Navbar.module.css";
 
-export function Navbar({ resume = false }) {
+export default function Navbar({ resume = false }) {
   const { site } = useStaticQuery<Queries.HeaderQuery>(graphql`
     query Header {
       site {

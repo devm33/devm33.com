@@ -1,7 +1,7 @@
 import React from "react";
 
 import { InstallIcons } from "./Icons";
-import { Navbar } from "./Navbar";
+import { Slice } from "gatsby";
 
 interface Props {
   mainClass?: string;
@@ -13,7 +13,7 @@ export function Layout(props: React.PropsWithChildren<Props>) {
   return (
     <>
       <InstallIcons />
-      <Navbar resume={props.resume} />
+      <Slice alias="navbar" resume={props.resume} />
       <main className={props.mainClass}>{props.children}</main>
     </>
   );

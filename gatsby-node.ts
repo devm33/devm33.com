@@ -16,13 +16,13 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = (args) => {
   createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
 };
 
-const ProjectTemplate = path.resolve(`src/templates/Project.tsx`);
-const TagTemplate = path.resolve(`src/templates/Tag.tsx`);
+const ProjectTemplate = path.resolve("src/templates/Project.tsx");
+const TagTemplate = path.resolve("src/templates/Tag.tsx");
+const NavbarTemplate = path.resolve("src/templates/Navbar.tsx");
 
 export const createPages: GatsbyNode["createPages"] = async (args) => {
-  const { actions, graphql, reporter } = args;
-  const { createPage, createRedirect } = actions;
-  const result = await graphql<Queries.CreatePagesQuery>(/* GraphQL */ `
+  const { createPage, createRedirect, createSlice } = args.actions;
+  const result = await args.graphql<Queries.CreatePagesQuery>(/* GraphQL */ `
     query CreatePages {
       projects: allMarkdownRemark {
         nodes {
@@ -53,7 +53,7 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
     }
   `);
   if (result.errors || !result.data) {
-    reporter.panicOnBuild("Error while running GraphQL query.");
+    args.reporter.panicOnBuild("Error while running GraphQL query.");
     return;
   }
   const katex = new Set(result.data.katexProjects.nodes.map((node) => node.id));
@@ -61,7 +61,7 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
   // Add project pages.
   for (const node of result.data.projects.nodes) {
     if (!node.fields?.path || !node.frontmatter) {
-      reporter.panicOnBuild("Project node missing required fields.");
+      args.reporter.panicOnBuild("Project node missing required fields.");
       return;
     }
     createPage({
@@ -106,6 +106,9 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
     toPath: "/devraj_mehta_resume.pdf",
     isPermanent: true,
   });
+
+  // Add header slice
+  createSlice({ id: "navbar", component: NavbarTemplate });
 };
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
