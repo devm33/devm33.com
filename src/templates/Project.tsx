@@ -20,8 +20,7 @@ export default function ProjectTemplate(props: Props) {
   if (props.pageContext.katex) {
     import("katex/dist/katex.min.css");
   }
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { frontmatter, html } = props.data.markdownRemark!;
+  const { frontmatter, html } = props.data.markdownRemark;
   return (
     <Layout>
       <article>

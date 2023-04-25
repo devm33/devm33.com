@@ -223,6 +223,7 @@ export const createResolvers: GatsbyNode["createResolvers"] = (args) => {
   args.createResolvers({
     Query: {
       site: { type: "Site!" },
+      markdownRemark: { type: "MarkdownRemark!" },
     },
   });
 };
