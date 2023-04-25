@@ -1,23 +1,16 @@
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { graphql, Link } from "gatsby";
 import React from "react";
 
 import { Icon, Icons } from "../components/Icons";
 import * as css from "./Navbar.module.css";
 
-export default function Navbar({ resume = false }) {
-  const { site } = useStaticQuery<Queries.HeaderQuery>(graphql`
-    query Header {
-      site {
-        siteMetadata {
-          email
-          github
-          linkedin
-          title
-        }
-      }
-    }
-  `);
-  const { email, github, linkedin, title } = site.siteMetadata;
+interface Props {
+  data: Queries.NavbarQuery;
+  resume?: boolean;
+}
+
+export default function Navbar({ data, resume }: Props) {
+  const { email, github, linkedin, title } = data.site.siteMetadata;
   return (
     <nav className={css.navBar}>
       <div className={css.titleGroup}>
@@ -55,3 +48,16 @@ export default function Navbar({ resume = false }) {
     </nav>
   );
 }
+
+export const query = graphql`
+  query Navbar {
+    site {
+      siteMetadata {
+        email
+        github
+        linkedin
+        title
+      }
+    }
+  }
+`;
