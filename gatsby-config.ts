@@ -3,61 +3,61 @@ import type { GatsbyConfig } from "gatsby";
 const siteUrl = "https://devm33.com";
 const config: GatsbyConfig = {
   graphqlTypegen: {
-    typesOutputPath: `.cache/gatsby-types.d.ts`,
+    typesOutputPath: ".cache/gatsby-types.d.ts",
     generateOnBuild: true,
   },
   siteMetadata: {
-    title: `Devraj Mehta`,
-    description: `Devraj Mehta's website.`,
+    title: "Devraj Mehta",
+    description: "Devraj Mehta's website.",
     siteUrl,
-    email: `dev@devm.dev`,
+    email: "dev@devm.dev",
     github: "https://github.com/devm33",
     linkedin: "https://www.linkedin.com/in/devrajmehta/",
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-canonical-urls`,
+      resolve: "gatsby-plugin-canonical-urls",
       options: { siteUrl, stripQueryString: true },
     },
-    `gatsby-plugin-image`,
+    "gatsby-plugin-image",
     {
-      resolve: `gatsby-plugin-netlify`,
+      resolve: "gatsby-plugin-netlify",
       options: {
         headers: {
-          "/*.css": [`Cache-Control: public, max-age=31536000, immutable`],
-          "/*.js": [`Cache-Control: public, max-age=31536000, immutable`],
-          "/fonts/*": [`Cache-Control: public, max-age=31536000, immutable`],
+          "/*.css": ["Cache-Control: public, max-age=31536000, immutable"],
+          "/*.js": ["Cache-Control: public, max-age=31536000, immutable"],
+          "/fonts/*": ["Cache-Control: public, max-age=31536000, immutable"],
         },
       },
     },
-    `gatsby-plugin-sharp`,
+    "gatsby-plugin-sharp",
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: "gatsby-plugin-sitemap",
       options: { createLinkInHead: false },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `src`,
+        name: "src",
         path: `${__dirname}/src`,
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
             options: { maxWidth: 700 }, // Matches src/global.css article width
           },
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-katex`,
-          `gatsby-remark-prismjs`,
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-katex",
+          "gatsby-remark-prismjs",
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-yaml`,
+    "gatsby-transformer-sharp",
+    "gatsby-transformer-yaml",
   ],
 };
 

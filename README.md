@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Remove unneeded template strings from gatsby-config
 - [ ] Add webpack @components resolve
 - [ ] Determine if resolver is needed for site schema change
 - [~] Consolidate global css
@@ -40,6 +39,7 @@ npm start
 
 ## Done
 
+- [x] Remove unneeded template strings from gatsby-config
 - [x] Use Slice for navbar
 - [x] Unify navbar across pages
 - [x] Fix variable font-weight on resume
