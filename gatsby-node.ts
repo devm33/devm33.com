@@ -222,12 +222,7 @@ export const createSchemaCustomization: CreateSchemaCustomization = (args) => {
 export const createResolvers: GatsbyNode["createResolvers"] = (args) => {
   args.createResolvers({
     Query: {
-      site: {
-        type: "Site!",
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        resolve: async (source: any, args: any, context: any) =>
-          context.nodeModel.findOne({ type: "Site" }),
-      },
+      site: { type: "Site!" },
     },
   });
 };

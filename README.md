@@ -22,9 +22,8 @@ npm start
 ## TODO
 
 - [ ] Add webpack @components resolve
-- [ ] Determine if resolver is needed for site schema change
-- [~] Consolidate global css
 - [ ] Replace project grid with list (maybe remove thumbnails)
+- [ ] Consolidate global css
 - [ ] Maybe add page transition animations
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
@@ -39,6 +38,7 @@ npm start
 
 ## Done
 
+- [x] Modify site schema type without overriding resolver implementation
 - [x] Remove unneeded template strings from gatsby-config
 - [x] Use Slice for navbar
 - [x] Unify navbar across pages
