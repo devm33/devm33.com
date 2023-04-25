@@ -1,7 +1,10 @@
+import { Slice } from "gatsby";
 import React from "react";
 
 import { InstallIcons } from "./Icons";
-import { Slice } from "gatsby";
+
+import "../fonts.css";
+import "../global.css";
 
 interface Props {
   mainClass?: string;
