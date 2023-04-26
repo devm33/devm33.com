@@ -1,0 +1,37 @@
+.project {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: var(--unit);
+}
+
+.thumbnail {
+  flex: 0 0 150px;
+}
+
+.thumbnail-image {
+  margin: 0; /* Override default spacing. */
+}
+
+.title-group,
+.subtitle-group {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) / 2);
+}
+
+.title-group {
+  justify-content: space-between;
+}
+
+.subtitle {
+  font-size: var(--font-0);
+}
+
+.tagline {
+  margin-top: calc(var(--unit) / 2);
+}
+
+.flex-header {
+  flex: 1;
+}

@@ -21,13 +21,15 @@ npm start
 
 ## TODO
 
-- [ ] Replace project grid with list (maybe remove thumbnails)
+- [~] Replace project grid with list (maybe remove thumbnails)
 - [ ] Consolidate global css
-- [ ] Maybe add page transition animations
+- [ ] Maybe add page transition animations, maybe not though
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
 - [ ] https://github.com/csstools/stylelint-value-no-unknown-custom-properties
+- [ ] May not need copy plugin anymore?
+      https://www.gatsbyjs.com/docs/how-to/images-and-media/working-with-gifs/
 
 ### Projects to add:
 

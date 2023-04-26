@@ -2,14 +2,16 @@ import { PageProps, graphql } from "gatsby";
 import React from "react";
 
 import { Layout } from "@components/Layout";
-import { ProjectGrid } from "@components/ProjectGrid";
+import { Project } from "@components/Project";
 
 export { Head } from "@components/Head";
 
 export default function ProjectsPage(props: PageProps<Queries.ProjectsQuery>) {
   return (
     <Layout>
-      <ProjectGrid nodes={props.data.allMarkdownRemark.nodes} />
+      {props.data.allMarkdownRemark.nodes.map((node) => (
+        <Project key={node.fields.path} project={node} />
+      ))}
     </Layout>
   );
 }
@@ -18,7 +20,7 @@ export const query = graphql`
   query Projects {
     allMarkdownRemark(sort: { frontmatter: { updated: DESC } }) {
       nodes {
-        ...ProjectGridFields
+        ...ProjectFields
       }
     }
   }
