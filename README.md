@@ -21,7 +21,7 @@ npm start
 
 ## TODO
 
-- [~] Replace project grid with list (maybe remove thumbnails)
+- [~] Replace project grid with list, add N most recent to home
 - [ ] Consolidate global css
 - [ ] Maybe add page transition animations, maybe not though
 - [ ] Add dark mode (will require forking prism themes to customize)
