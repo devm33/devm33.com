@@ -54,9 +54,9 @@ export function InstallIcons() {
       <symbol
         fill="none"
         id={`icon${Icons.Link}`}
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         stroke="currentColor"
         viewBox="0 0 24 24"
       >
