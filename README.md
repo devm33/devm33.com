@@ -26,6 +26,7 @@ npm start
     on resume page. Also use for header.
     - Make opening animation smoother?
 - [ ] Consolidate global css
+- [ ] Add link stylesheet tag to ssr katex posts
 - [ ] Maybe add page transition animations, maybe not though
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
