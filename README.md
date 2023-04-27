@@ -22,6 +22,9 @@ npm start
 ## TODO
 
 - [~] Replace project grid with list, add N most recent to home
+  - Replace source and demo links on project title with similar link to pdf link
+    on resume page. Also use for header.
+    - Make opening animation smoother?
 - [ ] Consolidate global css
 - [ ] Maybe add page transition animations, maybe not though
 - [ ] Add dark mode (will require forking prism themes to customize)
