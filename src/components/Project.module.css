@@ -12,15 +12,12 @@
   margin: 0; /* Override default spacing. */
 }
 
-.title-group {
+.subtitle {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: calc(var(--unit) / 2);
-}
-
-.subtitle {
   font-size: var(--font-0);
+  gap: calc(var(--unit) / 2);
 }
 
 .tagline {

@@ -2,7 +2,7 @@ import { Link, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
-import { Icon, Icons } from "./Icons";
+import { IconLink, Icons } from "./Icons";
 import { pill, pillGroup } from "./Pill.module.css";
 import * as css from "./Project.module.css";
 
@@ -36,38 +36,28 @@ export function ProjectHeader(props: ProjectTitleProps) {
   const { fields, frontmatter } = props.project;
   return (
     <header className={props.className}>
-      <div className={css.titleGroup}>
-        <h1>
-          {props.link ? (
-            <Link to={fields.path}>{frontmatter.title}</Link>
-          ) : (
-            frontmatter.title
-          )}
-        </h1>
-        <div className={`${pillGroup} ${css.subtitle}`}>
-          {frontmatter.repo && (
-            <a
-              aria-label="GitHub repo"
-              className={pill}
-              href={frontmatter.repo}
-            >
-              Source
-              <Icon icon={Icons.GitHub} />
-            </a>
-          )}
-          {frontmatter.link && (
-            <a
-              aria-label="Project link"
-              className={pill}
-              href={frontmatter.link}
-            >
-              Link
-              <Icon icon={Icons.Link} />
-            </a>
-          )}
-        </div>
-      </div>
-      <div className={`${css.titleGroup} ${css.subtitle}`}>
+      <h1>
+        {props.link ? (
+          <Link to={fields.path}>{frontmatter.title}</Link>
+        ) : (
+          frontmatter.title
+        )}{" "}
+        {frontmatter.repo && (
+          <IconLink
+            aria-label="GitHub repo"
+            href={frontmatter.repo}
+            icon={Icons.GitHub}
+          />
+        )}{" "}
+        {frontmatter.link && (
+          <IconLink
+            aria-label="Project link"
+            href={frontmatter.link}
+            icon={Icons.Link}
+          />
+        )}
+      </h1>
+      <div className={css.subtitle}>
         <i>Updated {frontmatter.updated}</i>
         <div className={pillGroup}>
           {frontmatter.tags.map((tag) => (
