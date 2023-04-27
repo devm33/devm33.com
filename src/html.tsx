@@ -31,6 +31,13 @@ export default function HTML(props: Props) {
           crossOrigin="anonymous"
           type="font/woff2"
         />
+        <link
+          rel="preload"
+          href="/fonts/mulish-ital.woff2"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/woff2"
+        />
         {filterHeadComponents(props.headComponents)}
       </head>
       <body {...props.bodyAttributes}>
