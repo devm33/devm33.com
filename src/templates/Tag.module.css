@@ -1,8 +1,8 @@
 .title {
-  padding-inline-start: calc(var(--unit) / 2);
+  font-size: var(--font2);
+  margin-bottom: calc(var(--unit) / 2);
 }
 
 .title-pill {
-  line-height: 1.5; /* Determines size of pill border */
-  margin-inline-start: calc(var(--unit) / 4);
+  line-height: 1.65; /* To match border shape of smaller pills. */
 }
