@@ -12,16 +12,11 @@
   margin: 0; /* Override default spacing. */
 }
 
-.title-group,
-.subtitle-group {
+.title-group {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: calc(var(--unit) / 2);
-}
-
-.title-group {
-  justify-content: space-between;
 }
 
 .subtitle {

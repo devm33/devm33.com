@@ -67,7 +67,7 @@ export function ProjectHeader(props: ProjectTitleProps) {
           )}
         </div>
       </div>
-      <div className={`${css.subtitleGroup} ${css.subtitle}`}>
+      <div className={`${css.titleGroup} ${css.subtitle}`}>
         <i>Updated {frontmatter.updated}</i>
         <div className={pillGroup}>
           {frontmatter.tags.map((tag) => (
