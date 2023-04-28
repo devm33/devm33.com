@@ -34,6 +34,7 @@ npm start
 - [ ] https://github.com/csstools/stylelint-value-no-unknown-custom-properties
 - [ ] May not need copy plugin anymore?
       https://www.gatsbyjs.com/docs/how-to/images-and-media/working-with-gifs/
+- [ ] Add redirect for /sitemap.xml
 
 ### Projects to add:
 
