@@ -86,37 +86,16 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
   }
 
   // Add redirects
+  const redirect = (fromPath: string, toPath: string) =>
+    createRedirect({ fromPath, toPath, isPermanent: true });
   // Redirects for previous blog site urls.
-  createRedirect({
-    fromPath: "/2015-06-07",
-    toPath: "/projects/4clojure/",
-  });
-  createRedirect({
-    fromPath: "/2014-12-04",
-    toPath: "/projects/motivation/",
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: "/2014-09-22",
-    toPath: "/projects/jekyll-nfs/",
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: "/sitemap.xml",
-    toPath: "/sitemap-index.xml",
-    isPermanent: true,
-  });
-  createRedirect({
-    fromPath: "/about",
-    toPath: "/",
-    isPermanent: true,
-  });
+  redirect("/2015-06-07", "/projects/4clojure/");
+  redirect( "/2014-12-04", "/projects/motivation/");
+  redirect( "/2014-09-22", "/projects/jekyll-nfs/");
+  redirect( "/sitemap.xml", "/sitemap-index.xml");
+  redirect( "/about", "/");
   // Redirect for resume pdf short-link
-  createRedirect({
-    fromPath: "/resume.pdf",
-    toPath: "/devraj_mehta_resume.pdf",
-    isPermanent: true,
-  });
+  redirect( "/resume.pdf", "/devraj_mehta_resume.pdf");
 
   // Add header slice
   createSlice({ id: "navbar", component: NavbarTemplate });
