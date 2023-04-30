@@ -29,9 +29,7 @@ export function IconLink({ icon, label, className, ...rest }: IconLinkProps) {
   const classes = css.link + (className ? " " + className : "");
   return (
     <a className={classes} {...rest}>
-      <svg className={css.svg}>
-        <use href={`#icon${icon}`} />
-      </svg>
+      <Icon icon={icon} />
       {label && (
         <div className={css.label}>
           <div className={css.innerLabel}>&nbsp;{label}</div>
