@@ -90,12 +90,12 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
     createRedirect({ fromPath, toPath, isPermanent: true });
   // Redirects for previous blog site urls.
   redirect("/2015-06-07", "/projects/4clojure/");
-  redirect( "/2014-12-04", "/projects/motivation/");
-  redirect( "/2014-09-22", "/projects/jekyll-nfs/");
-  redirect( "/sitemap.xml", "/sitemap-index.xml");
-  redirect( "/about", "/");
+  redirect("/2014-12-04", "/projects/motivation/");
+  redirect("/2014-09-22", "/projects/jekyll-nfs/");
+  redirect("/sitemap.xml", "/sitemap-index.xml");
+  redirect("/about", "/");
   // Redirect for resume pdf short-link
-  redirect( "/resume.pdf", "/devraj_mehta_resume.pdf");
+  redirect("/resume.pdf", "/devraj_mehta_resume.pdf");
 
   // Add header slice
   createSlice({ id: "navbar", component: NavbarTemplate });
