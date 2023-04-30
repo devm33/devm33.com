@@ -22,7 +22,6 @@ npm start
 ## TODO
 
 - [ ] Add link stylesheet tag to ssr katex posts
-- [ ] Maybe add page transition animations, maybe not though
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
