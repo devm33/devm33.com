@@ -25,7 +25,6 @@ npm start
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
-- [ ] https://github.com/csstools/stylelint-value-no-unknown-custom-properties
 - [ ] https://developer.chrome.com/articles/new-headless/
 
 ### Projects to add:
@@ -37,6 +36,7 @@ npm start
 
 ## Done
 
+- [x] Add stylelint plugin to catch undefined custom properties
 - [x] Add redirect for /sitemap.xml
 - [x] Add css transition to icon component for slide out labels
 - [x] Replace project grid with list

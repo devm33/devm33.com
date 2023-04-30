@@ -83,7 +83,8 @@
       "stylelint-config-standard"
     ],
     "plugins": [
-      "stylelint-order"
+      "stylelint-order",
+      "stylelint-value-no-unknown-custom-properties"
     ],
     "rules": {
       "order/properties-alphabetical-order": true,
@@ -93,6 +94,14 @@
           "camelCaseSvgKeywords": true,
           "ignoreProperties": [
             "text-rendering"
+          ]
+        }
+      ],
+      "csstools/value-no-unknown-custom-properties": [
+        true,
+        {
+          "importFrom": [
+            "src/global.css"
           ]
         }
       ]
@@ -141,6 +150,7 @@
     "stylelint": "^15.6.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-order": "^6.0.3",
+    "stylelint-value-no-unknown-custom-properties": "^4.0.0",
     "write-good": "^1.0.8"
   }
 }
