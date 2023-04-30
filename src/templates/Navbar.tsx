@@ -28,16 +28,16 @@ export default function Navbar({ data, resume }: Props) {
       </div>
       <div className={css.iconLinks}>
         <IconLink
-          aria-label="GitHub profile"
           className={css.noPrint}
           href={github}
           icon={Icons.GitHub}
+          label="GitHub"
         />
         <IconLink
-          aria-label="LinkedIn profile"
           className={css.noPrint}
           href={linkedin}
           icon={Icons.LinkedIn}
+          label="LinkedIn"
         />
         <a className={css.onlyPrint} href={linkedin}>
           linkedin.com/in/devrajmehta

@@ -40,14 +40,7 @@ export function ProjectHeader(props: ProjectTitleProps) {
       <h1>
         {props.link ? <Link to={fields.path}>{title}</Link> : title}{" "}
         {repo && <IconLink href={repo} icon={Icons.GitHub} label="Source" />}{" "}
-        {link && (
-          <IconLink
-            className={css.link}
-            href={link}
-            icon={Icons.Link}
-            label="Link"
-          />
-        )}
+        {link && <IconLink href={link} icon={Icons.Link} label="Link" />}
       </h1>
       <div className={css.subtitle}>
         <i>Updated {updated}</i>

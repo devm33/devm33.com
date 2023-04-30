@@ -19,12 +19,13 @@
 .label {
   display: inline-grid;
   grid-template-columns: 0fr;
-  transition: grid-template-columns 250ms ease-in-out;
+  transition: grid-template-columns 300ms ease-in-out 0.5s;
   white-space: nowrap;
 }
 
 .link:hover .label {
   grid-template-columns: 1fr;
+  transition-delay: 0s;
 }
 
 .inner-label {
