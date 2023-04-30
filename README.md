@@ -26,6 +26,7 @@ npm start
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
 - [ ] https://github.com/csstools/stylelint-value-no-unknown-custom-properties
+- [ ] https://developer.chrome.com/articles/new-headless/
 
 ### Projects to add:
 
