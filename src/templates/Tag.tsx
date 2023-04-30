@@ -17,10 +17,10 @@ type Props = PageProps<Queries.TagPageQuery, PageContext>;
 export default function TagTemplate({ data, pageContext }: Props) {
   return (
     <Layout>
-      <div className={css.title}>
+      <h3 className={css.title}>
         Projects tagged {}
         <span className={`${pill} ${css.titlePill}`}>{pageContext.tag}</span>
-      </div>
+      </h3>
       {data.allMarkdownRemark.nodes.map((node) => (
         <Project key={node.fields.path} project={node} />
       ))}
