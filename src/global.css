@@ -55,7 +55,6 @@ a:visited {
   text-decoration: none;
   transition-duration: 0.3s;
   transition-property: color, background-color, border-color;
-  transition-timing-function: ease-in-out;
 }
 
 a:hover {
