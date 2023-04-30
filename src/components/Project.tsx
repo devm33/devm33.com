@@ -34,40 +34,32 @@ interface ProjectTitleProps {
 
 export function ProjectHeader(props: ProjectTitleProps) {
   const { fields, frontmatter } = props.project;
+  const { title, repo, link, updated, tags, tagline } = frontmatter;
   return (
     <header className={props.className}>
       <h1>
-        {props.link ? (
-          <Link to={fields.path}>{frontmatter.title}</Link>
-        ) : (
-          frontmatter.title
-        )}{" "}
-        {frontmatter.repo && (
+        {props.link ? <Link to={fields.path}>{title}</Link> : title}{" "}
+        {repo && <IconLink href={repo} icon={Icons.GitHub} label="Source" />}{" "}
+        {link && (
           <IconLink
-            aria-label="GitHub repo"
-            href={frontmatter.repo}
-            icon={Icons.GitHub}
-          />
-        )}{" "}
-        {frontmatter.link && (
-          <IconLink
-            aria-label="Project link"
-            href={frontmatter.link}
+            className={css.link}
+            href={link}
             icon={Icons.Link}
+            label="Link"
           />
         )}
       </h1>
       <div className={css.subtitle}>
-        <i>Updated {frontmatter.updated}</i>
+        <i>Updated {updated}</i>
         <div className={pillGroup}>
-          {frontmatter.tags.map((tag) => (
+          {tags.map((tag) => (
             <Link key={tag} className={pill} to={`/tag/${tag}/`}>
               {tag}
             </Link>
           ))}
         </div>
       </div>
-      <div className={css.tagline}>{frontmatter.tagline}</div>
+      <div className={css.tagline}>{tagline}</div>
     </header>
   );
 }

@@ -11,5 +11,24 @@
 }
 
 .link {
+  align-items: center;
+  display: inline-flex;
   height: var(--font-1);
+}
+
+.label {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 250ms ease-in-out;
+  white-space: nowrap;
+}
+
+.link:hover .label {
+  grid-template-columns: 1fr;
+}
+
+.inner-label {
+  font-size: 1rem;
+  font-weight: normal;
+  overflow: hidden;
 }
