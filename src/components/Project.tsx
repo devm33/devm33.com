@@ -13,14 +13,18 @@ interface ProjectProps {
 export function Project({ project }: ProjectProps) {
   return (
     <div className={css.project}>
-      <div className={css.thumbnail}>
+      <Link
+        aria-label={project.frontmatter.title}
+        className={css.thumbnail}
+        to={project.fields.path}
+      >
         <GatsbyImage
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           image={getImage(project.frontmatter.image?.childImageSharp ?? null)!}
           alt=""
           className={css.thumbnailImage}
         />
-      </div>
+      </Link>
       <ProjectHeader project={project} className={css.flexHeader} link />
     </div>
   );
