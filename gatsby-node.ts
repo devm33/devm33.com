@@ -101,16 +101,20 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
     toPath: "/projects/jekyll-nfs/",
     isPermanent: true,
   });
-  // Redirect for resume pdf
-  createRedirect({
-    fromPath: "/resume.pdf",
-    toPath: "/devraj_mehta_resume.pdf",
-    isPermanent: true,
-  });
-  // Redirect for sitemap.xml
   createRedirect({
     fromPath: "/sitemap.xml",
     toPath: "/sitemap-index.xml",
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: "/about",
+    toPath: "/",
+    isPermanent: true,
+  });
+  // Redirect for resume pdf short-link
+  createRedirect({
+    fromPath: "/resume.pdf",
+    toPath: "/devraj_mehta_resume.pdf",
     isPermanent: true,
   });
 
