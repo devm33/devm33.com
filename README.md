@@ -21,10 +21,7 @@ npm start
 
 ## TODO
 
-- [~] Replace project grid with list, add N most recent to home
-  - Replace source and demo links on project title with similar link to pdf link
-    on resume page. Also use for header.
-    - Make opening animation smoother?
+- [~] Add N most recent projects to home page
 - [ ] Consolidate global css
 - [ ] Add link stylesheet tag to ssr katex posts
 - [ ] Maybe add page transition animations, maybe not though
@@ -45,6 +42,8 @@ npm start
 
 ## Done
 
+- [x] Add css transition to icon component for slide out labels
+- [x] Replace project grid with list
 - [x] Resolve @components alias to src/components/ directory
 - [x] Modify site schema type without overriding resolver implementation
 - [x] Remove unneeded template strings from gatsby-config
