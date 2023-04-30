@@ -19,10 +19,10 @@ export default function Navbar({ data, resume }: Props) {
         </Link>
         {resume && (
           <IconLink
-            aria-label="Link to PDF of resume"
-            className={`${css.noPrint} ${css.pdfLink}`}
+            className={css.noPrint}
             href="/devraj_mehta_resume.pdf"
             icon={Icons.File}
+            label="View as PDF"
           />
         )}
       </div>
