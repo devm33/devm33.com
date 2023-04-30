@@ -1,0 +1,23 @@
+@font-face {
+  font-display: swap;
+  font-family: Mulish;
+  font-style: italic;
+  font-weight: 200 1000;
+  src: url("/fonts/mulish-ital.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 200 1000;
+  src: url("/fonts/mulish.woff2") format("woff2");
+}
+
+@font-face {
+  ascent-override: 100.5%;
+  descent-override: 25%;
+  font-family: MulishFallback;
+  line-gap-override: 0%;
+  src: local("Arial");
+}

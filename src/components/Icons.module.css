@@ -9,3 +9,27 @@
   height: 1em;
   width: 1em;
 }
+
+.link {
+  align-items: center;
+  display: inline-flex;
+  height: var(--font-1);
+}
+
+.label {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 300ms 0.5s;
+  white-space: nowrap;
+}
+
+.link:hover .label {
+  grid-template-columns: 1fr;
+  transition-delay: 0s;
+}
+
+.inner-label {
+  font-size: 1rem;
+  font-weight: normal;
+  overflow: hidden;
+}

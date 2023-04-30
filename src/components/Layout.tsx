@@ -1,15 +1,23 @@
+import { Slice } from "gatsby";
 import React from "react";
 
 import { InstallIcons } from "./Icons";
-import { Navbar } from "./Navbar";
+
+import "../fonts.css";
+import "../global.css";
+
+interface Props {
+  mainClass?: string;
+  resume?: boolean;
+}
 
 /** Layout component to serve as the base for all pages.  */
-export function Layout({ children }: React.PropsWithChildren) {
+export function Layout(props: React.PropsWithChildren<Props>) {
   return (
     <>
-      <InstallIcons github={true} link={true} linkedin={true} />
-      <Navbar />
-      <main>{children}</main>
+      <InstallIcons />
+      <Slice alias="navbar" resume={props.resume} />
+      <main className={props.mainClass}>{props.children}</main>
     </>
   );
 }

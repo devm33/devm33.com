@@ -1,12 +1,13 @@
-import { Link } from "gatsby";
+import { Link, PageProps, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 
-import { Layout } from "../components/Layout";
+import { Layout } from "@components/Layout";
 
-export { Head } from "../components/Head";
+export { Head } from "@components/Head";
 
-export default function Index() {
+export default function Index(props: PageProps<Queries.HomepageQuery>) {
+  const { github, linkedin } = props.data.site.siteMetadata;
   return (
     <Layout>
       <article>
@@ -14,23 +15,22 @@ export default function Index() {
         <StaticImage
           src="../images/me.jpg"
           alt="head shot"
-          placeholder="blurred"
+          placeholder="dominantColor"
+          loading="eager"
           layout="fixed"
           width={250}
           height={250}
         />
         <p>
-          You can find me on {}
-          <a href="https://www.linkedin.com/in/devrajmehta">LinkedIn</a> or {}
-          <a href="https://github.com/devm33">GitHub</a>. See here for my {}
-          <Link to="/resume/">resume</Link>.
+          You can find me on <a href={linkedin}>LinkedIn</a> or {}
+          <a href={github}>GitHub</a>.
         </p>
         <p>
-          This {}
-          <a href="https://github.com/devm33/devm33.com">
-            site&apos;s source
-          </a>{" "}
-          is on GitHub.
+          This site contains my <Link to="/resume/">resume</Link> and some
+          written up <Link to="/projects/">projects</Link>.
+        </p>
+        <p>
+          Here is <a href={`${github}/devm33.com`}>the source for this site</a>.
         </p>
         <p>
           Cheers! <br /> Devraj
@@ -39,3 +39,14 @@ export default function Index() {
     </Layout>
   );
 }
+
+export const query = graphql`
+  query Homepage {
+    site {
+      siteMetadata {
+        github
+        linkedin
+      }
+    }
+  }
+`;

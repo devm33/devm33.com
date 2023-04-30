@@ -1,0 +1,49 @@
+.nav-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-group {
+  align-items: center;
+  display: flex;
+  gap: 1em;
+}
+
+.title {
+  font-size: var(--font-2);
+  line-height: var(--header-line);
+  white-space: nowrap;
+}
+
+.icon-links {
+  display: flex;
+  gap: 1em;
+}
+
+@media screen {
+  .only-print {
+    display: none;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  .nav-bar {
+    margin-top: calc(var(--unit) / 2);
+  }
+
+  /* Specificity required to override base link color. */
+  a.title {
+    color: var(--color);
+    font-weight: 600;
+  }
+
+  .icon-links > a {
+    font-size: 14px; /* To match resume font */
+    text-decoration: underline;
+  }
+}

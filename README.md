@@ -21,9 +21,11 @@ npm start
 
 ## TODO
 
-- [ ] Add dark mode
-- [ ] Add rss of projects,
-      [official plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/)
+- [ ] Add link stylesheet tag to ssr katex posts
+- [ ] Add dark mode (will require forking prism themes to customize)
+- [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
+- [ ] Consider switching to mdx to better load images
+- [ ] https://developer.chrome.com/articles/new-headless/
 
 ### Projects to add:
 
@@ -34,6 +36,23 @@ npm start
 
 ## Done
 
+- [x] Add stylelint plugin to catch undefined custom properties
+- [x] Add redirect for /sitemap.xml
+- [x] Add css transition to icon component for slide out labels
+- [x] Replace project grid with list
+- [x] Resolve @components alias to src/components/ directory
+- [x] Modify site schema type without overriding resolver implementation
+- [x] Remove unneeded template strings from gatsby-config
+- [x] Use Slice for navbar
+- [x] Unify navbar across pages
+- [x] Fix variable font-weight on resume
+- [x] Replace mulish webfont with full webfont, use it everywhere
+- [x] Remove code to lazy load prism css since including it (1.3kb) in main css
+- [x] Set immutable cache headers on katex css files
+- [x] Fix katex fonts by leveraging webpack to separate katex css
+- [x] Remove css splitting
+- [x] Make katex/prism css available on development using bootstrap hook
+- [x] Bypass webpack css splitting by loading katex and prism css via link
 - [x] Add plugin to sort css properties alphabetically
 - [x] Add stylelint
 - [x] Add GitHub actions for linting and formatting

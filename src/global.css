@@ -4,6 +4,10 @@
 }
 
 html {
+  /* Hack to prevent auto vertical-scrollbar from shifting content. */
+  margin-right: calc(-1 * (100vw - 100%));
+  overflow-x: hidden;
+
   /* Prevent adjustments of font size after orientation changes in iOS. */
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%;
@@ -27,14 +31,22 @@ html {
 body {
   background-color: var(--bg);
   color: var(--color);
-  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Mulish, MulishFallback, Arial, sans-serif;
   line-height: var(--unit);
-}
-
-article {
   margin: 0 auto;
   max-width: 700px;
-  width: 80%;
+}
+
+@media screen and (width <= 700px) {
+  body {
+    margin: 0 1em;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+  }
 }
 
 a,
@@ -43,7 +55,6 @@ a:visited {
   text-decoration: none;
   transition-duration: 0.3s;
   transition-property: color, background-color, border-color;
-  transition-timing-function: ease-in-out;
 }
 
 a:hover {
@@ -70,7 +81,6 @@ li {
 h1,
 h2,
 h3 {
-  font-weight: bold;
   line-height: var(--header-line);
   text-rendering: optimizeLegibility;
 }

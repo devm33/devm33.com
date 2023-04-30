@@ -36,20 +36,19 @@ export function Head(props: Props) {
       }
     `,
   );
-  const siteMetadata = query.site?.siteMetadata;
-  const title = props.title || props.pageContext.title || siteMetadata?.title;
-  const desc = props.pageContext.description || siteMetadata?.description;
-  const image = (props.pageContext.image || query.me)?.childImageSharp;
-  const siteUrl = siteMetadata?.siteUrl;
-  if (!image) throw new Error("Missing image for page head");
-  if (!siteUrl) throw new Error("Missing siteUrl for page head");
+  const siteMetadata = query.site.siteMetadata;
+  const title = props.title || props.pageContext.title || siteMetadata.title;
+  const desc = props.pageContext.description || siteMetadata.description;
+  const siteUrl = siteMetadata.siteUrl;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const image = (props.pageContext.image || query.me)!.childImageSharp!;
   return (
     <>
       <title>{title}</title>
-      <meta name="description" content={desc || undefined} />
-      <meta name="og:description" content={desc || undefined} />
+      <meta name="description" content={desc} />
+      <meta name="og:description" content={desc} />
       <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
-      <meta name="og:title" content={title || undefined} />
+      <meta name="og:title" content={title} />
       <meta name="og:url" content={`${siteUrl}${props.location.pathname}`} />
     </>
   );
