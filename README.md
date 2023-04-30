@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [~] Add N most recent projects to home page
 - [ ] Consolidate global css
 - [ ] Add link stylesheet tag to ssr katex posts
 - [ ] Maybe add page transition animations, maybe not though
