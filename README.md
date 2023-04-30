@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Consolidate global css
 - [ ] Add link stylesheet tag to ssr katex posts
 - [ ] Maybe add page transition animations, maybe not though
 - [ ] Add dark mode (will require forking prism themes to customize)
