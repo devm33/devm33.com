@@ -28,7 +28,6 @@ npm start
 - [ ] https://github.com/csstools/stylelint-value-no-unknown-custom-properties
 - [ ] May not need copy plugin anymore?
       https://www.gatsbyjs.com/docs/how-to/images-and-media/working-with-gifs/
-- [ ] Add redirect for /sitemap.xml
 
 ### Projects to add:
 
@@ -39,6 +38,7 @@ npm start
 
 ## Done
 
+- [x] Add redirect for /sitemap.xml
 - [x] Add css transition to icon component for slide out labels
 - [x] Replace project grid with list
 - [x] Resolve @components alias to src/components/ directory

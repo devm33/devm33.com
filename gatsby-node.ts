@@ -85,6 +85,7 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
     });
   }
 
+  // Add redirects
   // Redirects for previous blog site urls.
   createRedirect({
     fromPath: "/2015-06-07",
@@ -104,6 +105,12 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
   createRedirect({
     fromPath: "/resume.pdf",
     toPath: "/devraj_mehta_resume.pdf",
+    isPermanent: true,
+  });
+  // Redirect for sitemap.xml
+  createRedirect({
+    fromPath: "/sitemap.xml",
+    toPath: "/sitemap-index.xml",
     isPermanent: true,
   });
 
