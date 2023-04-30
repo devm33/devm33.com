@@ -26,8 +26,6 @@ npm start
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
 - [ ] https://github.com/csstools/stylelint-value-no-unknown-custom-properties
-- [ ] May not need copy plugin anymore?
-      https://www.gatsbyjs.com/docs/how-to/images-and-media/working-with-gifs/
 
 ### Projects to add:
 
