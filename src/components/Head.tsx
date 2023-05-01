@@ -16,9 +16,7 @@ interface Props extends HeadProps<object, PageContext> {
   title?: string;
 }
 
-/** Common gatsby head component: https://gatsby.dev/gatsby-head */
-export function Head({ title, pageContext, location }: Props) {
-  const { me, site } = useStaticQuery<Queries.HeadQuery>(graphql`
+const query = graphql`
     query Head {
       site {
         siteMetadata {
@@ -33,7 +31,11 @@ export function Head({ title, pageContext, location }: Props) {
         }
       }
     }
-  `);
+`;
+
+/** Common gatsby head component: https://gatsby.dev/gatsby-head */
+export function Head({ title, pageContext, location }: Props) {
+  const { me, site } = useStaticQuery<Queries.HeadQuery>(query);
   const sm = site.siteMetadata;
   const desc = pageContext.description || sm.description;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
