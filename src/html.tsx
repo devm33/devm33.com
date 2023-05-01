@@ -20,24 +20,9 @@ export default function HTML(props: Props) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@devm33" />
-        <meta name="fb:app_id" content="477033866176272" />
-        <meta name="og:type" content="article" />
-        <link
-          rel="preload"
-          href="/fonts/mulish.woff2"
-          as="font"
-          crossOrigin="anonymous"
-          type="font/woff2"
-        />
-        <link
-          rel="preload"
-          href="/fonts/mulish-ital.woff2"
-          as="font"
-          crossOrigin="anonymous"
-          type="font/woff2"
-        />
+        <StaticSocialTags />
+        <FontPreload href="/fonts/mulish.woff2" />
+        <FontPreload href="/fonts/mulish-ital.woff2" />
         {filterHeadComponents(props.headComponents)}
       </head>
       <body {...props.bodyAttributes}>
@@ -64,4 +49,28 @@ function removeGenerator(node: ReactNode): boolean {
   if (!isValidElement(node)) return true;
   if (node.type === "meta" && node.props.name === "generator") return false;
   return true;
+}
+
+/** Preload a self-hosted woff2 font file. */
+function FontPreload({ href }: { href: string }) {
+  return (
+    <link
+      rel="preload"
+      href={href}
+      as="font"
+      crossOrigin="anonymous"
+      type="font/woff2"
+    />
+  );
+}
+
+function StaticSocialTags() {
+  return (
+    <>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@devm33" />
+      <meta name="fb:app_id" content="477033866176272" />
+      <meta name="og:type" content="article" />
+    </>
+  );
 }

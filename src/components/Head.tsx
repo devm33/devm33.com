@@ -16,40 +16,38 @@ interface Props extends HeadProps<object, PageContext> {
   title?: string;
 }
 
-/** Common gatsby head component: https://gatsby.dev/gatsby-head */
-export function Head(props: Props) {
-  const query = useStaticQuery<Queries.HeadQuery>(
-    graphql`
-      query Head {
-        site {
-          siteMetadata {
-            title
-            description
-            siteUrl
-          }
-        }
-        me: file(relativePath: { eq: "images/me.jpg" }) {
-          childImageSharp {
-            gatsbyImageData(width: 1000)
-          }
-        }
+const query = graphql`
+  query Head {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
       }
-    `,
-  );
-  const siteMetadata = query.site.siteMetadata;
-  const title = props.title || props.pageContext.title || siteMetadata.title;
-  const desc = props.pageContext.description || siteMetadata.description;
-  const siteUrl = siteMetadata.siteUrl;
+    }
+    me: file(relativePath: { eq: "images/me.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(width: 1000)
+      }
+    }
+  }
+`;
+
+/** Common gatsby head component: https://gatsby.dev/gatsby-head */
+export function Head({ title, pageContext, location }: Props) {
+  const { me, site } = useStaticQuery<Queries.HeadQuery>(query);
+  const sm = site.siteMetadata;
+  const desc = pageContext.description || sm.description;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const image = (props.pageContext.image || query.me)!.childImageSharp!;
+  const image = (pageContext.image || me)!.childImageSharp!;
   return (
     <>
       <title>{title}</title>
       <meta name="description" content={desc} />
       <meta name="og:description" content={desc} />
-      <meta name="og:image" content={`${siteUrl}${getSrc(image)}`} />
-      <meta name="og:title" content={title} />
-      <meta name="og:url" content={`${siteUrl}${props.location.pathname}`} />
+      <meta name="og:image" content={`${sm.siteUrl}${getSrc(image)}`} />
+      <meta name="og:title" content={title || pageContext.title || sm.title} />
+      <meta name="og:url" content={`${sm.siteUrl}${location.pathname}`} />
     </>
   );
 }
