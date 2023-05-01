@@ -17,20 +17,20 @@ interface Props extends HeadProps<object, PageContext> {
 }
 
 const query = graphql`
-    query Head {
-      site {
-        siteMetadata {
-          title
-          description
-          siteUrl
-        }
-      }
-      me: file(relativePath: { eq: "images/me.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(width: 1000)
-        }
+  query Head {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
       }
     }
+    me: file(relativePath: { eq: "images/me.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(width: 1000)
+      }
+    }
+  }
 `;
 
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
