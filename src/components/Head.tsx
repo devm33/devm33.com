@@ -34,19 +34,19 @@ const query = graphql`
 `;
 
 /** Common gatsby head component: https://gatsby.dev/gatsby-head */
-export function Head({ title, pageContext, location }: Props) {
+export function Head({ title, pageContext: pc, location }: Props) {
   const { me, site } = useStaticQuery<Queries.HeadQuery>(query);
   const sm = site.siteMetadata;
-  const desc = pageContext.description || sm.description;
+  const desc = pc.description || sm.description;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const image = (pageContext.image || me)!.childImageSharp!;
+  const image = (pc.image || me)!.childImageSharp!;
   return (
     <>
-      <title>{title || pageContext.title || sm.title}</title>
+      <title>{title || pc.title || sm.title}</title>
       <meta name="description" content={desc} />
       <meta name="og:description" content={desc} />
       <meta name="og:image" content={`${sm.siteUrl}${getSrc(image)}`} />
-      <meta name="og:title" content={title || pageContext.title || sm.title} />
+      <meta name="og:title" content={title || pc.title || sm.title} />
       <meta name="og:url" content={`${sm.siteUrl}${location.pathname}`} />
     </>
   );
