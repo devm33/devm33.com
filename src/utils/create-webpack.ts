@@ -1,19 +1,29 @@
-import { GatsbyNode } from "gatsby";
+import { Actions, CreateWebpackConfigArgs } from "gatsby";
 import path from "path";
 import { Module } from "webpack";
 
-type OnCreateWebpackConfig = GatsbyNode["onCreateWebpackConfig"];
-export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
-  // Add import alias for components directory
-  args.actions.setWebpackConfig({
+export function onCreateWebpackConfig(args: CreateWebpackConfigArgs) {
+  addAliases(args.actions);
+
+  if (!args.stage.includes("build")) return; // Below only runs in build
+  modifyCssModulesLocalIdent(args);
+
+  if (args.stage !== "build-javascript") return; // Below only runs in build-js
+  modifyStylesChunk(args.actions);
+}
+
+/** Add import aliases to resolve. */
+function addAliases({ setWebpackConfig }: Actions) {
+  setWebpackConfig({
     resolve: {
       alias: { "@components": path.resolve(__dirname, "src/components") },
     },
   });
+}
 
-  // Minify css module class names use 5-digit hex hash
+/**  Minify css module class names use 5-digit hex hash. */
+function modifyCssModulesLocalIdent(args: CreateWebpackConfigArgs) {
   const config = args.getConfig();
-  if (!args.stage.includes("build")) return;
   // Note this approach assumes css config is in a oneOf block.
   for (const { oneOf } of config.module.rules) {
     if (!oneOf?.length) continue;
@@ -27,10 +37,11 @@ export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
     }
   }
   args.actions.replaceWebpackConfig(config);
+}
 
-  // Separate katex css from main css build
-  if (args.stage !== "build-javascript") return;
-  args.actions.setWebpackConfig({
+/** Separate katex css from main css build. */
+function modifyStylesChunk({ setWebpackConfig }: Actions) {
+  setWebpackConfig({
     optimization: {
       runtimeChunk: {
         name: "webpack-runtime",
@@ -40,13 +51,15 @@ export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
         cacheGroups: {
           styles: {
             name: "styles",
-            test: (module: Module) =>
-              module.type === "css/mini-extract" &&
-              !/katex/.test(module.identifier()),
+            test: stylesTest,
             enforce: true,
           },
         },
       },
     },
   });
-};
+}
+
+function stylesTest({ type, identifier }: Module): boolean {
+  return type === "css/mini-extract" && !/katex/.test(identifier());
+}
