@@ -46,10 +46,7 @@ function Experience({ data }: { data: Queries.ResumeQuery }) {
       <h2>EXPERIENCE</h2>
       {data.allJobsYaml.nodes.map((job) => (
         <div key={job.id}>
-          <div className={css.titleRow}>
-            <Title {...job} />
-            <DateRange {...job} />
-          </div>
+          <Title {...job} />
           <ul>
             {job.description.map((desc) => (
               <li key={desc}>{desc}</li>
@@ -65,15 +62,14 @@ function Education() {
   return (
     <section className={css.section}>
       <h2>EDUCATION</h2>
-      <div className={css.titleRow}>
-        <Title
-          uri="https://gatech.edu"
-          name="Georgia Institute of Technology"
-          title="BSc Computer Science"
-          location="Atlanta, GA"
-        />
-        <DateRange start="AUG 2010" finish="MAY 2014" />
-      </div>
+      <Title
+        uri="https://gatech.edu"
+        name="Georgia Institute of Technology"
+        title="BSc Computer Science"
+        location="Atlanta, GA"
+        start="AUG 2010"
+        finish="MAY 2014"
+      />
       <div>Highest Honors</div>
     </section>
   );
@@ -95,22 +91,21 @@ interface TitleProps {
   name: string;
   title: string;
   location: string;
+  start: string;
+  finish: string;
 }
 
-function Title({ uri, name, title, location }: TitleProps) {
+function Title({ uri, name, title, location, start, finish }: TitleProps) {
   return (
-    <h3>
-      <a href={uri}>{name}</a>, {title} {}
-      <span className={`${css.location} ${css.nowrap}`}>- {location}</span>
-    </h3>
-  );
-}
-
-function DateRange({ start, finish }: { start: string; finish: string }) {
-  return (
-    <div className={css.dateRange}>
-      <span className={css.nowrap}>{start}</span> - {}
-      <span className={css.nowrap}>{finish}</span>
+    <div className={css.titleRow}>
+      <h3>
+        <a href={uri}>{name}</a>, {title} {}
+        <span className={`${css.location} ${css.nowrap}`}>- {location}</span>
+      </h3>
+      <div className={css.dateRange}>
+        <span className={css.nowrap}>{start}</span> - {}
+        <span className={css.nowrap}>{finish}</span>
+      </div>
     </div>
   );
 }
