@@ -1,4 +1,5 @@
 import { Actions, CreateWebpackConfigArgs } from "gatsby";
+import { cloneDeepWith, isString } from "lodash";
 import path from "path";
 import { Module } from "webpack";
 
@@ -22,18 +23,12 @@ function addAliases({ setWebpackConfig }: Actions) {
 /**  Minify css module class names use 5-digit hex hash. */
 function modifyCssModulesLocalIdent(args: CreateWebpackConfigArgs) {
   const config = args.getConfig();
-  // Note this approach assumes css config is in a oneOf block.
-  for (const { oneOf } of config.module.rules) {
-    if (!oneOf?.length) continue;
-    for (const { use } of oneOf) {
-      if (!use) continue;
-      for (const { loader, options } of use) {
-        if (!loader?.includes(`${path.sep}css-loader${path.sep}`)) continue;
-        if (!options?.modules) continue;
-        options.modules.localIdentName = "[hash:hex:5]";
-      }
+  config.module.rules = cloneDeepWith(config.module.rules, (value, key) => {
+    if (key === "options" && isString(value.modules?.localIdentName)) {
+      value.modules.localIdentName = "[hash:hex:5]";
+      return value;
     }
-  }
+  });
   args.actions.replaceWebpackConfig(config);
 }
 
