@@ -5,6 +5,8 @@ import { Module } from "webpack";
 export { onCreateNode } from "./src/utils/create-node";
 export { createPages } from "./src/utils/create-pages";
 export { onPostBuild } from "./src/utils/post-build";
+export { createSchemaCustomization } from "./src/utils/create-schema";
+export { createResolvers } from "./src/utils/create-resolvers";
 
 type OnCreateWebpackConfig = GatsbyNode["onCreateWebpackConfig"];
 export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
@@ -51,51 +53,6 @@ export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
           },
         },
       },
-    },
-  });
-};
-
-type CreateSchemaCustomization = GatsbyNode["createSchemaCustomization"];
-export const createSchemaCustomization: CreateSchemaCustomization = (args) => {
-  args.actions.createTypes(/* GraphQL */ `
-    type Site {
-      siteMetadata: SiteMetadata!
-    }
-
-    type SiteMetadata {
-      title: String!
-      description: String!
-      siteUrl: String!
-      email: String!
-      github: String!
-      linkedin: String!
-    }
-
-    type MarkdownRemark implements Node {
-      fields: MarkdownRemarkFields!
-      frontmatter: MarkdownRemarkFrontmatter!
-      html: String!
-    }
-
-    type MarkdownRemarkFrontmatter {
-      link: String
-      repo: String
-      tagline: String!
-      tags: [String!]!
-      title: String!
-    }
-
-    type MarkdownRemarkFields {
-      path: String!
-    }
-  `);
-};
-
-export const createResolvers: GatsbyNode["createResolvers"] = (args) => {
-  args.createResolvers({
-    Query: {
-      site: { type: "Site!" },
-      markdownRemark: { type: "MarkdownRemark!" },
     },
   });
 };
