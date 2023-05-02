@@ -15,9 +15,7 @@ export function onCreateWebpackConfig(args: CreateWebpackConfigArgs) {
 /** Add import aliases to resolve. */
 function addAliases({ setWebpackConfig }: Actions) {
   setWebpackConfig({
-    resolve: {
-      alias: { "@components": path.resolve(__dirname, "src/components") },
-    },
+    resolve: { alias: { "@components": path.resolve("src/components") } },
   });
 }
 
@@ -60,6 +58,6 @@ function modifyStylesChunk({ setWebpackConfig }: Actions) {
   });
 }
 
-function stylesTest({ type, identifier }: Module): boolean {
-  return type === "css/mini-extract" && !/katex/.test(identifier());
+function stylesTest(m: Module): boolean {
+  return m.type === "css/mini-extract" && !/katex/.test(m.identifier());
 }
