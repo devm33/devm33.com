@@ -31,6 +31,17 @@ const types = /* GraphQL */ `
   type MarkdownRemarkFields {
     path: String!
   }
+
+  type JobsYaml implements Node {
+    uri: String!
+    name: String!
+    title: String!
+    location: String!
+    start: String!
+    finish: String!
+    description: [String!]!
+    enabled: Boolean!
+  }
 `;
 
 export function createSchemaCustomization(args: CreateSchemaCustomizationArgs) {
