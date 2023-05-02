@@ -5,6 +5,8 @@ import puppeteer from "puppeteer";
 import url from "url";
 import { Module } from "webpack";
 
+export { createPages } from "./src/utils/create-pages";
+
 export const onCreateNode: GatsbyNode["onCreateNode"] = (args) => {
   const { node, actions, getNode } = args;
   const { createNodeField } = actions;
@@ -14,91 +16,6 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = (args) => {
   if (!fileNode) return;
   const relativeDirectory = fileNode.relativeDirectory as string;
   createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
-};
-
-const ProjectTemplate = path.resolve("src/templates/Project.tsx");
-const TagTemplate = path.resolve("src/templates/Tag.tsx");
-const NavbarTemplate = path.resolve("src/templates/Navbar.tsx");
-
-export const createPages: GatsbyNode["createPages"] = async (args) => {
-  const { createPage, createRedirect, createSlice } = args.actions;
-  const result = await args.graphql<Queries.CreatePagesQuery>(/* GraphQL */ `
-    query CreatePages {
-      projects: allMarkdownRemark {
-        nodes {
-          id
-          fields {
-            path
-          }
-          frontmatter {
-            tags
-            title
-            tagline
-            image {
-              childImageSharp {
-                gatsbyImageData(width: 1000)
-              }
-            }
-          }
-        }
-      }
-      katexProjects: allMarkdownRemark(filter: { html: { regex: "/katex/" } }) {
-        nodes {
-          id
-        }
-      }
-      tags: allMarkdownRemark {
-        distinct(field: { frontmatter: { tags: SELECT } })
-      }
-    }
-  `);
-  if (result.errors || !result.data) {
-    args.reporter.panicOnBuild("Error while running GraphQL query.");
-    return;
-  }
-  const katex = new Set(result.data.katexProjects.nodes.map((node) => node.id));
-
-  // Add project pages.
-  for (const node of result.data.projects.nodes) {
-    if (!node.fields?.path || !node.frontmatter) {
-      args.reporter.panicOnBuild("Project node missing required fields.");
-      return;
-    }
-    createPage({
-      path: node.fields.path,
-      component: ProjectTemplate,
-      context: {
-        title: node.frontmatter.title,
-        description: node.frontmatter.tagline,
-        image: node.frontmatter.image,
-        katex: katex.has(node.id),
-      },
-    });
-  }
-
-  // Add tag pages.
-  for (const tag of result.data.tags.distinct) {
-    createPage({
-      path: `/tag/${tag}/`,
-      component: TagTemplate,
-      context: { tag, title: `Projects tagged ${tag}` },
-    });
-  }
-
-  // Add redirects
-  const redirect = (fromPath: string, toPath: string) =>
-    createRedirect({ fromPath, toPath, isPermanent: true });
-  // Redirects for previous blog site urls.
-  redirect("/2015-06-07", "/projects/4clojure/");
-  redirect("/2014-12-04", "/projects/motivation/");
-  redirect("/2014-09-22", "/projects/jekyll-nfs/");
-  redirect("/sitemap.xml", "/sitemap-index.xml");
-  redirect("/about", "/");
-  // Redirect for resume pdf short-link
-  redirect("/resume.pdf", "/devraj_mehta_resume.pdf");
-
-  // Add header slice
-  createSlice({ id: "navbar", component: NavbarTemplate });
 };
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
