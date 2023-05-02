@@ -8,7 +8,7 @@ export async function onPostBuild() {
   const args = ["--font-render-hinting=none"];
   const browser = await puppeteer.launch({ args });
   const page = await browser.newPage();
-  const resumePath = path.join(__dirname, "public/resume/index.html");
+  const resumePath = path.resolve("public/resume/index.html");
   await page.goto(url.pathToFileURL(resumePath).toString());
   const content = await inlineFontFiles();
   await page.addStyleTag({ content });
