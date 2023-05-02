@@ -6,6 +6,7 @@ const config: GatsbyConfig = {
   graphqlTypegen: {
     typesOutputPath: ".cache/gatsby-types.d.ts",
     generateOnBuild: true,
+    documentSearchPaths: ["./gatsby-node.ts", "./src/utils/*.ts"],
   },
   siteMetadata: {
     title: "Devraj Mehta",

@@ -67,7 +67,13 @@
       "@typescript-eslint",
       "react",
       "jsx-a11y"
-    ]
+    ],
+    "rules": {
+      "max-lines-per-function": [
+        "error",
+        27
+      ]
+    }
   },
   "prettier": {
     "proseWrap": "always",
