@@ -1,4 +1,4 @@
-.article {
+.hello-section {
   display: flex;
   flex-wrap: wrap;
   gap: 0 1rem;
@@ -7,5 +7,5 @@
 }
 
 .description {
-  flex: 1;
+  flex-grow: 1;
 }

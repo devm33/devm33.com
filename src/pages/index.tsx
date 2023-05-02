@@ -3,6 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { Layout } from "@components/Layout";
+import { Project } from "@components/Project";
 import * as css from "./index.module.css";
 
 export { Head } from "@components/Head";
@@ -15,16 +16,29 @@ export const query = graphql`
         linkedin
       }
     }
+    allMarkdownRemark(limit: 3, sort: { frontmatter: { updated: DESC } }) {
+      nodes {
+        ...ProjectFields
+      }
+    }
   }
 `;
 
 export default function Index(props: PageProps<Queries.HomepageQuery>) {
   return (
     <Layout>
-      <article className={css.article}>
+      <section className={css.helloSection}>
         <Description {...props.data.site.siteMetadata} />
         <Photo />
-      </article>
+      </section>
+      <section>
+        <h3>
+          Recent projects <Link to="/projects">(View all)</Link>
+        </h3>
+        {props.data.allMarkdownRemark.nodes.map((node) => (
+          <Project key={node.fields.path} project={node} />
+        ))}
+      </section>
     </Layout>
   );
 }

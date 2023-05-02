@@ -21,7 +21,6 @@ npm start
 
 ## TODO
 
-- [ ] Add 3 most recent projects to home page
 - [ ] Add link stylesheet tag to ssr katex posts
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
@@ -37,6 +36,7 @@ npm start
 
 ## Done
 
+- [x] Add 3 most recent projects to home page
 - [x] Add stylelint plugin to catch undefined custom properties
 - [x] Add redirect for /sitemap.xml
 - [x] Add css transition to icon component for slide out labels
