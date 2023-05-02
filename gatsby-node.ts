@@ -1,43 +1,10 @@
 import { GatsbyNode } from "gatsby";
-import { readFile } from "node:fs/promises";
 import path from "path";
-import puppeteer from "puppeteer";
-import url from "url";
 import { Module } from "webpack";
 
 export { onCreateNode } from "./src/utils/create-node";
 export { createPages } from "./src/utils/create-pages";
-
-export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
-  // Generate PDF of resume page
-  const args = ["--font-render-hinting=none"];
-  const browser = await puppeteer.launch({ args });
-  const page = await browser.newPage();
-  const resumePath = path.join(__dirname, "public/resume/index.html");
-  await page.goto(url.pathToFileURL(resumePath).toString());
-  const encoding = "base64";
-  const fonts = "./static/fonts";
-  const normal = await readFile(`${fonts}/mulish.woff2`, { encoding });
-  const italic = await readFile(`${fonts}/mulish-ital.woff2`, { encoding });
-  const content = `
-  @font-face {
-    font-family: Mulish;
-    font-style: normal;
-    font-weight: 200 1000;
-    src: url("data:font/woff2;base64,${normal}") format("woff2");
-  }
-  @font-face {
-    font-family: Mulish;
-    font-style: italic;
-    font-weight: 200 1000;
-    src: url("data:font/woff2;base64,${italic}") format("woff2");
-  }
-  `;
-  await page.addStyleTag({ content });
-  await page.evaluateHandle("document.fonts.ready");
-  await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
-  await browser.close();
-};
+export { onPostBuild } from "./src/utils/post-build";
 
 type OnCreateWebpackConfig = GatsbyNode["onCreateWebpackConfig"];
 export const onCreateWebpackConfig: OnCreateWebpackConfig = (args) => {
