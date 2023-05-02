@@ -5,6 +5,7 @@ export function createResolvers({ createResolvers }: CreateResolversArgs) {
     Query: {
       site: { type: "Site!" },
       markdownRemark: { type: "MarkdownRemark!" },
+      resumeYaml: { type: "ResumeYaml!" },
     },
   });
 }

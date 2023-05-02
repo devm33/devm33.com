@@ -75,15 +75,19 @@ function Education() {
   );
 }
 
-function Skills({ data }: { data: Queries.ResumeQuery }) {
+function Skills({ data: { resumeYaml } }: { data: Queries.ResumeQuery }) {
   return (
     <section className={css.section}>
       <h2>SKILLS</h2>
-      {Object.entries(data.resumeYaml ?? {}).map(([category, list]) => (
-        <div key={category}>{list?.join(", ")}</div>
-      ))}
+      <List values={resumeYaml.Frameworks} />
+      <List values={resumeYaml.Languages} />
+      <List values={resumeYaml.Platforms} />
     </section>
   );
+}
+
+function List({ values }: { values: readonly string[] }) {
+  return <div>{values.join(", ")}</div>;
 }
 
 interface TitleProps {

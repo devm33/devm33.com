@@ -42,6 +42,11 @@ const types = /* GraphQL */ `
     description: [String!]!
     enabled: Boolean!
   }
+  type ResumeYaml implements Node {
+    Frameworks: [String!]!
+    Languages: [String!]!
+    Platforms: [String!]!
+  }
 `;
 
 export function createSchemaCustomization(args: CreateSchemaCustomizationArgs) {
