@@ -5,18 +5,8 @@ import puppeteer from "puppeteer";
 import url from "url";
 import { Module } from "webpack";
 
+export { onCreateNode } from "./src/utils/create-node";
 export { createPages } from "./src/utils/create-pages";
-
-export const onCreateNode: GatsbyNode["onCreateNode"] = (args) => {
-  const { node, actions, getNode } = args;
-  const { createNodeField } = actions;
-  // Add fields to markdown pages
-  if (node.internal.type !== "MarkdownRemark" || !node.parent) return;
-  const fileNode = getNode(node.parent);
-  if (!fileNode) return;
-  const relativeDirectory = fileNode.relativeDirectory as string;
-  createNodeField({ node, name: "path", value: `/${relativeDirectory}/` });
-};
 
 export const onPostBuild: GatsbyNode["onPostBuild"] = async () => {
   // Generate PDF of resume page
