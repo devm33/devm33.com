@@ -22,6 +22,7 @@ npm start
 ## TODO
 
 - [ ] Add 3 most recent projects to home page
+- [ ] Would the home page look better with a float right?
 - [ ] Add link stylesheet tag to ssr katex posts
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
