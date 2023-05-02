@@ -42,7 +42,7 @@ export function Head({ title, pageContext, location }: Props) {
   const image = (pageContext.image || me)!.childImageSharp!;
   return (
     <>
-      <title>{title}</title>
+      <title>{title || pageContext.title || sm.title}</title>
       <meta name="description" content={desc} />
       <meta name="og:description" content={desc} />
       <meta name="og:image" content={`${sm.siteUrl}${getSrc(image)}`} />
