@@ -2,10 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0 1rem;
+
+  --unit: calc(1.65rem / 2); /* Override default line height. */
 }
 
 .description {
-  --unit: calc(1.65rem / 2); /* Override default line height. */
-
-  flex-shrink: 1;
+  flex: 1;
 }

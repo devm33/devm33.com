@@ -22,16 +22,8 @@ export default function Index(props: PageProps<Queries.HomepageQuery>) {
   return (
     <Layout>
       <article className={css.article}>
-        <StaticImage
-          src="../images/me.jpg"
-          alt="head shot"
-          placeholder="dominantColor"
-          loading="eager"
-          layout="fixed"
-          width={250}
-          height={250}
-        />
         <Description {...props.data.site.siteMetadata} />
+        <Photo />
       </article>
     </Layout>
   );
@@ -61,5 +53,19 @@ function Description({ github, linkedin }: DescriptionProps) {
         Cheers! <br /> Devraj
       </p>
     </div>
+  );
+}
+
+function Photo() {
+  return (
+    <StaticImage
+      src="../images/me.jpg"
+      alt="head shot"
+      placeholder="dominantColor"
+      loading="eager"
+      layout="fixed"
+      width={250}
+      height={250}
+    />
   );
 }
