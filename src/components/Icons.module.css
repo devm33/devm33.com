@@ -40,4 +40,5 @@
   font-size: 1rem;
   font-weight: normal;
   overflow: hidden;
+  white-space: pre;
 }

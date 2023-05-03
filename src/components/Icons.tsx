@@ -32,7 +32,7 @@ export function IconLink({ icon, label, className, ...rest }: IconLinkProps) {
       <Icon icon={icon} />
       {label && (
         <div className={css.label}>
-          <div className={css.innerLabel}>&nbsp;{label}</div>
+          <div className={css.innerLabel}> {label}</div>
         </div>
       )}
     </a>
