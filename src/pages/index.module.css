@@ -9,3 +9,11 @@
 .description {
   flex-grow: 1;
 }
+
+.recent-title {
+  line-height: var(--header-line);
+}
+
+.recent-header {
+  display: inline;
+}
