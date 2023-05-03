@@ -21,7 +21,7 @@ npm start
 
 ## TODO
 
-- [ ] Add link stylesheet tag to ssr katex posts
+- [ ] Add link stylesheet tag to ssr katex posts (requires webpack rework)
 - [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
