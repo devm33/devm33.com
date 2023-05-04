@@ -4,6 +4,10 @@
 }
 
 html {
+  /* Colors */
+  background-color: var(--bg);
+  color: var(--fg);
+
   /* Hack to prevent auto vertical-scrollbar from shifting content. */
   margin-right: calc(-1 * (100vw - 100%));
   overflow-x: hidden;
@@ -11,10 +15,9 @@ html {
   /* Prevent adjustments of font size after orientation changes in iOS. */
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%;
-}
 
-:root {
-  color-scheme: light dark;
+  /* Transition color scheme */
+  transition: color 0.3s, background-color 0.3s;
 
   /* Spacing */
   --unit: 1.65rem;
@@ -27,24 +30,21 @@ html {
   --font-3: 1.728rem;
 }
 
-body {
+html,
+html.light {
+  color-scheme: light;
+
   --fg: #212121; /* #000 on bg at 87% opacity */
   --fg2: #666; /* #000 on bg at 60% opacity */
   --bg: #fff;
   --accent: #d6006c; /* custom 600 */
   --on-accent: #fff;
   --link: #1976d2; /* mat blue 700 */
-
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: Mulish, MulishFallback, Arial, sans-serif;
-  line-height: var(--unit);
-  margin: 0 auto;
-  max-width: 700px;
-  transition: color 0.3s, background-color 0.3s;
 }
 
-body.dark {
+html.dark {
+  color-scheme: dark;
+
   --fg: #e0e0e0; /* #fff on bg at 87% opacity */
   --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
   --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
@@ -54,7 +54,7 @@ body.dark {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
+  html {
     --fg: #e0e0e0; /* #fff on bg at 87% opacity */
     --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
     --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
@@ -62,15 +62,13 @@ body.dark {
     --accent: #ec5e9c; /* custom 200 */
     --on-accent: #000;
   }
+}
 
-  body.light {
-    --fg: #212121; /* #000 on bg at 87% opacity */
-    --fg2: #666; /* #000 on bg at 60% opacity */
-    --bg: #fff;
-    --accent: #d6006c; /* custom 600 */
-    --on-accent: #fff;
-    --link: #1976d2; /* mat blue 700 */
-  }
+body {
+  font-family: Mulish, MulishFallback, Arial, sans-serif;
+  line-height: var(--unit);
+  margin: 0 auto;
+  max-width: 700px;
 }
 
 @media screen and (width <= 700px) {

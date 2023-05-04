@@ -8,13 +8,20 @@ interface Props {
 }
 
 function updateTheme(light: boolean) {
-  document.body.classList.toggle("light", light);
-  document.body.classList.toggle("dark", !light);
+  document.documentElement.classList.toggle("light", light);
+  document.documentElement.classList.toggle("dark", !light);
+  localStorage.setItem("light", `${light}`);
+}
+
+function getInitialLight(): boolean {
+  const localStorageLight = localStorage.getItem("light");
+  if (localStorageLight !== undefined) return localStorageLight === "true";
+  const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  return !darkMediaQuery.matches;
 }
 
 export function ThemeToggle({ className }: Props) {
-  const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  const [light, setLight] = useState(!darkMediaQuery.matches);
+  const [light, setLight] = useState(getInitialLight());
 
   useEffect(() => {
     updateTheme(light);
