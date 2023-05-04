@@ -14,8 +14,8 @@ html {
 }
 
 :root {
-  --fg: #333;
-  --fg2: #666;
+  --fg: #212121; /* #000 on bg at 87% opacity */
+  --fg2: #666; /* #000 on bg at 60% opacity */
   --bg: #fff;
   --accent: #d6006c; /* custom 600 */
   --on-accent: #fff;
@@ -34,7 +34,7 @@ html {
   :root {
     --fg: #e0e0e0; /* #fff on bg at 87% opacity */
     --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
-    --bg: #121212;
+    --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
     --link: #90caf9; /* mat blue 200 */
     --accent: #ec5e9c; /* custom 200 */
     --on-accent: #000;
