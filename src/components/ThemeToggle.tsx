@@ -7,15 +7,19 @@ interface Props {
   className?: string;
 }
 
+const isBrowser = typeof window !== "undefined";
+
 function updateTheme(light: boolean) {
   document.documentElement.classList.toggle("light", light);
   document.documentElement.classList.toggle("dark", !light);
-  window?.localStorage?.setItem("light", light ? "light" : "dark");
+  if (isBrowser) window.localStorage.setItem("light", light ? "light" : "dark");
 }
 
 function getInitialLight(): boolean {
-  const localStorageLight = window?.localStorage?.getItem("light");
-  if (localStorageLight !== undefined) return localStorageLight === "light";
+  if (isBrowser) {
+    const localStorageLight = window.localStorage.getItem("light");
+    if (localStorageLight !== undefined) return localStorageLight === "light";
+  }
   const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
   return !darkMediaQuery.matches;
 }
