@@ -22,10 +22,11 @@ npm start
 ## TODO
 
 - [~] Add dark mode
-    - [ ] Fork prism theme and add dark theme
-    - [x] Add component to toggle dark mode
-    - [ ] Store theme preference locally
-    - [ ] Skip transition on initial theme application
+  - [ ] Fork prism theme and add dark theme
+  - [x] Add component to toggle dark mode
+  - [ ] Add label to theme toggle button
+  - [ ] Store theme preference locally
+  - [ ] Skip transition on initial theme application
 - [ ] Replace icon link label transition with position absolute to avoid jumping
 - [ ] Add link stylesheet tag to ssr katex posts (requires webpack rework)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
