@@ -27,7 +27,7 @@
 .label {
   display: inline-grid;
   grid-template-columns: 0fr;
-  transition: grid-template-columns 300ms 0.5s;
+  transition: grid-template-columns 0.3s 0.5s;
   white-space: nowrap;
 }
 
