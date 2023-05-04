@@ -1,0 +1,8 @@
+.button {
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s;
+}

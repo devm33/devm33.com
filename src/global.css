@@ -14,14 +14,6 @@ html {
 }
 
 :root {
-  /* Colors */
-  --fg: #212121; /* #000 on bg at 87% opacity */
-  --fg2: #666; /* #000 on bg at 60% opacity */
-  --bg: #fff;
-  --accent: #d6006c; /* custom 600 */
-  --on-accent: #fff;
-  --link: #1976d2; /* mat blue 700 */
-
   color-scheme: light dark;
 
   /* Spacing */
@@ -35,8 +27,34 @@ html {
   --font-3: 1.728rem;
 }
 
+body {
+  --fg: #212121; /* #000 on bg at 87% opacity */
+  --fg2: #666; /* #000 on bg at 60% opacity */
+  --bg: #fff;
+  --accent: #d6006c; /* custom 600 */
+  --on-accent: #fff;
+  --link: #1976d2; /* mat blue 700 */
+
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: Mulish, MulishFallback, Arial, sans-serif;
+  line-height: var(--unit);
+  margin: 0 auto;
+  max-width: 700px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+body.dark {
+  --fg: #e0e0e0; /* #fff on bg at 87% opacity */
+  --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
+  --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
+  --link: #90caf9; /* mat blue 200 */
+  --accent: #ec5e9c; /* custom 200 */
+  --on-accent: #000;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  body {
     --fg: #e0e0e0; /* #fff on bg at 87% opacity */
     --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
     --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
@@ -44,15 +62,15 @@ html {
     --accent: #ec5e9c; /* custom 200 */
     --on-accent: #000;
   }
-}
 
-body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: Mulish, MulishFallback, Arial, sans-serif;
-  line-height: var(--unit);
-  margin: 0 auto;
-  max-width: 700px;
+  body.light {
+    --fg: #212121; /* #000 on bg at 87% opacity */
+    --fg2: #666; /* #000 on bg at 60% opacity */
+    --bg: #fff;
+    --accent: #d6006c; /* custom 600 */
+    --on-accent: #fff;
+    --link: #1976d2; /* mat blue 700 */
+  }
 }
 
 @media screen and (width <= 700px) {
