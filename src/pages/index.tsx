@@ -3,7 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 
 import { Layout } from "@components/Layout";
-import { Project } from "@components/Project";
+import { ProjectList } from "@components/Project";
 import * as css from "./index.module.css";
 
 export { Head } from "@components/Head";
@@ -87,9 +87,7 @@ function RecentProjectsSection({ data }: { data: Queries.HomepageQuery }) {
         <h3 className={css.recentHeader}>Recent Projects</h3> {}
         <ProjectsLink />
       </div>
-      {data.allMarkdownRemark.nodes.map((node) => (
-        <Project key={node.fields.path} project={node} />
-      ))}
+      <ProjectList nodes={data.allMarkdownRemark.nodes} />
       <div>
         Showing 3 of {data.allMarkdownRemark.totalCount} projects {}
         <ProjectsLink />
