@@ -26,6 +26,7 @@ npm start
     - [x] Add component to toggle dark mode
     - [ ] Store theme preference locally
     - [ ] Skip transition on initial theme application
+- [ ] Replace icon link label transition with position absolute to avoid jumping
 - [ ] Add link stylesheet tag to ssr katex posts (requires webpack rework)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
