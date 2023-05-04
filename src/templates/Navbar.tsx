@@ -2,6 +2,7 @@ import { Link, graphql } from "gatsby";
 import React from "react";
 
 import { IconLink, Icons } from "@components/Icons";
+import { ThemeToggle } from "@components/ThemeToggle";
 import * as css from "./Navbar.module.css";
 
 export const query = graphql`
@@ -64,6 +65,7 @@ interface IconLinksProps {
 function IconLinks({ email, github, linkedin }: IconLinksProps) {
   return (
     <div className={css.iconLinks}>
+      <ThemeToggle className={css.noPrint} />
       <IconLink
         className={css.noPrint}
         href={github}
