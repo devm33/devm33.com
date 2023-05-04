@@ -38,7 +38,7 @@
 
   /* Specificity required to override base link color. */
   a.title {
-    color: var(--color);
+    color: var(--fg);
     font-weight: 600;
   }
 

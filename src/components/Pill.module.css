@@ -12,7 +12,7 @@
 .pill:hover {
   background-color: var(--accent);
   border-color: var(--accent);
-  color: white;
+  color: var(--on-accent);
 }
 
 .pill > svg {

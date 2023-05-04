@@ -14,10 +14,12 @@ html {
 }
 
 :root {
-  --color: #333;
-  --bg: transparent;
-  --accent: #d6006c;
-  --link: #1976d2;
+  --fg: #333;
+  --fg2: #666;
+  --bg: #fff;
+  --accent: #d6006c; /* custom 600 */
+  --on-accent: #fff;
+  --link: #1976d2; /* mat blue 700 */
   --unit: 1.65rem;
   --header-line: 3.3rem; /* 2 x unit */
 
@@ -28,9 +30,20 @@ html {
   --font-3: 1.728rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #e0e0e0; /* #fff on bg at 87% opacity */
+    --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
+    --bg: #121212;
+    --link: #90caf9; /* mat blue 200 */
+    --accent: #ec5e9c; /* custom 200 */
+    --on-accent: #000;
+  }
+}
+
 body {
   background-color: var(--bg);
-  color: var(--color);
+  color: var(--fg);
   font-family: Mulish, MulishFallback, Arial, sans-serif;
   line-height: var(--unit);
   margin: 0 auto;
