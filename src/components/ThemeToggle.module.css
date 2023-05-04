@@ -3,7 +3,5 @@
   border: none;
   color: var(--fg);
   cursor: pointer;
-  height: var(--font-1); /* Match icon height */
-  padding: 0;
   transition: color 0.3s;
 }

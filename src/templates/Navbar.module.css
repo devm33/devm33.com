@@ -16,9 +16,12 @@
   white-space: nowrap;
 }
 
-.icon-links {
-  display: flex;
-  gap: 1em;
+.icon-links > * {
+  padding: 0.5em;
+}
+
+.icon-links > :last-child {
+  padding-right: 0;
 }
 
 @media screen {

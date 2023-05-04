@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Icon, Icons } from "./Icons";
+import * as icon from "./Icons.module.css";
 import * as css from "./ThemeToggle.module.css";
 
 interface Props {
@@ -11,14 +12,14 @@ function updateTheme(light: boolean) {
   document.body.classList.toggle("dark", !light);
 }
 
-export function ThemeToggle(props: Props) {
+export function ThemeToggle({ className }: Props) {
   const [light, setLight] = useState(true); // TODO use media api to init
 
   useEffect(() => {
     updateTheme(light);
   }, [light]);
 
-  const classes = [css.button, props.className].filter(Boolean).join(" ");
+  const classes = [css.button, icon.link, className].filter(Boolean).join(" ");
   return (
     <button
       aria-label="Toggle dark theme"

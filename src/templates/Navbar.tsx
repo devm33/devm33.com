@@ -64,26 +64,16 @@ interface IconLinksProps {
 
 function IconLinks({ email, github, linkedin }: IconLinksProps) {
   return (
-    <div className={css.iconLinks}>
-      <ThemeToggle className={css.noPrint} />
-      <IconLink
-        className={css.noPrint}
-        href={github}
-        icon={Icons.GitHub}
-        label="GitHub"
-      />
-      <IconLink
-        className={css.noPrint}
-        href={linkedin}
-        icon={Icons.LinkedIn}
-        label="LinkedIn"
-      />
-      <a className={css.onlyPrint} href={linkedin}>
-        linkedin.com/in/devrajmehta
-      </a>
-      <a className={css.onlyPrint} href={`mailto:${email}`}>
-        {email}
-      </a>
-    </div>
+    <>
+      <div className={`${css.iconLinks} ${css.noPrint}`}>
+        <ThemeToggle />
+        <IconLink href={github} icon={Icons.GitHub} label="GitHub" />
+        <IconLink href={linkedin} icon={Icons.LinkedIn} label="LinkedIn" />
+      </div>
+      <div className={`${css.iconLinks} ${css.onlyPrint}`}>
+        <a href={linkedin}>linkedin.com/in/devrajmehta</a>
+        <a href={`mailto:${email}`}>{email}</a>
+      </div>
+    </>
   );
 }
