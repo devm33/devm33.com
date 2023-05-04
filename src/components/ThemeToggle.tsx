@@ -24,6 +24,7 @@ export function ThemeToggle({ className }: Props) {
   return (
     <button
       aria-label="Toggle dark theme"
+      aria-pressed={!light}
       className={classes}
       onClick={() => setLight(!light)}
     >
