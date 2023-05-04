@@ -10,11 +10,11 @@ interface Props {
 function updateTheme(light: boolean) {
   document.documentElement.classList.toggle("light", light);
   document.documentElement.classList.toggle("dark", !light);
-  localStorage.setItem("light", light ? "light" : "dark");
+  localStorage?.setItem("light", light ? "light" : "dark");
 }
 
 function getInitialLight(): boolean {
-  const localStorageLight = localStorage.getItem("light");
+  const localStorageLight = localStorage?.getItem("light");
   if (localStorageLight !== undefined) return localStorageLight === "light";
   const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
   return !darkMediaQuery.matches;
