@@ -13,7 +13,8 @@ function updateTheme(light: boolean) {
 }
 
 export function ThemeToggle({ className }: Props) {
-  const [light, setLight] = useState(true); // TODO use media api to init
+  const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const [light, setLight] = useState(!darkMediaQuery.matches);
 
   useEffect(() => {
     updateTheme(light);
