@@ -55,6 +55,8 @@ html.dark {
 
 @media (prefers-color-scheme: dark) {
   html {
+    color-scheme: dark;
+
     --fg: #e0e0e0; /* #fff on bg at 87% opacity */
     --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
     --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
