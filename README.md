@@ -22,7 +22,7 @@ npm start
 ## TODO
 
 - [~] Add dark mode
-  - [ ] Fork prism theme and add dark theme
+  - [x] Fork prism theme and add dark theme
   - [x] Add component to toggle dark mode
   - [ ] Add label to theme toggle button
   - [x] Store theme preference locally
