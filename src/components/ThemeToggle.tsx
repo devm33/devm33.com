@@ -3,8 +3,8 @@ import { Icon, Icons } from "./Icons";
 import * as icon from "./Icons.module.css";
 import * as css from "./ThemeToggle.module.css";
 
-interface Props {
-  className?: string;
+function persistThemeSetting(light: boolean) {
+  localStorage.setItem("theme", light ? "light" : "dark");
 }
 
 function updateThemeClass(light: boolean) {
@@ -12,18 +12,31 @@ function updateThemeClass(light: boolean) {
   document.documentElement.classList.toggle("dark", !light);
 }
 
-function persistThemeSetting(light: boolean) {
-  localStorage.setItem("theme", light ? "light" : "dark");
+function silentUpdateThemeClass(light: boolean) {
+  document.documentElement.style.transition = "none";
+  updateThemeClass(light);
+  document.documentElement.offsetHeight; // Force layout
+  document.documentElement.style.transition = "";
 }
 
-function getInitialTheme(): boolean {
+function getLocalStorageTheme(): boolean | undefined {
   const localStorageLight = localStorage.getItem("theme");
-  if (localStorageLight !== undefined) return localStorageLight === "light";
+  if (localStorageLight === undefined) return undefined;
+  return localStorageLight === "light";
+}
+
+function getMediaQueryPreference(): boolean {
   const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
   return !darkMediaQuery.matches;
 }
 
-export function ThemeToggle({ className }: Props) {
+function getInitialTheme(): boolean {
+  const light = getLocalStorageTheme() ?? getMediaQueryPreference();
+  silentUpdateThemeClass(light);
+  return light;
+}
+
+export function ThemeToggle({ className }: { className?: string }) {
   const [light, setLight] = useState(true);
   useEffect(() => setLight(getInitialTheme()), []); // Runs only once
   useEffect(() => updateThemeClass(light), [light]);
