@@ -30,6 +30,7 @@ html {
   --font-3: 1.728rem;
 }
 
+/* Default to light theme if no local or OS preference is set. */
 html,
 html.light {
   color-scheme: light;
@@ -53,6 +54,7 @@ html.dark {
   --on-accent: #000;
 }
 
+/* Intentionally duplicated to avoid flash before class is applied. */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
