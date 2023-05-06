@@ -1,7 +1,7 @@
 import { graphql, PageProps } from "gatsby";
 import React from "react";
 
-import "prismjs/themes/prism.min.css";
+import "../prism.css";
 
 import { Layout } from "@components/Layout";
 import { ProjectHeader } from "@components/Project";

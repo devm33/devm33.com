@@ -6,6 +6,33 @@ import { IconLink, Icons } from "./Icons";
 import { pill, pillGroup } from "./Pill.module.css";
 import * as css from "./Project.module.css";
 
+export const fragment = graphql`
+  fragment ProjectFields on MarkdownRemark {
+    fields {
+      path
+    }
+    frontmatter {
+      title
+      updated(formatString: "YYYY-MM-DD")
+      tagline
+      tags
+      link
+      repo
+      image {
+        childImageSharp {
+          gatsbyImageData(
+            aspectRatio: 1
+            width: 150
+            layout: CONSTRAINED
+            placeholder: DOMINANT_COLOR
+            formats: [AUTO, WEBP]
+          )
+        }
+      }
+    }
+  }
+`;
+
 interface ProjectProps {
   project: Queries.ProjectFieldsFragment;
 }
@@ -61,29 +88,16 @@ export function ProjectHeader(props: ProjectTitleProps) {
   );
 }
 
-export const fragment = graphql`
-  fragment ProjectFields on MarkdownRemark {
-    fields {
-      path
-    }
-    frontmatter {
-      title
-      updated(formatString: "YYYY-MM-DD")
-      tagline
-      tags
-      link
-      repo
-      image {
-        childImageSharp {
-          gatsbyImageData(
-            aspectRatio: 1
-            width: 150
-            layout: CONSTRAINED
-            placeholder: DOMINANT_COLOR
-            formats: [AUTO, WEBP]
-          )
-        }
-      }
-    }
-  }
-`;
+interface ProjectListProps {
+  nodes: readonly Queries.ProjectFieldsFragment[];
+}
+
+export function ProjectList({ nodes }: ProjectListProps) {
+  return (
+    <>
+      {nodes.map((node) => (
+        <Project key={node.fields.path} project={node} />
+      ))}
+    </>
+  );
+}

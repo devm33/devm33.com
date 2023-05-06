@@ -3,7 +3,7 @@ import React from "react";
 
 import { Layout } from "@components/Layout";
 import { pill } from "@components/Pill.module.css";
-import { Project } from "@components/Project";
+import { ProjectList } from "@components/Project";
 import * as css from "./Tag.module.css";
 
 export { Head } from "@components/Head";
@@ -21,9 +21,7 @@ export default function TagTemplate({ data, pageContext }: Props) {
         Projects tagged {}
         <span className={`${pill} ${css.titlePill}`}>{pageContext.tag}</span>
       </h3>
-      {data.allMarkdownRemark.nodes.map((node) => (
-        <Project key={node.fields.path} project={node} />
-      ))}
+      <ProjectList {...data.allMarkdownRemark} />
     </Layout>
   );
 }

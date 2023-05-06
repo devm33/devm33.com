@@ -1,0 +1,8 @@
+.button {
+  background: none; /* Override user agent styles */
+  border: none; /* Override user agent styles */
+  box-sizing: content-box; /* Override user agent styles */
+  color: var(--fg); /* Override user agent styles */
+  cursor: pointer;
+  transition: color 0.3s;
+}

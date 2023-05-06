@@ -22,7 +22,6 @@ npm start
 ## TODO
 
 - [ ] Add link stylesheet tag to ssr katex posts (requires webpack rework)
-- [ ] Add dark mode (will require forking prism themes to customize)
 - [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
 - [ ] Consider switching to mdx to better load images
 - [ ] https://developer.chrome.com/articles/new-headless/
@@ -36,6 +35,8 @@ npm start
 
 ## Done
 
+- [x] Add dark mode
+- [x] Replace icon link label transition with position absolute to avoid jumping
 - [x] Add 3 most recent projects to home page
 - [x] Add stylelint plugin to catch undefined custom properties
 - [x] Add redirect for /sitemap.xml

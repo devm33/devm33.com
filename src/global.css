@@ -4,6 +4,10 @@
 }
 
 html {
+  /* Colors */
+  background-color: var(--bg);
+  color: var(--fg);
+
   /* Hack to prevent auto vertical-scrollbar from shifting content. */
   margin-right: calc(-1 * (100vw - 100%));
   overflow-x: hidden;
@@ -11,26 +15,60 @@ html {
   /* Prevent adjustments of font size after orientation changes in iOS. */
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-text-size-adjust: 100%;
-}
 
-:root {
-  --color: #333;
-  --bg: transparent;
-  --accent: #d6006c;
-  --link: #1976d2;
+  /* Transition color scheme */
+  transition: color 0.3s, background-color 0.3s;
+
+  /* Spacing */
   --unit: 1.65rem;
   --header-line: 3.3rem; /* 2 x unit */
 
-  /* https://modularscale.com/?16&px&1.2 */
+  /* Font sizes: https://modularscale.com/?16&px&1.2 */
   --font-0: 0.833rem;
   --font-1: 1.2rem;
   --font-2: 1.44rem;
   --font-3: 1.728rem;
 }
 
+/* Default to light theme if no local or OS preference is set. */
+html,
+html.light {
+  color-scheme: light;
+
+  --fg: #212121; /* #000 on bg at 87% opacity */
+  --fg2: #666; /* #000 on bg at 60% opacity */
+  --bg: #fff;
+  --accent: #d6006c; /* custom 600 */
+  --on-accent: #fff;
+  --link: #1976d2; /* mat blue 700 */
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --fg: #e0e0e0; /* #fff on bg at 87% opacity */
+  --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
+  --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
+  --link: #90caf9; /* mat blue 200 */
+  --accent: #ec5e9c; /* custom 200 */
+  --on-accent: #000;
+}
+
+/* Intentionally duplicated to avoid flash before class is applied. */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+
+    --fg: #e0e0e0; /* #fff on bg at 87% opacity */
+    --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
+    --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
+    --link: #90caf9; /* mat blue 200 */
+    --accent: #ec5e9c; /* custom 200 */
+    --on-accent: #000;
+  }
+}
+
 body {
-  background-color: var(--bg);
-  color: var(--color);
   font-family: Mulish, MulishFallback, Arial, sans-serif;
   line-height: var(--unit);
   margin: 0 auto;

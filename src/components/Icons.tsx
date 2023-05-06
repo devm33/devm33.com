@@ -4,6 +4,7 @@ import * as css from "./Icons.module.css";
 
 /** Enum with available svg icons. */
 export enum Icons {
+  Brightness,
   File,
   GitHub,
   Link,
@@ -30,12 +31,19 @@ export function IconLink({ icon, label, className, ...rest }: IconLinkProps) {
   return (
     <a className={classes} {...rest}>
       <Icon icon={icon} />
-      {label && (
-        <div className={css.label}>
-          <div className={css.innerLabel}> {label}</div>
-        </div>
-      )}
+      {label && <IconLinkLabel label={label} />}
     </a>
+  );
+}
+
+/* Renders a slide-out label inside of an icon link. */
+export function IconLinkLabel({ label }: { label: string }) {
+  return (
+    <div className={css.label}>
+      <div className={css.innerLabel}>
+        <div className={css.innerInnerLabel}> {label}</div>
+      </div>
+    </div>
   );
 }
 
@@ -56,6 +64,11 @@ export function InstallIcons() {
 }
 
 const PATH_SYMBOLS: PathSymbolProps[] = [
+  {
+    icon: Icons.Brightness,
+    viewBox: "0 0 24 24",
+    path: "M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z",
+  },
   {
     icon: Icons.File,
     viewBox: "0 0 384 512",
