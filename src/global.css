@@ -68,10 +68,6 @@ html.dark {
   }
 }
 
-html.dark img {
-  filter: grayscale(50%);
-}
-
 body {
   font-family: Mulish, MulishFallback, Arial, sans-serif;
   line-height: var(--unit);
