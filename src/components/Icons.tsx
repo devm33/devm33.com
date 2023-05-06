@@ -31,14 +31,19 @@ export function IconLink({ icon, label, className, ...rest }: IconLinkProps) {
   return (
     <a className={classes} {...rest}>
       <Icon icon={icon} />
-      {label && (
-        <div className={css.label}>
-          <div className={css.innerLabel}>
-            <div className={css.innerInnerLabel}> {label}</div>
-          </div>
-        </div>
-      )}
+      {label && <IconLinkLabel label={label} />}
     </a>
+  );
+}
+
+/* Renders a slide-out label inside of an icon link. */
+export function IconLinkLabel({ label }: { label: string }) {
+  return (
+    <div className={css.label}>
+      <div className={css.innerLabel}>
+        <div className={css.innerInnerLabel}> {label}</div>
+      </div>
+    </div>
   );
 }
 

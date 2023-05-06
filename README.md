@@ -24,7 +24,7 @@ npm start
 - [~] Add dark mode
   - [x] Fork prism theme and add dark theme
   - [x] Add component to toggle dark mode
-  - [ ] Add label to theme toggle button
+  - [x] Add label to theme toggle button
   - [x] Store theme preference locally
   - [x] Skip transition on initial theme application
 - [x] Replace icon link label transition with position absolute to avoid jumping

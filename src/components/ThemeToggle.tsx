@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Icon, Icons } from "./Icons";
+import { Icon, IconLinkLabel, Icons } from "./Icons";
 import * as icon from "./Icons.module.css";
 import * as css from "./ThemeToggle.module.css";
 
@@ -48,13 +48,9 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   const classes = [css.button, icon.link, className].filter(Boolean).join(" ");
   return (
-    <button
-      aria-label="Toggle theme"
-      aria-pressed={!light}
-      className={classes}
-      onClick={toggle}
-    >
+    <button aria-pressed={!light} className={classes} onClick={toggle}>
       <Icon icon={Icons.Brightness} />
+      <IconLinkLabel label="Switch theme" />
     </button>
   );
 }
