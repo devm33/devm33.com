@@ -18,7 +18,7 @@ export function ThemeToggle({ className }: { className?: string }) {
   return (
     <button aria-pressed={!light} className={classes} onClick={toggle}>
       <Icon icon={Icons.Brightness} />
-      <IconLinkLabel label={light ? 'Dark theme' : 'Light theme'}/>
+      <IconLinkLabel label={light ? "Dark theme" : "Light theme"} />
     </button>
   );
 }
