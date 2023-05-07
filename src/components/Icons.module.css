@@ -39,6 +39,10 @@
   white-space: pre; /* Prevent preceding space from being collapsed */
 }
 
+.label-left .inner-label {
+  right: -100%;
+}
+
 .inner-inner-label {
   background-color: var(--bg);
   line-height: var(--font-1);
@@ -46,6 +50,10 @@
   transform: translateX(-100%);
   transition: transform 0.3s;
   z-index: 100;
+}
+
+.label-left .inner-inner-label {
+  transform: translateX(100%);
 }
 
 .link:hover .inner-inner-label {

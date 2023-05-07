@@ -23,25 +23,28 @@ export function Icon({ icon }: { icon: Icons }) {
 interface IconLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   icon: Icons;
   label?: string;
+  left?: boolean /** If true label slides out to the left of the icon. */;
 }
 
 /* Component to render an svg icon inside an anchor tag. */
-export function IconLink({ icon, label, className, ...rest }: IconLinkProps) {
+export function IconLink(props: IconLinkProps) {
+  const { icon, label, left, className, ...rest } = props;
   const classes = css.link + (className ? " " + className : "");
   return (
     <a className={classes} {...rest}>
+      {label && left && <IconLinkLabel label={label} left />}
       <Icon icon={icon} />
-      {label && <IconLinkLabel label={label} />}
+      {label && !left && <IconLinkLabel label={label} />}
     </a>
   );
 }
 
 /* Renders a slide-out label inside of an icon link. */
-export function IconLinkLabel({ label }: { label: string }) {
+export function IconLinkLabel(props: { label: string; left?: boolean }) {
   return (
-    <div className={css.label}>
+    <div className={`${css.label}${props.left ? " " + css.labelLeft : ""}`}>
       <div className={css.innerLabel}>
-        <div className={css.innerInnerLabel}> {label}</div>
+        <div className={css.innerInnerLabel}> {props.label} </div>
       </div>
     </div>
   );

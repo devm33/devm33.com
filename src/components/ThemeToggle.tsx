@@ -17,8 +17,8 @@ export function ThemeToggle({ className }: { className?: string }) {
   const classes = [css.button, icon.link, className].filter(Boolean).join(" ");
   return (
     <button aria-pressed={!light} className={classes} onClick={toggle}>
+      <IconLinkLabel label={light ? "Dark theme" : "Light theme"} left />
       <Icon icon={Icons.Brightness} />
-      <IconLinkLabel label={light ? "Dark theme" : "Light theme"} />
     </button>
   );
 }

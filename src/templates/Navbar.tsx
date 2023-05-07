@@ -67,8 +67,8 @@ function IconLinks({ email, github, linkedin }: IconLinksProps) {
     <>
       <div className={`${css.iconLinks} ${css.noPrint}`}>
         <ThemeToggle />
-        <IconLink href={github} icon={Icons.GitHub} label="GitHub" />
-        <IconLink href={linkedin} icon={Icons.LinkedIn} label="LinkedIn" />
+        <IconLink href={github} icon={Icons.GitHub} label="GitHub" left />
+        <IconLink href={linkedin} icon={Icons.LinkedIn} label="LinkedIn" left />
       </div>
       <div className={`${css.iconLinks} ${css.onlyPrint}`}>
         <a href={linkedin}>linkedin.com/in/devrajmehta</a>
