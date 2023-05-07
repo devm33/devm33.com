@@ -1,4 +1,4 @@
-import { PageProps, graphql } from "gatsby";
+import { Link, PageProps, graphql } from "gatsby";
 import React from "react";
 
 import { Layout } from "@components/Layout";
@@ -17,10 +17,13 @@ type Props = PageProps<Queries.TagPageQuery, PageContext>;
 export default function TagTemplate({ data, pageContext }: Props) {
   return (
     <Layout>
-      <h3 className={css.title}>
-        Projects tagged {}
-        <span className={`${pill} ${css.titlePill}`}>{pageContext.tag}</span>
-      </h3>
+      <div className={css.title}>
+        <h3 className={css.header}>
+          Projects tagged {}
+          <span className={`${pill} ${css.titlePill}`}>{pageContext.tag}</span>
+        </h3>
+        <Link to="/projects">View all</Link>
+      </div>
       <ProjectList {...data.allMarkdownRemark} />
     </Layout>
   );
