@@ -6,11 +6,11 @@ import * as css from "./ThemeToggle.module.css";
 /* Component to render toggle button to switch theme. */
 export function ThemeToggle({ className }: { className?: string }) {
   const [light, setLight] = useState(true);
-  useEffect(() => setLight(getAndUpdateInitialTheme()), []); // Runs only once
-  useEffect(() => updateThemeClass(light), [light]);
+  useEffect(() => setLight(setClassSilent(getTheme())), []); // Runs only once
+  useEffect(() => setClass(light), [light]);
 
   function toggle() {
-    persistThemeSetting(!light);
+    setLocalStorage(!light);
     setLight(!light);
   }
 
@@ -23,45 +23,40 @@ export function ThemeToggle({ className }: { className?: string }) {
   );
 }
 
-/* Determines what the theme should be first checking if there is a local
- * storage preference stored, falls back to OS preference.
- *
- * Updates theme class silently as a side-effect.
- */
-function getAndUpdateInitialTheme(): boolean {
-  const light = getLocalStorageTheme() ?? getMediaQueryPreference();
-  silentUpdateThemeClass(light);
-  return light;
+/* Gets theme from local storage, falls back to OS preference. */
+function getTheme(): boolean {
+  return getLocalStorage() ?? getOSPreference();
 }
 
 /* Get theme preference from local storage, undefined if not stored. */
-function getLocalStorageTheme(): boolean | undefined {
+function getLocalStorage(): boolean | undefined {
   const localStorageLight = localStorage.getItem("theme");
   if (localStorageLight === undefined) return undefined;
   return localStorageLight === "light";
 }
 
 /* Determines theme preference based on OS setting. Default to light theme. */
-function getMediaQueryPreference(): boolean {
+function getOSPreference(): boolean {
   const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
   return !darkMediaQuery.matches;
 }
 
 /* Writes theme preference to local storage */
-function persistThemeSetting(light: boolean) {
+function setLocalStorage(light: boolean) {
   localStorage.setItem("theme", light ? "light" : "dark");
 }
 
 /* Applies theme class to html element. */
-function updateThemeClass(light: boolean) {
+function setClass(light: boolean) {
   document.documentElement.classList.toggle("light", light);
   document.documentElement.classList.toggle("dark", !light);
 }
 
 /* Applies theme class silently by disabling transition. */
-function silentUpdateThemeClass(light: boolean) {
+function setClassSilent(light: boolean): boolean {
   document.documentElement.style.transition = "none";
-  updateThemeClass(light);
+  setClass(light);
   document.documentElement.offsetHeight; // Force layout
   document.documentElement.style.transition = "";
+  return light; // Returns for chaining
 }
