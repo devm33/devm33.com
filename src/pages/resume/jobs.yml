@@ -1,9 +1,18 @@
+- uri: https://github.com/features/copilot/
+  name: GitHub
+  title: Staff Software Engineer
+  location: Pittsburgh, PA
+  start: MAY 2023
+  finish: PRESENT
+  description:
+    - Copilot IDE
+  enabled: true
 - uri: https://about.google/
   name: Google
   title: Tech Lead Manager
   location: Pittsburgh, PA
   start: APR 2021
-  finish: PRESENT
+  finish: APR 2023
   description:
     - >
       Built the platform used by 200+ Google product teams to manage
@@ -17,8 +26,8 @@
       applying agile methodologies and consistent alignment between engineering
       teams, product, UX, and business stakeholders.
     - >
-      Reviewed 500+ changes as company-wide approver for TypeScript, providing
-      mentorship and upholding code quality.
+      Reviewed 500+ changes as company-wide approver for TypeScript language,
+      providing mentorship and upholding code quality.
   enabled: true
 - uri: https://about.google/
   name: Google
@@ -50,11 +59,11 @@
       Managed DoubleClick Dynamic Ad Insertion (DAI) from feature design to
       global deployment.
     - >
-      Interfaced directly customers and partners in order to expand integrations
-      and land new business.
+      Interfaced directly with customers and partners in order to expand
+      integrations and land new business.
     - >
-      Grew streaming video ad revenue 4x YoY by optimizing existing clients and
-      expanding customer base 6x globally.
+      Grew streaming video ad revenue 4x YoY by expanding customer base 6x
+      globally.
     - >
       Monetized live events with millions of concurrent users such as the NFL
       Super Bowl, MLB world series, IPL cricket tournament with individually
@@ -71,8 +80,8 @@
       Managed relationships with broadcasting partners such as CBS, Fox, A&E,
       Disney.
     - >
-      Embedded with customer engineering teams developing their mobile apps,
-      connected devices, and video serving to onboard and integrate services.
+      Embedded with customers to help develop mobile apps, connected devices,
+      and video streaming.
     - >
       Built monitoring and set up an on-call rotation to proactively fix live
       stream issues 24x7.
@@ -85,9 +94,8 @@
   finish: AUG 2015
   description:
     - >
-      Researched using web applications for collaborative applied systems
+      Built Angular web applications for collaborative applied systems
       engineering.
-    - Led team to launch Angular application and land real-world usage.
   enabled: true
 - uri: https://cc.gatech.edu
   name: Georgia Tech
