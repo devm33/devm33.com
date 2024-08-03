@@ -84,6 +84,8 @@ function addRedirects(actions: Actions) {
   redirect("/about", "/");
   // Redirect for resume pdf short-link
   redirect("/resume.pdf", "/devraj_mehta_resume.pdf");
+  // External shortlinks
+  redirect("/3d", "https://makerworld.com/@devm33");
 }
 
 function addSlices(actions: Actions) {
