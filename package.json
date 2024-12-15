@@ -118,7 +118,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
     "@types/webpack": "^5.28.1",
-    "gatsby": "^5.9.0",
+    "gatsby": "^5.9.1",
     "gatsby-plugin-canonical-urls": "^5.9.0",
     "gatsby-plugin-image": "^3.9.0",
     "gatsby-plugin-netlify": "^5.1.0",
