@@ -102,7 +102,7 @@ function processKatex(markdown) {
   });
 
   // Restore code blocks
-  processed = processed.replace(/\x00CODE(\d+)\x00/g, (_, idx) => codeBlocks[parseInt(idx)]);
+  processed = processed.replace(/\x00CODE(\d+)\x00/g, (_, idx) => codeBlocks[parseInt(idx, 10)]);
 
   return processed;
 }
@@ -368,9 +368,12 @@ function projectHeader(project) {
 // Generate project pages
 function generateProjectPages(projects) {
   for (const project of projects) {
-    const hasKatex = project.html.includes("katex");
+    // Check for specific KaTeX class names to avoid false positives
+    const hasKatex =
+      project.html.includes('class="katex"') ||
+      project.html.includes('class="katex-display"');
     const katexCss = hasKatex
-      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css">'
+      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">'
       : "";
     const html = baseTemplate({
       title: project.title,
