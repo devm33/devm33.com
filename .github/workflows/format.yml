@@ -1,18 +1,27 @@
 name: Format
-on: [push, pull_request]
+on:
+  push:
+    # Only trigger on commit pushes, not tags
+    tags-ignore:
+      - '**'
+permissions:
+  contents: write
 jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
-          ref: ${{ github.head_ref }}
-      - uses: actions/setup-node@v3
+          # Checkout and push to the branch that triggered the workflow
+          ref: ${{ github.ref }}
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".nvmrc"
       - run: npm ci
       - run: npm run format
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Auto-formatting commit
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push
