@@ -15,7 +15,7 @@
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:grammar": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
     "lint:spelling": "cspell '**' --no-progress",
-    "serve": "npx serve public",
+    "serve": "serve public",
     "start": "npm run build && npm run serve",
     "test": "run-p check-links lint"
   },
@@ -104,6 +104,7 @@
     "prettier": "^2.8.8",
     "remark-cli": "^11.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
+    "serve": "^14.2.0",
     "stylelint": "^15.6.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-order": "^6.0.3",

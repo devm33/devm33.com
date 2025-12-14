@@ -211,6 +211,14 @@ function getSkills() {
 // Load icon SVG definitions from file
 const iconsSvg = fs.readFileSync(path.join(SRC_DIR, "icons.svg"), "utf-8");
 
+// Load CSS files for inlining
+const fontsCss = fs.readFileSync(path.join(SRC_DIR, "fonts.css"), "utf-8");
+const globalCss = fs.readFileSync(path.join(SRC_DIR, "global.css"), "utf-8");
+const iconsCss = fs.readFileSync(path.join(SRC_DIR, "icons.css"), "utf-8");
+const indexCss = fs.readFileSync(path.join(SRC_DIR, "index.css"), "utf-8");
+const resumeCss = fs.readFileSync(path.join(SRC_DIR, "resume.css"), "utf-8");
+const prismCss = fs.readFileSync(path.join(SRC_DIR, "prism.css"), "utf-8");
+
 // Base HTML template
 function baseTemplate({
   title,
@@ -218,14 +226,36 @@ function baseTemplate({
   content,
   bodyClass = "",
   additionalHead = "",
-  additionalCss = "",
   canonicalPath = "",
   isResume = false,
+  isIndex = false,
+  hasPrism = false,
+  hasKatex = false,
+  ogImage = "",
 }) {
   const pageTitle = title || siteMetadata.title;
   const pageDesc = description || siteMetadata.description;
   const canonicalUrl = canonicalPath
     ? `${siteMetadata.siteUrl}${canonicalPath}`
+    : "";
+  const ogImageUrl = ogImage 
+    ? `${siteMetadata.siteUrl}${ogImage}` 
+    : `${siteMetadata.siteUrl}/me.jpg`;
+
+  // Build inline CSS based on page type
+  let inlineCss = fontsCss + "\n" + globalCss + "\n" + iconsCss;
+  if (isIndex) {
+    inlineCss += "\n" + indexCss;
+  }
+  if (isResume) {
+    inlineCss += "\n" + resumeCss;
+  }
+  if (hasPrism) {
+    inlineCss += "\n" + prismCss;
+  }
+  
+  const katexLink = hasKatex
+    ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">'
     : "";
 
   return `<!DOCTYPE html>
@@ -241,15 +271,13 @@ function baseTemplate({
   <meta name="og:type" content="article">
   <meta name="og:description" content="${escapeHtml(pageDesc)}">
   <meta name="og:title" content="${escapeHtml(pageTitle)}">
-  <meta name="og:image" content="${siteMetadata.siteUrl}/me.jpg">
+  <meta name="og:image" content="${ogImageUrl}">
   ${canonicalUrl ? `<link rel="canonical" href="${canonicalUrl}">` : ""}
   ${canonicalUrl ? `<meta name="og:url" content="${canonicalUrl}">` : ""}
   <link rel="preload" href="/fonts/mulish.woff2" as="font" crossorigin="anonymous" type="font/woff2">
   <link rel="preload" href="/fonts/mulish-ital.woff2" as="font" crossorigin="anonymous" type="font/woff2">
-  <link rel="stylesheet" href="/fonts.css">
-  <link rel="stylesheet" href="/global.css">
-  <link rel="stylesheet" href="/icons.css">
-  ${additionalCss}
+  <style>${inlineCss}</style>
+  ${katexLink}
   ${additionalHead}
 </head>
 <body${bodyClass ? ` class="${bodyClass}"` : ""}>
@@ -363,14 +391,16 @@ function generateProjectPages(projects) {
     const hasKatex =
       project.html.includes('class="katex"') ||
       project.html.includes('class="katex-display"');
-    const katexCss = hasKatex
-      ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">'
+    const ogImage = project.image 
+      ? `/projects/${project.slug}/${project.image}` 
       : "";
     const html = baseTemplate({
       title: project.title,
       description: project.tagline,
       canonicalPath: project.path,
-      additionalCss: `<link rel="stylesheet" href="/prism.css">\n${katexCss}`,
+      hasPrism: true,
+      hasKatex,
+      ogImage,
       content: `
         <article>
           ${projectHeader(project)}
@@ -394,7 +424,7 @@ function generateIndexPage(projects) {
     title: siteMetadata.title,
     description: siteMetadata.description,
     canonicalPath: "/",
-    additionalCss: '<link rel="stylesheet" href="/index.css">',
+    isIndex: true,
     content: `
       <section class="hello-section">
         <div class="description">
@@ -481,7 +511,6 @@ function generateResumePage() {
   const html = baseTemplate({
     title: "Devraj Mehta Resume",
     canonicalPath: "/resume/",
-    additionalCss: '<link rel="stylesheet" href="/resume.css">',
     isResume: true,
     content: `
       <section class="resume-section">
@@ -569,28 +598,6 @@ ${urls
   fs.writeFileSync(path.join(OUTPUT_DIR, "sitemap.xml"), xml);
 }
 
-// Copy CSS files
-function copyCssFiles() {
-  // Copy global.css
-  fs.copyFileSync(
-    path.join(SRC_DIR, "global.css"),
-    path.join(OUTPUT_DIR, "global.css")
-  );
-  // Copy fonts.css
-  fs.copyFileSync(path.join(SRC_DIR, "fonts.css"), path.join(OUTPUT_DIR, "fonts.css"));
-  // Copy prism.css
-  fs.copyFileSync(path.join(SRC_DIR, "prism.css"), path.join(OUTPUT_DIR, "prism.css"));
-  // Copy icons.css (shared icon and component styles)
-  fs.copyFileSync(path.join(SRC_DIR, "icons.css"), path.join(OUTPUT_DIR, "icons.css"));
-  // Copy index.css (homepage styles)
-  fs.copyFileSync(path.join(SRC_DIR, "index.css"), path.join(OUTPUT_DIR, "index.css"));
-  // Copy resume.css (resume page styles)
-  fs.copyFileSync(
-    path.join(SRC_DIR, "resume.css"),
-    path.join(OUTPUT_DIR, "resume.css")
-  );
-}
-
 // Generate PDF of resume page using Puppeteer
 async function generateResumePdf() {
   console.log("Generating resume PDF...");
@@ -601,27 +608,29 @@ async function generateResumePdf() {
   const page = await browser.newPage();
   const resumePath = path.join(OUTPUT_DIR, "resume", "index.html");
   
-  // Set base URL to allow loading local CSS files
+  // Set base URL to allow loading local files
   await page.goto(url.pathToFileURL(resumePath).toString(), { waitUntil: 'networkidle0' });
   
-  // Inline all CSS files for PDF rendering
-  const cssContent = await inlineCssFiles();
-  await page.addStyleTag({ content: cssContent });
+  // Force light theme for PDF and add inline fonts
+  const pdfCss = await getPdfCss();
+  await page.addStyleTag({ content: pdfCss });
+  
+  // Ensure light theme is applied
+  await page.evaluate(() => {
+    document.documentElement.classList.add('light');
+    document.documentElement.classList.remove('dark');
+  });
+  
   await page.evaluateHandle("document.fonts.ready");
   await page.pdf({ path: path.join(OUTPUT_DIR, "devraj_mehta_resume.pdf") });
   await browser.close();
 }
 
-// Read and inline all CSS files needed for PDF
-async function inlineCssFiles() {
+// Get CSS for PDF with inline fonts
+function getPdfCss() {
   const fontsDir = path.join(STATIC_DIR, "fonts");
   const normal = fs.readFileSync(path.join(fontsDir, "mulish.woff2")).toString("base64");
   const italic = fs.readFileSync(path.join(fontsDir, "mulish-ital.woff2")).toString("base64");
-  
-  // Read CSS files
-  const globalCss = fs.readFileSync(path.join(OUTPUT_DIR, "global.css"), "utf-8");
-  const iconsCss = fs.readFileSync(path.join(OUTPUT_DIR, "icons.css"), "utf-8");
-  const resumeCss = fs.readFileSync(path.join(OUTPUT_DIR, "resume.css"), "utf-8");
   
   return `
     @font-face {
@@ -636,9 +645,6 @@ async function inlineCssFiles() {
       font-weight: 200 1000;
       src: url("data:font/woff2;base64,${italic}") format("woff2");
     }
-    ${globalCss}
-    ${iconsCss}
-    ${resumeCss}
   `;
 }
 
@@ -655,10 +661,6 @@ async function build() {
   // Copy static files using fs.cp
   console.log("Copying static files...");
   await fs.promises.cp(STATIC_DIR, OUTPUT_DIR, { recursive: true });
-
-  // Copy CSS files
-  console.log("Copying CSS files...");
-  copyCssFiles();
 
   // Copy me.jpg image to output
   fs.copyFileSync(
