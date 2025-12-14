@@ -637,21 +637,21 @@ async function generateResumePdf() {
   const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || undefined;
   const browser = await puppeteer.launch({ args, executablePath });
   const page = await browser.newPage();
-  const resumePath = path.resolve("public/resume/index.html");
+  const resumePath = path.join(OUTPUT_DIR, "resume", "index.html");
   await page.goto(url.pathToFileURL(resumePath).toString());
   // Inline font files for PDF rendering
   const content = await inlineFontFiles();
   await page.addStyleTag({ content });
   await page.evaluateHandle("document.fonts.ready");
-  await page.pdf({ path: "./public/devraj_mehta_resume.pdf" });
+  await page.pdf({ path: path.join(OUTPUT_DIR, "devraj_mehta_resume.pdf") });
   await browser.close();
 }
 
 // Read font files and create inline CSS for PDF
 async function inlineFontFiles() {
-  const fonts = "./static/fonts";
-  const normal = fs.readFileSync(`${fonts}/mulish.woff2`).toString("base64");
-  const italic = fs.readFileSync(`${fonts}/mulish-ital.woff2`).toString("base64");
+  const fontsDir = path.join(STATIC_DIR, "fonts");
+  const normal = fs.readFileSync(path.join(fontsDir, "mulish.woff2")).toString("base64");
+  const italic = fs.readFileSync(path.join(fontsDir, "mulish-ital.woff2")).toString("base64");
   return `
     @font-face {
       font-family: Mulish;
