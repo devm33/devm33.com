@@ -579,7 +579,6 @@ function generateRedirects() {
     "/2015-06-07 /projects/4clojure/ 301",
     "/2014-12-04 /projects/motivation/ 301",
     "/2014-09-22 /projects/jekyll-nfs/ 301",
-    "/sitemap.xml /sitemap-index.xml 301",
     "/about / 301",
     "/resume.pdf /devraj_mehta_resume.pdf 301",
     "/3d https://makerworld.com/@devm33 301",
