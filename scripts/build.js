@@ -613,7 +613,7 @@ async function generateResumePdf() {
   await page.goto(url.pathToFileURL(resumePath).toString(), { waitUntil: 'networkidle0' });
   
   // Force light theme for PDF and add inline fonts
-  const pdfCss = await getPdfCss();
+  const pdfCss = getPdfCss();
   await page.addStyleTag({ content: pdfCss });
   
   // Ensure light theme is applied
@@ -627,7 +627,7 @@ async function generateResumePdf() {
   await browser.close();
 }
 
-// Get CSS for PDF with inline fonts
+// Get CSS for PDF with inline fonts and forced light theme
 function getPdfCss() {
   const fontsDir = path.join(STATIC_DIR, "fonts");
   const normal = fs.readFileSync(path.join(fontsDir, "mulish.woff2")).toString("base64");
