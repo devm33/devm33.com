@@ -3,9 +3,9 @@ on:
   push:
     # Only trigger on commit pushes, not tags
     branches:
-      - '**'
+      - "**"
     tags-ignore:
-      - '**'
+      - "**"
 permissions:
   contents: write
 jobs:
