@@ -1,4 +1,4 @@
-name: Format
+name: CI
 on:
   push:
     # Only trigger on commit pushes, not tags
@@ -20,6 +20,8 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: npm ci
+      - run: npm run build
+      - run: npm test
       - run: npm run format
       - name: Commit and Push changes
         run: |
