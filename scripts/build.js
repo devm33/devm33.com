@@ -81,7 +81,8 @@ marked.use(highlightExtension);
 function processKatex(markdown) {
   // First, extract code blocks to avoid processing math in them
   const codeBlocks = [];
-  let processed = markdown.replace(/(```[\s\S]*?```|`[^`]+`)/g, (match) => {
+  // Improved regex: matches code blocks (3+ backticks) and inline code (1+ backticks), including empty/whitespace-only code
+  let processed = markdown.replace(/(`{3,})[\s\S]*?\1|(`+)([\s\S]*?)\2/g, (match) => {
     codeBlocks.push(match);
     return `\x00CODE${codeBlocks.length - 1}\x00`;
   });
@@ -292,11 +293,11 @@ function baseTemplate({
         <div class="label label-left"><div class="inner-label"><div class="inner-inner-label">Toggle theme</div></div></div>
         <svg class="icon-svg"><use href="#icon0"></use></svg>
       </button>
-      <a href="${siteMetadata.github}" class="icon-link">
+      <a href="${siteMetadata.github}" class="icon-link" aria-label="GitHub">
         <div class="label label-left"><div class="inner-label"><div class="inner-inner-label">GitHub</div></div></div>
         <svg class="icon-svg"><use href="#icon2"></use></svg>
       </a>
-      <a href="${siteMetadata.linkedin}" class="icon-link">
+      <a href="${siteMetadata.linkedin}" class="icon-link" aria-label="LinkedIn">
         <div class="label label-left"><div class="inner-label"><div class="inner-inner-label">LinkedIn</div></div></div>
         <svg class="icon-svg"><use href="#icon4"></use></svg>
       </a>
