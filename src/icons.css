@@ -1,0 +1,209 @@
+/* Icon styles - SVG icons and icon links */
+
+.path {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+}
+
+.stroked {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.icon-svg {
+  font-size: var(--font-1);
+  height: 1em;
+  width: 1em;
+}
+
+.icon-link {
+  align-items: center;
+  display: inline-flex;
+  height: var(--font-1);
+}
+
+.label {
+  height: 100%;
+  position: relative;
+  white-space: nowrap;
+}
+
+.inner-label {
+  font-size: 1rem;
+  font-weight: normal;
+  overflow: hidden;
+  pointer-events: none; /* Prevent from triggering hover while collapsed */
+  position: absolute;
+  white-space: pre; /* Prevent preceding space from being collapsed */
+}
+
+.label-left .inner-label {
+  right: -100%;
+}
+
+.inner-inner-label {
+  background-color: var(--bg);
+  line-height: var(--font-1);
+  pointer-events: all;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  z-index: 100;
+}
+
+.label-left .inner-inner-label {
+  transform: translateX(100%);
+}
+
+.icon-link:hover .inner-inner-label {
+  transform: translateX(0);
+}
+
+/* Navbar styles */
+
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-group {
+  align-items: center;
+  display: flex;
+  gap: 1em;
+}
+
+.title {
+  font-size: var(--font-2);
+  line-height: var(--header-line);
+  white-space: nowrap;
+}
+
+.icon-links > * {
+  padding: 0.5em;
+}
+
+.icon-links > :last-child {
+  padding-right: 0;
+}
+
+@media screen {
+  .only-print {
+    display: none;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  .navbar {
+    margin-top: calc(var(--unit) / 2);
+  }
+
+  /* Specificity required to override base link color. */
+  a.title {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  .icon-links > a {
+    font-size: 14px; /* To match resume font */
+    text-decoration: underline;
+  }
+}
+
+/* Theme toggle button */
+
+.theme-toggle {
+  background: none; /* Override user agent styles */
+  border: none; /* Override user agent styles */
+  box-sizing: content-box; /* Override user agent styles */
+  color: var(--fg); /* Override user agent styles */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Pill/tag styles */
+
+.pill {
+  align-items: center;
+  border: 1px solid var(--link);
+  border-radius: 0.5em;
+  color: var(--link);
+  display: inline-flex;
+  padding: 0 0.5em;
+  white-space: nowrap;
+}
+
+.pill:active,
+.pill:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.pill > svg {
+  margin-inline-start: calc(var(--unit) / 4);
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) / 2);
+}
+
+/* Project card styles */
+
+.project {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: var(--unit);
+}
+
+.thumbnail {
+  flex: 0 0 150px;
+}
+
+.thumbnail-image {
+  aspect-ratio: 1;
+  height: auto;
+  margin: 0; /* Override default spacing. */
+  object-fit: cover;
+  width: 150px;
+}
+
+.subtitle {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--font-0);
+  gap: calc(var(--unit) / 2);
+}
+
+.tagline {
+  margin-top: calc(var(--unit) / 2);
+}
+
+.flex-header {
+  flex: 1;
+}
+
+/* Tag page styles */
+
+.tag-title {
+  margin-bottom: calc(var(--unit) / 2);
+}
+
+.title-pill {
+  line-height: 1.65; /* To match border shape of smaller pills. */
+}
+
+.tag-header {
+  display: inline;
+  padding-right: 0.5em;
+}
