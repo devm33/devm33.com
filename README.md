@@ -21,10 +21,9 @@ npm start
 
 ## TODO
 
-- [ ] Add link stylesheet tag to ssr katex posts (requires webpack rework)
-- [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
-- [ ] Consider switching to mdx to better load images
-- [ ] https://developer.chrome.com/articles/new-headless/
+- [ ] Drop Gatsby and move to simpler build process
+- [ ] Add speculation rules and prefech links
+- [ ] Add RSS feed
 
 ### Projects to add:
 
