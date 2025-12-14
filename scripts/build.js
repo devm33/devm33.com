@@ -55,7 +55,8 @@ function escapeHtml(str) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 // Configure marked with Prism syntax highlighting
@@ -80,7 +81,7 @@ marked.use(highlightExtension);
 function processKatex(markdown) {
   // First, extract code blocks to avoid processing math in them
   const codeBlocks = [];
-  let processed = markdown.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, (match) => {
+  let processed = markdown.replace(/(```[\s\S]*?```|`[^`]+`)/g, (match) => {
     codeBlocks.push(match);
     return `\x00CODE${codeBlocks.length - 1}\x00`;
   });
@@ -119,15 +120,6 @@ function compileMarkdown(filePath) {
   const markdown = processKatex(rawMarkdown);
   const html = marked.parse(markdown);
   return { frontmatter: data, html };
-}
-
-// Copy file
-function copyFile(src, dest) {
-  const destDir = path.dirname(dest);
-  if (!fs.existsSync(destDir)) {
-    fs.mkdirSync(destDir, { recursive: true });
-  }
-  fs.copyFileSync(src, dest);
 }
 
 // Resize image if needed (for images wider than MAX_IMAGE_WIDTH)
@@ -228,8 +220,9 @@ function baseTemplate({
   additionalHead = "",
   additionalCss = "",
   canonicalPath = "",
+  isResume = false,
 }) {
-  const pageTitle = title ? `${title}` : siteMetadata.title;
+  const pageTitle = title || siteMetadata.title;
   const pageDesc = description || siteMetadata.description;
   const canonicalUrl = canonicalPath
     ? `${siteMetadata.siteUrl}${canonicalPath}`
@@ -248,6 +241,7 @@ function baseTemplate({
   <meta name="og:type" content="article">
   <meta name="og:description" content="${escapeHtml(pageDesc)}">
   <meta name="og:title" content="${escapeHtml(pageTitle)}">
+  <meta name="og:image" content="${siteMetadata.siteUrl}/me.jpg">
   ${canonicalUrl ? `<link rel="canonical" href="${canonicalUrl}">` : ""}
   ${canonicalUrl ? `<meta name="og:url" content="${canonicalUrl}">` : ""}
   <link rel="preload" href="/fonts/mulish.woff2" as="font" crossorigin="anonymous" type="font/woff2">
@@ -263,6 +257,7 @@ function baseTemplate({
   <nav class="navbar">
     <div class="title-group">
       <a href="/" class="title">${siteMetadata.title}</a>
+      ${isResume ? `<a href="/devraj_mehta_resume.pdf" class="icon-link no-print"><svg class="icon-svg"><use href="#icon1"></use></svg></a>` : ""}
     </div>
     <div class="icon-links no-print">
       <button aria-pressed="false" class="theme-toggle icon-link" onclick="toggleTheme()">
@@ -277,6 +272,10 @@ function baseTemplate({
         <div class="label label-left"><div class="inner-label"><div class="inner-inner-label">LinkedIn</div></div></div>
         <svg class="icon-svg"><use href="#icon4"></use></svg>
       </a>
+    </div>
+    <div class="icon-links only-print">
+      <a href="${siteMetadata.linkedin}">linkedin.com/in/devrajmehta</a>
+      <a href="mailto:${siteMetadata.email}">${siteMetadata.email}</a>
     </div>
   </nav>
   <main>
@@ -316,9 +315,6 @@ function projectCard(project) {
   const imagePath = project.image
     ? `/projects/${project.slug}/${project.image}`
     : "";
-  const tagsHtml = (project.tags || [])
-    .map((tag) => `<a class="pill" href="/tag/${tag}/">${escapeHtml(tag)}</a>`)
-    .join(" ");
   return `
     <div class="project">
       ${
@@ -336,7 +332,6 @@ function projectCard(project) {
         </h1>
         <div class="subtitle">
           <i>Updated ${project.updated}</i>
-          <div class="pill-group">${tagsHtml}</div>
         </div>
         <div class="tagline">${escapeHtml(project.tagline)}</div>
       </header>
@@ -346,9 +341,6 @@ function projectCard(project) {
 
 // Project header component (for project page)
 function projectHeader(project) {
-  const tagsHtml = (project.tags || [])
-    .map((tag) => `<a class="pill" href="/tag/${tag}/">${escapeHtml(tag)}</a>`)
-    .join(" ");
   return `
     <header>
       <h1>
@@ -358,7 +350,6 @@ function projectHeader(project) {
       </h1>
       <div class="subtitle">
         <i>Updated ${project.updated}</i>
-        <div class="pill-group">${tagsHtml}</div>
       </div>
       <div class="tagline">${escapeHtml(project.tagline)}</div>
     </header>
@@ -462,40 +453,6 @@ function generateProjectsPage(projects) {
   fs.writeFileSync(path.join(outDir, "index.html"), html);
 }
 
-// Generate tag pages
-function generateTagPages(projects) {
-  const tags = new Map();
-  for (const project of projects) {
-    for (const tag of project.tags || []) {
-      if (!tags.has(tag)) {
-        tags.set(tag, []);
-      }
-      tags.get(tag).push(project);
-    }
-  }
-  for (const [tag, tagProjects] of tags) {
-    const projectsHtml = tagProjects.map(projectCard).join("\n");
-    const html = baseTemplate({
-      title: `Projects tagged ${tag}`,
-      canonicalPath: `/tag/${tag}/`,
-      content: `
-        <div class="tag-title">
-          <h3 class="tag-header">
-            Projects tagged <span class="pill title-pill">${escapeHtml(tag)}</span>
-          </h3>
-          <a href="/projects">View all</a>
-        </div>
-        ${projectsHtml}
-      `,
-    });
-    const outDir = path.join(OUTPUT_DIR, "tag", tag);
-    if (!fs.existsSync(outDir)) {
-      fs.mkdirSync(outDir, { recursive: true });
-    }
-    fs.writeFileSync(path.join(outDir, "index.html"), html);
-  }
-}
-
 // Generate resume page
 function generateResumePage() {
   const jobs = getJobs();
@@ -525,6 +482,7 @@ function generateResumePage() {
     title: "Devraj Mehta Resume",
     canonicalPath: "/resume/",
     additionalCss: '<link rel="stylesheet" href="/resume.css">',
+    isResume: true,
     content: `
       <section class="resume-section">
         <h2>EXPERIENCE</h2>
@@ -575,23 +533,26 @@ function generate404Page() {
 
 // Generate sitemap
 function generateSitemap(projects) {
+  const today = new Date().toISOString().split('T')[0];
   const urls = [
-    { loc: "/", priority: "1.0" },
-    { loc: "/projects/", priority: "0.8" },
-    { loc: "/resume/", priority: "0.8" },
+    { loc: "/", priority: "1.0", lastmod: today },
+    { loc: "/projects/", priority: "0.8", lastmod: today },
+    { loc: "/resume/", priority: "0.8", lastmod: today },
   ];
   for (const project of projects) {
-    urls.push({ loc: project.path, priority: "0.6" });
-  }
-  // Get unique tags
-  const tags = new Set();
-  for (const project of projects) {
-    for (const tag of project.tags || []) {
-      tags.add(tag);
+    // Format the updated date to YYYY-MM-DD
+    let lastmod = today;
+    if (project.updated) {
+      const date = new Date(project.updated);
+      if (!isNaN(date.getTime())) {
+        lastmod = date.toISOString().split('T')[0];
+      }
     }
-  }
-  for (const tag of tags) {
-    urls.push({ loc: `/tag/${tag}/`, priority: "0.5" });
+    urls.push({ 
+      loc: project.path, 
+      priority: "0.6",
+      lastmod
+    });
   }
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -599,6 +560,7 @@ ${urls
   .map(
     (u) => `  <url>
     <loc>${siteMetadata.siteUrl}${u.loc}</loc>
+    <lastmod>${u.lastmod}</lastmod>
     <priority>${u.priority}</priority>
   </url>`
   )
@@ -610,20 +572,20 @@ ${urls
 // Copy CSS files
 function copyCssFiles() {
   // Copy global.css
-  copyFile(
+  fs.copyFileSync(
     path.join(SRC_DIR, "global.css"),
     path.join(OUTPUT_DIR, "global.css")
   );
   // Copy fonts.css
-  copyFile(path.join(SRC_DIR, "fonts.css"), path.join(OUTPUT_DIR, "fonts.css"));
+  fs.copyFileSync(path.join(SRC_DIR, "fonts.css"), path.join(OUTPUT_DIR, "fonts.css"));
   // Copy prism.css
-  copyFile(path.join(SRC_DIR, "prism.css"), path.join(OUTPUT_DIR, "prism.css"));
+  fs.copyFileSync(path.join(SRC_DIR, "prism.css"), path.join(OUTPUT_DIR, "prism.css"));
   // Copy icons.css (shared icon and component styles)
-  copyFile(path.join(SRC_DIR, "icons.css"), path.join(OUTPUT_DIR, "icons.css"));
+  fs.copyFileSync(path.join(SRC_DIR, "icons.css"), path.join(OUTPUT_DIR, "icons.css"));
   // Copy index.css (homepage styles)
-  copyFile(path.join(SRC_DIR, "index.css"), path.join(OUTPUT_DIR, "index.css"));
+  fs.copyFileSync(path.join(SRC_DIR, "index.css"), path.join(OUTPUT_DIR, "index.css"));
   // Copy resume.css (resume page styles)
-  copyFile(
+  fs.copyFileSync(
     path.join(SRC_DIR, "resume.css"),
     path.join(OUTPUT_DIR, "resume.css")
   );
@@ -638,20 +600,29 @@ async function generateResumePdf() {
   const browser = await puppeteer.launch({ args, executablePath });
   const page = await browser.newPage();
   const resumePath = path.join(OUTPUT_DIR, "resume", "index.html");
-  await page.goto(url.pathToFileURL(resumePath).toString());
-  // Inline font files for PDF rendering
-  const content = await inlineFontFiles();
-  await page.addStyleTag({ content });
+  
+  // Set base URL to allow loading local CSS files
+  await page.goto(url.pathToFileURL(resumePath).toString(), { waitUntil: 'networkidle0' });
+  
+  // Inline all CSS files for PDF rendering
+  const cssContent = await inlineCssFiles();
+  await page.addStyleTag({ content: cssContent });
   await page.evaluateHandle("document.fonts.ready");
   await page.pdf({ path: path.join(OUTPUT_DIR, "devraj_mehta_resume.pdf") });
   await browser.close();
 }
 
-// Read font files and create inline CSS for PDF
-async function inlineFontFiles() {
+// Read and inline all CSS files needed for PDF
+async function inlineCssFiles() {
   const fontsDir = path.join(STATIC_DIR, "fonts");
   const normal = fs.readFileSync(path.join(fontsDir, "mulish.woff2")).toString("base64");
   const italic = fs.readFileSync(path.join(fontsDir, "mulish-ital.woff2")).toString("base64");
+  
+  // Read CSS files
+  const globalCss = fs.readFileSync(path.join(OUTPUT_DIR, "global.css"), "utf-8");
+  const iconsCss = fs.readFileSync(path.join(OUTPUT_DIR, "icons.css"), "utf-8");
+  const resumeCss = fs.readFileSync(path.join(OUTPUT_DIR, "resume.css"), "utf-8");
+  
   return `
     @font-face {
       font-family: Mulish;
@@ -665,6 +636,9 @@ async function inlineFontFiles() {
       font-weight: 200 1000;
       src: url("data:font/woff2;base64,${italic}") format("woff2");
     }
+    ${globalCss}
+    ${iconsCss}
+    ${resumeCss}
   `;
 }
 
@@ -687,7 +661,7 @@ async function build() {
   copyCssFiles();
 
   // Copy me.jpg image to output
-  copyFile(
+  fs.copyFileSync(
     path.join(SRC_DIR, "images", "me.jpg"),
     path.join(OUTPUT_DIR, "me.jpg")
   );
@@ -702,7 +676,6 @@ async function build() {
   generateProjectPages(projects);
   generateIndexPage(projects);
   generateProjectsPage(projects);
-  generateTagPages(projects);
   generateResumePage();
   generate404Page();
   generateSitemap(projects);
