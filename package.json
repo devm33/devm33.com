@@ -56,7 +56,15 @@
   },
   "remarkConfig": {
     "plugins": [
-      "remark-lint-no-dead-urls"
+      [
+        "remark-lint-no-dead-urls",
+        {
+          "skipUrlPatterns": [
+            "npmjs.com",
+            "sourceforge.net"
+          ]
+        }
+      ]
     ]
   },
   "stylelint": {
