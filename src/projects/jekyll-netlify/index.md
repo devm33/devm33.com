@@ -30,7 +30,7 @@ optimization including making jpegs progressive and generating responsive image
 sizes. I learned a lot from working on those image optimizations using tools
 such as [optipng], [svgo], [jpegtran], and of course [imagemagick].
 
-[optipng]: http://optipng.sourceforge.net/
+[optipng]: https://optipng.sourceforge.net/
 [svgo]: https://github.com/svg/svgo
 [jpegtran]: https://jpegclub.org/jpegtran/
 [imagemagick]: https://imagemagick.org/
