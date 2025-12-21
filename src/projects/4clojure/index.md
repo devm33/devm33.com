@@ -10,9 +10,9 @@ repo: https://github.com/devm33/4clojure_problems
 ## I completed all of the 4clojure problems!
 
 After four weeks of consistent focus I made it through all 156 problems on
-`4clojure.com` Proof: `my user page` and `list of top
-users`. Edit 2025: The original 4clojure site is no longer available. The source
-for the site and problems are available on [github](https://github.com/4clojure/4clojure).
+`4clojure.com` Proof: `my user page` and `list of top users`. Edit 2025: The
+original 4clojure site is no longer available. The source for the site and
+problems are available on [github](https://github.com/4clojure/4clojure).
 
 You can see most of my solutions in the [github repo][github] I used for this
 project. I limited adding problems to the repo to those that I needed to develop
@@ -87,8 +87,8 @@ other user's solutions alongside mine as well. For example, let's take problem
 ```
 
 While there's nothing wrong with my solution per se I learned a better
-alternative from another user (`_pcl`). Their solution uses a core API
-call that does part of what I was doing: [mapcat][mapcat].
+alternative from another user (`_pcl`). Their solution uses a core API call that
+does part of what I was doing: [mapcat][mapcat].
 
 ```clojure
 (defn repf [col num]
@@ -221,9 +221,9 @@ that substring. Before recurring I check if the DFA accepts the current
 substring by checking its state. If so, I add it to the lazy sequence. Either
 way, I recurse with the new queue of substrings and states `next-trails`.
 
-While the problem wasn't the hardest of the hard (see `140`, `152`, or
-`127`) it's a great example of the progress of my clojure writing at the
-end of these four weeks. I enjoyed using these aspects of the language:
+While the problem wasn't the hardest of the hard (see `140`, `152`, or `127`)
+it's a great example of the progress of my clojure writing at the end of these
+four weeks. I enjoyed using these aspects of the language:
 
 - hashmap objects
 

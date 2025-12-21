@@ -82,10 +82,13 @@ function processKatex(markdown) {
   // First, extract code blocks to avoid processing math in them
   const codeBlocks = [];
   // Improved regex: matches code blocks (3+ backticks) and inline code (1+ backticks), including empty/whitespace-only code
-  let processed = markdown.replace(/(`{3,})[\s\S]*?\1|(`+)([\s\S]*?)\2/g, (match) => {
-    codeBlocks.push(match);
-    return `\x00CODE${codeBlocks.length - 1}\x00`;
-  });
+  let processed = markdown.replace(
+    /(`{3,})[\s\S]*?\1|(`+)([\s\S]*?)\2/g,
+    (match) => {
+      codeBlocks.push(match);
+      return `\x00CODE${codeBlocks.length - 1}\x00`;
+    },
+  );
 
   // Handle display math ($$...$$ on its own lines)
   processed = processed.replace(/^\$\$\n([\s\S]+?)\n\$\$$/gm, (_, math) => {
@@ -108,7 +111,10 @@ function processKatex(markdown) {
   });
 
   // Restore code blocks
-  processed = processed.replace(/\x00CODE(\d+)\x00/g, (_, idx) => codeBlocks[parseInt(idx, 10)]);
+  processed = processed.replace(
+    /\x00CODE(\d+)\x00/g,
+    (_, idx) => codeBlocks[parseInt(idx, 10)],
+  );
 
   return processed;
 }
@@ -149,7 +155,10 @@ async function resizeImageIfNeeded(src, dest) {
     }
   } catch (err) {
     // If sharp fails (e.g., for animated GIFs), just copy the file
-    console.warn(`Warning: Could not process ${src}, copying as-is:`, err.message);
+    console.warn(
+      `Warning: Could not process ${src}, copying as-is:`,
+      err.message,
+    );
     fs.copyFileSync(src, dest);
   }
 }
@@ -165,7 +174,7 @@ async function getProjects() {
     const { frontmatter, html } = compileMarkdown(mdPath);
     const slug = dir.name;
     const projectPath = `/projects/${slug}/`;
-    
+
     // Copy and resize project images and assets
     const projectDir = path.join(PROJECTS_DIR, dir.name);
     const projectOutDir = path.join(OUTPUT_DIR, "projects", dir.name);
@@ -177,7 +186,7 @@ async function getProjects() {
       for (const asset of assets) {
         await resizeImageIfNeeded(
           path.join(projectDir, asset),
-          path.join(projectOutDir, asset)
+          path.join(projectOutDir, asset),
         );
       }
     }
@@ -239,8 +248,8 @@ function baseTemplate({
   const canonicalUrl = canonicalPath
     ? `${siteMetadata.siteUrl}${canonicalPath}`
     : "";
-  const ogImageUrl = ogImage 
-    ? `${siteMetadata.siteUrl}${ogImage}` 
+  const ogImageUrl = ogImage
+    ? `${siteMetadata.siteUrl}${ogImage}`
     : `${siteMetadata.siteUrl}/me.jpg`;
 
   // Build inline CSS based on page type
@@ -254,7 +263,7 @@ function baseTemplate({
   if (hasPrism) {
     inlineCss += "\n" + prismCss;
   }
-  
+
   const katexLink = hasKatex
     ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">'
     : "";
@@ -286,7 +295,11 @@ function baseTemplate({
   <nav class="navbar">
     <div class="title-group">
       <a href="/" class="title">${siteMetadata.title}</a>
-      ${isResume ? `<a href="/devraj_mehta_resume.pdf" class="icon-link no-print"><svg class="icon-svg"><use href="#icon1"></use></svg></a>` : ""}
+      ${
+        isResume
+          ? `<a href="/devraj_mehta_resume.pdf" class="icon-link no-print"><svg class="icon-svg"><use href="#icon1"></use></svg></a>`
+          : ""
+      }
     </div>
     <div class="icon-links no-print">
       <button aria-pressed="false" class="theme-toggle icon-link" onclick="toggleTheme()">
@@ -297,7 +310,9 @@ function baseTemplate({
         <div class="label label-left"><div class="inner-label"><div class="inner-inner-label">GitHub</div></div></div>
         <svg class="icon-svg"><use href="#icon2"></use></svg>
       </a>
-      <a href="${siteMetadata.linkedin}" class="icon-link" aria-label="LinkedIn">
+      <a href="${
+        siteMetadata.linkedin
+      }" class="icon-link" aria-label="LinkedIn">
         <div class="label label-left"><div class="inner-label"><div class="inner-inner-label">LinkedIn</div></div></div>
         <svg class="icon-svg"><use href="#icon4"></use></svg>
       </a>
@@ -348,7 +363,9 @@ function projectCard(project) {
     <div class="project">
       ${
         imagePath
-          ? `<a aria-label="${escapeHtml(project.title)}" class="thumbnail" href="${project.path}">
+          ? `<a aria-label="${escapeHtml(
+              project.title,
+            )}" class="thumbnail" href="${project.path}">
               <img src="${imagePath}" alt="" class="thumbnail-image" loading="lazy">
             </a>`
           : ""
@@ -356,8 +373,16 @@ function projectCard(project) {
       <header class="flex-header">
         <h1>
           <a href="${project.path}">${escapeHtml(project.title)}</a>
-          ${project.repo ? `<a href="${project.repo}" class="icon-link"><svg class="icon-svg"><use href="#icon2"></use></svg></a>` : ""}
-          ${project.link ? `<a href="${project.link}" class="icon-link"><svg class="icon-svg"><use href="#icon3"></use></svg></a>` : ""}
+          ${
+            project.repo
+              ? `<a href="${project.repo}" class="icon-link"><svg class="icon-svg"><use href="#icon2"></use></svg></a>`
+              : ""
+          }
+          ${
+            project.link
+              ? `<a href="${project.link}" class="icon-link"><svg class="icon-svg"><use href="#icon3"></use></svg></a>`
+              : ""
+          }
         </h1>
         <div class="subtitle">
           <i>Updated ${project.updated}</i>
@@ -374,8 +399,16 @@ function projectHeader(project) {
     <header>
       <h1>
         ${escapeHtml(project.title)}
-        ${project.repo ? `<a href="${project.repo}" class="icon-link"><svg class="icon-svg"><use href="#icon2"></use></svg></a>` : ""}
-        ${project.link ? `<a href="${project.link}" class="icon-link"><svg class="icon-svg"><use href="#icon3"></use></svg></a>` : ""}
+        ${
+          project.repo
+            ? `<a href="${project.repo}" class="icon-link"><svg class="icon-svg"><use href="#icon2"></use></svg></a>`
+            : ""
+        }
+        ${
+          project.link
+            ? `<a href="${project.link}" class="icon-link"><svg class="icon-svg"><use href="#icon3"></use></svg></a>`
+            : ""
+        }
       </h1>
       <div class="subtitle">
         <i>Updated ${project.updated}</i>
@@ -392,8 +425,8 @@ function generateProjectPages(projects) {
     const hasKatex =
       project.html.includes('class="katex"') ||
       project.html.includes('class="katex-display"');
-    const ogImage = project.image 
-      ? `/projects/${project.slug}/${project.image}` 
+    const ogImage = project.image
+      ? `/projects/${project.slug}/${project.image}`
       : "";
     const html = baseTemplate({
       title: project.title,
@@ -494,7 +527,9 @@ function generateResumePage() {
       <div>
         <div class="title-row">
           <h3>
-            <a href="${job.uri}">${escapeHtml(job.name)}</a>, ${escapeHtml(job.title)}
+            <a href="${job.uri}">${escapeHtml(job.name)}</a>, ${escapeHtml(
+        job.title,
+      )}
             <span class="location nowrap">- ${escapeHtml(job.location)}</span>
           </h3>
           <div class="date-range">
@@ -506,7 +541,7 @@ function generateResumePage() {
           ${job.description.map((d) => `<li>${escapeHtml(d)}</li>`).join("\n")}
         </ul>
       </div>
-    `
+    `,
     )
     .join("\n");
   const html = baseTemplate({
@@ -563,7 +598,7 @@ function generate404Page() {
 
 // Generate sitemap
 function generateSitemap(projects) {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const urls = [
     { loc: "/", priority: "1.0", lastmod: today },
     { loc: "/projects/", priority: "0.8", lastmod: today },
@@ -575,13 +610,13 @@ function generateSitemap(projects) {
     if (project.updated) {
       const date = new Date(project.updated);
       if (!isNaN(date.getTime())) {
-        lastmod = date.toISOString().split('T')[0];
+        lastmod = date.toISOString().split("T")[0];
       }
     }
-    urls.push({ 
-      loc: project.path, 
+    urls.push({
+      loc: project.path,
       priority: "0.6",
-      lastmod
+      lastmod,
     });
   }
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -592,7 +627,7 @@ ${urls
     <loc>${siteMetadata.siteUrl}${u.loc}</loc>
     <lastmod>${u.lastmod}</lastmod>
     <priority>${u.priority}</priority>
-  </url>`
+  </url>`,
   )
   .join("\n")}
 </urlset>`;
@@ -602,26 +637,32 @@ ${urls
 // Generate PDF of resume page using Puppeteer
 async function generateResumePdf() {
   console.log("Generating resume PDF...");
-  const args = ["--font-render-hinting=none", "--no-sandbox", "--disable-setuid-sandbox"];
+  const args = [
+    "--font-render-hinting=none",
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+  ];
   // Use system chromium if available (for environments without puppeteer download)
   const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || undefined;
   const browser = await puppeteer.launch({ args, executablePath });
   const page = await browser.newPage();
   const resumePath = path.join(OUTPUT_DIR, "resume", "index.html");
-  
+
   // Set base URL to allow loading local files
-  await page.goto(url.pathToFileURL(resumePath).toString(), { waitUntil: 'networkidle0' });
-  
+  await page.goto(url.pathToFileURL(resumePath).toString(), {
+    waitUntil: "networkidle0",
+  });
+
   // Force light theme for PDF and add inline fonts
   const pdfCss = getPdfCss();
   await page.addStyleTag({ content: pdfCss });
-  
+
   // Ensure light theme is applied
   await page.evaluate(() => {
-    document.documentElement.classList.add('light');
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add("light");
+    document.documentElement.classList.remove("dark");
   });
-  
+
   await page.evaluateHandle("document.fonts.ready");
   await page.pdf({ path: path.join(OUTPUT_DIR, "devraj_mehta_resume.pdf") });
   await browser.close();
@@ -630,9 +671,13 @@ async function generateResumePdf() {
 // Get CSS for PDF with inline fonts and forced light theme
 function getPdfCss() {
   const fontsDir = path.join(STATIC_DIR, "fonts");
-  const normal = fs.readFileSync(path.join(fontsDir, "mulish.woff2")).toString("base64");
-  const italic = fs.readFileSync(path.join(fontsDir, "mulish-ital.woff2")).toString("base64");
-  
+  const normal = fs
+    .readFileSync(path.join(fontsDir, "mulish.woff2"))
+    .toString("base64");
+  const italic = fs
+    .readFileSync(path.join(fontsDir, "mulish-ital.woff2"))
+    .toString("base64");
+
   return `
     @font-face {
       font-family: Mulish;
@@ -666,7 +711,7 @@ async function build() {
   // Copy me.jpg image to output
   fs.copyFileSync(
     path.join(SRC_DIR, "images", "me.jpg"),
-    path.join(OUTPUT_DIR, "me.jpg")
+    path.join(OUTPUT_DIR, "me.jpg"),
   );
 
   // Get projects
