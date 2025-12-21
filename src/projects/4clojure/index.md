@@ -12,7 +12,7 @@ repo: https://github.com/devm33/4clojure_problems
 After four weeks of consistent focus I made it through all 156 problems on
 `4clojure.com` Proof: `my user page` and `list of top
 users`. Edit 2025: The original 4clojure site is no longer available. The source
-for the site and problems can be found on [github](https://github.com/4clojure/4clojure).
+for the site and problems are available on [github](https://github.com/4clojure/4clojure).
 
 You can see most of my solutions in the [github repo][github] I used for this
 project. I limited adding problems to the repo to those that I needed to develop
