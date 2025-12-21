@@ -4,15 +4,15 @@ updated: 2015-06-07
 image: screenshot.png
 tagline: Completed all of the problems on 4clojure.com
 tags: [clojure]
-link: https://web.archive.org/web/http://www.4clojure.com/user/devm33
 repo: https://github.com/devm33/4clojure_problems
 ---
 
 ## I completed all of the 4clojure problems!
 
 After four weeks of consistent focus I made it through all 156 problems on
-[4clojure.com][4clojure] Proof: [my user page][devm33] and [list of top
-users][users].
+`4clojure.com` Proof: `my user page` and `list of top
+users`. Edit 2025: The original 4clojure site is no longer available. The source
+for the site and problems can be found on [github](https://github.com/4clojure/4clojure).
 
 You can see most of my solutions in the [github repo][github] I used for this
 project. I limited adding problems to the repo to those that I needed to develop
@@ -36,7 +36,7 @@ any feedback!
 
 ## Fibonacci
 
-[4clojure.com/problem/26](https://web.archive.org/web/http://www.4clojure.com/problem/26)
+`4clojure.com/problem/26`
 
 The classic Fibonacci series problem. A goto for learning new languages, in
 particular functional languages. This was the first problem I had to write down
@@ -75,7 +75,7 @@ tail optimize without use of `recur`.
 
 ## Replicate a sequence
 
-[4clojure.com/problem/33](https://web.archive.org/web/http://www.4clojure.com/problem/33)
+`4clojure.com/problem/33`
 
 While I came up with the alternative fibonacci solutions above, I often saved
 other user's solutions alongside mine as well. For example, let's take problem
@@ -87,7 +87,7 @@ other user's solutions alongside mine as well. For example, let's take problem
 ```
 
 While there's nothing wrong with my solution per se I learned a better
-alternative from another user ([\_pcl][pcl]). Their solution uses a core API
+alternative from another user (`_pcl`). Their solution uses a core API
 call that does part of what I was doing: [mapcat][mapcat].
 
 ```clojure
@@ -100,7 +100,7 @@ learning different parts of the clojure APIs.
 
 ## Sequence Reductions
 
-[4clojure.com/problem/60](https://web.archive.org/web/http://www.4clojure.com/problem/60)
+`4clojure.com/problem/60`
 
 Another place that I got great feedback was the clojure source code. Some of the
 4clojure problems consist of re-implementing core functions which prompted me to
@@ -136,7 +136,7 @@ problems as well.
 
 ## Prime Numbers
 
-[4clojure.com/problem/67](https://web.archive.org/web/20191018054333/http://www.4clojure.com/problem/67)
+`4clojure.com/problem/67`
 
 I didn't learn anything in particular from this problem. I love this method of
 testing primality.
@@ -169,7 +169,7 @@ probably be a post to itself because that took a minute.
 
 ## Language of a DFA
 
-[4clojure.com/problem/164](https://web.archive.org/web/http://www.4clojure.com/problem/164)
+`4clojure.com/problem/164`
 
 The problems on 4clojure have four tiers of difficulty: elementary, easy,
 medium, and hard. Elementary and easy often were possible to solve in the editor
@@ -221,8 +221,8 @@ that substring. Before recurring I check if the DFA accepts the current
 substring by checking its state. If so, I add it to the lazy sequence. Either
 way, I recurse with the new queue of substrings and states `next-trails`.
 
-While the problem wasn't the hardest of the hard (see [140][140], [152][152], or
-[127][127]) it's a great example of the progress of my clojure writing at the
+While the problem wasn't the hardest of the hard (see `140`, `152`, or
+`127`) it's a great example of the progress of my clojure writing at the
 end of these four weeks. I enjoyed using these aspects of the language:
 
 - hashmap objects
@@ -260,13 +260,6 @@ end of these four weeks. I enjoyed using these aspects of the language:
 I had a lot of fun going through 4clojure and I am thankful to the creators and
 maintainers. I look forward to more fun with clojure in the future.
 
-[4clojure]: https://web.archive.org/web/http://www.4clojure.com/
-[devm33]: https://web.archive.org/web/http://www.4clojure.com/user/devm33
-[users]: https://web.archive.org/web/http://www.4clojure.com/users
 [github]: https://github.com/devm33/4clojure_problems
 [mapcat]: https://clojuredocs.org/clojure.core/mapcat
 [dfa]: http://en.wikipedia.org/wiki/Deterministic_finite_automaton
-[140]: https://web.archive.org/web/http://www.4clojure.com/problem/140
-[152]: https://web.archive.org/web/http://www.4clojure.com/problem/152
-[127]: https://web.archive.org/web/http://www.4clojure.com/problem/127
-[pcl]: https://web.archive.org/web/http://www.4clojure.com/user/_pcl
