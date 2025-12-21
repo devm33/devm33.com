@@ -46,7 +46,7 @@ pipeline][images].
 [graphql]: https://graphql.org/
 [gatsby-link]: https://www.gatsbyjs.org/docs/gatsby-link/
 [styled-components]: https://www.styled-components.com/
-[react-icons]: https://react-icons.netlify.com/
+[react-icons]: https://react-icons.github.io/react-icons/
 [gatsby-image]: https://www.gatsbyjs.org/packages/gatsby-image/
 [images]: https://www.gatsbyjs.org/docs/working-with-images/
 
