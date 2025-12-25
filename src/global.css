@@ -9,7 +9,7 @@ html {
   color: var(--fg);
 
   /* Hack to prevent auto vertical-scrollbar from shifting content. */
-  margin-right: calc(-1 * (100vw - 100%));
+  margin-right: calc(100% - 100vw);
   overflow-x: hidden;
 
   /* Prevent adjustments of font size after orientation changes in iOS. */
