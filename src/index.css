@@ -1,6 +1,8 @@
 /* Homepage specific styles */
 
 .hello-section {
+  --unit: 0.825rem;
+
   display: flex;
   flex-wrap: wrap;
   gap: 0 1rem;
