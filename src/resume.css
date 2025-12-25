@@ -1,4 +1,6 @@
-.main {
+/* Resume page specific styles */
+
+main {
   --header-line: 1.4; /* Match header line-height with body line-height */
   --unit: 0; /* Zero out spacing for resume */
 
@@ -6,25 +8,25 @@
   line-height: var(--header-line);
 }
 
-.main a,
-.main a:visited {
+main a,
+main a:visited {
   text-decoration: underline;
 }
 
-.main h2,
-.main h3 {
+main h2,
+main h3 {
   font-size: 1em;
 }
 
-.main ul {
+main ul {
   padding-inline-start: 1.5em;
 }
 
-.main li {
+main li {
   list-style-type: circle;
 }
 
-.section + .section {
+.resume-section + .resume-section {
   margin-top: 1em;
 }
 

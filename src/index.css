@@ -1,0 +1,31 @@
+/* Homepage specific styles */
+
+.hello-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+}
+
+.hello-section p {
+  /* Override default line height for description section. */
+  line-height: calc(var(--unit) / 2 * 3);
+  margin-bottom: calc(var(--unit) / 2);
+}
+
+.description {
+  flex-grow: 1;
+}
+
+.photo {
+  height: 250px;
+  object-fit: cover;
+  width: 250px;
+}
+
+.recent-title {
+  line-height: var(--header-line);
+}
+
+.recent-header {
+  display: inline;
+}

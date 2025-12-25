@@ -48,6 +48,8 @@ mscorefonts
 msttcorefonts
 nearlyfreespeech
 netlify
+networkidle
+npmjs
 omni
 optipng
 performant
