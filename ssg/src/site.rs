@@ -129,7 +129,14 @@ impl Site {
                 out.join("projects").join(&p.slug),
                 p.path.clone(),
             );
-            let rendered = markdown::render(&p.body, &processor)
+            let has_math = crate::math::has_math(&p.body);
+            let body = if has_math {
+                crate::math::prepass(&p.body, &self.config.root)
+                    .with_context(|| format!("math pre-pass for {}", p.slug))?
+            } else {
+                p.body.clone()
+            };
+            let rendered = markdown::render(&body, &processor)
                 .with_context(|| format!("rendering project {}", p.slug))?;
             let (thumb, og_path) = match &p.image {
                 Some(img) => {
@@ -146,7 +153,7 @@ impl Site {
             views.push(ProjectView::from(
                 p,
                 rendered.html,
-                rendered.has_math,
+                has_math,
                 thumb,
                 og_path,
             ));

@@ -4,6 +4,7 @@ mod frontmatter;
 mod fsutil;
 mod images;
 mod markdown;
+mod math;
 mod site;
 mod slug;
 

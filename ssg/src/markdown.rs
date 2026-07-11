@@ -6,12 +6,13 @@ use crate::images::ImageProcessor;
 /// Result of rendering markdown to HTML.
 pub struct Rendered {
     pub html: String,
-    pub has_math: bool,
 }
 
 /// Render markdown body to HTML, processing body images through `images`.
 ///
-/// Syntax highlighting (Phase 7) and math (Phase 6) hooks are layered on later.
+/// Math is resolved to MathML by the Temml pre-pass before this runs, so any
+/// `<math>` elements arrive here as raw inline HTML and pass through untouched.
+/// Syntax highlighting (Phase 7) is layered on later.
 pub fn render(body: &str, images: &ImageProcessor) -> Result<Rendered> {
     let mut options = Options::empty();
     options.insert(Options::ENABLE_TABLES);
@@ -22,7 +23,6 @@ pub fn render(body: &str, images: &ImageProcessor) -> Result<Rendered> {
 
     let parser = Parser::new_ext(body, options);
 
-    let mut has_math = false;
     let mut events: Vec<Event> = Vec::new();
     // While inside an image tag, `alt` accumulates its text children.
     let mut alt: Option<String> = None;
@@ -41,9 +41,6 @@ pub fn render(body: &str, images: &ImageProcessor) -> Result<Rendered> {
                 events.push(Event::Html(CowStr::Boxed(rendered.into_boxed_str())));
             }
             Event::Text(t) => {
-                if t.contains("$$") {
-                    has_math = true;
-                }
                 if let Some(a) = alt.as_mut() {
                     a.push_str(&t);
                 } else {
@@ -63,8 +60,5 @@ pub fn render(body: &str, images: &ImageProcessor) -> Result<Rendered> {
 
     let mut out = String::new();
     html::push_html(&mut out, events.into_iter());
-    Ok(Rendered {
-        html: out,
-        has_math,
-    })
+    Ok(Rendered { html: out })
 }
