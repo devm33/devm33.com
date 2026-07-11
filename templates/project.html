@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} | {{ site.title }}{% endblock %}
+{% block content %}
+<article>
+  <header>
+    <h1>{{ project.title }}
+      {% if project.repo %}<a href="{{ project.repo }}">Source</a>{% endif %}
+      {% if project.link %}<a href="{{ project.link }}">Link</a>{% endif %}
+    </h1>
+    <div class="subtitle">
+      <i>Updated {{ project.updated }}</i>
+      <div class="pill-group">
+        {% for t in project.tags %}<a class="pill" href="{{ t.href }}">{{ t.name }}</a>{% endfor %}
+      </div>
+    </div>
+    <div class="tagline">{{ project.tagline }}</div>
+  </header>
+  {{ project.html | safe }}
+</article>
+{% endblock %}

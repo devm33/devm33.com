@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% import "partials/project_list.html" as pl %}
+{% block title %}Projects tagged {{ tag }} | {{ site.title }}{% endblock %}
+{% block content %}
+<div class="title">
+  <h3>Projects tagged <span class="pill">{{ tag }}</span></h3>
+  <a href="/projects">View all</a>
+</div>
+{{ pl::project_list(projects=tag_projects) }}
+{% endblock %}

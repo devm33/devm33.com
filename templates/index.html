@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "partials/project_list.html" as pl %}
+{% block content %}
+<section class="hello">
+  <div>
+    <p>Hello! I'm Devraj.</p>
+    <p>You can find me on <a href="{{ site.linkedin }}">LinkedIn</a> or
+      <a href="{{ site.github }}">GitHub</a>.</p>
+    <p>This site contains my <a href="/resume/">resume</a> and some
+      <a href="/projects/">projects</a>.</p>
+    <p>Here is <a href="{{ site.github }}/devm33.com">the source for this site</a>.</p>
+    <p>See also a new hobby! <a href="https://makerworld.com/@devm33">MakerWorld</a></p>
+    <p>Cheers! <br /> Devraj</p>
+  </div>
+</section>
+<section>
+  <div class="recent-title">
+    <h3>Recent Projects</h3> <a href="/projects">View all</a>
+  </div>
+  {{ pl::project_list(projects=recent) }}
+  <div>Showing {{ recent | length }} of {{ total }} projects <a href="/projects">View all</a></div>
+</section>
+{% endblock %}
