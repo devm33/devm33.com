@@ -121,7 +121,7 @@ impl Site {
                 path: loaded.path,
                 title: loaded.front.title,
                 updated: loaded.front.updated,
-                tagline: loaded.front.tagline,
+                tagline: loaded.front.tagline.trim().to_string(),
                 tags: loaded.front.tags,
                 link: loaded.front.link,
                 repo: loaded.front.repo,
