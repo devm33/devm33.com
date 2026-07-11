@@ -57,6 +57,7 @@ npm test
 ## TODO
 
 - [ ] Add rss feed
+- [ ] Update to Node latest (enables npm min-release-age supply-chain guard)
 
 ### Projects to add:
 
