@@ -136,7 +136,7 @@ impl Site {
             } else {
                 p.body.clone()
             };
-            let rendered = markdown::render(&body, &processor)
+            let rendered = markdown::render(&body, &processor, &self.config.root)
                 .with_context(|| format!("rendering project {}", p.slug))?;
             let (thumb, og_path) = match &p.image {
                 Some(img) => {

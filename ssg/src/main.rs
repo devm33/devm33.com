@@ -5,6 +5,7 @@ mod fsutil;
 mod images;
 mod markdown;
 mod math;
+mod prism;
 mod site;
 mod slug;
 
