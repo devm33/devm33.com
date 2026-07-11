@@ -101,3 +101,40 @@ pub fn render(body: &str, images: &ImageProcessor, root: &Path) -> Result<Render
 
     Ok(Rendered { html: out })
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::path::PathBuf;
+
+    fn dummy_processor() -> ImageProcessor {
+        ImageProcessor::new(PathBuf::from("."), PathBuf::from("."), "/".to_string())
+    }
+
+    #[test]
+    fn renders_basic_markdown_without_spawning_node() {
+        // No fenced code / images, so no Node subprocess is invoked.
+        let out = render(
+            "# Title\n\nSome **bold** and `code` text.",
+            &dummy_processor(),
+            Path::new("."),
+        )
+        .unwrap()
+        .html;
+        assert!(out.contains("<h1>Title</h1>"));
+        assert!(out.contains("<strong>bold</strong>"));
+        assert!(out.contains("<code>code</code>"));
+    }
+
+    #[test]
+    fn passes_mathml_through_as_raw_html() {
+        let out = render(
+            "value <math><mi>n</mi></math> here",
+            &dummy_processor(),
+            Path::new("."),
+        )
+        .unwrap()
+        .html;
+        assert!(out.contains("<math><mi>n</mi></math>"));
+    }
+}

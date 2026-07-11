@@ -39,3 +39,16 @@ pub fn prepass(body: &str, root: &Path) -> Result<String> {
     }
     String::from_utf8(output.stdout).context("math pre-pass produced invalid UTF-8")
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn detects_math_delimiters() {
+        assert!(has_math("inline $$x$$ math"));
+        assert!(has_math("$$\n a=b \n$$"));
+        assert!(!has_math("no math here"));
+        assert!(!has_math("a single $ is not math"));
+    }
+}

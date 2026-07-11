@@ -89,6 +89,8 @@ pub struct Site {
     pub projects: Vec<Project>,
     /// Logical → content-hashed asset paths, filled during `build`.
     assets: Arc<RwLock<HashMap<String, String>>>,
+    /// Output paths written so far, to hard-fail on duplicate routes.
+    routes: std::cell::RefCell<std::collections::HashSet<String>>,
 }
 
 impl Site {
@@ -136,6 +138,7 @@ impl Site {
             tera,
             projects,
             assets,
+            routes: std::cell::RefCell::new(std::collections::HashSet::new()),
         })
     }
 
@@ -430,6 +433,9 @@ impl Site {
     }
 
     fn write_named(&self, template: &str, rel: &str, ctx: &tera::Context) -> Result<()> {
+        if !self.routes.borrow_mut().insert(rel.to_string()) {
+            anyhow::bail!("duplicate route: two pages resolve to {rel}");
+        }
         let html = self
             .tera
             .render(template, ctx)

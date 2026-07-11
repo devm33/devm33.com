@@ -93,3 +93,24 @@ pub fn fingerprint(static_dir: &Path, out_dir: &Path) -> Result<HashMap<String, 
 
     Ok(map)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{basename, fingerprint_name};
+
+    #[test]
+    fn inserts_hash_before_extension() {
+        assert_eq!(fingerprint_name("/style.css", "abcd"), "/style.abcd.css");
+        assert_eq!(
+            fingerprint_name("/fonts/mulish.woff2", "beef"),
+            "/fonts/mulish.beef.woff2"
+        );
+        assert_eq!(fingerprint_name("/noext", "beef"), "/noext.beef");
+    }
+
+    #[test]
+    fn basename_strips_dirs() {
+        assert_eq!(basename("/fonts/mulish.woff2"), "mulish.woff2");
+        assert_eq!(basename("Temml.woff2"), "Temml.woff2");
+    }
+}
