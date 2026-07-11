@@ -2,6 +2,7 @@ mod config;
 mod content;
 mod frontmatter;
 mod fsutil;
+mod images;
 mod markdown;
 mod site;
 mod slug;

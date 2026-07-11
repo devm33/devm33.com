@@ -1,4 +1,7 @@
-use pulldown_cmark::{Event, Options, Parser, html};
+use anyhow::Result;
+use pulldown_cmark::{CowStr, Event, Options, Parser, Tag, TagEnd, html};
+
+use crate::images::ImageProcessor;
 
 /// Result of rendering markdown to HTML.
 pub struct Rendered {
@@ -6,12 +9,10 @@ pub struct Rendered {
     pub has_math: bool,
 }
 
-/// Render markdown body to HTML.
+/// Render markdown body to HTML, processing body images through `images`.
 ///
-/// This is the Phase 1 baseline: standard CommonMark + common extensions.
-/// Image processing, syntax highlighting, and math (Temml) hooks are layered
-/// on in later phases.
-pub fn render(body: &str) -> Rendered {
+/// Syntax highlighting (Phase 7) and math (Phase 6) hooks are layered on later.
+pub fn render(body: &str, images: &ImageProcessor) -> Result<Rendered> {
     let mut options = Options::empty();
     options.insert(Options::ENABLE_TABLES);
     options.insert(Options::ENABLE_FOOTNOTES);
@@ -21,23 +22,49 @@ pub fn render(body: &str) -> Rendered {
 
     let parser = Parser::new_ext(body, options);
 
-    // Detect math delimiters (`$$`) in text events so pages can conditionally
-    // load math CSS. Actual rendering happens in the Temml phase.
     let mut has_math = false;
-    let events: Vec<Event> = parser
-        .inspect(|ev| {
-            if let Event::Text(t) = ev
-                && t.contains("$$")
-            {
-                has_math = true;
+    let mut events: Vec<Event> = Vec::new();
+    // While inside an image tag, `alt` accumulates its text children.
+    let mut alt: Option<String> = None;
+    let mut img_url: Option<String> = None;
+
+    for ev in parser {
+        match ev {
+            Event::Start(Tag::Image { dest_url, .. }) => {
+                img_url = Some(dest_url.to_string());
+                alt = Some(String::new());
             }
-        })
-        .collect();
+            Event::End(TagEnd::Image) => {
+                let url = img_url.take().unwrap_or_default();
+                let a = alt.take().unwrap_or_default();
+                let rendered = images.process(&url, &a)?;
+                events.push(Event::Html(CowStr::Boxed(rendered.into_boxed_str())));
+            }
+            Event::Text(t) => {
+                if t.contains("$$") {
+                    has_math = true;
+                }
+                if let Some(a) = alt.as_mut() {
+                    a.push_str(&t);
+                } else {
+                    events.push(Event::Text(t));
+                }
+            }
+            Event::Code(t) => {
+                if let Some(a) = alt.as_mut() {
+                    a.push_str(&t);
+                } else {
+                    events.push(Event::Code(t));
+                }
+            }
+            other => events.push(other),
+        }
+    }
 
     let mut out = String::new();
     html::push_html(&mut out, events.into_iter());
-    Rendered {
+    Ok(Rendered {
         html: out,
         has_math,
-    }
+    })
 }

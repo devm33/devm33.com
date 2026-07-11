@@ -36,13 +36,10 @@ pub struct Project {
     pub link: Option<String>,
     pub repo: Option<String>,
     pub image: Option<String>,
-    /// Rendered HTML body.
-    pub html: String,
-    /// Whether the page contains math (needs math CSS).
-    pub has_math: bool,
+    /// Raw markdown body (rendered to HTML during the build).
+    pub body: String,
     /// Absolute path to the project directory on disk.
     #[serde(skip)]
-    #[allow(dead_code)] // used in Phase 4 (image processing)
     pub dir: PathBuf,
 }
 

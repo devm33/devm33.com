@@ -133,6 +133,18 @@ p,
   margin-bottom: var(--unit);
 }
 
+.image-wrapper {
+  display: block;
+}
+
+.image-wrapper img,
+.image-wrapper picture,
+.image-wrapper source {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 ul,
 ol {
   margin-inline-start: var(--unit);

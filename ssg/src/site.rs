@@ -46,7 +46,7 @@ struct SitemapEntry {
 }
 
 impl ProjectView {
-    fn from(p: &Project) -> Self {
+    fn from(p: &Project, html: String, has_math: bool) -> Self {
         ProjectView {
             slug: p.slug.clone(),
             path: p.path.clone(),
@@ -64,8 +64,8 @@ impl ProjectView {
             link: p.link.clone(),
             repo: p.repo.clone(),
             image: p.image.clone(),
-            html: p.html.clone(),
-            has_math: p.has_math,
+            html,
+            has_math,
         }
     }
 }
@@ -86,7 +86,6 @@ impl Site {
         let mut projects = Vec::new();
         for dir in content::discover_projects(&config.content_dir)? {
             let loaded = Project::load(&dir)?;
-            let rendered = markdown::render(&loaded.body);
             projects.push(Project {
                 slug: loaded.slug,
                 path: loaded.path,
@@ -97,8 +96,7 @@ impl Site {
                 link: loaded.front.link,
                 repo: loaded.front.repo,
                 image: loaded.front.image,
-                html: rendered.html,
-                has_math: rendered.has_math,
+                body: loaded.body,
                 dir,
             });
         }
@@ -112,8 +110,20 @@ impl Site {
         })
     }
 
-    fn project_views(&self) -> Vec<ProjectView> {
-        self.projects.iter().map(ProjectView::from).collect()
+    fn project_views(&self) -> Result<Vec<ProjectView>> {
+        let out = &self.config.out_dir;
+        let mut views = Vec::with_capacity(self.projects.len());
+        for p in &self.projects {
+            let processor = crate::images::ImageProcessor::new(
+                p.dir.clone(),
+                out.join("projects").join(&p.slug),
+                p.path.clone(),
+            );
+            let rendered = markdown::render(&p.body, &processor)
+                .with_context(|| format!("rendering project {}", p.slug))?;
+            views.push(ProjectView::from(p, rendered.html, rendered.has_math));
+        }
+        Ok(views)
     }
 
     /// Base template context shared by all pages.
@@ -155,7 +165,7 @@ impl Site {
         let copied = crate::fsutil::copy_tree(&self.config.static_dir, out)?;
         eprintln!("Copied {copied} static files");
 
-        let views = self.project_views();
+        let views = self.project_views()?;
         let meta = &self.config.metadata;
         let default_og = self.abs("/images/me.jpg");
         let mut sitemap: Vec<SitemapEntry> = Vec::new();
@@ -209,7 +219,7 @@ impl Site {
         }
 
         // Tag pages.
-        for (tag, tagged) in self.tags() {
+        for (tag, tagged) in Self::tags(&views) {
             let mut ctx = self.base_context();
             let pathname = slug::tag_href(&tag);
             self.insert_page(
@@ -298,10 +308,9 @@ impl Site {
 
     /// Group projects by tag, each list sorted by the existing project order
     /// (already updated-desc).
-    fn tags(&self) -> Vec<(String, Vec<ProjectView>)> {
-        let views = self.project_views();
+    fn tags(views: &[ProjectView]) -> Vec<(String, Vec<ProjectView>)> {
         let mut names: Vec<String> = Vec::new();
-        for v in &views {
+        for v in views {
             for t in &v.tags {
                 if !names.iter().any(|n| n == &t.name) {
                     names.push(t.name.clone());
