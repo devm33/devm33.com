@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# Production build: compile the Rust SSG (which runs the Temml math pre-pass and
-# PrismJS highlighting via Node internally), then render the resume PDF against a
-# temporary local server so fingerprinted asset URLs resolve.
+# Production build (Netlify): compile the Rust SSG, which runs the Temml math
+# pre-pass and PrismJS highlighting via Node internally. This is a pure Rust
+# build — no browser is needed. The resume PDF and page screenshots are
+# generated and committed by the GitHub Actions "visuals" workflow (see
+# .github/workflows/visuals.yml); the resume PDF is served from the checked-in
+# static/devraj_mehta_resume.pdf.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -15,4 +18,3 @@ if ! command -v cargo >/dev/null 2>&1; then
 fi
 
 cargo run --release --locked --manifest-path "$ROOT/ssg/Cargo.toml"
-node "$ROOT/scripts/resume-pdf.mjs"

@@ -30,6 +30,7 @@ florina
 frontmatter
 fsutil
 Gatsby
+gifuct
 gitignore
 gzipping
 hasher
@@ -47,6 +48,7 @@ larr
 lastmod
 letfn
 linkedin
+losslessly
 maccman
 mapcat
 mathellipsis
@@ -66,7 +68,9 @@ networkidle
 noext
 omni
 optipng
+oxipng
 performant
+pngjs
 preact
 prefetching
 prepass

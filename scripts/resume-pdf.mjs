@@ -1,67 +1,20 @@
-// Render public/resume/ to public/devraj_mehta_resume.pdf.
+// Render the built /resume/ page to static/devraj_mehta_resume.pdf.
 //
-// Serves the built site over a temporary localhost HTTP server so that the
-// fingerprinted, root-relative asset URLs (/style.<hash>.css, /fonts/…) resolve
-// exactly as they will in production — file:// can't. Fonts are still inlined as
-// base64 so the PDF is self-contained, the light theme is forced for a
-// consistent document, and we await document.fonts.ready before printing.
+// The PDF is checked into the repo (under static/, so the SSG copies it to the
+// site root) and regenerated in CI, not on Netlify. The site is served over a
+// temporary localhost HTTP server so the fingerprinted, root-relative asset
+// URLs resolve exactly as in production. Fonts are inlined as base64 so the PDF
+// is self-contained, the light theme is forced, and we await document.fonts.ready
+// before printing.
 import { readFile } from "node:fs/promises";
-import { createReadStream, existsSync, statSync } from "node:fs";
-import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import puppeteer from "puppeteer";
+import { chromium } from "playwright";
+import { startServer } from "./serve-public.mjs";
 
 const root = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const publicDir = path.join(root, "public");
-
-const MIME = {
-  ".html": "text/html; charset=utf-8",
-  ".css": "text/css; charset=utf-8",
-  ".js": "text/javascript; charset=utf-8",
-  ".woff2": "font/woff2",
-  ".webp": "image/webp",
-  ".png": "image/png",
-  ".jpg": "image/jpeg",
-  ".jpeg": "image/jpeg",
-  ".gif": "image/gif",
-  ".ico": "image/x-icon",
-  ".svg": "image/svg+xml",
-  ".xml": "application/xml",
-  ".txt": "text/plain; charset=utf-8",
-  ".pdf": "application/pdf",
-};
-
-function resolvePath(urlPath) {
-  let p = decodeURIComponent(urlPath.split("?")[0]);
-  let fsPath = path.join(publicDir, p);
-  if (!fsPath.startsWith(publicDir)) return null; // path traversal guard
-  if (existsSync(fsPath) && statSync(fsPath).isDirectory()) {
-    fsPath = path.join(fsPath, "index.html");
-  }
-  return existsSync(fsPath) ? fsPath : null;
-}
-
-function startServer() {
-  const server = http.createServer((req, res) => {
-    const fsPath = resolvePath(req.url);
-    if (!fsPath) {
-      res.statusCode = 404;
-      res.end("Not found");
-      return;
-    }
-    res.setHeader(
-      "Content-Type",
-      MIME[path.extname(fsPath)] || "application/octet-stream",
-    );
-    createReadStream(fsPath).pipe(res);
-  });
-  return new Promise((resolve) => {
-    server.listen(0, "127.0.0.1", () =>
-      resolve({ server, port: server.address().port }),
-    );
-  });
-}
+const outPath = path.join(root, "static", "devraj_mehta_resume.pdf");
 
 async function inlineFontFiles() {
   const encoding = "base64";
@@ -87,21 +40,18 @@ async function inlineFontFiles() {
 }
 
 async function main() {
-  const { server, port } = await startServer();
-  const browser = await puppeteer.launch({
+  const { server, port } = await startServer(publicDir);
+  const browser = await chromium.launch({
     args: ["--font-render-hinting=none"],
   });
   try {
-    const page = await browser.newPage();
-    await page.emulateMediaFeatures([
-      { name: "prefers-color-scheme", value: "light" },
-    ]);
+    const page = await browser.newPage({ colorScheme: "light" });
     await page.goto(`http://127.0.0.1:${port}/resume/`, {
-      waitUntil: "networkidle0",
+      waitUntil: "networkidle",
     });
     await page.addStyleTag({ content: await inlineFontFiles() });
-    await page.evaluateHandle("document.fonts.ready");
-    await page.pdf({ path: path.join(publicDir, "devraj_mehta_resume.pdf") });
+    await page.evaluate(() => document.fonts.ready);
+    await page.pdf({ path: outPath, printBackground: true });
   } finally {
     await browser.close();
     server.close();
