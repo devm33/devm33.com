@@ -1,6 +1,7 @@
 mod config;
 mod content;
 mod frontmatter;
+mod fsutil;
 mod markdown;
 mod site;
 mod slug;

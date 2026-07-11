@@ -30,7 +30,6 @@ pub struct Config {
     pub root: std::path::PathBuf,
     pub content_dir: std::path::PathBuf,
     pub templates_glob: String,
-    #[allow(dead_code)] // used in Phase 2 (static asset copy)
     pub static_dir: std::path::PathBuf,
     pub out_dir: std::path::PathBuf,
     pub metadata: SiteMetadata,

@@ -113,6 +113,10 @@ impl Site {
         let out = &self.config.out_dir;
         clean_dir(out)?;
 
+        // Copy pass-through static assets (favicon, fonts, robots, etc.).
+        let copied = crate::fsutil::copy_tree(&self.config.static_dir, out)?;
+        eprintln!("Copied {copied} static files");
+
         let views = self.project_views();
 
         // Homepage: 3 most-recent projects.
