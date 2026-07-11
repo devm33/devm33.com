@@ -1,6 +1,8 @@
 use anyhow::{Context, Result};
 use serde::Serialize;
+use std::collections::HashMap;
 use std::path::Path;
+use std::sync::{Arc, RwLock};
 use tera::Tera;
 
 use crate::config::Config;
@@ -85,13 +87,29 @@ pub struct Site {
     pub config: Config,
     pub tera: Tera,
     pub projects: Vec<Project>,
+    /// Logical → content-hashed asset paths, filled during `build`.
+    assets: Arc<RwLock<HashMap<String, String>>>,
 }
 
 impl Site {
     /// Load templates and all content into memory.
     pub fn load(config: Config) -> Result<Self> {
-        let tera = Tera::new(&config.templates_glob)
+        let mut tera = Tera::new(&config.templates_glob)
             .with_context(|| format!("loading templates from {}", config.templates_glob))?;
+
+        // `asset(path="/style.css")` resolves to the fingerprinted URL (or the
+        // input path before/if it isn't fingerprinted).
+        let assets: Arc<RwLock<HashMap<String, String>>> = Arc::new(RwLock::new(HashMap::new()));
+        let assets_fn = Arc::clone(&assets);
+        tera.register_function("asset", move |args: &HashMap<String, tera::Value>| {
+            let path = args
+                .get("path")
+                .and_then(|v| v.as_str())
+                .ok_or_else(|| tera::Error::msg("asset() requires a string `path`"))?;
+            let map = assets_fn.read().expect("assets lock poisoned");
+            let resolved = map.get(path).cloned().unwrap_or_else(|| path.to_string());
+            Ok(tera::Value::String(resolved))
+        });
 
         let mut projects = Vec::new();
         for dir in content::discover_projects(&config.content_dir)? {
@@ -117,6 +135,7 @@ impl Site {
             config,
             tera,
             projects,
+            assets,
         })
     }
 
@@ -208,6 +227,12 @@ impl Site {
         // Copy pass-through static assets (favicon, fonts, robots, etc.).
         let copied = crate::fsutil::copy_tree(&self.config.static_dir, out)?;
         eprintln!("Copied {copied} static files");
+
+        // Fingerprint CSS/JS/font assets and expose them to templates via
+        // `asset(path=…)`.
+        let manifest = crate::assets::fingerprint(&self.config.static_dir, out)
+            .context("fingerprinting assets")?;
+        *self.assets.write().expect("assets lock poisoned") = manifest;
 
         let views = self.project_views()?;
         let meta = &self.config.metadata;
