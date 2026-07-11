@@ -4,14 +4,19 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
       - run: npm ci
       - run: npm run format
+      - name: Rust format
+        run: cargo fmt --manifest-path ssg/Cargo.toml
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
