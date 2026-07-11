@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% import "partials/project_list.html" as pl %}
-{% block title %}Projects | {{ site.title }}{% endblock %}
+{% import "partials/macros.html" as m %}
 {% block content %}
-{{ pl::project_list(projects=projects) }}
+{{ m::project_list(projects=projects) }}
 {% endblock %}

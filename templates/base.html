@@ -1,15 +1,30 @@
+{% import "partials/macros.html" as m %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}{{ site.title }}{% endblock %}</title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@devm33" />
+    <meta name="fb:app_id" content="477033866176272" />
+    <meta name="og:type" content="article" />
+    <link rel="preload" href="/fonts/mulish.woff2" as="font" crossorigin="anonymous" type="font/woff2" />
+    <link rel="preload" href="/fonts/mulish-ital.woff2" as="font" crossorigin="anonymous" type="font/woff2" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="og:description" content="{{ page.description }}" />
+    <meta name="og:image" content="{{ page.og_image | safe }}" />
+    <meta name="og:title" content="{{ page.title }}" />
+    <meta name="og:url" content="{{ page.canonical | safe }}" />
+    <link rel="canonical" href="{{ page.canonical | safe }}" />
     {% block head %}{% endblock %}
   </head>
   <body>
+    {% include "partials/icons.html" %}
     {% include "partials/navbar.html" %}
     <main{% block main_attrs %}{% endblock %}>
-      {% block content %}{% endblock %}
+{% block content %}{% endblock %}
     </main>
   </body>
 </html>

@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Result};
+use anyhow::{Result, anyhow};
 
 /// Split a markdown document into its YAML frontmatter and body.
 ///

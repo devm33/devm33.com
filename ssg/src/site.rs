@@ -30,6 +30,21 @@ pub struct TagRef {
     pub href: String,
 }
 
+/// Per-page SEO/OG metadata exposed to templates as `page`.
+#[derive(Debug, Clone, Serialize)]
+pub struct PageMeta {
+    pub title: String,
+    pub description: String,
+    pub og_image: String,
+    pub canonical: String,
+}
+
+/// A single URL entry for the sitemap.
+struct SitemapEntry {
+    loc: String,
+    lastmod: Option<String>,
+}
+
 impl ProjectView {
     fn from(p: &Project) -> Self {
         ProjectView {
@@ -108,6 +123,29 @@ impl Site {
         ctx
     }
 
+    /// Absolute site URL for a root-relative path.
+    fn abs(&self, path: &str) -> String {
+        format!("{}{}", self.config.metadata.site_url, path)
+    }
+
+    /// Insert per-page SEO/OG metadata under `page`.
+    fn insert_page(
+        &self,
+        ctx: &mut tera::Context,
+        title: &str,
+        description: &str,
+        og_image: &str,
+        pathname: &str,
+    ) {
+        let page = PageMeta {
+            title: title.to_string(),
+            description: description.to_string(),
+            og_image: og_image.to_string(),
+            canonical: self.abs(pathname),
+        };
+        ctx.insert("page", &page);
+    }
+
     /// Render every page and write it to the output directory.
     pub fn build(&self) -> Result<()> {
         let out = &self.config.out_dir;
@@ -118,6 +156,9 @@ impl Site {
         eprintln!("Copied {copied} static files");
 
         let views = self.project_views();
+        let meta = &self.config.metadata;
+        let default_og = self.abs("/images/me.jpg");
+        let mut sitemap: Vec<SitemapEntry> = Vec::new();
 
         // Homepage: 3 most-recent projects.
         {
@@ -125,30 +166,67 @@ impl Site {
             let recent: Vec<&ProjectView> = views.iter().take(3).collect();
             ctx.insert("recent", &recent);
             ctx.insert("total", &views.len());
+            self.insert_page(&mut ctx, &meta.title, &meta.description, &default_og, "/");
             self.write_page("index.html", "", &ctx)?;
+            sitemap.push(SitemapEntry {
+                loc: self.abs("/"),
+                lastmod: None,
+            });
         }
 
         // Projects index.
         {
             let mut ctx = self.base_context();
             ctx.insert("projects", &views);
+            self.insert_page(
+                &mut ctx,
+                &meta.title,
+                &meta.description,
+                &default_og,
+                "/projects/",
+            );
             self.write_page("projects.html", "projects", &ctx)?;
+            sitemap.push(SitemapEntry {
+                loc: self.abs("/projects/"),
+                lastmod: None,
+            });
         }
 
         // Project pages.
         for view in &views {
             let mut ctx = self.base_context();
+            let og_image = match &view.image {
+                Some(img) => self.abs(&format!("{}{}", view.path, img)),
+                None => default_og.clone(),
+            };
+            self.insert_page(&mut ctx, &view.title, &view.tagline, &og_image, &view.path);
             ctx.insert("project", view);
             self.write_page("project.html", &format!("projects/{}", view.slug), &ctx)?;
+            sitemap.push(SitemapEntry {
+                loc: self.abs(&view.path),
+                lastmod: Some(view.updated.clone()),
+            });
         }
 
         // Tag pages.
         for (tag, tagged) in self.tags() {
             let mut ctx = self.base_context();
+            let pathname = slug::tag_href(&tag);
+            self.insert_page(
+                &mut ctx,
+                &format!("Projects tagged {tag}"),
+                &meta.description,
+                &default_og,
+                &pathname,
+            );
             ctx.insert("tag", &tag);
             ctx.insert("tag_projects", &tagged);
             let dir = format!("tag/{}", slug::tag_dir(&tag));
             self.write_page("tag.html", &dir, &ctx)?;
+            sitemap.push(SitemapEntry {
+                loc: self.abs(&pathname),
+                lastmod: None,
+            });
         }
 
         // Resume.
@@ -156,17 +234,65 @@ impl Site {
             let jobs = self.load_resume_jobs()?;
             let skills = self.load_resume_skills()?;
             let mut ctx = self.base_context();
+            self.insert_page(
+                &mut ctx,
+                "Devraj Mehta Resume",
+                &meta.description,
+                &default_og,
+                "/resume/",
+            );
+            ctx.insert("resume_nav", &true);
             ctx.insert("jobs", &jobs);
             ctx.insert("skills", &skills);
             self.write_page("resume.html", "resume", &ctx)?;
+            sitemap.push(SitemapEntry {
+                loc: self.abs("/resume/"),
+                lastmod: None,
+            });
         }
 
-        // 404.
+        // 404 (excluded from the sitemap).
         {
-            let ctx = self.base_context();
+            let mut ctx = self.base_context();
+            self.insert_page(
+                &mut ctx,
+                "404: Not found",
+                &meta.description,
+                &default_og,
+                "/404/",
+            );
             self.write_named("404.html", "404.html", &ctx)?;
         }
 
+        self.write_sitemap(&sitemap)?;
+
+        Ok(())
+    }
+
+    /// Emit `/sitemap-index.xml` + `/sitemap-0.xml` (matches gatsby-plugin-sitemap).
+    fn write_sitemap(&self, entries: &[SitemapEntry]) -> Result<()> {
+        let mut urls = String::new();
+        for e in entries {
+            urls.push_str("  <url><loc>");
+            urls.push_str(&e.loc);
+            urls.push_str("</loc>");
+            if let Some(lastmod) = &e.lastmod {
+                urls.push_str("<lastmod>");
+                urls.push_str(lastmod);
+                urls.push_str("</lastmod>");
+            }
+            urls.push_str("</url>\n");
+        }
+        let urlset = format!(
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{urls}</urlset>\n"
+        );
+        std::fs::write(self.config.out_dir.join("sitemap-0.xml"), urlset)?;
+
+        let index = format!(
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <sitemap><loc>{}</loc></sitemap>\n</sitemapindex>\n",
+            self.abs("/sitemap-0.xml")
+        );
+        std::fs::write(self.config.out_dir.join("sitemap-index.xml"), index)?;
         Ok(())
     }
 

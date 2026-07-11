@@ -1,31 +1,27 @@
 {% extends "base.html" %}
-{% block title %}Devraj Mehta Resume | {{ site.title }}{% endblock %}
+{% block main_attrs %} class="resume"{% endblock %}
 {% block content %}
-<section>
+<section class="section">
   <h2>EXPERIENCE</h2>
   {% for job in jobs %}
   <div>
     <div class="title-row">
-      <h3><a href="{{ job.uri }}">{{ job.name }}</a>, {{ job.title }}
-        <span class="location">- {{ job.location }}</span></h3>
-      <div class="date-range">
-        <span>{{ job.start }}</span> - <span>{{ job.finish }}</span>
-      </div>
+      <h3><a href="{{ job.uri | safe }}">{{ job.name }}</a>, {{ job.title }} <span class="location nowrap">- {{ job.location }}</span></h3>
+      <div class="date-range"><span class="nowrap">{{ job.start }}</span> - <span class="nowrap">{{ job.finish }}</span></div>
     </div>
     <ul>{% for d in job.description %}<li>{{ d }}</li>{% endfor %}</ul>
   </div>
   {% endfor %}
 </section>
-<section>
+<section class="section">
   <h2>EDUCATION</h2>
   <div class="title-row">
-    <h3><a href="https://gatech.edu">Georgia Institute of Technology</a>,
-      BSc Computer Science <span class="location">- Atlanta, GA</span></h3>
-    <div class="date-range"><span>AUG 2010</span> - <span>MAY 2014</span></div>
+    <h3><a href="https://gatech.edu">Georgia Institute of Technology</a>, BSc Computer Science <span class="location nowrap">- Atlanta, GA</span></h3>
+    <div class="date-range"><span class="nowrap">AUG 2010</span> - <span class="nowrap">MAY 2014</span></div>
   </div>
   <div>Highest Honors</div>
 </section>
-<section>
+<section class="section">
   <h2>SKILLS</h2>
   <div>{{ skills.frameworks | join(sep=", ") }}</div>
   <div>{{ skills.languages | join(sep=", ") }}</div>

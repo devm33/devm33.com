@@ -1,4 +1,4 @@
-use pulldown_cmark::{html, Event, Options, Parser};
+use pulldown_cmark::{Event, Options, Parser, html};
 
 /// Result of rendering markdown to HTML.
 pub struct Rendered {
@@ -26,10 +26,10 @@ pub fn render(body: &str) -> Rendered {
     let mut has_math = false;
     let events: Vec<Event> = parser
         .inspect(|ev| {
-            if let Event::Text(t) = ev {
-                if t.contains("$$") {
-                    has_math = true;
-                }
+            if let Event::Text(t) = ev
+                && t.contains("$$")
+            {
+                has_math = true;
             }
         })
         .collect();
