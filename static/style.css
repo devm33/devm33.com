@@ -346,6 +346,7 @@ h3 {
 }
 
 .thumbnail-image {
+  display: block; /* Remove inline baseline gap below the image. */
   margin: 0; /* Override default spacing. */
 }
 

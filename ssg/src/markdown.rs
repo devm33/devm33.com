@@ -15,6 +15,18 @@ fn placeholder(idx: usize) -> String {
     format!("\u{E000}PRISM{idx}\u{E000}")
 }
 
+/// Unwrap a footnote body that is a single `<p>…</p>` so its text sits directly
+/// in the `<li>`, matching gatsby-transformer-remark's output.
+fn strip_single_paragraph(inner: &str) -> &str {
+    let t = inner.trim();
+    if let Some(body) = t.strip_prefix("<p>").and_then(|s| s.strip_suffix("</p>"))
+        && !body.contains("</p>")
+    {
+        return body;
+    }
+    t
+}
+
 /// Render markdown body to HTML, processing body images through `images` and
 /// fenced code blocks through PrismJS (Node helper), rooted at `root`.
 ///
@@ -39,9 +51,43 @@ pub fn render(body: &str, images: &ImageProcessor, root: &Path) -> Result<Render
     let mut code_buf: Option<String> = None;
     // Collected `(lang, code)` blocks, highlighted in one batch after the walk.
     let mut blocks: Vec<(String, String)> = Vec::new();
+    // Footnote labels in order of first reference, for sequential numbering.
+    let mut fn_order: Vec<String> = Vec::new();
+    // Collected footnote definitions as `(label, inner_html)`.
+    let mut footnotes: Vec<(String, String)> = Vec::new();
+    // When capturing a footnote definition: its label + buffered inner events.
+    let mut in_fn: Option<(String, Vec<Event>)> = None;
 
     for ev in parser {
+        // Divert everything inside a footnote definition into its own buffer so
+        // it can be re-emitted as an ordered list at the end of the document.
+        if in_fn.is_some() {
+            if matches!(ev, Event::End(TagEnd::FootnoteDefinition)) {
+                let (label, inner_events) = in_fn.take().unwrap();
+                let mut inner = String::new();
+                html::push_html(&mut inner, inner_events.into_iter());
+                footnotes.push((label, inner));
+            } else {
+                in_fn.as_mut().unwrap().1.push(ev);
+            }
+            continue;
+        }
         match ev {
+            Event::Start(Tag::FootnoteDefinition(name)) => {
+                in_fn = Some((name.to_string(), Vec::new()));
+            }
+            Event::FootnoteReference(name) => {
+                let label = name.to_string();
+                if !fn_order.contains(&label) {
+                    fn_order.push(label.clone());
+                }
+                let num = fn_order.iter().position(|l| l == &label).unwrap() + 1;
+                let html = format!(
+                    "<sup id=\"fnref-{label}\"><a href=\"#fn-{label}\" \
+                     class=\"footnote-ref\">{num}</a></sup>"
+                );
+                events.push(Event::Html(CowStr::Boxed(html.into_boxed_str())));
+            }
             Event::Start(Tag::Image { dest_url, .. }) => {
                 img_url = Some(dest_url.to_string());
                 alt = Some(String::new());
@@ -94,6 +140,28 @@ pub fn render(body: &str, images: &ImageProcessor, root: &Path) -> Result<Render
     let mut out = String::new();
     html::push_html(&mut out, events.into_iter());
 
+    // Emit collected footnotes as remark's ordered-list structure.
+    if !footnotes.is_empty() {
+        // Any footnote defined but never referenced still appears, in source order.
+        for (label, _) in &footnotes {
+            if !fn_order.contains(label) {
+                fn_order.push(label.clone());
+            }
+        }
+        let mut section = String::from("<div class=\"footnotes\">\n<hr>\n<ol>\n");
+        for label in &fn_order {
+            if let Some((_, inner)) = footnotes.iter().find(|(l, _)| l == label) {
+                let content = strip_single_paragraph(inner);
+                section.push_str(&format!(
+                    "<li id=\"fn-{label}\">{content}\
+                     <a href=\"#fnref-{label}\" class=\"footnote-backref\">\u{21a9}</a></li>\n"
+                ));
+            }
+        }
+        section.push_str("</ol>\n</div>\n");
+        out.push_str(&section);
+    }
+
     let highlighted = crate::prism::highlight(&blocks, root)?;
     for (idx, block_html) in highlighted.iter().enumerate() {
         out = out.replace(&placeholder(idx), block_html);
@@ -136,5 +204,26 @@ mod tests {
         .unwrap()
         .html;
         assert!(out.contains("<math><mi>n</mi></math>"));
+    }
+
+    #[test]
+    fn renders_footnotes_as_remark_ordered_list() {
+        let out = render(
+            "Body ref [^1] here.\n\n[^1]: The note text.",
+            &dummy_processor(),
+            Path::new("."),
+        )
+        .unwrap()
+        .html;
+        assert!(
+            out.contains(
+                "<sup id=\"fnref-1\"><a href=\"#fn-1\" class=\"footnote-ref\">1</a></sup>"
+            )
+        );
+        assert!(out.contains("<div class=\"footnotes\">\n<hr>\n<ol>\n"));
+        assert!(out.contains(
+            "<li id=\"fn-1\">The note text.<a href=\"#fnref-1\" class=\"footnote-backref\">\u{21a9}</a></li>"
+        ));
+        assert!(!out.contains("footnote-definition"));
     }
 }
