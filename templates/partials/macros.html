@@ -17,8 +17,10 @@
   <div class="tagline">{{ p.tagline }}</div>
 </header>{% endmacro project_header %}
 
+{% macro thumb(t, alt="", eager=false) %}<picture><source type="image/webp" srcset="{{ t.srcset | safe }}" sizes="{{ t.size }}px" /><img class="thumbnail-image" src="{{ t.fallback | safe }}" alt="{{ alt }}" width="{{ t.size }}" height="{{ t.size }}" loading="{% if eager %}eager{% else %}lazy{% endif %}" decoding="async" style="background-color: {{ t.color }}" /></picture>{% endmacro thumb %}
+
 {% macro project(p) %}<div class="project">
-  <a aria-label="{{ p.title }}" class="thumbnail" href="{{ p.path | safe }}">{% if p.image %}<img class="thumbnail-image" src="{{ p.path | safe }}{{ p.image }}" alt="" width="150" height="150" />{% endif %}</a>
+  <a aria-label="{{ p.title }}" class="thumbnail" href="{{ p.path | safe }}">{% if p.thumb %}{{ self::thumb(t=p.thumb) }}{% endif %}</a>
   {{ self::project_header(p=p, link=true, class="flex-header") }}
 </div>{% endmacro project %}
 

@@ -19,7 +19,10 @@ pub struct ProjectView {
     pub tags: Vec<TagRef>,
     pub link: Option<String>,
     pub repo: Option<String>,
-    pub image: Option<String>,
+    pub thumb: Option<crate::images::Thumb>,
+    /// Root-relative Open Graph image path, if the project has a hero image.
+    #[serde(skip)]
+    pub og_path: Option<String>,
     pub html: String,
     pub has_math: bool,
 }
@@ -46,7 +49,13 @@ struct SitemapEntry {
 }
 
 impl ProjectView {
-    fn from(p: &Project, html: String, has_math: bool) -> Self {
+    fn from(
+        p: &Project,
+        html: String,
+        has_math: bool,
+        thumb: Option<crate::images::Thumb>,
+        og_path: Option<String>,
+    ) -> Self {
         ProjectView {
             slug: p.slug.clone(),
             path: p.path.clone(),
@@ -63,7 +72,8 @@ impl ProjectView {
                 .collect(),
             link: p.link.clone(),
             repo: p.repo.clone(),
-            image: p.image.clone(),
+            thumb,
+            og_path,
             html,
             has_math,
         }
@@ -121,9 +131,36 @@ impl Site {
             );
             let rendered = markdown::render(&p.body, &processor)
                 .with_context(|| format!("rendering project {}", p.slug))?;
-            views.push(ProjectView::from(p, rendered.html, rendered.has_math));
+            let (thumb, og_path) = match &p.image {
+                Some(img) => {
+                    let thumb = processor
+                        .thumbnail(img, 150)
+                        .with_context(|| format!("thumbnail for {}", p.slug))?;
+                    let og = processor
+                        .social(img, 1000)
+                        .with_context(|| format!("og image for {}", p.slug))?;
+                    (Some(thumb), Some(og))
+                }
+                None => (None, None),
+            };
+            views.push(ProjectView::from(
+                p,
+                rendered.html,
+                rendered.has_math,
+                thumb,
+                og_path,
+            ));
         }
         Ok(views)
+    }
+
+    /// Processor for the shared `content/images` directory (headshot, OG).
+    fn images_processor(&self) -> crate::images::ImageProcessor {
+        crate::images::ImageProcessor::new(
+            self.config.content_dir.join("images"),
+            self.config.out_dir.join("images"),
+            "/images/".to_string(),
+        )
     }
 
     /// Base template context shared by all pages.
@@ -167,7 +204,17 @@ impl Site {
 
         let views = self.project_views()?;
         let meta = &self.config.metadata;
-        let default_og = self.abs("/images/me.jpg");
+
+        // Headshot + default Open Graph image from the shared images dir.
+        let images_proc = self.images_processor();
+        let headshot = images_proc
+            .thumbnail("me.jpg", 250)
+            .context("processing headshot")?;
+        let default_og = self.abs(
+            &images_proc
+                .social("me.jpg", 1000)
+                .context("og for me.jpg")?,
+        );
         let mut sitemap: Vec<SitemapEntry> = Vec::new();
 
         // Homepage: 3 most-recent projects.
@@ -176,6 +223,7 @@ impl Site {
             let recent: Vec<&ProjectView> = views.iter().take(3).collect();
             ctx.insert("recent", &recent);
             ctx.insert("total", &views.len());
+            ctx.insert("headshot", &headshot);
             self.insert_page(&mut ctx, &meta.title, &meta.description, &default_og, "/");
             self.write_page("index.html", "", &ctx)?;
             sitemap.push(SitemapEntry {
@@ -205,8 +253,8 @@ impl Site {
         // Project pages.
         for view in &views {
             let mut ctx = self.base_context();
-            let og_image = match &view.image {
-                Some(img) => self.abs(&format!("{}{}", view.path, img)),
+            let og_image = match &view.og_path {
+                Some(path) => self.abs(path),
                 None => default_og.clone(),
             };
             self.insert_page(&mut ctx, &view.title, &view.tagline, &og_image, &view.path);

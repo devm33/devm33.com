@@ -125,6 +125,113 @@ impl ImageProcessor {
         std::fs::copy(&src, self.out_dir.join(name))?;
         Ok(Some(format!("{}{}", self.url_prefix, name)))
     }
+
+    /// Produce a square thumbnail (center-cropped) at `size` with a 2x variant
+    /// when the source allows, plus an average-color placeholder.
+    pub fn thumbnail(&self, filename: &str, size: u32) -> Result<Thumb> {
+        let src = self.src_dir.join(filename);
+        let hash = hash_file(&src).with_context(|| format!("hashing {}", src.display()))?;
+        let stem = Path::new(filename)
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .unwrap_or("thumb");
+        let ext = Path::new(filename)
+            .extension()
+            .and_then(|s| s.to_str())
+            .unwrap_or("png")
+            .to_ascii_lowercase();
+        let img = image::open(&src).with_context(|| format!("decoding {}", src.display()))?;
+        let square = crop_square(&img);
+        let side = square.width();
+        let color = avg_color(&square);
+        std::fs::create_dir_all(&self.out_dir)?;
+
+        let base = size.min(side);
+        let mut widths = vec![base];
+        if side >= size * 2 {
+            widths.push(size * 2);
+        }
+
+        let mut srcset = Vec::new();
+        for &w in &widths {
+            let resized = square.resize_exact(w, w, image::imageops::FilterType::Lanczos3);
+            let rgba = resized.to_rgba8().into_raw();
+            let encoded = webp::Encoder::from_rgba(&rgba, w, w).encode(WEBP_QUALITY);
+            let name = format!("{stem}.{hash}.{w}.webp");
+            std::fs::write(self.out_dir.join(&name), &*encoded)
+                .with_context(|| format!("writing {name}"))?;
+            srcset.push(format!("{}{} {}w", self.url_prefix, name, w));
+        }
+
+        let fallback_name = format!("{stem}.{hash}.{base}.{ext}");
+        square
+            .resize_exact(base, base, image::imageops::FilterType::Lanczos3)
+            .save(self.out_dir.join(&fallback_name))
+            .with_context(|| format!("writing {fallback_name}"))?;
+
+        Ok(Thumb {
+            srcset: srcset.join(", "),
+            fallback: format!("{}{}", self.url_prefix, fallback_name),
+            color,
+            size,
+        })
+    }
+
+    /// Produce an Open Graph image (resized to at most `max`, original format)
+    /// and return its absolute-from-root URL path.
+    pub fn social(&self, filename: &str, max: u32) -> Result<String> {
+        let src = self.src_dir.join(filename);
+        let hash = hash_file(&src).with_context(|| format!("hashing {}", src.display()))?;
+        let stem = Path::new(filename)
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .unwrap_or("og");
+        let ext = Path::new(filename)
+            .extension()
+            .and_then(|s| s.to_str())
+            .unwrap_or("png")
+            .to_ascii_lowercase();
+        let img = image::open(&src).with_context(|| format!("decoding {}", src.display()))?;
+        let (ow, oh) = (img.width(), img.height());
+        let resized = resize_to(&img, max, ow, oh);
+        std::fs::create_dir_all(&self.out_dir)?;
+        let name = format!("{stem}.{hash}.og.{ext}");
+        resized
+            .0
+            .save(self.out_dir.join(&name))
+            .with_context(|| format!("writing {name}"))?;
+        Ok(format!("{}{}", self.url_prefix, name))
+    }
+}
+
+/// A square project/headshot thumbnail exposed to templates.
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct Thumb {
+    /// WebP `srcset` string.
+    pub srcset: String,
+    /// Same-format fallback URL.
+    pub fallback: String,
+    /// Average-color placeholder (hex) to avoid layout flash.
+    pub color: String,
+    /// Display size in CSS pixels.
+    pub size: u32,
+}
+
+/// Center-crop to the largest square.
+fn crop_square(img: &image::DynamicImage) -> image::DynamicImage {
+    let (w, h) = (img.width(), img.height());
+    let s = w.min(h);
+    let x = (w - s) / 2;
+    let y = (h - s) / 2;
+    img.crop_imm(x, y, s, s)
+}
+
+/// Average color of an image as a `#rrggbb` hex string.
+fn avg_color(img: &image::DynamicImage) -> String {
+    let small = img.resize_exact(1, 1, image::imageops::FilterType::Triangle);
+    let px = small.to_rgb8();
+    let p = px.get_pixel(0, 0);
+    format!("#{:02x}{:02x}{:02x}", p[0], p[1], p[2])
 }
 
 /// A resized image bundled with its dimensions.
