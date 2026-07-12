@@ -3,12 +3,9 @@
   "private": true,
   "scripts": {
     "build": "bash build.sh",
+    "check-links": "remark -f content/projects/",
     "clean": "rm -rf public",
     "dev": "bash scripts/dev.sh",
-    "start": "bash scripts/dev.sh",
-    "resume-pdf": "node scripts/resume-pdf.mjs",
-    "screenshots": "node scripts/screenshots.mjs",
-    "check-links": "remark -f content/projects/",
     "format": "run-s format:*",
     "format:code": "prettier --write . --ignore-path .prettierignore",
     "format:css": "npm run lint:css -- --fix",
@@ -17,6 +14,9 @@
     "lint:css": "stylelint 'static/style.css'",
     "lint:grammar": "write-good $(glob 'content/projects/**/*.md') --no-tooWordy",
     "lint:spelling": "cspell '**' --no-progress",
+    "resume-pdf": "node scripts/resume-pdf.mjs",
+    "screenshots": "node scripts/screenshots.mjs",
+    "start": "bash scripts/dev.sh",
     "test": "run-p check-links lint"
   },
   "cspell": {
