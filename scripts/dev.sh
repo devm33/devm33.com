@@ -9,11 +9,13 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 PORT="${PORT:-8000}"
+URL="http://localhost:${PORT}/"
 
 build() {
   ( cd ssg && SSG_ROOT="$ROOT" cargo run --quiet )
 }
 
+echo "Dev server will be available at ${URL} (set PORT to override)."
 echo "Initial build..."
 build
 
@@ -22,7 +24,7 @@ build
 python3 -m http.server "$PORT" --directory public &
 SERVER_PID=$!
 trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-echo "Serving http://localhost:${PORT}/"
+echo "Serving ${URL}"
 
 # Watch for changes.
 if command -v watchexec >/dev/null 2>&1; then
