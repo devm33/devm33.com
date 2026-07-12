@@ -33,7 +33,8 @@ function getBaseLanguageName(nameOrAlias) {
 
 function loadPrismLanguage(language) {
   const baseLanguage = getBaseLanguageName(language);
-  if (!baseLanguage) throw new Error(`Prism doesn't support language '${language}'.`);
+  if (!baseLanguage)
+    throw new Error(`Prism doesn't support language '${language}'.`);
   if (Prism.languages[baseLanguage]) return;
   const data = prismComponents.languages[baseLanguage];
   if (data.option === "default") return;

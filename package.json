@@ -10,7 +10,7 @@
     "screenshots": "node scripts/screenshots.mjs",
     "check-links": "remark -f content/projects/",
     "format": "run-s format:*",
-    "format:code": "prettier --write . --ignore-path .gitignore",
+    "format:code": "prettier --write . --ignore-path .prettierignore",
     "format:css": "npm run lint:css -- --fix",
     "format:pkg": "format-package -w",
     "lint": "run-p lint:*",

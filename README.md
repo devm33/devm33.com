@@ -18,10 +18,9 @@ Website built with a small homegrown static site generator written in Rust
   (`jobs.yml`, `skills.yml`), and site metadata.
 - **`static/`** — global `style.css`, vendored `prism.css`/`temml.css`, fonts,
   `theme.js`, favicon/robots, and Netlify `_redirects`/`_headers`.
-- **`scripts/`** — Node build helpers: `math.mjs`
-  ([Temml](https://temml.org): LaTeX → MathML at build time, no runtime JS),
-  `prism.mjs` (PrismJS syntax highlighting), and `resume-pdf.mjs` (Puppeteer
-  renders `/resume/` to a PDF).
+- **`scripts/`** — Node build helpers: `math.mjs` ([Temml](https://temml.org):
+  LaTeX → MathML at build time, no runtime JS), `prism.mjs` (PrismJS syntax
+  highlighting), and `resume-pdf.mjs` (Puppeteer renders `/resume/` to a PDF).
 - **`build.sh`** — production entrypoint (used by Netlify): runs the Rust build
   (`cargo run --release --locked`) then generates the resume PDF.
 
