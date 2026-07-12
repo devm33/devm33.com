@@ -26,9 +26,15 @@ const MIME = {
 };
 
 function resolvePath(publicDir, urlPath) {
-  const p = decodeURIComponent(urlPath.split("?")[0]);
-  let fsPath = path.join(publicDir, p);
-  if (!fsPath.startsWith(publicDir)) return null; // path traversal guard
+  const root = path.resolve(publicDir);
+  const decoded = decodeURIComponent(urlPath.split("?")[0]);
+  // Normalize the request path in isolation and drop any leading traversal so
+  // it can only ever resolve to a location inside `root`.
+  const safeSuffix = path.normalize(decoded).replace(/^(\.\.(?:[/\\]|$))+/, "");
+  let fsPath = path.resolve(root, `.${path.sep}${safeSuffix}`);
+  // Belt-and-suspenders: reject anything that still escapes the root.
+  const rel = path.relative(root, fsPath);
+  if (rel.startsWith("..") || path.isAbsolute(rel)) return null;
   if (existsSync(fsPath) && statSync(fsPath).isDirectory()) {
     fsPath = path.join(fsPath, "index.html");
   }
