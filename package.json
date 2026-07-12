@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "bash build.sh",
-    "check-links": "remark -f content/projects/",
+    "check-links": "remark content/projects/",
     "clean": "rm -rf public",
     "dev": "bash scripts/dev.sh",
     "format": "run-s format:*",

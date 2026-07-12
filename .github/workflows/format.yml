@@ -1,5 +1,5 @@
 name: Format
-on: [push, pull_request]
+on: [push]
 
 # Share the auto-commit concurrency group with the Visuals workflow so the two
 # auto-committing jobs are serialized and never race on push. The key is the
