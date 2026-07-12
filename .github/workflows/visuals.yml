@@ -1,9 +1,12 @@
 name: Visuals
 on: [push]
 
-# Serialize with the auto-formatting workflow so their auto-commits don't race.
+# Serialize with the auto-formatting workflow (same group) so their auto-commits
+# never push concurrently. The key must be stable across push/pull_request
+# events, so it uses the branch name rather than github.ref.
 concurrency:
-  group: auto-commit-${{ github.ref }}
+  group: auto-commit-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
 
 jobs:
   visuals:
@@ -13,7 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          # Check out the branch tip by name so that, once serialized after the
+          # format job, we build on top of whatever it just pushed (fast-forward).
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"

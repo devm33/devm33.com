@@ -1,12 +1,24 @@
 name: Format
 on: [push, pull_request]
+
+# Share the auto-commit concurrency group with the Visuals workflow so the two
+# auto-committing jobs are serialized and never race on push. The key is the
+# branch name so it is stable across push and pull_request events.
+concurrency:
+  group: auto-commit-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+
 jobs:
   format:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          # Check out the branch tip by name so a serialized run builds on top of
+          # whatever a prior auto-commit pushed (keeps the push a fast-forward).
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
