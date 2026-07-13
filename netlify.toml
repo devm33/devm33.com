@@ -3,7 +3,7 @@
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24"
   # Keep the Cargo registry/git caches inside the repo so the cache plugin
   # persists them between builds.
   CARGO_HOME = "/opt/build/repo/.cargo"
