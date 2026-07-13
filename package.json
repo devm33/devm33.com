@@ -2,28 +2,23 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "gatsby build",
-    "cbs": "run-s clean build serve",
-    "check-links": "remark -f src/projects/",
-    "clean": "gatsby clean",
+    "build": "bash build.sh",
+    "check-links": "remark content/projects/",
+    "clean": "rm -rf public",
+    "dev": "bash scripts/dev.sh",
     "format": "run-s format:*",
-    "format:code": "prettier --write . --ignore-path .gitignore",
+    "format:code": "prettier --write . --ignore-path .prettierignore",
     "format:css": "npm run lint:css -- --fix",
     "format:pkg": "format-package -w",
-    "format:ts": "npm run lint:ts -- --fix",
     "lint": "run-p lint:*",
-    "lint:css": "stylelint 'src/**/*.css'",
-    "lint:grammar": "write-good $(glob 'src/projects/**/*.md') --no-tooWordy",
+    "lint:css": "stylelint 'static/style.css'",
+    "lint:grammar": "write-good $(glob 'content/projects/**/*.md') --no-tooWordy",
     "lint:spelling": "cspell '**' --no-progress",
-    "lint:ts": "eslint . --ext .ts,.tsx --ignore-path .gitignore",
-    "serve": "gatsby serve",
-    "start": "gatsby develop -H 0.0.0.0",
-    "test": "run-p typecheck check-links lint",
-    "typecheck": "tsc --noEmit"
+    "resume-pdf": "node scripts/resume-pdf.mjs",
+    "screenshots": "node scripts/screenshots.mjs",
+    "start": "bash scripts/dev.sh",
+    "test": "run-p check-links lint"
   },
-  "browserslist": [
-    "defaults and supports es6-module"
-  ],
   "cspell": {
     "dictionaries": [
       "companies",
@@ -41,39 +36,21 @@
     "dictionaryDefinitions": [
       {
         "name": "custom-words",
-        "path": "./src/custom-words.txt",
+        "path": "./custom-words.txt",
         "addWords": true
       }
     ],
     "ignorePaths": [
-      "package-lock.json"
+      "package-lock.json",
+      "public",
+      "screenshots",
+      "ssg/target",
+      "static/prism.css",
+      "static/temml.css"
     ],
     "language": "en",
     "useGitignore": true,
     "version": "0.2"
-  },
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "env": {
-      "es6": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:jsx-a11y/recommended",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "react",
-      "jsx-a11y"
-    ],
-    "rules": {
-      "max-lines-per-function": [
-        "error",
-        27
-      ]
-    }
   },
   "prettier": {
     "proseWrap": "always",
@@ -107,51 +84,28 @@
         true,
         {
           "importFrom": [
-            "src/global.css"
+            "static/style.css"
           ]
         }
       ]
     }
   },
   "dependencies": {
-    "@types/node": "^18.16.2",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
-    "@types/webpack": "^5.28.1",
-    "gatsby": "^5.9.0",
-    "gatsby-plugin-canonical-urls": "^5.9.0",
-    "gatsby-plugin-image": "^3.9.0",
-    "gatsby-plugin-netlify": "^5.1.0",
-    "gatsby-plugin-sharp": "^5.9.0",
-    "gatsby-plugin-sitemap": "^6.9.0",
-    "gatsby-remark-copy-linked-files": "^6.9.0",
-    "gatsby-remark-images": "^7.9.0",
-    "gatsby-remark-katex": "^7.9.0",
-    "gatsby-remark-prismjs": "^7.9.0",
-    "gatsby-source-filesystem": "^5.9.0",
-    "gatsby-transformer-remark": "^6.9.0",
-    "gatsby-transformer-sharp": "^5.9.0",
-    "gatsby-transformer-yaml": "^5.9.0",
-    "katex": "^0.16.6",
+    "mdast-util-from-markdown": "^0.8.5",
     "prismjs": "^1.29.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.0.4"
+    "temml": "^0.11.11"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
     "cli-glob": "^0.1.0",
     "cspell": "^6.31.1",
-    "eslint": "^8.39.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.2",
     "format-package": "^7.0.0",
-    "lodash": "^4.17.21",
+    "gifuct-js": "^2.1.2",
+    "netlify-plugin-cache": "^1.0.3",
     "npm-run-all": "^4.1.5",
+    "oxipng": "^1.0.1",
+    "playwright": "^1.49.0",
+    "pngjs": "^7.0.0",
     "prettier": "^2.8.8",
-    "puppeteer": "^19.11.1",
     "remark-cli": "^11.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
     "stylelint": "^15.6.0",

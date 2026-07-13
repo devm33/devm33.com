@@ -1,0 +1,16 @@
+{% import "partials/macros.html" as m %}
+<nav class="nav-bar">
+  <div class="title-group">
+    <a href="/" class="title">{{ site.title }}</a>
+    {% if resume_nav is defined and resume_nav %}{{ m::icon_link(href="/devraj_mehta_resume.pdf", n=1, label="View as PDF", class="no-print") }}{% endif %}
+  </div>
+  <div class="icon-links no-print">
+    {{ m::theme_toggle() }}
+    {{ m::icon_link(href=site.github, n=2, label="GitHub", left=true) }}
+    {{ m::icon_link(href=site.linkedin, n=4, label="LinkedIn", left=true) }}
+  </div>
+  <div class="icon-links only-print">
+    <a href="{{ site.linkedin | safe }}">linkedin.com/in/devrajmehta</a>
+    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+  </div>
+</nav>

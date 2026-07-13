@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block head %}<link rel="stylesheet" href="{{ asset(path='/prism.css') | safe }}" />{% if project.has_math %}
+<link rel="stylesheet" href="{{ asset(path='/temml.css') | safe }}" />{% endif %}{% endblock %}
+{% block content %}
+<article>
+{{ m::project_header(p=project) }}
+  <div>{{ project.html | safe }}</div>
+</article>
+{% endblock %}

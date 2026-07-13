@@ -1,0 +1,11 @@
+# Generated output (never format)
+public
+screenshots
+ssg/target
+.cache
+.cargo
+static/prism.css
+static/temml.css
+
+# Tera templates use {% %}/{{ }} syntax that Prettier's HTML parser cannot parse
+templates

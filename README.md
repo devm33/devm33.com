@@ -3,28 +3,60 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c78b918f-2b19-453b-9db9-492b844a6e6d/deploy-status)](https://app.netlify.com/sites/devm33-com/deploys)
 [![Maintainability](https://api.codeclimate.com/v1/badges/105482f3c9c668c64fc9/maintainability)](https://codeclimate.com/github/devm33/devm33.com/maintainability)
 
-Website built with [gatsby](https://www.gatsbyjs.org).
+Website built with a small homegrown static site generator written in Rust
+(`ssg/`), with a thin build-time Node step for math and the resume PDF.
+
+## Architecture
+
+- **`ssg/`** — Rust binary that owns the build: markdown → HTML
+  ([`pulldown-cmark`](https://github.com/raphlinus/pulldown-cmark)), templating
+  ([Tera](https://keats.github.io/tera/)), responsive body images + thumbnails
+  ([`image`](https://github.com/image-rs/image)), asset fingerprinting, SEO/OG
+  meta, sitemap, and page assembly. Reads `content/` and `static/`, writes
+  `public/`.
+- **`content/`** — 12 project markdown files (colocated images), the resume YAML
+  (`jobs.yml`, `skills.yml`), and site metadata.
+- **`static/`** — global `style.css`, vendored `prism.css`/`temml.css`, fonts,
+  `theme.js`, favicon/robots, and Netlify `_redirects`/`_headers`.
+- **`scripts/`** — Node build helpers: `math.mjs` ([Temml](https://temml.org):
+  LaTeX → MathML at build time, no runtime JS), `prism.mjs` (PrismJS syntax
+  highlighting), and `resume-pdf.mjs` (Puppeteer renders `/resume/` to a PDF).
+- **`build.sh`** — production entrypoint (used by Netlify): runs the Rust build
+  (`cargo run --release --locked`) then generates the resume PDF.
+
+Requires the Rust toolchain (pinned via `rust-toolchain.toml`) and Node (pinned
+via `.nvmrc`).
 
 ## Setup
 
-Install:
+Install Node dependencies:
 
 ```sh
 npm install
 ```
 
-Run locally:
+Run locally (watch + local static server):
 
 ```sh
 npm start
 ```
 
+Production build (SSG + resume PDF):
+
+```sh
+npm run build
+```
+
+Lint and check links:
+
+```sh
+npm test
+```
+
 ## TODO
 
-- [ ] Add link stylesheet tag to ssr katex posts (requires webpack rework)
-- [ ] Add rss: https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/
-- [ ] Consider switching to mdx to better load images
-- [ ] https://developer.chrome.com/articles/new-headless/
+- [ ] Add rss feed
+- [ ] Update to Node latest (enables npm min-release-age supply-chain guard)
 
 ### Projects to add:
 
@@ -35,6 +67,8 @@ npm start
 
 ## Done
 
+- [x] Migrate off Gatsby to a homegrown Rust SSG (Temml math, PrismJS
+      highlighting, `image`-based responsive images)
 - [x] Add dark mode
 - [x] Replace icon link label transition with position absolute to avoid jumping
 - [x] Add 3 most recent projects to home page

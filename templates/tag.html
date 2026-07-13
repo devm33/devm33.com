@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m %}
+{% block content %}
+<div class="tag-title">
+  <h3 class="tag-header">Projects tagged <span class="pill title-pill">{{ tag }}</span></h3>
+  <a href="/projects">View all</a>
+</div>
+{{ m::project_list(projects=tag_projects) }}
+{% endblock %}

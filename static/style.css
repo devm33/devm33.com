@@ -1,0 +1,455 @@
+/* Fonts */
+@font-face {
+  font-display: swap;
+  font-family: Mulish;
+  font-style: italic;
+  font-weight: 200 1000;
+  src: url("/fonts/mulish-ital.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 200 1000;
+  src: url("/fonts/mulish.woff2") format("woff2");
+}
+
+@font-face {
+  ascent-override: 100.5%;
+  descent-override: 25%;
+  font-family: MulishFallback;
+  line-gap-override: 0%;
+  src: local("Arial");
+}
+
+/* Base */
+* {
+  /* Remove default margin */
+  margin: 0;
+}
+
+html {
+  /* Colors */
+  background-color: var(--bg);
+  color: var(--fg);
+
+  /* Hack to prevent auto vertical-scrollbar from shifting content. */
+  margin-right: calc(-1 * (100vw - 100%));
+  overflow-x: hidden;
+
+  /* Prevent adjustments of font size after orientation changes in iOS. */
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-text-size-adjust: 100%;
+
+  /* Transition color scheme */
+  transition: color 0.3s, background-color 0.3s;
+
+  /* Spacing */
+  --unit: 1.65rem;
+  --header-line: 3.3rem; /* 2 x unit */
+
+  /* Font sizes: https://modularscale.com/?16&px&1.2 */
+  --font-0: 0.833rem;
+  --font-1: 1.2rem;
+  --font-2: 1.44rem;
+  --font-3: 1.728rem;
+}
+
+/* Default to light theme if no local or OS preference is set. */
+html,
+html.light {
+  color-scheme: light;
+
+  --fg: #212121; /* #000 on bg at 87% opacity */
+  --fg2: #666; /* #000 on bg at 60% opacity */
+  --bg: #fff;
+  --accent: #d6006c; /* custom 600 */
+  --on-accent: #fff;
+  --link: #1976d2; /* mat blue 700 */
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --fg: #e0e0e0; /* #fff on bg at 87% opacity */
+  --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
+  --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
+  --link: #90caf9; /* mat blue 200 */
+  --accent: #ec5e9c; /* custom 200 */
+  --on-accent: #000;
+}
+
+/* Intentionally duplicated to avoid flash before class is applied. */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+
+    --fg: #e0e0e0; /* #fff on bg at 87% opacity */
+    --fg2: #a0a0a0; /* #fff on bg at 60% opacity */
+    --bg: #121212; /* https://m2.material.io/design/color/dark-theme */
+    --link: #90caf9; /* mat blue 200 */
+    --accent: #ec5e9c; /* custom 200 */
+    --on-accent: #000;
+  }
+}
+
+body {
+  font-family: Mulish, MulishFallback, Arial, sans-serif;
+  line-height: var(--unit);
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+@media screen and (width <= 700px) {
+  body {
+    margin: 0 1em;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+  }
+}
+
+a,
+a:visited {
+  color: var(--link);
+  text-decoration: none;
+  transition-duration: 0.3s;
+  transition-property: color, background-color, border-color;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+ul,
+ol,
+p,
+.highlight,
+.image-wrapper {
+  margin-bottom: var(--unit);
+}
+
+.image-wrapper {
+  display: block;
+}
+
+.image-wrapper img,
+.image-wrapper picture,
+.image-wrapper source {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  margin-inline-start: var(--unit);
+}
+
+li {
+  margin-bottom: calc(var(--unit) / 2);
+}
+
+h1,
+h2,
+h3 {
+  line-height: var(--header-line);
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: var(--font-3);
+}
+
+h2 {
+  font-size: var(--font-2);
+}
+
+h3 {
+  font-size: var(--font-1);
+}
+
+.highlight code[class*="language-"],
+.highlight pre[class*="language-"] {
+  /* Override prismjs size */
+  font-size: 0.85rem;
+}
+
+/* Navbar */
+.nav-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-group {
+  align-items: center;
+  display: flex;
+  gap: 1em;
+}
+
+.title {
+  font-size: var(--font-2);
+  line-height: var(--header-line);
+  white-space: nowrap;
+}
+
+.icon-links > * {
+  padding: 0.5em;
+}
+
+.icon-links > :last-child {
+  padding-right: 0;
+}
+
+@media screen {
+  .only-print {
+    display: none;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  .nav-bar {
+    margin-top: calc(var(--unit) / 2);
+  }
+
+  /* Specificity required to override base link color. */
+  a.title {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  .icon-links > a {
+    font-size: 14px; /* To match resume font */
+    text-decoration: underline;
+  }
+}
+
+/* Icons */
+.icon-path {
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+}
+
+.stroked {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.svg {
+  font-size: var(--font-1);
+  height: 1em;
+  width: 1em;
+}
+
+.icon-link {
+  align-items: center;
+  display: inline-flex;
+  height: var(--font-1);
+}
+
+.label {
+  height: 100%;
+  position: relative;
+  white-space: nowrap;
+}
+
+.inner-label {
+  font-size: 1rem;
+  font-weight: normal;
+  overflow: hidden;
+  pointer-events: none; /* Prevent from triggering hover while collapsed */
+  position: absolute;
+  white-space: pre; /* Prevent preceding space from being collapsed */
+}
+
+.label-left .inner-label {
+  right: -100%;
+}
+
+.inner-inner-label {
+  background-color: var(--bg);
+  line-height: var(--font-1);
+  pointer-events: all;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  z-index: 100;
+}
+
+.label-left .inner-inner-label {
+  transform: translateX(100%);
+}
+
+.icon-link:hover .inner-inner-label {
+  transform: translateX(0);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: none; /* Override user agent styles */
+  border: none; /* Override user agent styles */
+  box-sizing: content-box; /* Override user agent styles */
+  color: var(--fg); /* Override user agent styles */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Pills */
+.pill {
+  align-items: center;
+  border: 1px solid var(--link);
+  border-radius: 0.5em;
+  color: var(--link);
+  display: inline-flex;
+  padding: 0 0.5em;
+  white-space: nowrap;
+}
+
+.pill:active,
+.pill:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.pill > svg {
+  margin-inline-start: calc(var(--unit) / 4);
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--unit) / 2);
+}
+
+/* Project */
+.project {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: var(--unit);
+}
+
+.thumbnail {
+  flex: 0 0 150px;
+}
+
+.thumbnail-image {
+  display: block; /* Remove inline baseline gap below the image. */
+  margin: 0; /* Override default spacing. */
+}
+
+.subtitle {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--font-0);
+  gap: calc(var(--unit) / 2);
+}
+
+.tagline {
+  margin-top: calc(var(--unit) / 2);
+}
+
+.flex-header {
+  flex: 1;
+}
+
+/* Homepage */
+.hello-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+
+  --unit: calc(1.65rem / 2); /* Override default line height. */
+}
+
+.description {
+  flex-grow: 1;
+}
+
+.recent-title {
+  line-height: var(--header-line);
+}
+
+.recent-header {
+  display: inline;
+}
+
+/* Tag page */
+.tag-title {
+  margin-bottom: calc(var(--unit) / 2);
+}
+
+.title-pill {
+  line-height: 1.65; /* To match border shape of smaller pills. */
+}
+
+.tag-header {
+  display: inline;
+  padding-right: 0.5em;
+}
+
+/* Resume */
+.resume {
+  --header-line: 1.4; /* Match header line-height with body line-height */
+  --unit: 0; /* Zero out spacing for resume */
+
+  font-size: 14px;
+  line-height: var(--header-line);
+}
+
+.resume a,
+.resume a:visited {
+  text-decoration: underline;
+}
+
+.resume h2,
+.resume h3 {
+  font-size: 1em;
+}
+
+.resume ul {
+  padding-inline-start: 1.5em;
+}
+
+.resume li {
+  list-style-type: circle;
+}
+
+.section + .section {
+  margin-top: 1em;
+}
+
+.title-row {
+  display: flex;
+  margin: 0.3em 0 0.1em;
+}
+
+.location {
+  color: var(--fg2);
+  font-style: italic;
+  font-weight: normal;
+}
+
+.date-range {
+  color: var(--fg2);
+  font-size: 0.85em;
+  margin-left: auto;
+  text-align: end;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

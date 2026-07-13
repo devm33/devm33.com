@@ -1,2 +1,20 @@
+[build]
+  command = "bash build.sh"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "24"
+  # Keep the Cargo registry/git caches inside the repo so the cache plugin
+  # persists them between builds.
+  CARGO_HOME = "/opt/build/repo/.cargo"
+  # No browser is needed on Netlify (the resume PDF + screenshots are produced
+  # by GitHub Actions); skip Playwright's Chromium download during npm install.
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1"
+
+# Cache the Rust registry and build output to avoid cold rebuilds of the
+# image/syntect-heavy dependency tree on every deploy.
 [[plugins]]
-package = "./plugins/keep-data-cache"
+  package = "netlify-plugin-cache"
+
+  [plugins.inputs]
+    paths = [".cargo", "ssg/target"]
