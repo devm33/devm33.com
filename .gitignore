@@ -58,6 +58,9 @@ typings/
 .cache/
 public
 
+# rust ssg build cache (Netlify cargo cache dir)
+.cargo/
+
 # Mac files
 .DS_Store
 

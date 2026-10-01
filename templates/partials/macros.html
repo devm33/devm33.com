@@ -1,0 +1,28 @@
+{% macro icon(n) %}<svg class="svg"><use href="#icon{{ n }}"></use></svg>{% endmacro icon %}
+
+{% macro icon_label(label, left=false) %}<div class="label{% if left %} label-left{% endif %}"><div class="inner-label"><div class="inner-inner-label"> {{ label }} </div></div></div>{% endmacro icon_label %}
+
+{% macro icon_link(href, n, label, left=false, class="") %}<a class="icon-link{% if class %} {{ class }}{% endif %}" href="{{ href | safe }}">{% if left %}{{ self::icon_label(label=label, left=true) }}{% endif %}{{ self::icon(n=n) }}{% if not left %}{{ self::icon_label(label=label) }}{% endif %}</a>{% endmacro icon_link %}
+
+{% macro theme_toggle() %}<button aria-pressed="false" class="theme-toggle icon-link">{{ self::icon_label(label="Dark theme", left=true) }}{{ self::icon(n=0) }}</button>{% endmacro theme_toggle %}
+
+{% macro project_header(p, link=false, class="") %}<header{% if class %} class="{{ class }}"{% endif %}>
+  <h1>{% if link %}<a href="{{ p.path | safe }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %} {% if p.repo %}{{ self::icon_link(href=p.repo, n=2, label="Source") }}{% endif %} {% if p.link %}{{ self::icon_link(href=p.link, n=3, label="Link") }}{% endif %}</h1>
+  <div class="subtitle">
+    <i>Updated {{ p.updated }}</i>
+    <div class="pill-group">
+      {% for t in p.tags %}<a class="pill" href="{{ t.href | safe }}">{{ t.name }}</a>{% endfor %}
+    </div>
+  </div>
+  <div class="tagline">{{ p.tagline }}</div>
+</header>{% endmacro project_header %}
+
+{% macro thumb(t, alt="", eager=false) %}<picture><source type="image/webp" srcset="{{ t.srcset | safe }}" sizes="{{ t.size }}px" /><img class="thumbnail-image" src="{{ t.fallback | safe }}" alt="{{ alt }}" width="{{ t.size }}" height="{{ t.size }}" loading="{% if eager %}eager{% else %}lazy{% endif %}" decoding="async" style="background-color: {{ t.color }}" /></picture>{% endmacro thumb %}
+
+{% macro project(p) %}<div class="project">
+  <a aria-label="{{ p.title }}" class="thumbnail" href="{{ p.path | safe }}">{% if p.thumb %}{{ self::thumb(t=p.thumb) }}{% endif %}</a>
+  {{ self::project_header(p=p, link=true, class="flex-header") }}
+</div>{% endmacro project %}
+
+{% macro project_list(projects) %}{% for p in projects %}{{ self::project(p=p) }}
+{% endfor %}{% endmacro project_list %}
