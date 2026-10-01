@@ -111,6 +111,14 @@ async function main() {
         content:
           "*,*::before,*::after{transition:none!important;animation:none!important}",
       });
+      await page.evaluate(() => {
+        for (const image of document.images) image.loading = "eager";
+      });
+      await page.waitForFunction(() =>
+        Array.from(document.images).every(
+          (image) => image.complete && image.naturalWidth > 0,
+        ),
+      );
       await page.evaluate(() => document.fonts.ready);
       await page.screenshot({
         path: path.join(outDir, `${slug(r)}.png`),

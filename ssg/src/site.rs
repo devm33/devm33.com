@@ -115,20 +115,7 @@ impl Site {
 
         let mut projects = Vec::new();
         for dir in content::discover_projects(&config.content_dir)? {
-            let loaded = Project::load(&dir)?;
-            projects.push(Project {
-                slug: loaded.slug,
-                path: loaded.path,
-                title: loaded.front.title,
-                updated: loaded.front.updated,
-                tagline: loaded.front.tagline.trim().to_string(),
-                tags: loaded.front.tags,
-                link: loaded.front.link,
-                repo: loaded.front.repo,
-                image: loaded.front.image,
-                body: loaded.body,
-                dir,
-            });
+            projects.push(Project::load(&dir)?);
         }
         // Sort by `updated` descending (dates are YYYY-MM-DD, lexicographic ok).
         projects.sort_by(|a, b| b.updated.cmp(&a.updated).then(a.slug.cmp(&b.slug)));
@@ -151,14 +138,9 @@ impl Site {
                 out.join("projects").join(&p.slug),
                 p.path.clone(),
             );
-            let has_math = crate::math::has_math(&p.body);
-            let body = if has_math {
-                crate::math::prepass(&p.body, &self.config.root)
-                    .with_context(|| format!("math pre-pass for {}", p.slug))?
-            } else {
-                p.body.clone()
-            };
-            let rendered = markdown::render(&body, &processor, &self.config.root)
+            let processed = crate::math::prepass(&p.body, &self.config.root)
+                .with_context(|| format!("math pre-pass for {}", p.slug))?;
+            let rendered = markdown::render(&processed.body, &processor, &self.config.root)
                 .with_context(|| format!("rendering project {}", p.slug))?;
             let (thumb, og_path) = match &p.image {
                 Some(img) => {
@@ -175,7 +157,7 @@ impl Site {
             views.push(ProjectView::from(
                 p,
                 rendered.html,
-                has_math,
+                processed.has_math,
                 thumb,
                 og_path,
             ));

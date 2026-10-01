@@ -106,26 +106,6 @@ impl ImageProcessor {
         )))
     }
 
-    /// Copy a local non-image file linked from markdown (e.g. a PDF).
-    #[allow(dead_code)] // No such links exist today; retained as a future guard.
-    pub fn copy_linked(&self, dest_url: &str) -> Result<Option<String>> {
-        if is_external(dest_url) {
-            return Ok(None);
-        }
-        let rel = dest_url.trim_start_matches("./");
-        let src = self.src_dir.join(rel);
-        if !src.exists() {
-            return Ok(None);
-        }
-        let name = Path::new(rel)
-            .file_name()
-            .and_then(|s| s.to_str())
-            .unwrap_or("file");
-        std::fs::create_dir_all(&self.out_dir)?;
-        std::fs::copy(&src, self.out_dir.join(name))?;
-        Ok(Some(format!("{}{}", self.url_prefix, name)))
-    }
-
     /// Produce a square thumbnail (center-cropped) at `size` with a 2x variant
     /// when the source allows, plus an average-color placeholder.
     pub fn thumbnail(&self, filename: &str, size: u32) -> Result<Thumb> {

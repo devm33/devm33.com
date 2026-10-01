@@ -10,72 +10,18 @@ pub fn split(raw: &str) -> Result<(&str, &str)> {
         .strip_prefix("---\n")
         .or_else(|| raw.strip_prefix("---\r\n"))
         .ok_or_else(|| anyhow!("missing frontmatter opening `---`"))?;
-    // Find the closing delimiter at the start of a line.
-    for line_start in LineStarts::new(rest) {
-        let line = &rest[line_start..];
-        if line.starts_with("---\n") || line.starts_with("---\r\n") || line == "---" {
-            let after = line
-                .strip_prefix("---\n")
-                .or_else(|| line.strip_prefix("---\r\n"))
-                .unwrap_or("");
-            return Ok((&rest[..line_start], after));
+    let mut offset = 0;
+    for line in rest.split_inclusive('\n') {
+        let without_newline = line.strip_suffix('\n').unwrap_or(line);
+        let delimiter = without_newline
+            .strip_suffix('\r')
+            .unwrap_or(without_newline);
+        if delimiter == "---" {
+            return Ok((&rest[..offset], &rest[offset + line.len()..]));
         }
+        offset += line.len();
     }
     Err(anyhow!("missing frontmatter closing `---`"))
-}
-
-struct LineStarts<'a> {
-    s: &'a str,
-    pos: usize,
-    done: bool,
-}
-
-impl<'a> LineStarts<'a> {
-    fn new(s: &'a str) -> Self {
-        LineStarts {
-            s,
-            pos: 0,
-            done: false,
-        }
-    }
-}
-
-impl<'a> Iterator for LineStarts<'a> {
-    type Item = usize;
-    fn next(&mut self) -> Option<usize> {
-        if self.done {
-            return None;
-        }
-        if self.pos == 0 {
-            // First line starts at 0 (unless empty string).
-            if self.s.is_empty() {
-                self.done = true;
-                return None;
-            }
-            // Advance pos to after first newline for subsequent calls.
-            self.pos = match self.s.find('\n') {
-                Some(i) => i + 1,
-                None => {
-                    self.done = true;
-                    self.s.len()
-                }
-            };
-            return Some(0);
-        }
-        if self.pos >= self.s.len() {
-            self.done = true;
-            return None;
-        }
-        let start = self.pos;
-        self.pos = match self.s[start..].find('\n') {
-            Some(i) => start + i + 1,
-            None => {
-                self.done = true;
-                self.s.len()
-            }
-        };
-        Some(start)
-    }
 }
 
 #[cfg(test)]
@@ -88,6 +34,17 @@ mod tests {
         let (fm, body) = split(raw).unwrap();
         assert_eq!(fm, "title: Hi\n");
         assert_eq!(body, "Body here\n");
+    }
+
+    #[test]
+    fn splits_crlf_and_closing_delimiter_at_eof() {
+        let (fm, body) = split("---\r\ntitle: Hi\r\n---\r\nBody\r\n").unwrap();
+        assert_eq!(fm, "title: Hi\r\n");
+        assert_eq!(body, "Body\r\n");
+
+        let (fm, body) = split("---\ntitle: Hi\n---").unwrap();
+        assert_eq!(fm, "title: Hi\n");
+        assert_eq!(body, "");
     }
 
     #[test]

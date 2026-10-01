@@ -4,7 +4,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/105482f3c9c668c64fc9/maintainability)](https://codeclimate.com/github/devm33/devm33.com/maintainability)
 
 Website built with a small homegrown static site generator written in Rust
-(`ssg/`), with a thin build-time Node step for math and the resume PDF.
+(`ssg/`), with thin build-time Node helpers for math, syntax highlighting, and
+visual artifacts.
 
 ## Architecture
 
@@ -15,17 +16,21 @@ Website built with a small homegrown static site generator written in Rust
   meta, sitemap, and page assembly. Reads `content/` and `static/`, writes
   `public/`.
 - **`content/`** — 12 project markdown files (colocated images), the resume YAML
-  (`jobs.yml`, `skills.yml`), and site metadata.
+  (`jobs.yml`, `skills.yml`), and shared images. Site metadata lives in
+  `ssg/src/config.rs`.
 - **`static/`** — global `style.css`, vendored `prism.css`/`temml.css`, fonts,
   `theme.js`, favicon/robots, and Netlify `_redirects`/`_headers`.
 - **`scripts/`** — Node build helpers: `math.mjs` ([Temml](https://temml.org):
   LaTeX → MathML at build time, no runtime JS), `prism.mjs` (PrismJS syntax
-  highlighting), and `resume-pdf.mjs` (Puppeteer renders `/resume/` to a PDF).
+  highlighting), `serve-public.mjs` (local HTTP server), `resume-pdf.mjs`
+  (Playwright renders `/resume/` to a PDF), and `screenshots.mjs` (captures
+  deterministic page screenshots).
 - **`build.sh`** — production entrypoint (used by Netlify): runs the Rust build
-  (`cargo run --release --locked`) then generates the resume PDF.
+  (`cargo run --release --locked`). The resume PDF and screenshots are generated
+  and committed by `.github/workflows/visuals.yml`.
 
-Requires the Rust toolchain (pinned via `rust-toolchain.toml`) and Node (pinned
-via `.nvmrc`).
+Requires the stable Rust toolchain (selected via `rust-toolchain.toml`) and Node
+(pinned via `.nvmrc`).
 
 ## Setup
 
@@ -41,7 +46,7 @@ Run locally (watch + local static server):
 npm start
 ```
 
-Production build (SSG + resume PDF):
+Production site build:
 
 ```sh
 npm run build
@@ -56,7 +61,6 @@ npm test
 ## TODO
 
 - [ ] Add rss feed
-- [ ] Update to Node latest (enables npm min-release-age supply-chain guard)
 
 ### Projects to add:
 

@@ -6,7 +6,7 @@
 // URLs resolve exactly as in production. Fonts are inlined as base64 so the PDF
 // is self-contained, the light theme is forced, and we await document.fonts.ready
 // before printing.
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -15,6 +15,8 @@ import { startServer } from "./serve-public.mjs";
 const root = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const publicDir = path.join(root, "public");
 const outPath = path.join(root, "static", "devraj_mehta_resume.pdf");
+const PDF_DATE = /D:\d{14}[+-]\d{2}'\d{2}'/g;
+const STABLE_PDF_DATE = "D:20000101000000+00'00'";
 
 async function inlineFontFiles() {
   const encoding = "base64";
@@ -51,7 +53,16 @@ async function main() {
     });
     await page.addStyleTag({ content: await inlineFontFiles() });
     await page.evaluate(() => document.fonts.ready);
-    await page.pdf({ path: outPath, printBackground: true });
+    await page.evaluate(() => {
+      for (const link of document.querySelectorAll("a[href^='/']")) {
+        link.href = new URL(link.getAttribute("href"), "https://devm33.com");
+      }
+    });
+    const pdf = await page.pdf({ printBackground: true });
+    const normalized = pdf
+      .toString("latin1")
+      .replace(PDF_DATE, STABLE_PDF_DATE);
+    await writeFile(outPath, Buffer.from(normalized, "latin1"));
   } finally {
     await browser.close();
     server.close();

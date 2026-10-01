@@ -1,17 +1,27 @@
 use anyhow::{Context, Result, bail};
+use serde::Deserialize;
 use std::io::Write;
 use std::path::Path;
 use std::process::{Command, Stdio};
 
-/// Returns true if the body contains math delimiters (`$$`).
-pub fn has_math(body: &str) -> bool {
-    body.contains("$$")
+#[derive(Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Processed {
+    pub body: String,
+    pub has_math: bool,
 }
 
-/// Runs the Node/Temml AST pre-pass over `body`, replacing every `$$…$$`
-/// expression with build-time MathML. Hard-fails on any Temml error so a
-/// broken formula never ships silently.
-pub fn prepass(body: &str, root: &Path) -> Result<String> {
+/// Runs the Node/Temml AST pre-pass over `body`, replacing inline and display
+/// math with build-time MathML. Hard-fails on any Temml error so a broken
+/// formula never ships silently.
+pub fn prepass(body: &str, root: &Path) -> Result<Processed> {
+    if !body.contains('$') {
+        return Ok(Processed {
+            body: body.to_string(),
+            has_math: false,
+        });
+    }
+
     let mut child = Command::new("node")
         .arg("scripts/math.mjs")
         .current_dir(root)
@@ -37,18 +47,5 @@ pub fn prepass(body: &str, root: &Path) -> Result<String> {
             String::from_utf8_lossy(&output.stderr).trim()
         );
     }
-    String::from_utf8(output.stdout).context("math pre-pass produced invalid UTF-8")
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn detects_math_delimiters() {
-        assert!(has_math("inline $$x$$ math"));
-        assert!(has_math("$$\n a=b \n$$"));
-        assert!(!has_math("no math here"));
-        assert!(!has_math("a single $ is not math"));
-    }
+    serde_json::from_slice(&output.stdout).context("parsing math pre-pass output")
 }

@@ -44,8 +44,8 @@ pub struct Project {
 }
 
 impl Project {
-    /// The raw markdown body plus parsed frontmatter (HTML not yet rendered).
-    pub fn load(dir: &Path) -> Result<LoadedProject> {
+    /// Load project frontmatter and raw markdown body from a project directory.
+    pub fn load(dir: &Path) -> Result<Self> {
         let md_path = dir.join("index.md");
         let raw = std::fs::read_to_string(&md_path)
             .with_context(|| format!("reading {}", md_path.display()))?;
@@ -58,24 +58,20 @@ impl Project {
             .and_then(|s| s.to_str())
             .context("project dir has no name")?
             .to_string();
-        Ok(LoadedProject {
+        Ok(Project {
             path: format!("/projects/{slug}/"),
             slug,
-            front,
+            title: front.title,
+            updated: front.updated,
+            tagline: front.tagline.trim().to_string(),
+            tags: front.tags,
+            link: front.link,
+            repo: front.repo,
+            image: front.image,
             body: body.to_string(),
             dir: dir.to_path_buf(),
         })
     }
-}
-
-/// Intermediate: frontmatter parsed, body still raw markdown.
-pub struct LoadedProject {
-    pub slug: String,
-    pub path: String,
-    pub front: ProjectFront,
-    pub body: String,
-    #[allow(dead_code)] // Project carries its own `dir`; retained for symmetry
-    pub dir: PathBuf,
 }
 
 /// Discover all project directories under `content/projects`.

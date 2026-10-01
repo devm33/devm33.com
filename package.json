@@ -17,7 +17,8 @@
     "resume-pdf": "node scripts/resume-pdf.mjs",
     "screenshots": "node scripts/screenshots.mjs",
     "start": "bash scripts/dev.sh",
-    "test": "run-p check-links lint"
+    "test": "run-p check-links lint test:math",
+    "test:math": "node --test scripts/math.test.mjs"
   },
   "cspell": {
     "dictionaries": [

@@ -6,6 +6,7 @@
 // decided by whether the delimited content spans multiple lines, matching the
 // site's `gatsby-remark-katex` convention where `$$...$$` is used inline too.
 import { createRequire } from "module";
+import { pathToFileURL } from "node:url";
 const require = createRequire(import.meta.url);
 const fromMarkdown = require("mdast-util-from-markdown");
 const temml = require("temml");
@@ -21,21 +22,21 @@ function render(latex, displayMode) {
     .replace(/\s+$/, "");
 }
 
-function transform(source) {
+export function transform(source) {
   const tree = fromMarkdown(source);
   const texts = [];
   collectTextNodes(tree, texts);
 
   const edits = [];
-  const re = /\$\$([\s\S]*?)\$\$/g;
+  const re = /(?<!\\)\$\$([\s\S]*?)(?<!\\)\$\$|(?<!\\)\$([^$\n]+?)(?<!\\)\$/g;
   for (const node of texts) {
     const start = node.position.start.offset;
     const end = node.position.end.offset;
     const slice = source.slice(start, end);
     let m;
     while ((m = re.exec(slice)) !== null) {
-      const content = m[1];
-      const displayMode = /\n/.test(content);
+      const displayMode = m[1] !== undefined && /\n/.test(m[1]);
+      const content = m[1] ?? m[2];
       const mathml = render(content, displayMode);
       edits.push({
         start: start + m.index,
@@ -51,17 +52,22 @@ function transform(source) {
   for (const e of edits) {
     out = out.slice(0, e.start) + e.replacement + out.slice(e.end);
   }
-  return out;
+  return { body: out, hasMath: edits.length > 0 };
 }
 
-let input = "";
-process.stdin.setEncoding("utf8");
-process.stdin.on("data", (chunk) => (input += chunk));
-process.stdin.on("end", () => {
-  try {
-    process.stdout.write(transform(input));
-  } catch (err) {
-    process.stderr.write(`math pre-pass failed: ${err.message}\n`);
-    process.exit(1);
-  }
-});
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
+  let input = "";
+  process.stdin.setEncoding("utf8");
+  process.stdin.on("data", (chunk) => (input += chunk));
+  process.stdin.on("end", () => {
+    try {
+      process.stdout.write(JSON.stringify(transform(input)));
+    } catch (err) {
+      process.stderr.write(`math pre-pass failed: ${err.message}\n`);
+      process.exit(1);
+    }
+  });
+}
